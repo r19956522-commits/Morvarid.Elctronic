@@ -167,10 +167,10 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
 .req-card{border:1px solid var(--border);border-radius:15px;padding:15px;margin-bottom:11px;background:rgba(255,255,255,.02)}
 .req-card h4{margin:0 0 8px;font-size:14px}
 .req-card .meta{font-size:12px;color:var(--muted);margin-bottom:9px;display:flex;gap:14px;flex-wrap:wrap}
-.room-code{font-family:monospace;font-size:20px;letter-spacing:3px;font-weight:800;
+.room-code{font-family:monospace;font-size:16px;letter-spacing:1px;font-weight:800;
   text-align:center;padding:14px;border-radius:14px;
   background:linear-gradient(135deg,rgba(181,138,224,.2),rgba(127,216,232,.15));
-  border:2px dashed rgba(201,167,235,.5);color:#fff;margin:14px 0}
+  border:2px dashed rgba(201,167,235,.5);color:#fff;margin:14px 0;word-break:break-all}
 @media(max-width:640px){
   .inv-card .row-inv{grid-template-columns:1fr 1fr}
   .inv-card .del{width:100%;grid-column:1/-1;height:36px}
@@ -446,13 +446,17 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
         <h3 class="sec-title">🔄 اتاق سینک (بدون ثبت‌نام)</h3>
         <div class="alert alert-info">
           <span>💡</span>
-          <span>این اتاق به شما امکان می‌دهد داده‌ها بین همه دستگاه‌ها (گوشی فروشنده، لپ‌تاپ مدیر و...) به‌صورت خودکار سینک شود. <b>هیچ ثبت‌نامی لازم نیست!</b></span>
+          <span>این اتاق به شما امکان می‌دهد داده‌ها بین همه دستگاه‌ها (گوشی فروشنده، لپ‌تاپ مدیر و...) به‌صورت خودکار سینک شود.</span>
         </div>
 
         <div id="syncStatusBox"></div>
 
         <div id="syncNotConnected">
           <h4 style="color:var(--accent);margin-bottom:12px">وضعیت فعلی: متصل نیست</h4>
+          <div style="margin-bottom:14px">
+            <label>توکن گیت‌هاب (ghp_...)</label>
+            <input id="ghTokenInput" placeholder="ghp_xxxxxxxxxxxxxxxx" style="font-family:monospace;font-size:13px">
+          </div>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
             <button class="btn btn-primary" onclick="createRoom()">➕ ایجاد اتاق جدید</button>
             <button class="btn btn-ghost" onclick="showJoinRoom()">🔗 اتصال به اتاق موجود</button>
@@ -462,7 +466,7 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
         <div id="syncConnected" class="hidden">
           <h4 style="color:var(--ok);margin-bottom:12px">✅ به اتاق متصل هستید</h4>
           <label>کد اتاق (این کد را برای فروشنده‌ها بفرستید):</label>
-          <div class="room-code" id="roomCodeDisplay">— — —</div>
+          <div class="room-code" id="roomCodeDisplay">—</div>
           <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
             <button class="btn btn-primary" onclick="copyRoomCode()">📋 کپی کد اتاق</button>
             <button class="btn btn-ghost" onclick="syncNow(true)">🔄 سینک فوری</button>
@@ -470,7 +474,7 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
           </div>
           <div class="alert alert-info mt" style="font-size:12.5px">
             <span>ℹ️</span>
-            <span>سینک خودکار هر ۱۰ ثانیه انجام می‌شود. هر تغییری در این دستگاه بلافاصله به ابر ارسال و از ابر دریافت می‌شود.</span>
+            <span>سینک خودکار هر ۱۰ ثانیه انجام می‌شود.</span>
           </div>
         </div>
       </div>
@@ -478,10 +482,11 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
       <div class="card">
         <h3 class="sec-title">📖 راهنما</h3>
         <ol style="line-height:2;padding-right:20px;color:#cfcae8">
+          <li>توکن گیت‌هاب را در کادر بالا وارد کنید.</li>
           <li>روی <b>«ایجاد اتاق جدید»</b> کلیک کنید.</li>
-          <li>یک <b>کد اتاق</b> مثل <code>MOR-7A3B9K</code> دریافت می‌کنید.</li>
+          <li>یک <b>کد اتاق</b> دریافت می‌کنید.</li>
           <li>این کد را برای فروشنده‌ها بفرستید (واتس‌اپ، پیامک و...).</li>
-          <li>فروشنده در گوشی خودش: روی <b>«اتصال به اتاق موجود»</b> بزند و کد را وارد کند.</li>
+          <li>فروشنده در گوشی خودش: روی <b>«اتصال به اتاق موجود»</b> بزند، کد و توکن را وارد کند.</li>
           <li>تمام! از این به بعد همه چیز خودکار سینک می‌شود. ✅</li>
         </ol>
       </div>
@@ -537,8 +542,10 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
   <div class="card modal">
     <h3 class="sec-title">🔗 اتصال به اتاق موجود</h3>
     <div id="jmMsg"></div>
-    <label>کد اتاق را وارد کنید</label>
-    <input id="jmCode" placeholder="MOR-XXXXXX" style="text-align:center;font-family:monospace;letter-spacing:2px;font-size:16px">
+    <label>کد اتاق (Gist ID)</label>
+    <input id="jmCode" placeholder="xxxxxxxxxxxxxxxx" style="text-align:center;font-family:monospace;letter-spacing:1px;font-size:15px">
+    <label style="margin-top:12px">توکن گیت‌هاب (ghp_...)</label>
+    <input id="jmToken" placeholder="ghp_xxxxxxxxxxxxxxxx" style="font-family:monospace;font-size:13px">
     <div style="display:flex;gap:10px;margin-top:18px">
       <button class="btn btn-primary" style="flex:1" onclick="joinRoom()">اتصال</button>
       <button class="btn btn-ghost" onclick="document.getElementById('joinModal').classList.add('hidden')">انصراف</button>
@@ -565,15 +572,16 @@ const DEFAULT_USERS = [
 
 /* ============ Storage Keys ============ */
 const K = {
-  users:  "morvarid_users_v3",
-  recs:   "morvarid_recs_v3",
-  reqs:   "morvarid_reqs_v3",
-  msgs:   "morvarid_msgs_v3",
-  notifs: "morvarid_notifs_v3",
-  bc:     "morvarid_bc_v3",
-  sess:   "morvarid_sess_v3",
-  room:   "morvarid_room_v3",
-  lastUp: "morvarid_lastup_v3"
+  users:  "morvarid_users_v4",
+  recs:   "morvarid_recs_v4",
+  reqs:   "morvarid_reqs_v4",
+  msgs:   "morvarid_msgs_v4",
+  notifs: "morvarid_notifs_v4",
+  bc:     "morvarid_bc_v4",
+  sess:   "morvarid_sess_v4",
+  room:   "morvarid_gh_gist_v4",
+  token:  "morvarid_gh_token_v4",
+  lastUp: "morvarid_lastup_v4"
 };
 const load = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch(e){ return d; } };
 const save = (k, v) => { try{ localStorage.setItem(k, JSON.stringify(v)); } catch(e){ alert("حافظه پر. تصاویر کم‌حجم‌تر بارگذاری کنید."); } };
@@ -595,37 +603,46 @@ const setBC     = b => { save(K.bc, b); markLocalChange(); };
 
 let session = null;
 
-/* ============ Cloud Sync (jsonblob.com - بدون ثبت‌نام) ============ */
-const CLOUD = {
-  roomId: localStorage.getItem(K.room) || "",
-  lastRemoteUpdate: 0,
-  syncing: false,
+/* ============ GitHub Gist Sync ============ */
+const GH = {
+  token:    localStorage.getItem(K.token) || "",
+  gistId:   localStorage.getItem(K.room)  || "",
+  syncing:  false,
   autoTimer: null
 };
 
+async function ghApi(path, method = "GET", body = null) {
+  const headers = {
+    "Accept": "application/vnd.github+json",
+    "Authorization": "Bearer " + GH.token,
+    "X-GitHub-Api-Version": "2022-11-28"
+  };
+  if (body) headers["Content-Type"] = "application/json";
+  const opts = { method, headers };
+  if (body) opts.body = JSON.stringify(body);
+  const res = await fetch("https://api.github.com" + path, opts);
+  if (!res.ok){
+    const txt = await res.text();
+    throw new Error("API " + res.status + ": " + txt.slice(0, 200));
+  }
+  return res.json();
+}
+
 function markLocalChange(){
-  const t = Date.now();
-  localStorage.setItem(K.lastUp, String(t));
+  localStorage.setItem(K.lastUp, String(Date.now()));
   schedulePushToCloud();
 }
-
 let pushTimer = null;
 function schedulePushToCloud(){
-  if (!CLOUD.roomId) return;
+  if (!GH.gistId || !GH.token) return;
   clearTimeout(pushTimer);
-  pushTimer = setTimeout(() => pushToCloud(), 800);
+  pushTimer = setTimeout(() => pushToCloud(), 1000);
 }
-
-function cloudUrl(){ return CLOUD.roomId ? `https://jsonblob.com/api/jsonBlob/${CLOUD.roomId}` : ""; }
 
 function collectAll(){
   return {
-    users:  getUsers(),
-    recs:   getRecs(),
-    reqs:   getReqs(),
-    msgs:   getMsgs(),
-    notifs: getNotifs(),
-    bc:     getBC(),
+    users:  getUsers(), recs: getRecs(), reqs: getReqs(),
+    msgs:   getMsgs(),  notifs: getNotifs(), bc: getBC(),
     updatedAt: Date.now()
   };
 }
@@ -642,68 +659,95 @@ function applyCloud(data){
 }
 
 async function pushToCloud(){
-  if (!CLOUD.roomId || CLOUD.syncing) return;
-  CLOUD.syncing = true;
+  if (!GH.gistId || !GH.token || GH.syncing) return;
+  GH.syncing = true;
   setSyncStatus("syncing");
   try {
-    const res = await fetch(cloudUrl(), {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(collectAll())
+    const gist = await ghApi("/gists/" + GH.gistId);
+    const files = {};
+    Object.keys(gist.files).forEach(k => {
+      files[k] = { content: gist.files[k].content || "" };
     });
-    if (!res.ok) throw new Error("push failed");
+    files["morvarid-data.json"] = {
+      content: JSON.stringify(collectAll(), null, 2)
+    };
+    await ghApi("/gists/" + GH.gistId, "PATCH", { files });
     setSyncStatus("online");
-  } catch(e) {
+  } catch(e){
+    console.error("push error:", e);
     setSyncStatus("offline");
   }
-  CLOUD.syncing = false;
+  GH.syncing = false;
 }
 
 async function pullFromCloud(){
-  if (!CLOUD.roomId) return;
+  if (!GH.gistId || !GH.token) return;
   try {
-    const res = await fetch(cloudUrl(), { headers: { "Accept": "application/json" } });
-    if (!res.ok) throw new Error("pull failed");
-    const data = await res.json();
+    const gist = await ghApi("/gists/" + GH.gistId);
+    const file = gist.files["morvarid-data.json"];
+    if (!file) return;
+    let content = file.content;
+    if (file.truncated) {
+      const r = await fetch(file.raw_url);
+      content = await r.text();
+    }
+    const data = JSON.parse(content);
     const remoteTime = data.updatedAt || 0;
     const localTime  = Number(localStorage.getItem(K.lastUp) || 0);
-
     if (remoteTime > localTime + 500) {
-      // داده ابری جدیدتر است → اعمال
       applyCloud(data);
       refreshAllViews();
     }
     setSyncStatus("online");
-  } catch(e) {
+  } catch(e){
+    console.error("pull error:", e);
     setSyncStatus("offline");
   }
 }
 
+function startAutoSync(){
+  stopAutoSync();
+  GH.autoTimer = setInterval(() => pullFromCloud(), 10000);
+  pullFromCloud();
+}
+function stopAutoSync(){
+  if (GH.autoTimer){ clearInterval(GH.autoTimer); GH.autoTimer = null; }
+}
+
 async function createRoom(){
   const box = document.getElementById("syncStatusBox");
-  box.innerHTML = `<div class="alert alert-info"><span>⏳</span><span>در حال ایجاد اتاق...</span></div>`;
+  const tokenInput = document.getElementById("ghTokenInput");
+  const token = tokenInput ? tokenInput.value.trim() : GH.token;
+  if (!token){
+    box.innerHTML = `<div class="alert alert-error"><span>⛔</span><span>اول توکن گیت‌هاب را در کادر بالا وارد کنید.</span></div>`;
+    return;
+  }
+  GH.token = token;
+  localStorage.setItem(K.token, token);
+  box.innerHTML = `<div class="alert alert-info"><span>⏳</span><span>در حال ایجاد اتاق ابری...</span></div>`;
   try {
-    const res = await fetch("https://jsonblob.com/api/jsonBlob", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify(collectAll())
+    const gist = await ghApi("/gists", "POST", {
+      description: "Morvarid Sales Data — " + new Date().toISOString(),
+      public: false,
+      files: {
+        "morvarid-data.json": {
+          content: JSON.stringify(collectAll(), null, 2)
+        }
+      }
     });
-    if (!res.ok) throw new Error("create failed");
-    const loc = res.headers.get("Location") || "";
-    const id  = loc.split("/").pop();
-    if (!id) throw new Error("no id");
-    CLOUD.roomId = id;
-    localStorage.setItem(K.room, id);
+    GH.gistId = gist.id;
+    localStorage.setItem(K.room, gist.id);
     startAutoSync();
     renderSyncTab();
-    box.innerHTML = `<div class="alert alert-ok"><span>✅</span><span>اتاق با موفقیت ایجاد شد!</span></div>`;
-  } catch(e) {
-    box.innerHTML = `<div class="alert alert-error"><span>⛔</span><span>خطا در ایجاد اتاق. اتصال اینترنت را بررسی کنید.</span></div>`;
+    box.innerHTML = `<div class="alert alert-ok"><span>✅</span><span>اتاق ابری ساخته شد!</span></div>`;
+  } catch(e){
+    box.innerHTML = `<div class="alert alert-error"><span>⛔</span><span>خطا: ${e.message}<br>لطفاً توکن را دوباره چک کنید.</span></div>`;
   }
 }
 
 function showJoinRoom(){
   document.getElementById("jmCode").value = "";
+  document.getElementById("jmToken").value = "";
   document.getElementById("jmMsg").innerHTML = "";
   document.getElementById("joinModal").classList.remove("hidden");
 }
@@ -711,66 +755,64 @@ function showJoinRoom(){
 async function joinRoom(){
   const box = document.getElementById("jmMsg");
   const raw = document.getElementById("jmCode").value.trim();
-  if (!raw) return showMsg(box, "کد اتاق را وارد کنید.", "error");
-
-  // پذیرش لینک کامل یا فقط ID
+  const token = document.getElementById("jmToken").value.trim();
+  if (!raw) return showMsg(box, "کد اتاق (Gist ID) را وارد کنید.", "error");
+  if (!token) return showMsg(box, "توکن گیت‌هاب را وارد کنید.", "error");
   let id = raw;
-  if (raw.includes("jsonblob.com")) id = raw.split("/").pop();
-
+  if (raw.includes("gist.github.com")) id = raw.split("/").pop().split("#")[0];
   box.innerHTML = `<div class="alert alert-info"><span>⏳</span><span>در حال اتصال...</span></div>`;
   try {
-    const res = await fetch(`https://jsonblob.com/api/jsonBlob/${id}`, { headers: { "Accept": "application/json" } });
-    if (!res.ok) throw new Error("not found");
-    const data = await res.json();
-
+    localStorage.setItem(K.token, token);
+    GH.token = token;
+    const gist = await ghApi("/gists/" + id);
+    const file = gist.files["morvarid-data.json"];
+    if (!file) throw new Error("فایل داده در این اتاق پیدا نشد");
+    let content = file.content;
+    if (file.truncated) {
+      const r = await fetch(file.raw_url);
+      content = await r.text();
+    }
+    const data = JSON.parse(content);
     if (confirm("به اتاق متصل شوید؟ داده‌های این دستگاه با داده‌های اتاق جایگزین می‌شوند.")) {
       applyCloud(data);
-      CLOUD.roomId = id;
+      GH.gistId = id;
       localStorage.setItem(K.room, id);
       startAutoSync();
       document.getElementById("joinModal").classList.add("hidden");
       renderSyncTab();
       location.reload();
     }
-  } catch(e) {
-    showMsg(box, "کد اتاق نامعتبر است یا اتصال برقرار نشد.", "error");
+  } catch(e){
+    showMsg(box, "اتصال ناموفق: " + e.message, "error");
   }
 }
 
 function disconnectRoom(){
-  if (!confirm("اتصال به اتاق قطع شود؟ (داده‌های محلی حفظ می‌شوند)")) return;
-  CLOUD.roomId = "";
+  if (!confirm("اتصال قطع شود؟ (داده‌های محلی حفظ می‌شوند)")) return;
+  GH.gistId = "";
   localStorage.removeItem(K.room);
   stopAutoSync();
   renderSyncTab();
 }
 
 function copyRoomCode(){
-  const code = CLOUD.roomId;
-  if (!code) return;
-  navigator.clipboard.writeText(code).then(() => {
-    alert("کد اتاق کپی شد ✅\n\n" + code + "\n\nاین کد را برای فروشنده‌ها بفرستید.");
-  }).catch(() => {
-    prompt("این کد را کپی کنید:", code);
-  });
+  if (!GH.gistId) return;
+  const text = GH.gistId;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert("کد اتاق کپی شد ✅\n\n" + text + "\n\nاین کد را برای فروشنده‌ها بفرستید.");
+    }).catch(() => prompt("این کد را کپی کنید:", text));
+  } else {
+    prompt("این کد را کپی کنید:", text);
+  }
 }
 
 async function syncNow(manual){
-  if (!CLOUD.roomId){ if (manual) alert("ابتدا به یک اتاق متصل شوید."); return; }
+  if (!GH.gistId){ if (manual) alert("ابتدا به یک اتاق متصل شوید."); return; }
   setSyncStatus("syncing");
   await pullFromCloud();
   await pushToCloud();
   if (manual) alert("سینک انجام شد ✅");
-}
-
-function startAutoSync(){
-  stopAutoSync();
-  CLOUD.autoTimer = setInterval(() => pullFromCloud(), 10000);
-  pullFromCloud();
-}
-
-function stopAutoSync(){
-  if (CLOUD.autoTimer){ clearInterval(CLOUD.autoTimer); CLOUD.autoTimer = null; }
 }
 
 function setSyncStatus(s){
@@ -790,15 +832,17 @@ function renderSyncTab(){
   const box     = document.getElementById("syncStatusBox");
   if (!notConn || !conn) return;
   box.innerHTML = "";
-  if (CLOUD.roomId){
+  if (GH.gistId && GH.token){
     notConn.classList.add("hidden");
     conn.classList.remove("hidden");
-    document.getElementById("roomCodeDisplay").textContent = CLOUD.roomId;
+    document.getElementById("roomCodeDisplay").textContent = GH.gistId;
     setSyncStatus("online");
   } else {
     notConn.classList.remove("hidden");
     conn.classList.add("hidden");
     setSyncStatus("offline");
+    const inp = document.getElementById("ghTokenInput");
+    if (inp && GH.token) inp.value = GH.token;
   }
 }
 
@@ -856,7 +900,7 @@ function enterApp(){
     initUser();
   }
   tickClock();
-  if (CLOUD.roomId) startAutoSync();
+  if (GH.gistId && GH.token) startAutoSync();
 }
 function tickClock(){
   const t = nowTime(), d = todayKey();
@@ -1550,4 +1594,4 @@ document.addEventListener("click", e => {
 });
 </script>
 </body>
-  </html>
+        </html>
