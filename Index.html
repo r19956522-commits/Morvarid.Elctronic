@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>مروارید | سامانه جامع فروش</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23e8dff5'/></svg>">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+<style>
+:root{
+  --bg:#070a12;--card:rgba(18,24,42,.72);--card2:rgba(26,32,54,.85);
+  --border:rgba(180,170,255,.16);--text:#eae8f7;--muted:#9693b6;
+  --accent:#c9a7eb;--accent2:#7fd8e8;--gold:#e6c88a;
+  --danger:#ff7a90;--ok:#6ee7b7;--warn:#f0c66a;
+  --shadow:0 20px 60px rgba(0,0,0,.55);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:Vazirmatn,system-ui,sans-serif;
+  background:
+    radial-gradient(1200px 800px at 85% -10%,#221650 0%,transparent 60%),
+    radial-gradient(900px 700px at -10% 105%,#0c2c3d 0%,transparent 55%),
+    linear-gradient(160deg,#070a12,#0b1020 50%,#070a12);
+  color:var(--text);min-height:100vh;overflow-x:hidden;position:relative;
+}
+.pearl-field{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.pearl{position:absolute;border-radius:50%;
+  background:radial-gradient(circle at 32% 28%,#fff 0%,#f6f1fd 16%,#ded4f2 38%,#a99fd0 66%,#4e4770 100%);
+  box-shadow:inset -8px -10px 22px rgba(0,0,0,.35),inset 6px 8px 20px rgba(255,255,255,.45),0 0 45px rgba(190,170,255,.22);
+  opacity:.5;animation:float 12s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0) translateX(0) rotate(0)}50%{transform:translateY(-32px) translateX(14px) rotate(8deg)}}
+.p1{width:120px;height:120px;top:8%;left:6%;animation-duration:14s}
+.p2{width:70px;height:70px;top:22%;right:9%;animation-duration:11s;animation-delay:-3s}
+.p3{width:180px;height:180px;bottom:6%;left:12%;animation-duration:17s;animation-delay:-6s;opacity:.35}
+.p4{width:54px;height:54px;bottom:24%;right:16%;animation-duration:10s;animation-delay:-2s}
+.p5{width:90px;height:90px;top:52%;left:48%;animation-duration:15s;animation-delay:-8s;opacity:.22}
+.p6{width:42px;height:42px;top:70%;right:6%;animation-duration:9s;animation-delay:-4s}
+.wrap{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:22px}
+.hidden{display:none !important}
+.card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:24px;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:var(--shadow);}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-pearl{width:46px;height:46px;border-radius:50%;flex:none;
+  background:radial-gradient(circle at 32% 28%,#fff 0%,#f6f1fd 18%,#ded4f2 40%,#a99fd0 68%,#4e4770 100%);
+  box-shadow:inset -5px -6px 14px rgba(0,0,0,.35),inset 4px 5px 12px rgba(255,255,255,.5),0 0 26px rgba(190,170,255,.4);}
+.brand h1{margin:0;font-size:24px;letter-spacing:.5px;
+  background:linear-gradient(90deg,#fff,#e2d3ff 40%,#9fe6f0 75%,#e6c88a);
+  -webkit-background-clip:text;background-clip:text;color:transparent;}
+.brand small{display:block;color:var(--muted);font-size:12px;font-weight:400;margin-top:2px}
+label{display:block;font-size:13px;color:var(--muted);margin:0 0 7px 0}
+input,textarea,select{width:100%;padding:11px 14px;border-radius:13px;
+  background:rgba(10,14,26,.75);border:1px solid var(--border);color:var(--text);
+  font-family:inherit;font-size:14px;transition:.2s;outline:none;}
+input:focus,textarea:focus,select:focus{border-color:rgba(201,167,235,.55);box-shadow:0 0 0 4px rgba(201,167,235,.12)}
+input::placeholder,textarea::placeholder{color:#5f5c7e}
+textarea{resize:vertical;min-height:78px}
+input[type=file]{padding:8px;font-size:12.5px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:11px 20px;border-radius:13px;border:1px solid transparent;
+  font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap;}
+.btn-primary{background:linear-gradient(135deg,#b58ae0,#7fd8e8);color:#0a0e1a;box-shadow:0 8px 26px rgba(150,120,220,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(150,120,220,.5)}
+.btn-ghost{background:rgba(255,255,255,.05);border-color:var(--border);color:var(--text)}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.btn-danger{background:rgba(255,122,144,.14);border-color:rgba(255,122,144,.35);color:var(--danger)}
+.btn-danger:hover{background:rgba(255,122,144,.24)}
+.btn-ok{background:rgba(110,231,183,.14);border-color:rgba(110,231,183,.35);color:var(--ok)}
+.btn-ok:hover{background:rgba(110,231,183,.24)}
+.btn-sm{padding:7px 13px;font-size:12.5px;border-radius:10px}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none !important}
+#loginView{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
+.login-box{width:100%;max-width:440px}
+.login-head{text-align:center;margin-bottom:24px}
+.login-head .big-pearl{width:104px;height:104px;margin:0 auto 18px;border-radius:50%;
+  background:radial-gradient(circle at 32% 28%,#fff 0%,#f6f1fd 16%,#ded4f2 38%,#a99fd0 66%,#4e4770 100%);
+  box-shadow:inset -10px -12px 26px rgba(0,0,0,.35),inset 7px 9px 22px rgba(255,255,255,.55),0 0 60px rgba(190,170,255,.45);
+  animation:float 8s ease-in-out infinite;}
+.login-head h2{margin:0 0 6px;font-size:26px;background:linear-gradient(90deg,#fff,#d9c7ff,#9fe6f0);
+  -webkit-background-clip:text;background-clip:text;color:transparent;}
+.login-head p{margin:0;color:var(--muted);font-size:13.5px}
+.alert{padding:12px 16px;border-radius:13px;font-size:13.5px;margin-bottom:16px;
+  display:flex;align-items:flex-start;gap:9px;line-height:1.7}
+.alert-error{background:rgba(255,122,144,.12);border:1px solid rgba(255,122,144,.3);color:#ffb3c0}
+.alert-ok{background:rgba(110,231,183,.1);border:1px solid rgba(110,231,183,.3);color:#9df3d3}
+.alert-warn{background:rgba(230,200,138,.1);border:1px solid rgba(230,200,138,.3);color:#f0d9a8}
+.alert-info{background:rgba(127,216,232,.1);border:1px solid rgba(127,216,232,.28);color:#a8e8f3}
+.inv-card{border:1px solid var(--border);border-radius:16px;padding:14px;margin-bottom:12px;background:rgba(255,255,255,.02)}
+.inv-card .row-inv{display:grid;grid-template-columns:1.1fr 1.4fr 1.1fr 40px;gap:9px;margin-bottom:9px;align-items:center}
+.inv-card .del{width:40px;height:40px;border-radius:11px;border:1px solid rgba(255,122,144,.3);
+  background:rgba(255,122,144,.1);color:var(--danger);cursor:pointer;font-size:20px;
+  display:flex;align-items:center;justify-content:center;}
+.inv-card .del:hover{background:rgba(255,122,144,.25)}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.thumb{position:relative;width:70px;height:70px;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb .x{position:absolute;top:2px;left:2px;background:rgba(255,80,110,.85);color:#fff;
+  width:20px;height:20px;border-radius:50%;border:0;cursor:pointer;font-size:12px;line-height:1}
+.tbl-wrap{overflow-x:auto;border-radius:16px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px}
+th{background:rgba(255,255,255,.045);color:var(--muted);padding:11px 13px;text-align:right;
+  font-weight:600;font-size:12.5px;white-space:nowrap}
+td{padding:11px 13px;border-top:1px solid rgba(255,255,255,.05);vertical-align:middle}
+tbody tr:hover{background:rgba(255,255,255,.03)}
+.money{font-variant-numeric:tabular-nums;color:var(--gold);font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px}
+.stat{background:var(--card2);border:1px solid var(--border);border-radius:17px;padding:16px 17px}
+.stat .k{color:var(--muted);font-size:12px;margin-bottom:6px}
+.stat .v{font-size:20px;font-weight:700;color:var(--accent)}
+.stat .v.gold{color:var(--gold)}
+.stat .v.ok{color:var(--ok)}
+.stat .v.warn{color:var(--warn)}
+.tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.tab{padding:9px 17px;border-radius:12px;border:1px solid var(--border);
+  background:rgba(255,255,255,.03);color:var(--muted);cursor:pointer;
+  font-family:inherit;font-size:13px;font-weight:600;transition:.2s;}
+.tab:hover{color:var(--text);background:rgba(255,255,255,.07)}
+.tab.active{background:linear-gradient(135deg,rgba(181,138,224,.28),rgba(127,216,232,.2));
+  color:#fff;border-color:rgba(201,167,235,.45);}
+.modal-bg{position:fixed;inset:0;background:rgba(4,6,12,.8);backdrop-filter:blur(8px);
+  z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;}
+.modal{width:100%;max-width:500px;animation:pop .22s ease;max-height:90vh;overflow-y:auto}
+@keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.row>*{flex:1;min-width:170px}
+.mt{margin-top:18px}.mb{margin-bottom:18px}.mt-s{margin-top:10px}
+.sec-title{font-size:16px;font-weight:700;margin:0 0 16px;display:flex;align-items:center;gap:9px}
+.sec-title::before{content:'';width:4px;height:18px;border-radius:3px;
+  background:linear-gradient(180deg,#c9a7eb,#7fd8e8);}
+.empty{text-align:center;padding:36px 20px;color:var(--muted);font-size:13.5px}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11.5px;font-weight:600}
+.badge-user{background:rgba(127,216,232,.14);color:#9fe6f0;border:1px solid rgba(127,216,232,.28)}
+.badge-admin{background:rgba(230,200,138,.14);color:#f0d9a8;border:1px solid rgba(230,200,138,.28)}
+.badge-ok{background:rgba(110,231,183,.14);color:#9df3d3;border:1px solid rgba(110,231,183,.28)}
+.badge-pend{background:rgba(240,198,106,.14);color:#f0d9a8;border:1px solid rgba(240,198,106,.28)}
+.badge-rej{background:rgba(255,122,144,.14);color:#ffb3c0;border:1px solid rgba(255,122,144,.28)}
+.clock{font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--muted);
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  padding:7px 14px;border-radius:12px;white-space:nowrap}
+.sync{display:flex;align-items:center;gap:7px;font-size:12px;padding:7px 13px;
+  border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--border);white-space:nowrap}
+.sync .dot{width:9px;height:9px;border-radius:50%;background:#666}
+.sync.online .dot{background:#6ee7b7;box-shadow:0 0 8px #6ee7b7}
+.sync.syncing .dot{background:#f0c66a;animation:pulse 1s infinite}
+.sync.offline .dot{background:#ff7a90}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.msg-list{max-height:420px;overflow-y:auto;padding:12px;border:1px solid var(--border);
+  border-radius:16px;background:rgba(0,0,0,.18);margin-bottom:12px}
+.msg{max-width:75%;margin-bottom:10px;padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.6;word-wrap:break-word}
+.msg .mt-time{font-size:11px;color:var(--muted);display:block;margin-top:4px}
+.msg-me{background:linear-gradient(135deg,rgba(181,138,224,.3),rgba(127,216,232,.2));
+  color:#fff;margin-right:auto;border-top-right-radius:4px}
+.msg-them{background:rgba(255,255,255,.06);border:1px solid var(--border);margin-left:auto;border-top-left-radius:4px}
+.msg-row{display:flex}
+.user-pick{display:grid;gap:10px}
+.user-pick .pick{padding:14px;border:1px solid var(--border);border-radius:14px;
+  background:rgba(255,255,255,.03);cursor:pointer;transition:.2s;display:flex;justify-content:space-between;align-items:center}
+.user-pick .pick:hover{background:rgba(255,255,255,.07);border-color:rgba(201,167,235,.4)}
+.user-pick .pick.active{background:linear-gradient(135deg,rgba(181,138,224,.22),rgba(127,216,232,.15));border-color:rgba(201,167,235,.55)}
+.note-box{border:1px dashed rgba(201,167,235,.35);border-radius:14px;padding:12px 16px;
+  background:rgba(181,138,224,.06);font-size:13px;line-height:1.8;color:#d9d0f0}
+.foot{text-align:center;color:#4b4866;font-size:12px;padding:26px 10px 10px;line-height:1.8}
+.foot b{color:#7a6faf}
+.code-badge{font-family:monospace;background:rgba(255,255,255,.06);padding:2px 8px;
+  border-radius:6px;font-size:12px;color:var(--accent2);letter-spacing:1px}
+.req-card{border:1px solid var(--border);border-radius:15px;padding:15px;margin-bottom:11px;background:rgba(255,255,255,.02)}
+.req-card h4{margin:0 0 8px;font-size:14px}
+.req-card .meta{font-size:12px;color:var(--muted);margin-bottom:9px;display:flex;gap:14px;flex-wrap:wrap}
+.room-code{font-family:monospace;font-size:20px;letter-spacing:3px;font-weight:800;
+  text-align:center;padding:14px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(181,138,224,.2),rgba(127,216,232,.15));
+  border:2px dashed rgba(201,167,235,.5);color:#fff;margin:14px 0}
+@media(max-width:640px){
+  .inv-card .row-inv{grid-template-columns:1fr 1fr}
+  .inv-card .del{width:100%;grid-column:1/-1;height:36px}
+  .wrap{padding:14px}.card{padding:18px;border-radius:18px}
+  .brand h1{font-size:19px}
+}
+</style>
+</head>
+<body>
+
+<div class="pearl-field">
+  <div class="pearl p1"></div><div class="pearl p2"></div><div class="pearl p3"></div>
+  <div class="pearl p4"></div><div class="pearl p5"></div><div class="pearl p6"></div>
+</div>
+
+<!-- ورود -->
+<div id="loginView">
+  <div class="login-box">
+    <div class="card">
+      <div class="login-head">
+        <div class="big-pearl"></div>
+        <h2>مروارید</h2>
+        <p>سامانه جامع فروش، درخواست‌ها و مکاتبات</p>
+      </div>
+      <div id="loginMsg"></div>
+      <div style="margin-bottom:14px">
+        <label>کد ملی</label>
+        <input id="inNC" type="text" inputmode="numeric" placeholder="کد ملی" autocomplete="username">
+      </div>
+      <div style="margin-bottom:20px">
+        <label>شماره پرسنلی (رمز)</label>
+        <input id="inPass" type="password" placeholder="شماره پرسنلی" autocomplete="current-password">
+      </div>
+      <button class="btn btn-primary" style="width:100%" onclick="doLogin()">ورود به سامانه</button>
+      <div class="alert alert-info" style="margin:18px 0 0;font-size:12.5px">
+        <span>⏰</span><span>ثبت گزارش فقط از ساعت <b>۱۸:۰۰ تا ۲۴:۰۰</b></span>
+      </div>
+    </div>
+    <div class="foot">طراحی و توسعه: <b>مهندس محمدرسول یزدیان</b><br>© مروارید</div>
+  </div>
+</div>
+
+<!-- پنل کاربر -->
+<div id="userView" class="hidden">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-pearl"></div>
+        <div>
+          <h1>مروارید</h1>
+          <small>پنل کاربری — <span id="uName"></span> <span class="badge badge-user">کاربر</span></small>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <div class="sync" id="uSync"><span class="dot"></span><span>سینک</span></div>
+        <div class="clock" id="clock"></div>
+        <button class="btn btn-ghost btn-sm" onclick="openChangePass()">🔑 تغییر رمز</button>
+        <button class="btn btn-danger btn-sm" onclick="logout()">خروج</button>
+      </div>
+    </div>
+
+    <div id="uAlert"></div>
+    <div id="uNotif"></div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="entry" onclick="switchUTab('entry')">📝 ثبت گزارش</button>
+      <button class="tab" data-tab="history" onclick="switchUTab('history')">📚 سابقه</button>
+      <button class="tab" data-tab="requests" onclick="switchUTab('requests')">📋 درخواست‌ها</button>
+      <button class="tab" data-tab="messages" onclick="switchUTab('messages')">💬 پیام با مدیر</button>
+    </div>
+
+    <div id="u-tab-entry">
+      <div class="card">
+        <h3 class="sec-title">ثبت فاکتورهای امروز</h3>
+        <div class="row mb">
+          <div><label>تاریخ</label><input id="fDate" readonly></div>
+          <div><label>ساعت ثبت</label><input id="fTime" readonly></div>
+        </div>
+        <label>فاکتورها (شماره، مشتری، مبلغ و بارگذاری تصویر)</label>
+        <div id="invRows"></div>
+        <button class="btn btn-ghost btn-sm" onclick="addInvCard()">＋ افزودن فاکتور</button>
+        <div class="mt">
+          <label>توضیحات</label>
+          <textarea id="fNote" placeholder="توضیحات لازم..."></textarea>
+        </div>
+        <div class="stat mt" style="border-radius:14px">
+          <div class="k">جمع کل فروش امروز</div>
+          <div class="v gold" id="fTotal">۰ تومان</div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">
+          <button class="btn btn-primary" id="btnSubmit" onclick="submitReport()">✔ ثبت نهایی گزارش</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="u-tab-history" class="hidden">
+      <div class="card">
+        <h3 class="sec-title">سابقه گزارش‌های من</h3>
+        <div id="uHistory"></div>
+      </div>
+    </div>
+
+    <div id="u-tab-requests" class="hidden">
+      <div class="card mb">
+        <h3 class="sec-title">ثبت درخواست جدید</h3>
+        <div id="reqMsg"></div>
+        <div class="row mb">
+          <div>
+            <label>نوع درخواست</label>
+            <select id="reqType">
+              <option>مرخصی روزانه</option>
+              <option>مرخصی ساعتی</option>
+              <option>تغییر شیفت</option>
+              <option>تعویض روز کاری</option>
+              <option>درخواست اضافه‌کار</option>
+              <option>سایر</option>
+            </select>
+          </div>
+          <div><label>از تاریخ</label><input id="reqFrom" placeholder="1403/05/01"></div>
+          <div><label>تا تاریخ</label><input id="reqTo" placeholder="1403/05/02"></div>
+        </div>
+        <div class="mb">
+          <label>توضیحات</label>
+          <textarea id="reqText" placeholder="علت درخواست..."></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="submitRequest()">📨 ارسال درخواست</button>
+      </div>
+      <div class="card">
+        <h3 class="sec-title">درخواست‌های من</h3>
+        <div id="uReqList"></div>
+      </div>
+    </div>
+
+    <div id="u-tab-messages" class="hidden">
+      <div class="card">
+        <h3 class="sec-title">💬 گفتگوی خصوصی با مدیر</h3>
+        <div class="alert alert-info" style="font-size:12.5px;margin-bottom:14px">
+          <span>🔒</span><span>این مکالمه فقط بین شما و مدیر قابل مشاهده است.</span>
+        </div>
+        <div id="uMsgList" class="msg-list"></div>
+        <div style="display:flex;gap:10px">
+          <input id="uMsgInput" placeholder="پیام خود را بنویسید..." onkeydown="if(event.key==='Enter')sendUserMsg()">
+          <button class="btn btn-primary" onclick="sendUserMsg()">ارسال</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">طراحی و توسعه: <b>مهندس محمدرسول یزدیان</b> — © مروارید</div>
+  </div>
+</div>
+
+<!-- پنل مدیر -->
+<div id="adminView" class="hidden">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-pearl"></div>
+        <div>
+          <h1>مروارید</h1>
+          <small>پنل مدیریت <span class="badge badge-admin">مدیر</span></small>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <div class="sync" id="aSync"><span class="dot"></span><span>سینک</span></div>
+        <div class="clock" id="clock2"></div>
+        <button class="btn btn-ghost btn-sm" onclick="openChangePass()">🔑 تغییر رمز</button>
+        <button class="btn btn-danger btn-sm" onclick="logout()">خروج</button>
+      </div>
+    </div>
+
+    <div id="aAlert"></div>
+
+    <div class="tabs">
+      <button class="tab active" data-atab="dash" onclick="switchATab('dash')">📊 داشبورد</button>
+      <button class="tab" data-atab="today" onclick="switchATab('today')">📅 حضور امروز</button>
+      <button class="tab" data-atab="reports" onclick="switchATab('reports')">🗂 گزارش‌ها</button>
+      <button class="tab" data-atab="requests" onclick="switchATab('requests')">📋 درخواست‌ها</button>
+      <button class="tab" data-atab="messages" onclick="switchATab('messages')">💬 پیام‌ها</button>
+      <button class="tab" data-atab="broadcast" onclick="switchATab('broadcast')">📢 اعلان</button>
+      <button class="tab" data-atab="sync" onclick="switchATab('sync')">🔄 اتاق سینک</button>
+      <button class="tab" data-atab="data" onclick="switchATab('data')">💾 داده‌ها</button>
+    </div>
+
+    <div id="a-tab-dash">
+      <div class="stats">
+        <div class="stat"><div class="k">فروش امروز</div><div class="v gold" id="dToday">۰</div></div>
+        <div class="stat"><div class="k">فروش این هفته</div><div class="v gold" id="dWeek">۰</div></div>
+        <div class="stat"><div class="k">فروش این ماه</div><div class="v gold" id="dMonth">۰</div></div>
+        <div class="stat"><div class="k">فروش کل</div><div class="v gold" id="dAll">۰</div></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="k">گزارش امروز</div><div class="v ok" id="dCntToday">۰</div></div>
+        <div class="stat"><div class="k">گزارش هفته</div><div class="v" id="dCntWeek">۰</div></div>
+        <div class="stat"><div class="k">گزارش ماه</div><div class="v" id="dCntMonth">۰</div></div>
+        <div class="stat"><div class="k">درخواست‌های در انتظار</div><div class="v warn" id="dPendReq">۰</div></div>
+      </div>
+      <div class="card">
+        <h3 class="sec-title">نمودار فروش ۷ روز اخیر</h3>
+        <div id="chart7"></div>
+      </div>
+    </div>
+
+    <div id="a-tab-today" class="hidden">
+      <div class="card">
+        <h3 class="sec-title">وضعیت امروز پرسنل</h3>
+        <div id="todayList"></div>
+      </div>
+    </div>
+
+    <div id="a-tab-reports" class="hidden">
+      <div class="card mb">
+        <h3 class="sec-title">فیلتر گزارش‌ها</h3>
+        <div class="row">
+          <div><label>کاربر</label><select id="flUser" onchange="renderAdminReports()"><option value="">همه</option></select></div>
+          <div><label>از تاریخ</label><input id="flFrom" placeholder="1403/05/01" oninput="renderAdminReports()"></div>
+          <div><label>تا تاریخ</label><input id="flTo" placeholder="1403/05/31" oninput="renderAdminReports()"></div>
+          <div style="display:flex;align-items:flex-end"><button class="btn btn-ghost btn-sm" onclick="clearFilters()" style="width:100%">پاک کردن</button></div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+          <h3 class="sec-title" style="margin:0">گزارش‌ها</h3>
+          <button class="btn btn-ghost btn-sm" onclick="exportCSV()">⬇ خروجی CSV</button>
+        </div>
+        <div id="adminTable"></div>
+      </div>
+    </div>
+
+    <div id="a-tab-requests" class="hidden">
+      <div class="card">
+        <h3 class="sec-title">مدیریت درخواست‌ها</h3>
+        <div id="adminReqList"></div>
+      </div>
+    </div>
+
+    <div id="a-tab-messages" class="hidden">
+      <div class="card mb">
+        <h3 class="sec-title">انتخاب کاربر برای گفتگو</h3>
+        <div class="user-pick" id="userPickList"></div>
+      </div>
+      <div class="card" id="adminChatBox" style="display:none">
+        <h3 class="sec-title" id="chatTitle">گفتگو</h3>
+        <div id="aMsgList" class="msg-list"></div>
+        <div style="display:flex;gap:10px">
+          <input id="aMsgInput" placeholder="پیام..." onkeydown="if(event.key==='Enter')sendAdminMsg()">
+          <button class="btn btn-primary" onclick="sendAdminMsg()">ارسال</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="a-tab-broadcast" class="hidden">
+      <div class="card mb">
+        <h3 class="sec-title">📢 ارسال اعلان به همه پرسنل</h3>
+        <div class="alert alert-warn">
+          <span>⚠️</span>
+          <span>هشدار خودکار: «در صورتی که فاکتور یا فعالیت خود را ثبت نکنید، درخواست مرخصی شما به‌طور خودکار رد خواهد شد.»</span>
+        </div>
+        <div class="mb">
+          <label>متن اعلان</label>
+          <textarea id="bcText" style="min-height:110px">کاربر گرامی، در صورتی که فاکتور یا فعالیت خود را در موعد مقرر ثبت نکنید، درخواست مرخصی شما به‌طور خودکار رد می‌شود. لطفاً نسبت به ثبت گزارش روزانه اقدام فرمایید. — مدیریت مروارید</textarea>
+        </div>
+        <button class="btn btn-primary" onclick="broadcastMsg()">📢 ارسال اعلان</button>
+      </div>
+      <div class="card">
+        <h3 class="sec-title">اعلان‌های ارسال‌شده</h3>
+        <div id="bcList"></div>
+      </div>
+    </div>
+
+    <!-- اتاق سینک -->
+    <div id="a-tab-sync" class="hidden">
+      <div class="card mb">
+        <h3 class="sec-title">🔄 اتاق سینک (بدون ثبت‌نام)</h3>
+        <div class="alert alert-info">
+          <span>💡</span>
+          <span>این اتاق به شما امکان می‌دهد داده‌ها بین همه دستگاه‌ها (گوشی فروشنده، لپ‌تاپ مدیر و...) به‌صورت خودکار سینک شود. <b>هیچ ثبت‌نامی لازم نیست!</b></span>
+        </div>
+
+        <div id="syncStatusBox"></div>
+
+        <div id="syncNotConnected">
+          <h4 style="color:var(--accent);margin-bottom:12px">وضعیت فعلی: متصل نیست</h4>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn btn-primary" onclick="createRoom()">➕ ایجاد اتاق جدید</button>
+            <button class="btn btn-ghost" onclick="showJoinRoom()">🔗 اتصال به اتاق موجود</button>
+          </div>
+        </div>
+
+        <div id="syncConnected" class="hidden">
+          <h4 style="color:var(--ok);margin-bottom:12px">✅ به اتاق متصل هستید</h4>
+          <label>کد اتاق (این کد را برای فروشنده‌ها بفرستید):</label>
+          <div class="room-code" id="roomCodeDisplay">— — —</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+            <button class="btn btn-primary" onclick="copyRoomCode()">📋 کپی کد اتاق</button>
+            <button class="btn btn-ghost" onclick="syncNow(true)">🔄 سینک فوری</button>
+            <button class="btn btn-danger" onclick="disconnectRoom()">🚪 قطع اتصال</button>
+          </div>
+          <div class="alert alert-info mt" style="font-size:12.5px">
+            <span>ℹ️</span>
+            <span>سینک خودکار هر ۱۰ ثانیه انجام می‌شود. هر تغییری در این دستگاه بلافاصله به ابر ارسال و از ابر دریافت می‌شود.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sec-title">📖 راهنما</h3>
+        <ol style="line-height:2;padding-right:20px;color:#cfcae8">
+          <li>روی <b>«ایجاد اتاق جدید»</b> کلیک کنید.</li>
+          <li>یک <b>کد اتاق</b> مثل <code>MOR-7A3B9K</code> دریافت می‌کنید.</li>
+          <li>این کد را برای فروشنده‌ها بفرستید (واتس‌اپ، پیامک و...).</li>
+          <li>فروشنده در گوشی خودش: روی <b>«اتصال به اتاق موجود»</b> بزند و کد را وارد کند.</li>
+          <li>تمام! از این به بعد همه چیز خودکار سینک می‌شود. ✅</li>
+        </ol>
+      </div>
+    </div>
+
+    <div id="a-tab-data" class="hidden">
+      <div class="card mb">
+        <h3 class="sec-title">💾 پشتیبان‌گیری</h3>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="exportAll()">⬇ خروجی کامل (JSON)</button>
+          <button class="btn btn-ghost" onclick="document.getElementById('importFile').click()">⬆ ورودی از فایل</button>
+          <input type="file" id="importFile" accept=".json" style="display:none" onchange="importAll(event)">
+        </div>
+      </div>
+      <div class="card">
+        <h3 class="sec-title">⚠️ ناحیه خطر</h3>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-danger" onclick="wipeRecs()">پاک کردن همه گزارش‌ها</button>
+          <button class="btn btn-danger" onclick="wipeAll()">پاک کردن کامل داده‌ها</button>
+          <button class="btn btn-ghost" onclick="cleanOldRecs()">حذف گزارش‌های قدیمی‌تر از ۲ سال</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">طراحی و توسعه: <b>مهندس محمدرسول یزدیان</b> — © مروارید</div>
+  </div>
+</div>
+
+<!-- مودال‌ها -->
+<div id="passModal" class="modal-bg hidden">
+  <div class="card modal">
+    <h3 class="sec-title">تغییر رمز عبور</h3>
+    <div id="pmMsg"></div>
+    <div style="margin-bottom:13px"><label>رمز فعلی</label><input id="pmOld" type="password"></div>
+    <div style="margin-bottom:13px"><label>رمز جدید</label><input id="pmNew" type="password" placeholder="حداقل ۶ کاراکتر"></div>
+    <div style="margin-bottom:20px"><label>تکرار رمز جدید</label><input id="pmNew2" type="password"></div>
+    <div style="display:flex;gap:10px">
+      <button class="btn btn-primary" style="flex:1" onclick="saveNewPass()">ذخیره</button>
+      <button class="btn btn-ghost" onclick="closeChangePass()">انصراف</button>
+    </div>
+  </div>
+</div>
+
+<div id="recModal" class="modal-bg hidden">
+  <div class="card modal" style="max-width:640px">
+    <h3 class="sec-title">جزئیات گزارش</h3>
+    <div id="recDetail"></div>
+    <button class="btn btn-ghost mt" onclick="closeRecModal()">بستن</button>
+  </div>
+</div>
+
+<div id="joinModal" class="modal-bg hidden">
+  <div class="card modal">
+    <h3 class="sec-title">🔗 اتصال به اتاق موجود</h3>
+    <div id="jmMsg"></div>
+    <label>کد اتاق را وارد کنید</label>
+    <input id="jmCode" placeholder="MOR-XXXXXX" style="text-align:center;font-family:monospace;letter-spacing:2px;font-size:16px">
+    <div style="display:flex;gap:10px;margin-top:18px">
+      <button class="btn btn-primary" style="flex:1" onclick="joinRoom()">اتصال</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('joinModal').classList.add('hidden')">انصراف</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============ CONFIG ============ */
+const CONFIG = {
+  siteName: "مروارید",
+  designer: "مهندس محمدرسول یزدیان",
+  entryStartHour: 18,
+  entryEndHour: 24,
+  retainYears: 2
+};
+
+const DEFAULT_USERS = [
+  { nc: "0372892361", pass: "4032221073", name: "فروشنده ۱", role: "user" },
+  { nc: "0372892363", pass: "4032221075", name: "فروشنده ۲", role: "user" },
+  { nc: "0372892365", pass: "4042222077", name: "فروشنده ۳", role: "user" },
+  { nc: "admin",      pass: "Admin@1403",  name: "مدیر فروشگاه", role: "admin" }
+];
+
+/* ============ Storage Keys ============ */
+const K = {
+  users:  "morvarid_users_v3",
+  recs:   "morvarid_recs_v3",
+  reqs:   "morvarid_reqs_v3",
+  msgs:   "morvarid_msgs_v3",
+  notifs: "morvarid_notifs_v3",
+  bc:     "morvarid_bc_v3",
+  sess:   "morvarid_sess_v3",
+  room:   "morvarid_room_v3",
+  lastUp: "morvarid_lastup_v3"
+};
+const load = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch(e){ return d; } };
+const save = (k, v) => { try{ localStorage.setItem(k, JSON.stringify(v)); } catch(e){ alert("حافظه پر. تصاویر کم‌حجم‌تر بارگذاری کنید."); } };
+
+if (!localStorage.getItem(K.users)) save(K.users, DEFAULT_USERS);
+
+const getUsers  = () => load(K.users, DEFAULT_USERS);
+const setUsers  = u => { save(K.users, u); markLocalChange(); };
+const getRecs   = () => load(K.recs, []);
+const setRecs   = r => { save(K.recs, r); markLocalChange(); };
+const getReqs   = () => load(K.reqs, []);
+const setReqs   = r => { save(K.reqs, r); markLocalChange(); };
+const getMsgs   = () => load(K.msgs, []);
+const setMsgs   = m => { save(K.msgs, m); markLocalChange(); };
+const getNotifs = () => load(K.notifs, []);
+const setNotifs = n => { save(K.notifs, n); markLocalChange(); };
+const getBC     = () => load(K.bc, []);
+const setBC     = b => { save(K.bc, b); markLocalChange(); };
+
+let session = null;
+
+/* ============ Cloud Sync (jsonblob.com - بدون ثبت‌نام) ============ */
+const CLOUD = {
+  roomId: localStorage.getItem(K.room) || "",
+  lastRemoteUpdate: 0,
+  syncing: false,
+  autoTimer: null
+};
+
+function markLocalChange(){
+  const t = Date.now();
+  localStorage.setItem(K.lastUp, String(t));
+  schedulePushToCloud();
+}
+
+let pushTimer = null;
+function schedulePushToCloud(){
+  if (!CLOUD.roomId) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(() => pushToCloud(), 800);
+}
+
+function cloudUrl(){ return CLOUD.roomId ? `https://jsonblob.com/api/jsonBlob/${CLOUD.roomId}` : ""; }
+
+function collectAll(){
+  return {
+    users:  getUsers(),
+    recs:   getRecs(),
+    reqs:   getReqs(),
+    msgs:   getMsgs(),
+    notifs: getNotifs(),
+    bc:     getBC(),
+    updatedAt: Date.now()
+  };
+}
+
+function applyCloud(data){
+  if (!data) return;
+  if (Array.isArray(data.users))  save(K.users, data.users);
+  if (Array.isArray(data.recs))   save(K.recs, data.recs);
+  if (Array.isArray(data.reqs))   save(K.reqs, data.reqs);
+  if (Array.isArray(data.msgs))   save(K.msgs, data.msgs);
+  if (Array.isArray(data.notifs)) save(K.notifs, data.notifs);
+  if (Array.isArray(data.bc))     save(K.bc, data.bc);
+  localStorage.setItem(K.lastUp, String(data.updatedAt || Date.now()));
+}
+
+async function pushToCloud(){
+  if (!CLOUD.roomId || CLOUD.syncing) return;
+  CLOUD.syncing = true;
+  setSyncStatus("syncing");
+  try {
+    const res = await fetch(cloudUrl(), {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(collectAll())
+    });
+    if (!res.ok) throw new Error("push failed");
+    setSyncStatus("online");
+  } catch(e) {
+    setSyncStatus("offline");
+  }
+  CLOUD.syncing = false;
+}
+
+async function pullFromCloud(){
+  if (!CLOUD.roomId) return;
+  try {
+    const res = await fetch(cloudUrl(), { headers: { "Accept": "application/json" } });
+    if (!res.ok) throw new Error("pull failed");
+    const data = await res.json();
+    const remoteTime = data.updatedAt || 0;
+    const localTime  = Number(localStorage.getItem(K.lastUp) || 0);
+
+    if (remoteTime > localTime + 500) {
+      // داده ابری جدیدتر است → اعمال
+      applyCloud(data);
+      refreshAllViews();
+    }
+    setSyncStatus("online");
+  } catch(e) {
+    setSyncStatus("offline");
+  }
+}
+
+async function createRoom(){
+  const box = document.getElementById("syncStatusBox");
+  box.innerHTML = `<div class="alert alert-info"><span>⏳</span><span>در حال ایجاد اتاق...</span></div>`;
+  try {
+    const res = await fetch("https://jsonblob.com/api/jsonBlob", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(collectAll())
+    });
+    if (!res.ok) throw new Error("create failed");
+    const loc = res.headers.get("Location") || "";
+    const id  = loc.split("/").pop();
+    if (!id) throw new Error("no id");
+    CLOUD.roomId = id;
+    localStorage.setItem(K.room, id);
+    startAutoSync();
+    renderSyncTab();
+    box.innerHTML = `<div class="alert alert-ok"><span>✅</span><span>اتاق با موفقیت ایجاد شد!</span></div>`;
+  } catch(e) {
+    box.innerHTML = `<div class="alert alert-error"><span>⛔</span><span>خطا در ایجاد اتاق. اتصال اینترنت را بررسی کنید.</span></div>`;
+  }
+}
+
+function showJoinRoom(){
+  document.getElementById("jmCode").value = "";
+  document.getElementById("jmMsg").innerHTML = "";
+  document.getElementById("joinModal").classList.remove("hidden");
+}
+
+async function joinRoom(){
+  const box = document.getElementById("jmMsg");
+  const raw = document.getElementById("jmCode").value.trim();
+  if (!raw) return showMsg(box, "کد اتاق را وارد کنید.", "error");
+
+  // پذیرش لینک کامل یا فقط ID
+  let id = raw;
+  if (raw.includes("jsonblob.com")) id = raw.split("/").pop();
+
+  box.innerHTML = `<div class="alert alert-info"><span>⏳</span><span>در حال اتصال...</span></div>`;
+  try {
+    const res = await fetch(`https://jsonblob.com/api/jsonBlob/${id}`, { headers: { "Accept": "application/json" } });
+    if (!res.ok) throw new Error("not found");
+    const data = await res.json();
+
+    if (confirm("به اتاق متصل شوید؟ داده‌های این دستگاه با داده‌های اتاق جایگزین می‌شوند.")) {
+      applyCloud(data);
+      CLOUD.roomId = id;
+      localStorage.setItem(K.room, id);
+      startAutoSync();
+      document.getElementById("joinModal").classList.add("hidden");
+      renderSyncTab();
+      location.reload();
+    }
+  } catch(e) {
+    showMsg(box, "کد اتاق نامعتبر است یا اتصال برقرار نشد.", "error");
+  }
+}
+
+function disconnectRoom(){
+  if (!confirm("اتصال به اتاق قطع شود؟ (داده‌های محلی حفظ می‌شوند)")) return;
+  CLOUD.roomId = "";
+  localStorage.removeItem(K.room);
+  stopAutoSync();
+  renderSyncTab();
+}
+
+function copyRoomCode(){
+  const code = CLOUD.roomId;
+  if (!code) return;
+  navigator.clipboard.writeText(code).then(() => {
+    alert("کد اتاق کپی شد ✅\n\n" + code + "\n\nاین کد را برای فروشنده‌ها بفرستید.");
+  }).catch(() => {
+    prompt("این کد را کپی کنید:", code);
+  });
+}
+
+async function syncNow(manual){
+  if (!CLOUD.roomId){ if (manual) alert("ابتدا به یک اتاق متصل شوید."); return; }
+  setSyncStatus("syncing");
+  await pullFromCloud();
+  await pushToCloud();
+  if (manual) alert("سینک انجام شد ✅");
+}
+
+function startAutoSync(){
+  stopAutoSync();
+  CLOUD.autoTimer = setInterval(() => pullFromCloud(), 10000);
+  pullFromCloud();
+}
+
+function stopAutoSync(){
+  if (CLOUD.autoTimer){ clearInterval(CLOUD.autoTimer); CLOUD.autoTimer = null; }
+}
+
+function setSyncStatus(s){
+  const els = [document.getElementById("uSync"), document.getElementById("aSync")];
+  els.forEach(el => {
+    if (!el) return;
+    el.classList.remove("online","offline","syncing");
+    el.classList.add(s);
+    const txt = el.querySelector("span:last-child");
+    if (txt) txt.textContent = s === "online" ? "متصل" : s === "syncing" ? "در حال سینک" : "آفلاین";
+  });
+}
+
+function renderSyncTab(){
+  const notConn = document.getElementById("syncNotConnected");
+  const conn    = document.getElementById("syncConnected");
+  const box     = document.getElementById("syncStatusBox");
+  if (!notConn || !conn) return;
+  box.innerHTML = "";
+  if (CLOUD.roomId){
+    notConn.classList.add("hidden");
+    conn.classList.remove("hidden");
+    document.getElementById("roomCodeDisplay").textContent = CLOUD.roomId;
+    setSyncStatus("online");
+  } else {
+    notConn.classList.remove("hidden");
+    conn.classList.add("hidden");
+    setSyncStatus("offline");
+  }
+}
+
+/* ============ Utils ============ */
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+function normDigits(s){ return String(s ?? "").replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d)).replace(/[٠-٩]/g, d => "٠١٢٣٤٥٦٧٨٩".indexOf(d)).trim(); }
+function faNum(n){ return Number(n || 0).toLocaleString("fa-IR"); }
+function toman(n){ return faNum(n) + " تومان"; }
+function todayKey(){ return new Intl.DateTimeFormat("fa-IR-u-nu-latn",{year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date()); }
+function nowTime(){ return new Intl.DateTimeFormat("fa-IR-u-nu-latn",{hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date()); }
+function withinWindow(){ const h = new Date().getHours(); return h >= CONFIG.entryStartHour && h < CONFIG.entryEndHour; }
+function esc(s){ return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function uid(){ return "r_" + Date.now() + "_" + Math.random().toString(36).slice(2,7); }
+function reqCode(){ const d = todayKey().replace(/\//g,""); const n = getReqs().length + 1; return `REQ-${d}-${String(n).padStart(3,"0")}`; }
+
+function showMsg(el, text, type){
+  if (typeof el === "string") el = $(el);
+  if (!el) return;
+  el.innerHTML = `<div class="alert alert-${type}"><span>${type==="error"?"⛔":type==="ok"?"✅":type==="warn"?"⚠️":"ℹ️"}</span><span>${text}</span></div>`;
+  if (type !== "error") setTimeout(()=>{ if (el.innerHTML.includes(text)) el.innerHTML=""; }, 6000);
+}
+function clearMsg(el){ if (typeof el === "string") el = $(el); if (el) el.innerHTML = ""; }
+
+/* ============ Login ============ */
+function doLogin(){
+  const nc = normDigits($("#inNC").value);
+  const ps = normDigits($("#inPass").value);
+  const box = $("#loginMsg");
+  if (!nc || !ps) return showMsg(box, "کد ملی و رمز را وارد کنید.", "error");
+  const u = getUsers().find(x => x.nc === nc && x.pass === ps);
+  if (!u) return showMsg(box, "اطلاعات ورود اشتباه است.", "error");
+  session = u;
+  save(K.sess, { nc: u.nc });
+  $("#inNC").value = ""; $("#inPass").value = "";
+  clearMsg(box);
+  enterApp();
+}
+function logout(){
+  localStorage.removeItem(K.sess);
+  session = null;
+  $("#userView").classList.add("hidden");
+  $("#adminView").classList.add("hidden");
+  $("#loginView").classList.remove("hidden");
+}
+function enterApp(){
+  $("#loginView").classList.add("hidden");
+  if (session.role === "admin"){
+    $("#adminView").classList.remove("hidden");
+    $("#userView").classList.add("hidden");
+    initAdmin();
+  } else {
+    $("#userView").classList.remove("hidden");
+    $("#adminView").classList.add("hidden");
+    initUser();
+  }
+  tickClock();
+  if (CLOUD.roomId) startAutoSync();
+}
+function tickClock(){
+  const t = nowTime(), d = todayKey();
+  const txt = `🕐 ${t} — ${d}`;
+  if ($("#clock"))  $("#clock").textContent = txt;
+  if ($("#clock2")) $("#clock2").textContent = txt;
+}
+setInterval(tickClock, 15000);
+
+function refreshAllViews(){
+  if (!session) return;
+  if (session.role === "admin"){
+    renderDash(); renderToday(); renderAdminReports();
+    renderAdminReqs(); renderUserPick(); renderBCList();
+  } else {
+    renderUserHistory(); renderUserNotifs();
+    renderUserReqs(); renderUserMessages();
+  }
+}
+
+/* ============ User Panel ============ */
+function initUser(){
+  $("#uName").textContent = session.name;
+  const alertBox = $("#uAlert");
+  if (!withinWindow()){
+    showMsg(alertBox, `خارج از بازه ثبت. فقط از <b>${CONFIG.entryStartHour}:۰۰</b> تا <b>${CONFIG.entryEndHour}:۰۰</b>`, "warn");
+    $("#btnSubmit").disabled = true;
+  } else {
+    clearMsg(alertBox);
+    $("#btnSubmit").disabled = false;
+  }
+  $("#fDate").value = todayKey();
+  $("#fTime").value = nowTime();
+
+  const today = todayKey();
+  const existing = getRecs().find(r => r.userNc === session.nc && r.date === today);
+  $("#invRows").innerHTML = "";
+  if (existing){
+    existing.invoices.forEach(i => addInvCard(i));
+    if (!existing.invoices.length) addInvCard();
+    $("#fNote").value = existing.note || "";
+  } else {
+    addInvCard();
+  }
+  updateTotal();
+  renderUserHistory();
+  renderUserNotifs();
+  renderUserReqs();
+  renderUserMessages();
+  switchUTab("entry");
+  renderSyncTab();
+}
+
+function addInvCard(data = {}){
+  const wrap = $("#invRows");
+  const div = document.createElement("div");
+  div.className = "inv-card";
+  div.innerHTML = `
+    <div class="row-inv">
+      <input class="inv-no"   placeholder="شماره فاکتور" value="${esc(data.no||"")}">
+      <input class="inv-cust" placeholder="نام مشتری"   value="${esc(data.customer||"")}">
+      <input class="inv-amt"  type="number" inputmode="numeric" placeholder="مبلغ (تومان)" value="${data.amount||""}">
+      <button class="del" title="حذف" type="button">×</button>
+    </div>
+    <div>
+      <label style="margin-bottom:4px">📎 تصویر / مدرک</label>
+      <input class="inv-file" type="file" accept="image/*,application/pdf" multiple>
+      <div class="thumbs"></div>
+    </div>
+  `;
+  const fileInput = div.querySelector(".inv-file");
+  const thumbs = div.querySelector(".thumbs");
+  div._files = data.files ? [...data.files] : [];
+
+  function renderThumbs(){
+    thumbs.innerHTML = div._files.map((f, i) => `
+      <div class="thumb" title="${esc(f.name||"")}">
+        ${f.type && f.type.startsWith("image") ? `<img src="${f.data}">` : `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:10px;color:#fff;background:#333;text-align:center;padding:4px">${esc(f.name||"فایل")}</div>`}
+        <button class="x" data-i="${i}">×</button>
+      </div>
+    `).join("");
+    thumbs.querySelectorAll(".x").forEach(b => b.onclick = () => {
+      div._files.splice(+b.dataset.i, 1);
+      renderThumbs();
+    });
+  }
+  renderThumbs();
+
+  fileInput.addEventListener("change", async () => {
+    for (const f of fileInput.files){
+      if (f.size > 400*1024){ alert(`فایل «${f.name}» بزرگ‌تر از ۴۰۰ کیلوبایت است.`); continue; }
+      const data = await new Promise(r => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(f); });
+      div._files.push({ name: f.name, type: f.type, data });
+    }
+    fileInput.value = "";
+    renderThumbs();
+  });
+
+  div.querySelector(".inv-amt").addEventListener("input", updateTotal);
+  div.querySelector(".del").addEventListener("click", () => {
+    if ($("#invRows").children.length === 1){
+      div.querySelectorAll("input[type=text],input[type=number]").forEach(i => i.value = "");
+      div._files = []; renderThumbs();
+    } else div.remove();
+    updateTotal();
+  });
+  wrap.appendChild(div);
+  updateTotal();
+}
+
+function collectInvoices(){
+  return [...$("#invRows").children].map(row => ({
+    no:       row.querySelector(".inv-no").value.trim(),
+    customer: row.querySelector(".inv-cust").value.trim(),
+    amount:   Number(normDigits(row.querySelector(".inv-amt").value)||0),
+    files:    row._files || []
+  })).filter(i => i.no || i.customer || i.amount || (i.files && i.files.length));
+}
+function updateTotal(){
+  const t = collectInvoices().reduce((s,i) => s + (i.amount||0), 0);
+  $("#fTotal").textContent = toman(t);
+}
+
+function submitReport(){
+  const box = $("#uAlert");
+  if (!withinWindow()) return showMsg(box, "خارج از بازه.", "error");
+  const invoices = collectInvoices();
+  if (!invoices.length) return showMsg(box, "حداقل یک فاکتور وارد کنید.", "error");
+  if (invoices.some(i => !i.no)) return showMsg(box, "شماره فاکتور الزامی است.", "error");
+  if (invoices.some(i => !i.amount || i.amount <= 0)) return showMsg(box, "مبلغ باید مثبت باشد.", "error");
+
+  const today = todayKey();
+  const total = invoices.reduce((s,i) => s + i.amount, 0);
+  const recs = getRecs();
+  const rec = {
+    id: uid(), userNc: session.nc, userName: session.name,
+    date: today, time: nowTime(), invoices, total,
+    note: $("#fNote").value.trim(), createdAt: Date.now()
+  };
+  const idx = recs.findIndex(r => r.userNc === session.nc && r.date === today);
+  if (idx > -1) recs[idx] = rec; else recs.push(rec);
+  setRecs(recs);
+  showMsg(box, "✅ گزارش ثبت شد. در حال ارسال به ابر...", "ok");
+  renderUserHistory();
+}
+
+function renderUserHistory(){
+  const mine = getRecs().filter(r => r.userNc === session.nc).sort((a,b) => b.createdAt - a.createdAt);
+  const box = $("#uHistory");
+  if (!mine.length){ box.innerHTML = `<div class="empty">هنوز گزارشی ثبت نکرده‌اید.</div>`; return; }
+  const totalAll = mine.reduce((s,r) => s + r.total, 0);
+  box.innerHTML = `
+    <div class="stats" style="margin-bottom:18px">
+      <div class="stat"><div class="k">تعداد گزارش</div><div class="v">${faNum(mine.length)}</div></div>
+      <div class="stat"><div class="k">جمع کل</div><div class="v gold">${toman(totalAll)}</div></div>
+    </div>
+    ${mine.map(r => `
+      <div class="req-card">
+        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+          <b>📅 ${esc(r.date)} — ${esc(r.time)}</b>
+          <span class="money">${toman(r.total)}</span>
+        </div>
+        <div class="tbl-wrap"><table style="min-width:auto">
+          <thead><tr><th>فاکتور</th><th>مشتری</th><th>مبلغ</th><th>مدارک</th></tr></thead>
+          <tbody>${r.invoices.map(i => `
+            <tr><td>${esc(i.no)}</td><td>${esc(i.customer||"—")}</td>
+            <td class="money">${faNum(i.amount)}</td>
+            <td>${i.files && i.files.length ? `<span class="badge badge-ok">${faNum(i.files.length)} فایل</span>` : "—"}</td></tr>
+          `).join("")}</tbody>
+        </table></div>
+        ${r.note ? `<div style="margin-top:10px;color:var(--muted);font-size:13px">📝 ${esc(r.note)}</div>` : ""}
+      </div>
+    `).join("")}
+  `;
+}
+
+function renderUserNotifs(){
+  const list = getNotifs().filter(n => n.to === session.nc || n.to === "all");
+  const box = $("#uNotif");
+  if (!list.length){ box.innerHTML = ""; return; }
+  const last = list[list.length-1];
+  box.innerHTML = `<div class="alert alert-warn"><span>🔔</span><span>${esc(last.text)}<br><small style="opacity:.7">— ${esc(last.from)} • ${esc(last.date)}</small></span></div>`;
+}
+
+function submitRequest(){
+  const box = $("#reqMsg");
+  const type = $("#reqType").value;
+  const from = $("#reqFrom").value.trim();
+  const to   = $("#reqTo").value.trim();
+  const text = $("#reqText").value.trim();
+  if (!text) return showMsg(box, "توضیحات لازم است.", "error");
+  const reqs = getReqs();
+  const r = {
+    id: uid(), code: reqCode(),
+    userNc: session.nc, userName: session.name,
+    type, from, to, text, status: "pending",
+    createdAt: Date.now(), date: todayKey(), time: nowTime(), adminNote: ""
+  };
+  reqs.push(r); setReqs(reqs);
+  $("#reqFrom").value = ""; $("#reqTo").value = ""; $("#reqText").value = "";
+  showMsg(box, `✅ ثبت شد. کد: <span class="code-badge">${r.code}</span>`, "ok");
+  renderUserReqs();
+}
+
+function renderUserReqs(){
+  const mine = getReqs().filter(r => r.userNc === session.nc).sort((a,b) => b.createdAt - a.createdAt);
+  const box = $("#uReqList");
+  if (!mine.length){ box.innerHTML = `<div class="empty">درخواستی نیست.</div>`; return; }
+  box.innerHTML = mine.map(r => `
+    <div class="req-card">
+      <h4>${esc(r.type)} ${statusBadge(r.status)}</h4>
+      <div class="meta">
+        <span>کد: <span class="code-badge">${esc(r.code)}</span></span>
+        <span>📅 ${esc(r.date)}</span>
+        ${r.from ? `<span>از ${esc(r.from)} ${r.to ? "تا " + esc(r.to) : ""}</span>` : ""}
+      </div>
+      <div style="font-size:13.5px">${esc(r.text)}</div>
+      ${r.adminNote ? `<div class="note-box" style="margin-top:10px">📝 پاسخ مدیر: ${esc(r.adminNote)}</div>` : ""}
+    </div>
+  `).join("");
+}
+function statusBadge(s){
+  if (s === "approved") return `<span class="badge badge-ok">تأیید</span>`;
+  if (s === "rejected") return `<span class="badge badge-rej">رد</span>`;
+  return `<span class="badge badge-pend">در انتظار</span>`;
+}
+
+function renderUserMessages(){
+  const all = getMsgs().filter(m =>
+    (m.from === session.nc && m.to === "admin") ||
+    (m.from === "admin" && m.to === session.nc)
+  ).sort((a,b) => a.createdAt - b.createdAt);
+  const box = $("#uMsgList");
+  if (!all.length){ box.innerHTML = `<div class="empty">پیامی نیست.</div>`; return; }
+  box.innerHTML = all.map(m => `
+    <div class="msg-row">
+      <div class="msg ${m.from === session.nc ? "msg-me" : "msg-them"}">
+        ${esc(m.text)}
+        <span class="mt-time">${esc(m.date)} ${esc(m.time)}</span>
+      </div>
+    </div>
+  `).join("");
+  box.scrollTop = box.scrollHeight;
+}
+
+function sendUserMsg(){
+  const inp = $("#uMsgInput");
+  const text = inp.value.trim();
+  if (!text) return;
+  const msgs = getMsgs();
+  msgs.push({
+    id: uid(), from: session.nc, to: "admin",
+    fromName: session.name, text,
+    date: todayKey(), time: nowTime(), createdAt: Date.now()
+  });
+  setMsgs(msgs);
+  inp.value = "";
+  renderUserMessages();
+}
+
+function switchUTab(t){
+  $$(".tab").forEach(b => b.classList.toggle("active", b.dataset.tab === t));
+  ["entry","history","requests","messages"].forEach(x => $("#u-tab-" + x).classList.toggle("hidden", x !== t));
+  if (t === "requests") renderUserReqs();
+  if (t === "messages") renderUserMessages();
+  if (t === "history") renderUserHistory();
+}
+
+/* ============ Admin Panel ============ */
+let selectedChatUser = null;
+
+function initAdmin(){
+  const sel = $("#flUser");
+  sel.innerHTML = `<option value="">همه کاربران</option>` +
+    getUsers().filter(u => u.role === "user").map(u => `<option value="${esc(u.nc)}">${esc(u.name)} — ${esc(u.nc)}</option>`).join("");
+  renderDash(); renderToday(); renderAdminReports();
+  renderAdminReqs(); renderUserPick(); renderBCList();
+  renderSyncTab();
+  switchATab("dash");
+}
+
+function switchATab(t){
+  $$(".tab").forEach(b => b.classList.toggle("active", b.dataset.atab === t));
+  ["dash","today","reports","requests","messages","broadcast","sync","data"].forEach(x =>
+    $("#a-tab-" + x).classList.toggle("hidden", x !== t));
+  if (t === "dash") renderDash();
+  if (t === "today") renderToday();
+  if (t === "reports") renderAdminReports();
+  if (t === "requests") renderAdminReqs();
+  if (t === "messages") renderUserPick();
+  if (t === "broadcast") renderBCList();
+  if (t === "sync") renderSyncTab();
+}
+
+function dateRange(period){
+  const recs = getRecs();
+  const now = new Date();
+  const start = new Date(now);
+  if (period === "today"){ start.setHours(0,0,0,0); }
+  else if (period === "week"){ const d = now.getDay(); const diff = (d+1)%7; start.setDate(now.getDate() - diff); start.setHours(0,0,0,0); }
+  else if (period === "month"){ start.setDate(1); start.setHours(0,0,0,0); }
+  else return recs;
+  return recs.filter(r => r.createdAt >= start.getTime());
+}
+
+function renderDash(){
+  const today = dateRange("today");
+  const week  = dateRange("week");
+  const month = dateRange("month");
+  const all   = getRecs();
+  const todayKeyStr = todayKey();
+  const todayCount = all.filter(r => r.date === todayKeyStr).length;
+  const pendReq = getReqs().filter(r => r.status === "pending").length;
+
+  $("#dToday").textContent = toman(today.reduce((s,r) => s+r.total, 0));
+  $("#dWeek").textContent  = toman(week.reduce((s,r) => s+r.total, 0));
+  $("#dMonth").textContent = toman(month.reduce((s,r) => s+r.total, 0));
+  $("#dAll").textContent   = toman(all.reduce((s,r) => s+r.total, 0));
+  $("#dCntToday").textContent = faNum(todayCount);
+  $("#dCntWeek").textContent  = faNum(all.filter(r => r.createdAt >= (Date.now() - 7*86400000)).length);
+  $("#dCntMonth").textContent = faNum(all.filter(r => r.createdAt >= (Date.now() - 30*86400000)).length);
+  $("#dPendReq").textContent  = faNum(pendReq);
+
+  const days = [];
+  for (let i = 6; i >= 0; i--){
+    const d = new Date(); d.setDate(d.getDate() - i);
+    const key = new Intl.DateTimeFormat("fa-IR-u-nu-latn",{year:"numeric",month:"2-digit",day:"2-digit"}).format(d);
+    const total = all.filter(r => r.date === key).reduce((s,r) => s+r.total, 0);
+    days.push({ key, total });
+  }
+  const max = Math.max(...days.map(d => d.total), 1);
+  $("#chart7").innerHTML = `
+    <div style="display:flex;gap:10px;align-items:flex-end;height:220px;padding:10px 4px">
+      ${days.map(d => `
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end">
+          <div style="font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums">${faNum(d.total)}</div>
+          <div style="width:100%;max-width:50px;height:${Math.max(6,(d.total/max)*160)}px;border-radius:8px 8px 2px 2px;background:linear-gradient(180deg,#c9a7eb,#7fd8e8);box-shadow:0 0 18px rgba(150,120,220,.4)"></div>
+          <div style="font-size:11px;color:var(--muted)">${esc(d.key.slice(5))}</div>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderToday(){
+  const users = getUsers().filter(u => u.role === "user");
+  const today = todayKey();
+  const recs = getRecs().filter(r => r.date === today);
+  const reqs = getReqs();
+  $("#todayList").innerHTML = users.map(u => {
+    const rec = recs.find(r => r.userNc === u.nc);
+    const leave = reqs.find(r => r.userNc === u.nc && r.status === "approved" && (r.from === today || r.to === today));
+    let status, cls, sum = "—";
+    if (rec){ status = "✅ گزارش ثبت شده"; cls = "badge-ok"; sum = toman(rec.total); }
+    else if (leave){ status = "🏖 در مرخصی"; cls = "badge-pend"; sum = "—"; }
+    else { status = "❌ ثبت نشده"; cls = "badge-rej"; sum = "—"; }
+    return `
+      <div class="req-card" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:center">
+        <div><b>${esc(u.name)}</b><br><small style="color:var(--muted)">کد: ${esc(u.nc)}</small></div>
+        <div style="text-align:left"><span class="badge ${cls}">${status}</span>${rec ? `<div class="money" style="margin-top:6px">${sum}</div>` : ""}</div>
+      </div>`;
+  }).join("");
+}
+
+function filteredRecs(){
+  const u = $("#flUser") ? $("#flUser").value : "";
+  const f = normDigits($("#flFrom")?.value || "");
+  const t = normDigits($("#flTo")?.value || "");
+  return getRecs()
+    .filter(r => !u || r.userNc === u)
+    .filter(r => !f || r.date >= f)
+    .filter(r => !t || r.date <= t)
+    .sort((a,b) => b.createdAt - a.createdAt);
+}
+
+function renderAdminReports(){
+  const recs = filteredRecs();
+  const box = $("#adminTable");
+  if (!recs.length){ box.innerHTML = `<div class="empty">گزارشی نیست.</div>`; return; }
+  box.innerHTML = `
+    <div class="tbl-wrap"><table>
+      <thead><tr>
+        <th>#</th><th>کاربر</th><th>کد ملی</th><th>تاریخ</th><th>ساعت</th>
+        <th>فاکتورها</th><th>جمع</th><th>مدارک</th><th>عملیات</th>
+      </tr></thead>
+      <tbody>${recs.map((r,i) => {
+        const fcount = r.invoices.reduce((s,inv) => s + ((inv.files||[]).length), 0);
+        return `
+          <tr>
+            <td>${faNum(i+1)}</td>
+            <td><b>${esc(r.userName)}</b></td>
+            <td style="color:var(--muted)">${esc(r.userNc)}</td>
+            <td>${esc(r.date)}</td>
+            <td>${esc(r.time)}</td>
+            <td>${faNum(r.invoices.length)}</td>
+            <td class="money">${faNum(r.total)}</td>
+            <td>${fcount ? `<span class="badge badge-ok">${faNum(fcount)}</span>` : "—"}</td>
+            <td>
+              <button class="btn btn-ghost btn-sm" onclick="viewRec('${r.id}')">مشاهده</button>
+              <button class="btn btn-danger btn-sm" onclick="delRec('${r.id}')">حذف</button>
+            </td>
+          </tr>`;
+      }).join("")}</tbody>
+    </table></div>
+  `;
+}
+function clearFilters(){
+  if ($("#flUser")) $("#flUser").value = "";
+  if ($("#flFrom")) $("#flFrom").value = "";
+  if ($("#flTo"))   $("#flTo").value = "";
+  renderAdminReports();
+}
+function viewRec(id){
+  const r = getRecs().find(x => x.id === id);
+  if (!r) return;
+  $("#recDetail").innerHTML = `
+    <div class="mb"><b>${esc(r.userName)}</b> — ${esc(r.userNc)}</div>
+    <div class="mb" style="color:var(--muted)">📅 ${esc(r.date)} — ${esc(r.time)}</div>
+    ${r.invoices.map((i,n) => `
+      <div class="req-card">
+        <b>فاکتور ${n+1}:</b> ${esc(i.no)} — ${esc(i.customer||"—")}
+        <span class="money" style="float:left">${faNum(i.amount)} تومان</span>
+        ${i.files && i.files.length ? `<div class="thumbs" style="margin-top:8px">
+          ${i.files.map(f => f.type && f.type.startsWith("image")
+            ? `<a class="thumb" href="${f.data}" target="_blank"><img src="${f.data}"></a>`
+            : `<a class="thumb" href="${f.data}" download="${esc(f.name||"file")}" style="display:flex;align-items:center;justify-content:center;background:#222;font-size:10px;color:#fff">${esc(f.name||"فایل")}</a>`
+          ).join("")}
+        </div>` : ""}
+      </div>
+    `).join("")}
+    <div class="stat mt"><div class="k">جمع کل</div><div class="v gold">${toman(r.total)}</div></div>
+    ${r.note ? `<div class="note-box mt">📝 ${esc(r.note)}</div>` : ""}
+  `;
+  $("#recModal").classList.remove("hidden");
+}
+function closeRecModal(){ $("#recModal").classList.add("hidden"); }
+function delRec(id){
+  if (!confirm("این گزارش حذف شود؟")) return;
+  setRecs(getRecs().filter(r => r.id !== id));
+  renderAdminReports(); renderDash(); renderToday();
+}
+
+function renderAdminReqs(){
+  const reqs = getReqs().sort((a,b) => b.createdAt - a.createdAt);
+  const box = $("#adminReqList");
+  if (!reqs.length){ box.innerHTML = `<div class="empty">درخواستی نیست.</div>`; return; }
+  box.innerHTML = reqs.map(r => `
+    <div class="req-card">
+      <h4>${esc(r.type)} ${statusBadge(r.status)}</h4>
+      <div class="meta">
+        <span>کد: <span class="code-badge">${esc(r.code)}</span></span>
+        <span>👤 ${esc(r.userName)}</span>
+        <span>📅 ${esc(r.date)}</span>
+        ${r.from ? `<span>از ${esc(r.from)} ${r.to ? "تا " + esc(r.to) : ""}</span>` : ""}
+      </div>
+      <div style="font-size:13.5px;margin-bottom:10px">${esc(r.text)}</div>
+      ${r.status === "pending" ? `
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+          <button class="btn btn-ok btn-sm" onclick="approveReq('${r.id}')">✔ تأیید</button>
+          <button class="btn btn-danger btn-sm" onclick="rejectReq('${r.id}')">✖ رد</button>
+        </div>` : ""}
+      <input placeholder="یادداشت مدیر..." value="${esc(r.adminNote||"")}" 
+        onchange="updateReqNote('${r.id}', this.value)" style="margin-top:6px">
+    </div>
+  `).join("");
+}
+function approveReq(id){
+  const reqs = getReqs();
+  const r = reqs.find(x => x.id === id);
+  if (!r) return;
+  r.status = "approved";
+  setReqs(reqs);
+  const notifs = getNotifs();
+  notifs.push({
+    id: uid(), to: r.userNc, from: "مدیر",
+    text: `✅ درخواست ${r.type} شما با کد ${r.code} تأیید شد.`,
+    date: todayKey(), time: nowTime(), createdAt: Date.now()
+  });
+  setNotifs(notifs);
+  renderAdminReqs(); renderDash();
+}
+function rejectReq(id){
+  const reqs = getReqs();
+  const r = reqs.find(x => x.id === id);
+  if (!r) return;
+  const note = prompt("دلیل رد:", r.adminNote || "");
+  if (note === null) return;
+  r.status = "rejected";
+  r.adminNote = note;
+  setReqs(reqs);
+  const notifs = getNotifs();
+  notifs.push({
+    id: uid(), to: r.userNc, from: "مدیر",
+    text: `❌ درخواست ${r.type} شما با کد ${r.code} رد شد. ${note ? "دلیل: " + note : ""}`,
+    date: todayKey(), time: nowTime(), createdAt: Date.now()
+  });
+  setNotifs(notifs);
+  renderAdminReqs(); renderDash();
+}
+function updateReqNote(id, note){
+  const reqs = getReqs();
+  const r = reqs.find(x => x.id === id);
+  if (r){ r.adminNote = note; setReqs(reqs); }
+}
+
+function renderUserPick(){
+  const users = getUsers().filter(u => u.role === "user");
+  const box = $("#userPickList");
+  box.innerHTML = users.map(u => {
+    const unread = getMsgs().filter(m => m.from === u.nc && m.to === "admin" && !m.read).length;
+    return `
+      <div class="pick ${selectedChatUser === u.nc ? "active" : ""}" onclick="openChat('${u.nc}')">
+        <div><b>${esc(u.name)}</b><br><small style="color:var(--muted)">${esc(u.nc)}</small></div>
+        ${unread ? `<span class="badge badge-pend">${faNum(unread)} پیام</span>` : ""}
+      </div>`;
+  }).join("");
+}
+function openChat(nc){
+  selectedChatUser = nc;
+  const u = getUsers().find(x => x.nc === nc);
+  $("#chatTitle").textContent = `گفتگو با ${u.name}`;
+  $("#adminChatBox").style.display = "block";
+  const msgs = getMsgs();
+  msgs.forEach(m => { if (m.from === nc && m.to === "admin") m.read = true; });
+  setMsgs(msgs);
+  const list = msgs.filter(m =>
+    (m.from === nc && m.to === "admin") || (m.from === "admin" && m.to === nc)
+  ).sort((a,b) => a.createdAt - b.createdAt);
+  const box = $("#aMsgList");
+  if (!list.length){ box.innerHTML = `<div class="empty">پیامی نیست.</div>`; }
+  else {
+    box.innerHTML = list.map(m => `
+      <div class="msg-row">
+        <div class="msg ${m.from === "admin" ? "msg-me" : "msg-them"}">
+          ${esc(m.text)}
+          <span class="mt-time">${esc(m.date)} ${esc(m.time)}</span>
+        </div>
+      </div>`).join("");
+    box.scrollTop = box.scrollHeight;
+  }
+  renderUserPick();
+}
+function sendAdminMsg(){
+  if (!selectedChatUser) return;
+  const inp = $("#aMsgInput");
+  const text = inp.value.trim();
+  if (!text) return;
+  const msgs = getMsgs();
+  msgs.push({
+    id: uid(), from: "admin", to: selectedChatUser,
+    fromName: "مدیر", text,
+    date: todayKey(), time: nowTime(), createdAt: Date.now(), read: false
+  });
+  setMsgs(msgs);
+  inp.value = "";
+  openChat(selectedChatUser);
+}
+
+function broadcastMsg(){
+  const text = $("#bcText").value.trim();
+  if (!text) return alert("متن خالی است.");
+  const bcs = getBC();
+  bcs.push({ id: uid(), text, date: todayKey(), time: nowTime(), createdAt: Date.now() });
+  setBC(bcs);
+  const notifs = getNotifs();
+  getUsers().filter(u => u.role === "user").forEach(u => {
+    notifs.push({
+      id: uid(), to: u.nc, from: "مدیر", text,
+      date: todayKey(), time: nowTime(), createdAt: Date.now()
+    });
+  });
+  setNotifs(notifs);
+  showMsg($("#aAlert"), "✅ اعلان ارسال شد.", "ok");
+  renderBCList();
+}
+function renderBCList(){
+  const list = getBC().sort((a,b) => b.createdAt - a.createdAt);
+  const box = $("#bcList");
+  if (!list.length){ box.innerHTML = `<div class="empty">اعلانی نیست.</div>`; return; }
+  box.innerHTML = list.map(b => `
+    <div class="req-card">
+      <div class="meta"><span>📅 ${esc(b.date)} — ${esc(b.time)}</span></div>
+      <div style="font-size:13.5px">${esc(b.text)}</div>
+    </div>`).join("");
+}
+
+function exportAll(){
+  const data = {
+    users: getUsers(), recs: getRecs(), reqs: getReqs(),
+    msgs: getMsgs(), notifs: getNotifs(), bc: getBC(),
+    exportedAt: new Date().toISOString()
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `morvarid-backup-${todayKey().replace(/\//g,"-")}.json`;
+  a.click();
+}
+function importAll(e){
+  const file = e.target.files[0];
+  if (!file) return;
+  const fr = new FileReader();
+  fr.onload = () => {
+    try {
+      const data = JSON.parse(fr.result);
+      if (!confirm("داده‌های فعلی جایگزین می‌شوند. ادامه؟")) return;
+      if (data.users)  save(K.users, data.users);
+      if (data.recs)   save(K.recs, data.recs);
+      if (data.reqs)   save(K.reqs, data.reqs);
+      if (data.msgs)   save(K.msgs, data.msgs);
+      if (data.notifs) save(K.notifs, data.notifs);
+      if (data.bc)     save(K.bc, data.bc);
+      alert("✅ بارگذاری شد.");
+      location.reload();
+    } catch(err){ alert("فایل نامعتبر."); }
+  };
+  fr.readAsText(file);
+}
+function exportCSV(){
+  const recs = filteredRecs();
+  if (!recs.length) return alert("گزارشی نیست.");
+  const rows = [["کاربر","کد ملی","تاریخ","ساعت","شماره فاکتور","مشتری","مبلغ","جمع روز","تعداد مدارک","توضیحات"]];
+  recs.forEach(r => r.invoices.forEach(i => {
+    rows.push([r.userName, r.userNc, r.date, r.time, i.no, i.customer||"", i.amount, r.total, (i.files||[]).length, r.note||""]);
+  }));
+  const csv = "\uFEFF" + rows.map(row => row.map(c => `"${String(c).replace(/"/g,'""')}"`).join(",")).join("\n");
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `morvarid-report-${todayKey().replace(/\//g,"-")}.csv`;
+  a.click();
+}
+function wipeRecs(){
+  if (!confirm("همه گزارش‌ها پاک شوند؟")) return;
+  setRecs([]); renderDash(); renderAdminReports(); renderToday();
+}
+function wipeAll(){
+  if (!confirm("همه داده‌ها پاک شوند؟")) return;
+  if (!confirm("مطمئنید؟")) return;
+  Object.values(K).forEach(k => localStorage.removeItem(k));
+  location.reload();
+}
+function cleanOldRecs(){
+  const cutoff = Date.now() - (CONFIG.retainYears * 365 * 86400000);
+  const filtered = getRecs().filter(r => r.createdAt >= cutoff);
+  const removed = getRecs().length - filtered.length;
+  if (!removed) return alert("گزارشی قدیمی‌تر از ۲ سال نیست.");
+  if (!confirm(`${removed} گزارش حذف شود؟`)) return;
+  setRecs(filtered); renderDash(); renderAdminReports();
+  alert("✅ انجام شد.");
+}
+
+function openChangePass(){
+  $("#pmOld").value = ""; $("#pmNew").value = ""; $("#pmNew2").value = "";
+  $("#pmMsg").innerHTML = "";
+  $("#passModal").classList.remove("hidden");
+}
+function closeChangePass(){ $("#passModal").classList.add("hidden"); }
+function saveNewPass(){
+  const oldP = normDigits($("#pmOld").value);
+  const n1   = normDigits($("#pmNew").value);
+  const n2   = normDigits($("#pmNew2").value);
+  const box  = $("#pmMsg");
+  if (!oldP || !n1 || !n2) return showMsg(box, "همه فیلدها الزامی است.", "error");
+  if (oldP !== session.pass) return showMsg(box, "رمز فعلی اشتباه است.", "error");
+  if (n1.length < 6) return showMsg(box, "رمز جدید حداقل ۶ کاراکتر.", "error");
+  if (n1 !== n2) return showMsg(box, "تکرار رمز مطابقت ندارد.", "error");
+  const users = getUsers();
+  users.find(u => u.nc === session.nc).pass = n1;
+  setUsers(users);
+  session.pass = n1;
+  showMsg(box, "✅ رمز تغییر کرد.", "ok");
+  setTimeout(closeChangePass, 1200);
+}
+
+/* ============ Init ============ */
+(function init(){
+  const sess = load(K.sess, null);
+  if (sess){
+    const u = getUsers().find(x => x.nc === sess.nc);
+    if (u){ session = u; enterApp(); return; }
+  }
+  $("#loginView").classList.remove("hidden");
+})();
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Enter" && !$("#loginView").classList.contains("hidden")) doLogin();
+});
+document.addEventListener("click", e => {
+  if (["passModal","recModal","joinModal"].includes(e.target.id)) e.target.classList.add("hidden");
+});
+</script>
+</body>
+  </html>
