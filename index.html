@@ -5,61 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>مروارید | سامانه جامع فروش</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23e8dff5'/></svg>">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#070a12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
 <style>
-:root{
-  --bg:#070a12;--card:rgba(18,24,42,.72);--card2:rgba(26,32,54,.85);
-  --border:rgba(180,170,255,.16);--text:#eae8f7;--muted:#9693b6;
-  --accent:#c9a7eb;--accent2:#7fd8e8;--gold:#e6c88a;
-  --danger:#ff7a90;--ok:#6ee7b7;--warn:#f0c66a;
-  --shadow:0 20px 60px rgba(0,0,0,.55);
-}
+:root{--bg:#070a12;--card:rgba(18,24,42,.72);--card2:rgba(26,32,54,.85);--border:rgba(180,170,255,.16);--text:#eae8f7;--muted:#9693b6;--accent:#c9a7eb;--accent2:#7fd8e8;--gold:#e6c88a;--danger:#ff7a90;--ok:#6ee7b7;--warn:#f0c66a;--shadow:0 20px 60px rgba(0,0,0,.55);}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{
-  font-family:Vazirmatn,system-ui,sans-serif;
-  background:
-    radial-gradient(1200px 800px at 85% -10%,#221650 0%,transparent 60%),
-    radial-gradient(900px 700px at -10% 105%,#0c2c3d 0%,transparent 55%),
-    linear-gradient(160deg,#070a12,#0b1020 50%,#070a12);
-  color:var(--text);min-height:100vh;overflow-x:hidden;position:relative;
-}
+body{font-family:Vazirmatn,system-ui,sans-serif;background:radial-gradient(1200px 800px at 85% -10%,#221650 0%,transparent 60%),radial-gradient(900px 700px at -10% 105%,#0c2c3d 0%,transparent 55%),linear-gradient(160deg,#070a12,#0b1020 50%,#070a12);color:var(--text);min-height:100vh;overflow-x:hidden;position:relative;}
 .pearl-field{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-.pearl{position:absolute;border-radius:50%;
-  background:radial-gradient(circle at 32% 28%,#fff 0%,#f6f1fd 16%,#ded4f2 38%,#a99fd0 66%,#4e4770 100%);
-  box-shadow:inset -8px -10px 22px rgba(0,0,0,.35),inset 6px 8px 20px rgba(255,255,255,.45),0 0 45px rgba(190,170,255,.22);
-  opacity:.5;animation:float 12s ease-in-out infinite;}
+.pearl{position:absolute;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff 0%,#f6f1fd 16%,#ded4f2 38%,#a99fd0 66%,#4e4770 100%);box-shadow:inset -8px -10px 22px rgba(0,0,0,.35),inset 6px 8px 20px rgba(255,255,255,.45),0 0 45px rgba(190,170,255,.22);opacity:.5;animation:float 12s ease-in-out infinite;}
 @keyframes float{0%,100%{transform:translateY(0) translateX(0) rotate(0)}50%{transform:translateY(-32px) translateX(14px) rotate(8deg)}}
-.p1{width:120px;height:120px;top:8%;left:6%;animation-duration:14s}
-.p2{width:70px;height:70px;top:22%;right:9%;animation-duration:11s;animation-delay:-3s}
-.p3{width:180px;height:180px;bottom:6%;left:12%;animation-duration:17s;animation-delay:-6s;opacity:.35}
-.p4{width:54px;height:54px;bottom:24%;right:16%;animation-duration:10s;animation-delay:-2s}
-.p5{width:90px;height:90px;top:52%;left:48%;animation-duration:15s;animation-delay:-8s;opacity:.22}
-.p6{width:42px;height:42px;top:70%;right:6%;animation-duration:9s;animation-delay:-4s}
+.p1{width:120px;height:120px;top:8%;left:6%;animation-duration:14s}.p2{width:70px;height:70px;top:22%;right:9%;animation-duration:11s;animation-delay:-3s}.p3{width:180px;height:180px;bottom:6%;left:12%;animation-duration:17s;animation-delay:-6s;opacity:.35}.p4{width:54px;height:54px;bottom:24%;right:16%;animation-duration:10s;animation-delay:-2s}.p5{width:90px;height:90px;top:52%;left:48%;animation-duration:15s;animation-delay:-8s;opacity:.22}.p6{width:42px;height:42px;top:70%;right:6%;animation-duration:9s;animation-delay:-4s}
 .wrap{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:22px}
 .hidden{display:none !important}
-.card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:24px;
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:var(--shadow);}
+.card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:24px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:var(--shadow);}
 .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px}
 .brand{display:flex;align-items:center;gap:12px}
-.brand-pearl{width:46px;height:46px;border-radius:50%;flex:none;
-  background:radial-gradient(circle at 32% 28%,#fff 0%,#f6f1fd 18%,#ded4f2 40%,#a99fd0 68%,#4e4770 100%);
-  box-shadow:inset -5px -6px 14px rgba(0,0,0,.35),inset 4px 5px 12px rgba(255,255,255,.5),0 0 26px rgba(190,170,255,.4);}
-.brand h1{margin:0;font-size:24px;letter-spacing:.5px;
-  background:linear-gradient(90deg,#fff,#e2d3ff 40%,#9fe6f0 75%,#e6c88a);
-  -webkit-background-clip:text;background-clip:text;color:transparent;}
+.brand-pearl{width:46px;height:46px;border-radius:50%;flex:none;background:radial-gradient(circle at 32% 28%,#fff 0%,#f6f1fd 18%,#ded4f2 40%,#a99fd0 68%,#4e4770 100%);box-shadow:inset -5px -6px 14px rgba(0,0,0,.35),inset 4px 5px 12px rgba(255,255,255,.5),0 0 26px rgba(190,170,255,.4);}
+.brand h1{margin:0;font-size:24px;letter-spacing:.5px;background:linear-gradient(90deg,#fff,#e2d3ff 40%,#9fe6f0 75%,#e6c88a);-webkit-background-clip:text;background-clip:text;color:transparent;}
 .brand small{display:block;color:var(--muted);font-size:12px;font-weight:400;margin-top:2px}
 label{display:block;font-size:13px;color:var(--muted);margin:0 0 7px 0}
-input,textarea,select{width:100%;padding:11px 14px;border-radius:13px;
-  background:rgba(10,14,26,.75);border:1px solid var(--border);color:var(--text);
-  font-family:inherit;font-size:14px;transition:.2s;outline:none;}
+input,textarea,select{width:100%;padding:11px 14px;border-radius:13px;background:rgba(10,14,26,.75);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:14px;transition:.2s;outline:none;}
 input:focus,textarea:focus,select:focus{border-color:rgba(201,167,235,.55);box-shadow:0 0 0 4px rgba(201,167,235,.12)}
 input::placeholder,textarea::placeholder{color:#5f5c7e}
 textarea{resize:vertical;min-height:78px}
 input[type=file]{padding:8px;font-size:12.5px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  padding:11px 20px;border-radius:13px;border:1px solid transparent;
-  font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:13px;border:1px solid transparent;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap;}
 .btn-primary{background:linear-gradient(135deg,#b58ae0,#7fd8e8);color:#0a0e1a;box-shadow:0 8px 26px rgba(150,120,220,.35)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(150,120,220,.5)}
 .btn-ghost{background:rgba(255,255,255,.05);border-color:var(--border);color:var(--text)}
@@ -68,39 +42,32 @@ input[type=file]{padding:8px;font-size:12.5px}
 .btn-danger:hover{background:rgba(255,122,144,.24)}
 .btn-ok{background:rgba(110,231,183,.14);border-color:rgba(110,231,183,.35);color:var(--ok)}
 .btn-ok:hover{background:rgba(110,231,183,.24)}
+.btn-gold{background:rgba(230,200,138,.14);border-color:rgba(230,200,138,.35);color:var(--gold)}
+.btn-gold:hover{background:rgba(230,200,138,.24)}
 .btn-sm{padding:7px 13px;font-size:12.5px;border-radius:10px}
 .btn:disabled{opacity:.45;cursor:not-allowed;transform:none !important}
 #loginView{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
 .login-box{width:100%;max-width:440px}
 .login-head{text-align:center;margin-bottom:24px}
-.login-head .big-pearl{width:104px;height:104px;margin:0 auto 18px;border-radius:50%;
-  background:radial-gradient(circle at 32% 28%,#fff 0%,#f6f1fd 16%,#ded4f2 38%,#a99fd0 66%,#4e4770 100%);
-  box-shadow:inset -10px -12px 26px rgba(0,0,0,.35),inset 7px 9px 22px rgba(255,255,255,.55),0 0 60px rgba(190,170,255,.45);
-  animation:float 8s ease-in-out infinite;}
-.login-head h2{margin:0 0 6px;font-size:26px;background:linear-gradient(90deg,#fff,#d9c7ff,#9fe6f0);
-  -webkit-background-clip:text;background-clip:text;color:transparent;}
+.login-head .big-pearl{width:104px;height:104px;margin:0 auto 18px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff 0%,#f6f1fd 16%,#ded4f2 38%,#a99fd0 66%,#4e4770 100%);box-shadow:inset -10px -12px 26px rgba(0,0,0,.35),inset 7px 9px 22px rgba(255,255,255,.55),0 0 60px rgba(190,170,255,.45);animation:float 8s ease-in-out infinite;}
+.login-head h2{margin:0 0 6px;font-size:26px;background:linear-gradient(90deg,#fff,#d9c7ff,#9fe6f0);-webkit-background-clip:text;background-clip:text;color:transparent;}
 .login-head p{margin:0;color:var(--muted);font-size:13.5px}
-.alert{padding:12px 16px;border-radius:13px;font-size:13.5px;margin-bottom:16px;
-  display:flex;align-items:flex-start;gap:9px;line-height:1.7}
+.alert{padding:12px 16px;border-radius:13px;font-size:13.5px;margin-bottom:16px;display:flex;align-items:flex-start;gap:9px;line-height:1.7}
 .alert-error{background:rgba(255,122,144,.12);border:1px solid rgba(255,122,144,.3);color:#ffb3c0}
 .alert-ok{background:rgba(110,231,183,.1);border:1px solid rgba(110,231,183,.3);color:#9df3d3}
 .alert-warn{background:rgba(230,200,138,.1);border:1px solid rgba(230,200,138,.3);color:#f0d9a8}
 .alert-info{background:rgba(127,216,232,.1);border:1px solid rgba(127,216,232,.28);color:#a8e8f3}
 .inv-card{border:1px solid var(--border);border-radius:16px;padding:14px;margin-bottom:12px;background:rgba(255,255,255,.02)}
 .inv-card .row-inv{display:grid;grid-template-columns:1.1fr 1.4fr 1.1fr 40px;gap:9px;margin-bottom:9px;align-items:center}
-.inv-card .del{width:40px;height:40px;border-radius:11px;border:1px solid rgba(255,122,144,.3);
-  background:rgba(255,122,144,.1);color:var(--danger);cursor:pointer;font-size:20px;
-  display:flex;align-items:center;justify-content:center;}
+.inv-card .del{width:40px;height:40px;border-radius:11px;border:1px solid rgba(255,122,144,.3);background:rgba(255,122,144,.1);color:var(--danger);cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;}
 .inv-card .del:hover{background:rgba(255,122,144,.25)}
 .thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
 .thumb{position:relative;width:70px;height:70px;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
 .thumb img{width:100%;height:100%;object-fit:cover}
-.thumb .x{position:absolute;top:2px;left:2px;background:rgba(255,80,110,.85);color:#fff;
-  width:20px;height:20px;border-radius:50%;border:0;cursor:pointer;font-size:12px;line-height:1}
+.thumb .x{position:absolute;top:2px;left:2px;background:rgba(255,80,110,.85);color:#fff;width:20px;height:20px;border-radius:50%;border:0;cursor:pointer;font-size:12px;line-height:1}
 .tbl-wrap{overflow-x:auto;border-radius:16px;border:1px solid var(--border)}
 table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px}
-th{background:rgba(255,255,255,.045);color:var(--muted);padding:11px 13px;text-align:right;
-  font-weight:600;font-size:12.5px;white-space:nowrap}
+th{background:rgba(255,255,255,.045);color:var(--muted);padding:11px 13px;text-align:right;font-weight:600;font-size:12.5px;white-space:nowrap}
 td{padding:11px 13px;border-top:1px solid rgba(255,255,255,.05);vertical-align:middle}
 tbody tr:hover{background:rgba(255,255,255,.03)}
 .money{font-variant-numeric:tabular-nums;color:var(--gold);font-weight:600}
@@ -108,26 +75,19 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
 .stat{background:var(--card2);border:1px solid var(--border);border-radius:17px;padding:16px 17px}
 .stat .k{color:var(--muted);font-size:12px;margin-bottom:6px}
 .stat .v{font-size:20px;font-weight:700;color:var(--accent)}
-.stat .v.gold{color:var(--gold)}
-.stat .v.ok{color:var(--ok)}
-.stat .v.warn{color:var(--warn)}
+.stat .v.gold{color:var(--gold)}.stat .v.ok{color:var(--ok)}.stat .v.warn{color:var(--warn)}
 .tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
-.tab{padding:9px 17px;border-radius:12px;border:1px solid var(--border);
-  background:rgba(255,255,255,.03);color:var(--muted);cursor:pointer;
-  font-family:inherit;font-size:13px;font-weight:600;transition:.2s;}
+.tab{padding:9px 17px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--muted);cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;transition:.2s;}
 .tab:hover{color:var(--text);background:rgba(255,255,255,.07)}
-.tab.active{background:linear-gradient(135deg,rgba(181,138,224,.28),rgba(127,216,232,.2));
-  color:#fff;border-color:rgba(201,167,235,.45);}
-.modal-bg{position:fixed;inset:0;background:rgba(4,6,12,.8);backdrop-filter:blur(8px);
-  z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;}
-.modal{width:100%;max-width:500px;animation:pop .22s ease;max-height:90vh;overflow-y:auto}
+.tab.active{background:linear-gradient(135deg,rgba(181,138,224,.28),rgba(127,216,232,.2));color:#fff;border-color:rgba(201,167,235,.45);}
+.modal-bg{position:fixed;inset:0;background:rgba(4,6,12,.8);backdrop-filter:blur(8px);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;}
+.modal{width:100%;max-width:560px;animation:pop .22s ease;max-height:90vh;overflow-y:auto}
 @keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
 .row{display:flex;gap:12px;flex-wrap:wrap}
 .row>*{flex:1;min-width:170px}
 .mt{margin-top:18px}.mb{margin-bottom:18px}.mt-s{margin-top:10px}
 .sec-title{font-size:16px;font-weight:700;margin:0 0 16px;display:flex;align-items:center;gap:9px}
-.sec-title::before{content:'';width:4px;height:18px;border-radius:3px;
-  background:linear-gradient(180deg,#c9a7eb,#7fd8e8);}
+.sec-title::before{content:'';width:4px;height:18px;border-radius:3px;background:linear-gradient(180deg,#c9a7eb,#7fd8e8);}
 .empty{text-align:center;padding:36px 20px;color:var(--muted);font-size:13.5px}
 .badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11.5px;font-weight:600}
 .badge-user{background:rgba(127,216,232,.14);color:#9fe6f0;border:1px solid rgba(127,216,232,.28)}
@@ -135,42 +95,41 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
 .badge-ok{background:rgba(110,231,183,.14);color:#9df3d3;border:1px solid rgba(110,231,183,.28)}
 .badge-pend{background:rgba(240,198,106,.14);color:#f0d9a8;border:1px solid rgba(240,198,106,.28)}
 .badge-rej{background:rgba(255,122,144,.14);color:#ffb3c0;border:1px solid rgba(255,122,144,.28)}
-.clock{font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--muted);
-  background:rgba(255,255,255,.04);border:1px solid var(--border);
-  padding:7px 14px;border-radius:12px;white-space:nowrap}
-.sync{display:flex;align-items:center;gap:7px;font-size:12px;padding:7px 13px;
-  border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--border);white-space:nowrap}
+.badge-acc{background:rgba(181,138,224,.18);color:#e2d3ff;border:1px solid rgba(181,138,224,.36)}
+.badge-seller{background:rgba(127,216,232,.14);color:#9fe6f0;border:1px solid rgba(127,216,232,.28)}
+.badge-worker{background:rgba(110,231,183,.14);color:#9df3d3;border:1px solid rgba(110,231,183,.28)}
+.clock{font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--muted);background:rgba(255,255,255,.04);border:1px solid var(--border);padding:7px 14px;border-radius:12px;white-space:nowrap}
+.sync{display:flex;align-items:center;gap:7px;font-size:12px;padding:7px 13px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--border);white-space:nowrap}
 .sync .dot{width:9px;height:9px;border-radius:50%;background:#666}
 .sync.online .dot{background:#6ee7b7;box-shadow:0 0 8px #6ee7b7}
 .sync.syncing .dot{background:#f0c66a;animation:pulse 1s infinite}
 .sync.offline .dot{background:#ff7a90}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.msg-list{max-height:420px;overflow-y:auto;padding:12px;border:1px solid var(--border);
-  border-radius:16px;background:rgba(0,0,0,.18);margin-bottom:12px}
+.msg-list{max-height:420px;overflow-y:auto;padding:12px;border:1px solid var(--border);border-radius:16px;background:rgba(0,0,0,.18);margin-bottom:12px}
 .msg{max-width:75%;margin-bottom:10px;padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.6;word-wrap:break-word}
 .msg .mt-time{font-size:11px;color:var(--muted);display:block;margin-top:4px}
-.msg-me{background:linear-gradient(135deg,rgba(181,138,224,.3),rgba(127,216,232,.2));
-  color:#fff;margin-right:auto;border-top-right-radius:4px}
+.msg-me{background:linear-gradient(135deg,rgba(181,138,224,.3),rgba(127,216,232,.2));color:#fff;margin-right:auto;border-top-right-radius:4px}
 .msg-them{background:rgba(255,255,255,.06);border:1px solid var(--border);margin-left:auto;border-top-left-radius:4px}
 .msg-row{display:flex}
 .user-pick{display:grid;gap:10px}
-.user-pick .pick{padding:14px;border:1px solid var(--border);border-radius:14px;
-  background:rgba(255,255,255,.03);cursor:pointer;transition:.2s;display:flex;justify-content:space-between;align-items:center}
+.user-pick .pick{padding:14px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.03);cursor:pointer;transition:.2s;display:flex;justify-content:space-between;align-items:center}
 .user-pick .pick:hover{background:rgba(255,255,255,.07);border-color:rgba(201,167,235,.4)}
 .user-pick .pick.active{background:linear-gradient(135deg,rgba(181,138,224,.22),rgba(127,216,232,.15));border-color:rgba(201,167,235,.55)}
-.note-box{border:1px dashed rgba(201,167,235,.35);border-radius:14px;padding:12px 16px;
-  background:rgba(181,138,224,.06);font-size:13px;line-height:1.8;color:#d9d0f0}
+.note-box{border:1px dashed rgba(201,167,235,.35);border-radius:14px;padding:12px 16px;background:rgba(181,138,224,.06);font-size:13px;line-height:1.8;color:#d9d0f0}
 .foot{text-align:center;color:#4b4866;font-size:12px;padding:26px 10px 10px;line-height:1.8}
 .foot b{color:#7a6faf}
-.code-badge{font-family:monospace;background:rgba(255,255,255,.06);padding:2px 8px;
-  border-radius:6px;font-size:12px;color:var(--accent2);letter-spacing:1px}
+.code-badge{font-family:monospace;background:rgba(255,255,255,.06);padding:2px 8px;border-radius:6px;font-size:12px;color:var(--accent2);letter-spacing:1px}
 .req-card{border:1px solid var(--border);border-radius:15px;padding:15px;margin-bottom:11px;background:rgba(255,255,255,.02)}
 .req-card h4{margin:0 0 8px;font-size:14px}
 .req-card .meta{font-size:12px;color:var(--muted);margin-bottom:9px;display:flex;gap:14px;flex-wrap:wrap}
-.room-code{font-family:monospace;font-size:16px;letter-spacing:1px;font-weight:800;
-  text-align:center;padding:14px;border-radius:14px;
-  background:linear-gradient(135deg,rgba(181,138,224,.2),rgba(127,216,232,.15));
-  border:2px dashed rgba(201,167,235,.5);color:#fff;margin:14px 0;word-break:break-all}
+.room-code{font-family:monospace;font-size:16px;letter-spacing:1px;font-weight:800;text-align:center;padding:14px;border-radius:14px;background:linear-gradient(135deg,rgba(181,138,224,.2),rgba(127,216,232,.15));border:2px dashed rgba(201,167,235,.5);color:#fff;margin:14px 0;word-break:break-all}
+.payslip{border:1px solid var(--border);border-radius:18px;padding:22px;background:linear-gradient(135deg,rgba(18,24,42,.9),rgba(40,30,70,.85));position:relative;overflow:hidden}
+.payslip::before{content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff 0%,#f6f1fd 20%,#ded4f2 40%,#a99fd0 70%);opacity:.15;}
+.payslip-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.1);font-size:14px}
+.payslip-row:last-child{border-bottom:0}
+.payslip-row.total{font-size:18px;font-weight:800;color:var(--gold);border-top:2px solid rgba(230,200,138,.3);margin-top:10px;padding-top:14px}
+.user-card{border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:12px;background:rgba(255,255,255,.02);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+.hours-badge{font-family:monospace;background:rgba(127,216,232,.14);color:#9fe6f0;padding:4px 10px;border-radius:8px;font-size:12.5px}
 @media(max-width:640px){
   .inv-card .row-inv{grid-template-columns:1fr 1fr}
   .inv-card .del{width:100%;grid-column:1/-1;height:36px}
@@ -193,7 +152,7 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
       <div class="login-head">
         <div class="big-pearl"></div>
         <h2>مروارید</h2>
-        <p>سامانه جامع فروش، درخواست‌ها و مکاتبات</p>
+        <p>سامانه جامع فروش، حقوق و مکاتبات</p>
       </div>
       <div id="loginMsg"></div>
       <div style="margin-bottom:14px">
@@ -202,18 +161,18 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
       </div>
       <div style="margin-bottom:20px">
         <label>شماره پرسنلی (رمز)</label>
-        <input id="inPass" type="password" placeholder="شماره پرسنلی" autocomplete="current-password">
+        <input id="inPass" type="password" placeholder="رمز عبور" autocomplete="current-password">
       </div>
       <button class="btn btn-primary" style="width:100%" onclick="doLogin()">ورود به سامانه</button>
       <div class="alert alert-info" style="margin:18px 0 0;font-size:12.5px">
-        <span>⏰</span><span>ثبت گزارش فقط از ساعت <b>۱۸:۰۰ تا ۲۴:۰۰</b></span>
+        <span>⏰</span><span>ثبت گزارش فروش فقط از ساعت <b>۱۸:۰۰ تا ۲۴:۰۰</b></span>
       </div>
     </div>
     <div class="foot">طراحی و توسعه: <b>مهندس محمدرسول یزدیان</b><br>© مروارید</div>
   </div>
 </div>
 
-<!-- پنل کاربر -->
+<!-- پنل کاربر (نقش‌های فروشنده، کارگر، حسابدار با تب‌های مختلف) -->
 <div id="userView" class="hidden">
   <div class="wrap">
     <div class="topbar">
@@ -221,7 +180,7 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
         <div class="brand-pearl"></div>
         <div>
           <h1>مروارید</h1>
-          <small>پنل کاربری — <span id="uName"></span> <span class="badge badge-user">کاربر</span></small>
+          <small>پنل کاربری — <span id="uName"></span> <span id="uRoleBadge"></span></small>
         </div>
       </div>
       <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
@@ -235,14 +194,10 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
     <div id="uAlert"></div>
     <div id="uNotif"></div>
 
-    <div class="tabs">
-      <button class="tab active" data-tab="entry" onclick="switchUTab('entry')">📝 ثبت گزارش</button>
-      <button class="tab" data-tab="history" onclick="switchUTab('history')">📚 سابقه</button>
-      <button class="tab" data-tab="requests" onclick="switchUTab('requests')">📋 درخواست‌ها</button>
-      <button class="tab" data-tab="messages" onclick="switchUTab('messages')">💬 پیام با مدیر</button>
-    </div>
+    <div class="tabs" id="uTabs"></div>
 
-    <div id="u-tab-entry">
+    <!-- ثبت گزارش فروش -->
+    <div id="u-tab-entry" class="hidden">
       <div class="card">
         <h3 class="sec-title">ثبت فاکتورهای امروز</h3>
         <div class="row mb">
@@ -266,6 +221,7 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
       </div>
     </div>
 
+    <!-- سابقه فروش -->
     <div id="u-tab-history" class="hidden">
       <div class="card">
         <h3 class="sec-title">سابقه گزارش‌های من</h3>
@@ -273,6 +229,37 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
       </div>
     </div>
 
+    <!-- ثبت ساعت کار -->
+    <div id="u-tab-hours" class="hidden">
+      <div class="card mb">
+        <h3 class="sec-title">⏰ ثبت ساعت کار امروز</h3>
+        <div id="hoursMsg"></div>
+        <div class="row mb">
+          <div><label>تاریخ</label><input id="hwDate" readonly></div>
+          <div><label>ساعت عادی</label><input id="hwNormal" type="number" step="0.5" placeholder="مثلاً 8" min="0" max="24"></div>
+          <div><label>ساعت اضافه‌کار</label><input id="hwOT" type="number" step="0.5" placeholder="مثلاً 2" min="0" max="24"></div>
+        </div>
+        <div class="mb">
+          <label>توضیحات (اختیاری)</label>
+          <textarea id="hwNote" placeholder="شرح کار..."></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="submitHoursSelf()">✔ ثبت ساعت کار</button>
+      </div>
+      <div class="card">
+        <h3 class="sec-title">ساعت‌های ثبت‌شده این ماه</h3>
+        <div id="uHoursList"></div>
+      </div>
+    </div>
+
+    <!-- فیش حقوقی من -->
+    <div id="u-tab-mysalary" class="hidden">
+      <div class="card">
+        <h3 class="sec-title">💰 فیش حقوقی من</h3>
+        <div id="mySalaryBox"></div>
+      </div>
+    </div>
+
+    <!-- درخواست‌ها -->
     <div id="u-tab-requests" class="hidden">
       <div class="card mb">
         <h3 class="sec-title">ثبت درخواست جدید</h3>
@@ -286,11 +273,12 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
               <option>تغییر شیفت</option>
               <option>تعویض روز کاری</option>
               <option>درخواست اضافه‌کار</option>
+              <option>درخواست مساعده</option>
               <option>سایر</option>
             </select>
           </div>
-          <div><label>از تاریخ</label><input id="reqFrom" placeholder="1403/05/01"></div>
-          <div><label>تا تاریخ</label><input id="reqTo" placeholder="1403/05/02"></div>
+          <div><label>از تاریخ</label><input id="reqFrom" placeholder="1404/06/01"></div>
+          <div><label>تا تاریخ</label><input id="reqTo" placeholder="1404/06/02"></div>
         </div>
         <div class="mb">
           <label>توضیحات</label>
@@ -304,6 +292,7 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
       </div>
     </div>
 
+    <!-- پیام با مدیر -->
     <div id="u-tab-messages" class="hidden">
       <div class="card">
         <h3 class="sec-title">💬 گفتگوی خصوصی با مدیر</h3>
@@ -322,7 +311,7 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
   </div>
 </div>
 
-<!-- پنل مدیر -->
+<!-- پنل مدیر / حسابدار -->
 <div id="adminView" class="hidden">
   <div class="wrap">
     <div class="topbar">
@@ -330,7 +319,7 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
         <div class="brand-pearl"></div>
         <div>
           <h1>مروارید</h1>
-          <small>پنل مدیریت <span class="badge badge-admin">مدیر</span></small>
+          <small>پنل مدیریت <span id="aRoleBadge" class="badge badge-admin">مدیر</span></small>
         </div>
       </div>
       <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
@@ -343,18 +332,10 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
 
     <div id="aAlert"></div>
 
-    <div class="tabs">
-      <button class="tab active" data-atab="dash" onclick="switchATab('dash')">📊 داشبورد</button>
-      <button class="tab" data-atab="today" onclick="switchATab('today')">📅 حضور امروز</button>
-      <button class="tab" data-atab="reports" onclick="switchATab('reports')">🗂 گزارش‌ها</button>
-      <button class="tab" data-atab="requests" onclick="switchATab('requests')">📋 درخواست‌ها</button>
-      <button class="tab" data-atab="messages" onclick="switchATab('messages')">💬 پیام‌ها</button>
-      <button class="tab" data-atab="broadcast" onclick="switchATab('broadcast')">📢 اعلان</button>
-      <button class="tab" data-atab="sync" onclick="switchATab('sync')">🔄 اتاق سینک</button>
-      <button class="tab" data-atab="data" onclick="switchATab('data')">💾 داده‌ها</button>
-    </div>
+    <div class="tabs" id="aTabs"></div>
 
-    <div id="a-tab-dash">
+    <!-- داشبورد -->
+    <div id="a-tab-dash" class="hidden">
       <div class="stats">
         <div class="stat"><div class="k">فروش امروز</div><div class="v gold" id="dToday">۰</div></div>
         <div class="stat"><div class="k">فروش این هفته</div><div class="v gold" id="dWeek">۰</div></div>
@@ -362,10 +343,10 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
         <div class="stat"><div class="k">فروش کل</div><div class="v gold" id="dAll">۰</div></div>
       </div>
       <div class="stats">
+        <div class="stat"><div class="k">تعداد پرسنل</div><div class="v" id="dStaff">۰</div></div>
         <div class="stat"><div class="k">گزارش امروز</div><div class="v ok" id="dCntToday">۰</div></div>
-        <div class="stat"><div class="k">گزارش هفته</div><div class="v" id="dCntWeek">۰</div></div>
-        <div class="stat"><div class="k">گزارش ماه</div><div class="v" id="dCntMonth">۰</div></div>
         <div class="stat"><div class="k">درخواست‌های در انتظار</div><div class="v warn" id="dPendReq">۰</div></div>
+        <div class="stat"><div class="k">حقوق ماه جاری (محاسبه شده)</div><div class="v gold" id="dSalaryTotal">۰</div></div>
       </div>
       <div class="card">
         <h3 class="sec-title">نمودار فروش ۷ روز اخیر</h3>
@@ -373,6 +354,7 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
       </div>
     </div>
 
+    <!-- حضور امروز -->
     <div id="a-tab-today" class="hidden">
       <div class="card">
         <h3 class="sec-title">وضعیت امروز پرسنل</h3>
@@ -380,13 +362,14 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
       </div>
     </div>
 
+    <!-- گزارش‌ها -->
     <div id="a-tab-reports" class="hidden">
       <div class="card mb">
         <h3 class="sec-title">فیلتر گزارش‌ها</h3>
         <div class="row">
           <div><label>کاربر</label><select id="flUser" onchange="renderAdminReports()"><option value="">همه</option></select></div>
-          <div><label>از تاریخ</label><input id="flFrom" placeholder="1403/05/01" oninput="renderAdminReports()"></div>
-          <div><label>تا تاریخ</label><input id="flTo" placeholder="1403/05/31" oninput="renderAdminReports()"></div>
+          <div><label>از تاریخ</label><input id="flFrom" placeholder="1404/06/01" oninput="renderAdminReports()"></div>
+          <div><label>تا تاریخ</label><input id="flTo" placeholder="1404/06/31" oninput="renderAdminReports()"></div>
           <div style="display:flex;align-items:flex-end"><button class="btn btn-ghost btn-sm" onclick="clearFilters()" style="width:100%">پاک کردن</button></div>
         </div>
       </div>
@@ -399,6 +382,7 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
       </div>
     </div>
 
+    <!-- درخواست‌ها -->
     <div id="a-tab-requests" class="hidden">
       <div class="card">
         <h3 class="sec-title">مدیریت درخواست‌ها</h3>
@@ -406,6 +390,7 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
       </div>
     </div>
 
+    <!-- پیام‌ها -->
     <div id="a-tab-messages" class="hidden">
       <div class="card mb">
         <h3 class="sec-title">انتخاب کاربر برای گفتگو</h3>
@@ -421,6 +406,7 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
       </div>
     </div>
 
+    <!-- اعلان -->
     <div id="a-tab-broadcast" class="hidden">
       <div class="card mb">
         <h3 class="sec-title">📢 ارسال اعلان به همه پرسنل</h3>
@@ -440,17 +426,110 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
       </div>
     </div>
 
+    <!-- مدیریت کاربران -->
+    <div id="a-tab-users" class="hidden">
+      <div class="card mb">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+          <h3 class="sec-title" style="margin:0">👥 مدیریت کاربران</h3>
+          <button class="btn btn-primary" onclick="openUserModal()">＋ افزودن کاربر جدید</button>
+        </div>
+        <div class="alert alert-info" style="font-size:12.5px;margin-top:14px">
+          <span>💡</span>
+          <span>می‌توانید برای هر کاربر، نقش (فروشنده، حسابدار، کارگر و...)، دستمزد ساعتی، درصد پورسانت و مزایا تعیین کنید.</span>
+        </div>
+      </div>
+      <div class="card">
+        <div id="usersList"></div>
+      </div>
+    </div>
+
+    <!-- ثبت ساعت کار -->
+    <div id="a-tab-hours" class="hidden">
+      <div class="card mb">
+        <h3 class="sec-title">⏰ ثبت ساعت کار کاربران</h3>
+        <div id="adminHoursMsg"></div>
+        <div class="row mb">
+          <div>
+            <label>کاربر</label>
+            <select id="ahUser"></select>
+          </div>
+          <div><label>تاریخ</label><input id="ahDate" placeholder="1404/06/01"></div>
+        </div>
+        <div class="row mb">
+          <div><label>ساعت عادی</label><input id="ahNormal" type="number" step="0.5" min="0" max="24" placeholder="8"></div>
+          <div><label>ساعت اضافه‌کار</label><input id="ahOT" type="number" step="0.5" min="0" max="24" placeholder="0"></div>
+          <div><label>ضریب اضافه‌کار</label><input id="ahOTRate" type="number" step="0.1" min="1" max="3" value="1.4"></div>
+        </div>
+        <div class="mb">
+          <label>توضیحات</label>
+          <textarea id="ahNote" placeholder="شرح کار..."></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="adminSubmitHours()">✔ ثبت ساعت کار</button>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+          <h3 class="sec-title" style="margin:0">ساعت‌های ثبت‌شده</h3>
+          <select id="ahFilterUser" onchange="renderAdminHours()" style="width:auto;min-width:180px">
+            <option value="">همه کاربران</option>
+          </select>
+        </div>
+        <div id="adminHoursList"></div>
+      </div>
+    </div>
+
+    <!-- محاسبه حقوق (حسابدار و مدیر) -->
+    <div id="a-tab-salary" class="hidden">
+      <div class="card mb">
+        <h3 class="sec-title">💰 محاسبه حقوق و مزایا</h3>
+        <div id="salaryMsg"></div>
+        <div class="row mb">
+          <div>
+            <label>کاربر</label>
+            <select id="salUser"></select>
+          </div>
+          <div>
+            <label>ماه (میلادی برای فیلتر)</label>
+            <select id="salMonth">
+              <option value="01">فروردین / ژانویه</option>
+              <option value="02">اردیبهشت / فوریه</option>
+              <option value="03">خرداد / مارس</option>
+              <option value="04">تیر / آوریل</option>
+              <option value="05">مرداد / می</option>
+              <option value="06">شهریور / ژوئن</option>
+              <option value="07">مهر / جولای</option>
+              <option value="08">آبان / اوت</option>
+              <option value="09">آذر / سپتامبر</option>
+              <option value="10">دی / اکتبر</option>
+              <option value="11">بهمن / نوامبر</option>
+              <option value="12">اسفند / دسامبر</option>
+            </select>
+          </div>
+          <div>
+            <label>سال</label>
+            <select id="salYear"></select>
+          </div>
+          <div style="display:flex;align-items:flex-end">
+            <button class="btn btn-gold" style="width:100%" onclick="calcSalary()">🔢 محاسبه</button>
+          </div>
+        </div>
+        <div id="salaryPreview"></div>
+      </div>
+
+      <div class="card">
+        <h3 class="sec-title">📋 فیش‌های صادر شده</h3>
+        <div id="salaryHistory"></div>
+      </div>
+    </div>
+
     <!-- اتاق سینک -->
     <div id="a-tab-sync" class="hidden">
       <div class="card mb">
-        <h3 class="sec-title">🔄 اتاق سینک (بدون ثبت‌نام)</h3>
+        <h3 class="sec-title">🔄 اتاق سینک</h3>
         <div class="alert alert-info">
           <span>💡</span>
-          <span>این اتاق به شما امکان می‌دهد داده‌ها بین همه دستگاه‌ها (گوشی فروشنده، لپ‌تاپ مدیر و...) به‌صورت خودکار سینک شود.</span>
+          <span>داده‌ها بین همه دستگاه‌ها به‌صورت خودکار سینک می‌شود.</span>
         </div>
-
         <div id="syncStatusBox"></div>
-
         <div id="syncNotConnected">
           <h4 style="color:var(--accent);margin-bottom:12px">وضعیت فعلی: متصل نیست</h4>
           <div style="margin-bottom:14px">
@@ -462,7 +541,6 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
             <button class="btn btn-ghost" onclick="showJoinRoom()">🔗 اتصال به اتاق موجود</button>
           </div>
         </div>
-
         <div id="syncConnected" class="hidden">
           <h4 style="color:var(--ok);margin-bottom:12px">✅ به اتاق متصل هستید</h4>
           <label>کد اتاق (این کد را برای فروشنده‌ها بفرستید):</label>
@@ -472,26 +550,11 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
             <button class="btn btn-ghost" onclick="syncNow(true)">🔄 سینک فوری</button>
             <button class="btn btn-danger" onclick="disconnectRoom()">🚪 قطع اتصال</button>
           </div>
-          <div class="alert alert-info mt" style="font-size:12.5px">
-            <span>ℹ️</span>
-            <span>سینک خودکار هر ۱۰ ثانیه انجام می‌شود.</span>
-          </div>
         </div>
-      </div>
-
-      <div class="card">
-        <h3 class="sec-title">📖 راهنما</h3>
-        <ol style="line-height:2;padding-right:20px;color:#cfcae8">
-          <li>توکن گیت‌هاب را در کادر بالا وارد کنید.</li>
-          <li>روی <b>«ایجاد اتاق جدید»</b> کلیک کنید.</li>
-          <li>یک <b>کد اتاق</b> دریافت می‌کنید.</li>
-          <li>این کد را برای فروشنده‌ها بفرستید (واتس‌اپ، پیامک و...).</li>
-          <li>فروشنده در گوشی خودش: روی <b>«اتصال به اتاق موجود»</b> بزند، کد و توکن را وارد کند.</li>
-          <li>تمام! از این به بعد همه چیز خودکار سینک می‌شود. ✅</li>
-        </ol>
       </div>
     </div>
 
+    <!-- داده‌ها -->
     <div id="a-tab-data" class="hidden">
       <div class="card mb">
         <h3 class="sec-title">💾 پشتیبان‌گیری</h3>
@@ -553,6 +616,75 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
   </div>
 </div>
 
+<!-- مودال کاربر (افزودن/ویرایش) -->
+<div id="userModal" class="modal-bg hidden">
+  <div class="card modal">
+    <h3 class="sec-title" id="userModalTitle">افزودن کاربر جدید</h3>
+    <div id="umMsg"></div>
+    <input type="hidden" id="umOldNc">
+    <div class="row mb">
+      <div>
+        <label>نام و نام خانوادگی</label>
+        <input id="umName" placeholder="مثلاً: علی رضایی">
+      </div>
+      <div>
+        <label>نقش / سمت</label>
+        <select id="umRole">
+          <option value="seller">فروشنده</option>
+          <option value="worker">کارگر</option>
+          <option value="accountant">حسابدار</option>
+          <option value="manager">سرپرست</option>
+          <option value="other">سایر</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mb">
+      <div>
+        <label>کد ملی / نام کاربری</label>
+        <div style="display:flex;gap:8px">
+          <input id="umNc" placeholder="کد ملی" style="font-family:monospace">
+          <button class="btn btn-ghost btn-sm" type="button" onclick="genRandomNc()">🎲</button>
+        </div>
+      </div>
+      <div>
+        <label>رمز عبور</label>
+        <div style="display:flex;gap:8px">
+          <input id="umPass" placeholder="رمز" style="font-family:monospace">
+          <button class="btn btn-ghost btn-sm" type="button" onclick="genRandomPass()">🎲</button>
+        </div>
+      </div>
+    </div>
+    <div class="row mb">
+      <div>
+        <label>دستمزد ساعتی (تومان)</label>
+        <input id="umHourly" type="number" placeholder="مثلاً 80000" value="0">
+      </div>
+      <div>
+        <label>درصد پورسانت از فروش (%)</label>
+        <input id="umCommission" type="number" step="0.1" placeholder="0" value="0">
+      </div>
+    </div>
+    <div class="row mb">
+      <div>
+        <label>تاریخ استخدام</label>
+        <input id="umHire" placeholder="1404/01/01">
+      </div>
+      <div>
+        <label>مزایای ماهانه ثابت (تومان)</label>
+        <input id="umBenefits" type="number" placeholder="0" value="0">
+      </div>
+    </div>
+    <div class="mb">
+      <label>یادداشت مدیر</label>
+      <textarea id="umNote" placeholder="توضیحات درباره این کاربر..."></textarea>
+    </div>
+    <div style="display:flex;gap:10px">
+      <button class="btn btn-primary" style="flex:1" onclick="saveUser()">💾 ذخیره</button>
+      <button class="btn btn-ghost" onclick="closeUserModal()">انصراف</button>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ============ CONFIG ============ */
 const CONFIG = {
@@ -560,48 +692,92 @@ const CONFIG = {
   designer: "مهندس محمدرسول یزدیان",
   entryStartHour: 18,
   entryEndHour: 24,
-  retainYears: 2
+  retainYears: 2,
+  overtimeRateDefault: 1.4
+};
+
+/* نقش‌ها */
+const ROLES = {
+  admin:      { label: "مدیر",      badge: "badge-admin",  color: "#f0d9a8" },
+  accountant: { label: "حسابدار",   badge: "badge-acc",    color: "#e2d3ff" },
+  seller:     { label: "فروشنده",   badge: "badge-seller", color: "#9fe6f0" },
+  worker:     { label: "کارگر",     badge: "badge-worker", color: "#9df3d3" },
+  manager:    { label: "سرپرست",    badge: "badge-user",   color: "#9fe6f0" },
+  other:      { label: "سایر",      badge: "badge-user",   color: "#9fe6f0" }
 };
 
 const DEFAULT_USERS = [
-  { nc: "0372892361", pass: "4032221073", name: "فروشنده ۱", role: "user" },
-  { nc: "0372892363", pass: "4032221075", name: "فروشنده ۲", role: "user" },
-  { nc: "0372892365", pass: "4042222077", name: "فروشنده ۳", role: "user" },
-  { nc: "admin",      pass: "Admin@1403",  name: "مدیر فروشگاه", role: "admin" }
+  { nc: "0372892361", pass: "4032221073", name: "فروشنده ۱", role: "seller", hourlyRate: 0, commission: 0, hireDate: "", benefits: 0, note: "" },
+  { nc: "0372892363", pass: "4032221075", name: "فروشنده ۲", role: "seller", hourlyRate: 0, commission: 0, hireDate: "", benefits: 0, note: "" },
+  { nc: "0372892365", pass: "4042222077", name: "فروشنده ۳", role: "seller", hourlyRate: 0, commission: 0, hireDate: "", benefits: 0, note: "" },
+  { nc: "admin",      pass: "Admin@1403",  name: "مدیر فروشگاه", role: "admin", hourlyRate: 0, commission: 0, hireDate: "", benefits: 0, note: "" }
 ];
 
 /* ============ Storage Keys ============ */
 const K = {
-  users:  "morvarid_users_v4",
-  recs:   "morvarid_recs_v4",
-  reqs:   "morvarid_reqs_v4",
-  msgs:   "morvarid_msgs_v4",
-  notifs: "morvarid_notifs_v4",
-  bc:     "morvarid_bc_v4",
-  sess:   "morvarid_sess_v4",
-  room:   "morvarid_gh_gist_v4",
-  token:  "morvarid_gh_token_v4",
-  lastUp: "morvarid_lastup_v4"
+  users:  "morvarid_users_v5",
+  recs:   "morvarid_recs_v5",
+  reqs:   "morvarid_reqs_v5",
+  msgs:   "morvarid_msgs_v5",
+  notifs: "morvarid_notifs_v5",
+  bc:     "morvarid_bc_v5",
+  sess:   "morvarid_sess_v5",
+  room:   "morvarid_gh_gist_v5",
+  token:  "morvarid_gh_token_v5",
+  lastUp: "morvarid_lastup_v5",
+  hours:  "morvarid_hours_v5",
+  salary: "morvarid_salary_v5"
 };
 const load = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch(e){ return d; } };
 const save = (k, v) => { try{ localStorage.setItem(k, JSON.stringify(v)); } catch(e){ alert("حافظه پر. تصاویر کم‌حجم‌تر بارگذاری کنید."); } };
 
-if (!localStorage.getItem(K.users)) save(K.users, DEFAULT_USERS);
+/* ============ Migration از نسخه قبلی ============ */
+(function migrateOldData(){
+  const oldUsers = load("morvarid_users_v4", null);
+  const newUsers = load(K.users, null);
+  if (!newUsers && oldUsers){
+    const migrated = oldUsers.map(u => ({
+      ...u,
+      role: u.role === "admin" ? "admin" : "seller",
+      hourlyRate: 0, commission: 0, hireDate: "", benefits: 0, note: ""
+    }));
+    save(K.users, migrated);
+  } else if (!newUsers) {
+    save(K.users, DEFAULT_USERS);
+  }
 
-const getUsers  = () => load(K.users, DEFAULT_USERS);
-const setUsers  = u => { save(K.users, u); markLocalChange(); };
-const getRecs   = () => load(K.recs, []);
-const setRecs   = r => { save(K.recs, r); markLocalChange(); };
-const getReqs   = () => load(K.reqs, []);
-const setReqs   = r => { save(K.reqs, r); markLocalChange(); };
-const getMsgs   = () => load(K.msgs, []);
-const setMsgs   = m => { save(K.msgs, m); markLocalChange(); };
-const getNotifs = () => load(K.notifs, []);
-const setNotifs = n => { save(K.notifs, n); markLocalChange(); };
-const getBC     = () => load(K.bc, []);
-const setBC     = b => { save(K.bc, b); markLocalChange(); };
+  // migrate records from v4
+  const oldRecs = load("morvarid_recs_v4", null);
+  if (oldRecs && !load(K.recs, null)) save(K.recs, oldRecs);
+  const oldReqs = load("morvarid_reqs_v4", null);
+  if (oldReqs && !load(K.reqs, null)) save(K.reqs, oldReqs);
+  const oldMsgs = load("morvarid_msgs_v4", null);
+  if (oldMsgs && !load(K.msgs, null)) save(K.msgs, oldMsgs);
+  const oldNotifs = load("morvarid_notifs_v4", null);
+  if (oldNotifs && !load(K.notifs, null)) save(K.notifs, oldNotifs);
+  const oldBc = load("morvarid_bc_v4", null);
+  if (oldBc && !load(K.bc, null)) save(K.bc, oldBc);
+})();
+
+const getUsers   = () => load(K.users, DEFAULT_USERS);
+const setUsers   = u => { save(K.users, u); markLocalChange(); };
+const getRecs    = () => load(K.recs, []);
+const setRecs    = r => { save(K.recs, r); markLocalChange(); };
+const getReqs    = () => load(K.reqs, []);
+const setReqs    = r => { save(K.reqs, r); markLocalChange(); };
+const getMsgs    = () => load(K.msgs, []);
+const setMsgs    = m => { save(K.msgs, m); markLocalChange(); };
+const getNotifs  = () => load(K.notifs, []);
+const setNotifs  = n => { save(K.notifs, n); markLocalChange(); };
+const getBC      = () => load(K.bc, []);
+const setBC      = b => { save(K.bc, b); markLocalChange(); };
+const getHours   = () => load(K.hours, []);
+const setHours   = h => { save(K.hours, h); markLocalChange(); };
+const getSalaries= () => load(K.salary, []);
+const setSalaries= s => { save(K.salary, s); markLocalChange(); };
 
 let session = null;
+let selectedChatUser = null;
 
 /* ============ GitHub Gist Sync ============ */
 const GH = {
@@ -643,18 +819,21 @@ function collectAll(){
   return {
     users:  getUsers(), recs: getRecs(), reqs: getReqs(),
     msgs:   getMsgs(),  notifs: getNotifs(), bc: getBC(),
+    hours:  getHours(), salaries: getSalaries(),
     updatedAt: Date.now()
   };
 }
 
 function applyCloud(data){
   if (!data) return;
-  if (Array.isArray(data.users))  save(K.users, data.users);
-  if (Array.isArray(data.recs))   save(K.recs, data.recs);
-  if (Array.isArray(data.reqs))   save(K.reqs, data.reqs);
-  if (Array.isArray(data.msgs))   save(K.msgs, data.msgs);
-  if (Array.isArray(data.notifs)) save(K.notifs, data.notifs);
-  if (Array.isArray(data.bc))     save(K.bc, data.bc);
+  if (Array.isArray(data.users))    save(K.users, data.users);
+  if (Array.isArray(data.recs))     save(K.recs, data.recs);
+  if (Array.isArray(data.reqs))     save(K.reqs, data.reqs);
+  if (Array.isArray(data.msgs))     save(K.msgs, data.msgs);
+  if (Array.isArray(data.notifs))   save(K.notifs, data.notifs);
+  if (Array.isArray(data.bc))       save(K.bc, data.bc);
+  if (Array.isArray(data.hours))    save(K.hours, data.hours);
+  if (Array.isArray(data.salaries)) save(K.salary, data.salaries);
   localStorage.setItem(K.lastUp, String(data.updatedAt || Date.now()));
 }
 
@@ -727,13 +906,9 @@ async function createRoom(){
   box.innerHTML = `<div class="alert alert-info"><span>⏳</span><span>در حال ایجاد اتاق ابری...</span></div>`;
   try {
     const gist = await ghApi("/gists", "POST", {
-      description: "Morvarid Sales Data — " + new Date().toISOString(),
+      description: "Morvarid Data — " + new Date().toISOString(),
       public: false,
-      files: {
-        "morvarid-data.json": {
-          content: JSON.stringify(collectAll(), null, 2)
-        }
-      }
+      files: { "morvarid-data.json": { content: JSON.stringify(collectAll(), null, 2) } }
     });
     GH.gistId = gist.id;
     localStorage.setItem(K.room, gist.id);
@@ -741,7 +916,7 @@ async function createRoom(){
     renderSyncTab();
     box.innerHTML = `<div class="alert alert-ok"><span>✅</span><span>اتاق ابری ساخته شد!</span></div>`;
   } catch(e){
-    box.innerHTML = `<div class="alert alert-error"><span>⛔</span><span>خطا: ${e.message}<br>لطفاً توکن را دوباره چک کنید.</span></div>`;
+    box.innerHTML = `<div class="alert alert-error"><span>⛔</span><span>خطا: ${e.message}</span></div>`;
   }
 }
 
@@ -756,7 +931,7 @@ async function joinRoom(){
   const box = document.getElementById("jmMsg");
   const raw = document.getElementById("jmCode").value.trim();
   const token = document.getElementById("jmToken").value.trim();
-  if (!raw) return showMsg(box, "کد اتاق (Gist ID) را وارد کنید.", "error");
+  if (!raw) return showMsg(box, "کد اتاق را وارد کنید.", "error");
   if (!token) return showMsg(box, "توکن گیت‌هاب را وارد کنید.", "error");
   let id = raw;
   if (raw.includes("gist.github.com")) id = raw.split("/").pop().split("#")[0];
@@ -768,10 +943,7 @@ async function joinRoom(){
     const file = gist.files["morvarid-data.json"];
     if (!file) throw new Error("فایل داده در این اتاق پیدا نشد");
     let content = file.content;
-    if (file.truncated) {
-      const r = await fetch(file.raw_url);
-      content = await r.text();
-    }
+    if (file.truncated) { const r = await fetch(file.raw_url); content = await r.text(); }
     const data = JSON.parse(content);
     if (confirm("به اتاق متصل شوید؟ داده‌های این دستگاه با داده‌های اتاق جایگزین می‌شوند.")) {
       applyCloud(data);
@@ -788,7 +960,7 @@ async function joinRoom(){
 }
 
 function disconnectRoom(){
-  if (!confirm("اتصال قطع شود؟ (داده‌های محلی حفظ می‌شوند)")) return;
+  if (!confirm("اتصال قطع شود؟")) return;
   GH.gistId = "";
   localStorage.removeItem(K.room);
   stopAutoSync();
@@ -800,7 +972,7 @@ function copyRoomCode(){
   const text = GH.gistId;
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text).then(() => {
-      alert("کد اتاق کپی شد ✅\n\n" + text + "\n\nاین کد را برای فروشنده‌ها بفرستید.");
+      alert("کد اتاق کپی شد ✅\n\n" + text);
     }).catch(() => prompt("این کد را کپی کنید:", text));
   } else {
     prompt("این کد را کپی کنید:", text);
@@ -858,6 +1030,9 @@ function withinWindow(){ const h = new Date().getHours(); return h >= CONFIG.ent
 function esc(s){ return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 function uid(){ return "r_" + Date.now() + "_" + Math.random().toString(36).slice(2,7); }
 function reqCode(){ const d = todayKey().replace(/\//g,""); const n = getReqs().length + 1; return `REQ-${d}-${String(n).padStart(3,"0")}`; }
+function getRole(u){ return u.role || "seller"; }
+function roleLabel(r){ return ROLES[r]?.label || r; }
+function roleBadge(r){ const info = ROLES[r] || ROLES.other; return `<span class="badge ${info.badge}">${info.label}</span>`; }
 
 function showMsg(el, text, type){
   if (typeof el === "string") el = $(el);
@@ -865,7 +1040,6 @@ function showMsg(el, text, type){
   el.innerHTML = `<div class="alert alert-${type}"><span>${type==="error"?"⛔":type==="ok"?"✅":type==="warn"?"⚠️":"ℹ️"}</span><span>${text}</span></div>`;
   if (type !== "error") setTimeout(()=>{ if (el.innerHTML.includes(text)) el.innerHTML=""; }, 6000);
 }
-function clearMsg(el){ if (typeof el === "string") el = $(el); if (el) el.innerHTML = ""; }
 
 /* ============ Login ============ */
 function doLogin(){
@@ -873,12 +1047,12 @@ function doLogin(){
   const ps = normDigits($("#inPass").value);
   const box = $("#loginMsg");
   if (!nc || !ps) return showMsg(box, "کد ملی و رمز را وارد کنید.", "error");
-  const u = getUsers().find(x => x.nc === nc && x.pass === ps);
+  const u = getUsers().find(x => normDigits(x.nc) === nc && normDigits(x.pass) === ps);
   if (!u) return showMsg(box, "اطلاعات ورود اشتباه است.", "error");
   session = u;
   save(K.sess, { nc: u.nc });
   $("#inNC").value = ""; $("#inPass").value = "";
-  clearMsg(box);
+  box.innerHTML = "";
   enterApp();
 }
 function logout(){
@@ -888,9 +1062,15 @@ function logout(){
   $("#adminView").classList.add("hidden");
   $("#loginView").classList.remove("hidden");
 }
+function isAdmin(){ return session && getRole(session) === "admin"; }
+function isAccountant(){ return session && getRole(session) === "accountant"; }
+function isStaff(){ return isAdmin() || isAccountant(); }
+function isSeller(){ return session && getRole(session) === "seller"; }
+function isWorker(){ return session && getRole(session) === "worker"; }
+
 function enterApp(){
   $("#loginView").classList.add("hidden");
-  if (session.role === "admin"){
+  if (isStaff()) {
     $("#adminView").classList.remove("hidden");
     $("#userView").classList.add("hidden");
     initAdmin();
@@ -902,9 +1082,9 @@ function enterApp(){
   tickClock();
   if (GH.gistId && GH.token) startAutoSync();
 }
+
 function tickClock(){
-  const t = nowTime(), d = todayKey();
-  const txt = `🕐 ${t} — ${d}`;
+  const txt = `🕐 ${nowTime()} — ${todayKey()}`;
   if ($("#clock"))  $("#clock").textContent = txt;
   if ($("#clock2")) $("#clock2").textContent = txt;
 }
@@ -912,50 +1092,105 @@ setInterval(tickClock, 15000);
 
 function refreshAllViews(){
   if (!session) return;
-  if (session.role === "admin"){
-    renderDash(); renderToday(); renderAdminReports();
-    renderAdminReqs(); renderUserPick(); renderBCList();
+  if (isStaff()){
+    if ($("#a-tab-dash") && !$("#a-tab-dash").classList.contains("hidden")) renderDash();
+    if ($("#a-tab-today") && !$("#a-tab-today").classList.contains("hidden")) renderToday();
+    if ($("#a-tab-reports") && !$("#a-tab-reports").classList.contains("hidden")) renderAdminReports();
+    if ($("#a-tab-requests") && !$("#a-tab-requests").classList.contains("hidden")) renderAdminReqs();
+    if ($("#a-tab-messages") && !$("#a-tab-messages").classList.contains("hidden")) renderUserPick();
+    if ($("#a-tab-broadcast") && !$("#a-tab-broadcast").classList.contains("hidden")) renderBCList();
+    if ($("#a-tab-users") && !$("#a-tab-users").classList.contains("hidden")) renderUsersList();
+    if ($("#a-tab-hours") && !$("#a-tab-hours").classList.contains("hidden")) renderAdminHours();
+    if ($("#a-tab-salary") && !$("#a-tab-salary").classList.contains("hidden")) renderSalaryHistory();
   } else {
-    renderUserHistory(); renderUserNotifs();
-    renderUserReqs(); renderUserMessages();
+    if ($("#u-tab-history") && !$("#u-tab-history").classList.contains("hidden")) renderUserHistory();
+    if ($("#u-tab-requests") && !$("#u-tab-requests").classList.contains("hidden")) renderUserReqs();
+    if ($("#u-tab-messages") && !$("#u-tab-messages").classList.contains("hidden")) renderUserMessages();
+    if ($("#u-tab-mysalary") && !$("#u-tab-mysalary").classList.contains("hidden")) renderMySalary();
+    if ($("#u-tab-hours") && !$("#u-tab-hours").classList.contains("hidden")) renderUserHours();
   }
 }
 
-/* ============ User Panel ============ */
+/* =========================================================
+   USER PANEL (فروشنده، کارگر، حسابدار)
+   ========================================================= */
+function buildUserTabs(){
+  const role = getRole(session);
+  const tabs = [];
+  if (role === "seller" || role === "manager") {
+    tabs.push({ id: "entry", label: "📝 ثبت گزارش" });
+    tabs.push({ id: "history", label: "📚 سابقه" });
+  }
+  if (role === "worker" || role === "seller" || role === "manager" || role === "accountant") {
+    tabs.push({ id: "hours", label: "⏰ ثبت ساعت کار" });
+  }
+  tabs.push({ id: "mysalary", label: "💰 فیش حقوقی من" });
+  tabs.push({ id: "requests", label: "📋 درخواست‌ها" });
+  tabs.push({ id: "messages", label: "💬 پیام با مدیر" });
+
+  const box = $("#uTabs");
+  box.innerHTML = tabs.map((t, i) =>
+    `<button class="tab ${i===0?'active':''}" data-tab="${t.id}" onclick="switchUTab('${t.id}')">${t.label}</button>`
+  ).join("");
+
+  // مخفی کردن همه، بعد نمایش تب اول
+  ["entry","history","hours","mysalary","requests","messages"].forEach(x => {
+    const el = $("#u-tab-" + x);
+    if (el) el.classList.add("hidden");
+  });
+  const first = tabs[0]?.id || "mysalary";
+  const firstEl = $("#u-tab-" + first);
+  if (firstEl) firstEl.classList.remove("hidden");
+}
+
 function initUser(){
   $("#uName").textContent = session.name;
-  const alertBox = $("#uAlert");
-  if (!withinWindow()){
-    showMsg(alertBox, `خارج از بازه ثبت. فقط از <b>${CONFIG.entryStartHour}:۰۰</b> تا <b>${CONFIG.entryEndHour}:۰۰</b>`, "warn");
-    $("#btnSubmit").disabled = true;
-  } else {
-    clearMsg(alertBox);
-    $("#btnSubmit").disabled = false;
-  }
-  $("#fDate").value = todayKey();
-  $("#fTime").value = nowTime();
+  $("#uRoleBadge").innerHTML = roleBadge(getRole(session));
 
-  const today = todayKey();
-  const existing = getRecs().find(r => r.userNc === session.nc && r.date === today);
-  $("#invRows").innerHTML = "";
-  if (existing){
-    existing.invoices.forEach(i => addInvCard(i));
-    if (!existing.invoices.length) addInvCard();
-    $("#fNote").value = existing.note || "";
+  buildUserTabs();
+
+  const alertBox = $("#uAlert");
+  if (isSeller() && !withinWindow()){
+    showMsg(alertBox, `خارج از بازه ثبت گزارش. فقط از <b>${CONFIG.entryStartHour}:۰۰</b> تا <b>${CONFIG.entryEndHour}:۰۰</b>`, "warn");
+    if ($("#btnSubmit")) $("#btnSubmit").disabled = true;
   } else {
-    addInvCard();
+    alertBox.innerHTML = "";
+    if ($("#btnSubmit")) $("#btnSubmit").disabled = false;
   }
-  updateTotal();
-  renderUserHistory();
+
+  if ($("#fDate")) $("#fDate").value = todayKey();
+  if ($("#fTime")) $("#fTime").value = nowTime();
+  if ($("#hwDate")) $("#hwDate").value = todayKey();
+
+  if (isSeller() || getRole(session) === "manager"){
+    const today = todayKey();
+    const existing = getRecs().find(r => r.userNc === session.nc && r.date === today);
+    if ($("#invRows")) {
+      $("#invRows").innerHTML = "";
+      if (existing){
+        existing.invoices.forEach(i => addInvCard(i));
+        if (!existing.invoices.length) addInvCard();
+        $("#fNote").value = existing.note || "";
+      } else {
+        addInvCard();
+      }
+      updateTotal();
+    }
+    renderUserHistory();
+  }
+
   renderUserNotifs();
   renderUserReqs();
   renderUserMessages();
-  switchUTab("entry");
+  renderMySalary();
+  renderUserHours();
   renderSyncTab();
 }
 
+/* --- ثبت فاکتور --- */
 function addInvCard(data = {}){
   const wrap = $("#invRows");
+  if (!wrap) return;
   const div = document.createElement("div");
   div.className = "inv-card";
   div.innerHTML = `
@@ -1012,7 +1247,9 @@ function addInvCard(data = {}){
 }
 
 function collectInvoices(){
-  return [...$("#invRows").children].map(row => ({
+  const wrap = $("#invRows");
+  if (!wrap) return [];
+  return [...wrap.children].map(row => ({
     no:       row.querySelector(".inv-no").value.trim(),
     customer: row.querySelector(".inv-cust").value.trim(),
     amount:   Number(normDigits(row.querySelector(".inv-amt").value)||0),
@@ -1020,13 +1257,14 @@ function collectInvoices(){
   })).filter(i => i.no || i.customer || i.amount || (i.files && i.files.length));
 }
 function updateTotal(){
+  if (!$("#fTotal")) return;
   const t = collectInvoices().reduce((s,i) => s + (i.amount||0), 0);
   $("#fTotal").textContent = toman(t);
 }
 
 function submitReport(){
   const box = $("#uAlert");
-  if (!withinWindow()) return showMsg(box, "خارج از بازه.", "error");
+  if (!withinWindow()) return showMsg(box, "خارج از بازه ثبت.", "error");
   const invoices = collectInvoices();
   if (!invoices.length) return showMsg(box, "حداقل یک فاکتور وارد کنید.", "error");
   if (invoices.some(i => !i.no)) return showMsg(box, "شماره فاکتور الزامی است.", "error");
@@ -1043,13 +1281,14 @@ function submitReport(){
   const idx = recs.findIndex(r => r.userNc === session.nc && r.date === today);
   if (idx > -1) recs[idx] = rec; else recs.push(rec);
   setRecs(recs);
-  showMsg(box, "✅ گزارش ثبت شد. در حال ارسال به ابر...", "ok");
+  showMsg(box, "✅ گزارش ثبت شد.", "ok");
   renderUserHistory();
 }
 
 function renderUserHistory(){
-  const mine = getRecs().filter(r => r.userNc === session.nc).sort((a,b) => b.createdAt - a.createdAt);
   const box = $("#uHistory");
+  if (!box) return;
+  const mine = getRecs().filter(r => r.userNc === session.nc).sort((a,b) => b.createdAt - a.createdAt);
   if (!mine.length){ box.innerHTML = `<div class="empty">هنوز گزارشی ثبت نکرده‌اید.</div>`; return; }
   const totalAll = mine.reduce((s,r) => s + r.total, 0);
   box.innerHTML = `
@@ -1078,13 +1317,99 @@ function renderUserHistory(){
 }
 
 function renderUserNotifs(){
-  const list = getNotifs().filter(n => n.to === session.nc || n.to === "all");
   const box = $("#uNotif");
+  if (!box) return;
+  const list = getNotifs().filter(n => n.to === session.nc || n.to === "all");
   if (!list.length){ box.innerHTML = ""; return; }
   const last = list[list.length-1];
   box.innerHTML = `<div class="alert alert-warn"><span>🔔</span><span>${esc(last.text)}<br><small style="opacity:.7">— ${esc(last.from)} • ${esc(last.date)}</small></span></div>`;
 }
 
+/* --- ساعت کار --- */
+function submitHoursSelf(){
+  const box = $("#hoursMsg");
+  const date = $("#hwDate").value;
+  const n = Number(normDigits($("#hwNormal").value) || 0);
+  const ot = Number(normDigits($("#hwOT").value) || 0);
+  const note = $("#hwNote").value.trim();
+  if (n <= 0 && ot <= 0) return showMsg(box, "حداقل یکی از ساعت‌ها باید مثبت باشد.", "error");
+  const hours = getHours();
+  hours.push({
+    id: uid(), userNc: session.nc, userName: session.name,
+    date, normal: n, ot, otRate: CONFIG.overtimeRateDefault,
+    note, createdAt: Date.now(), enteredBy: session.name
+  });
+  setHours(hours);
+  $("#hwNormal").value = ""; $("#hwOT").value = ""; $("#hwNote").value = "";
+  showMsg(box, "✅ ساعت کار ثبت شد.", "ok");
+  renderUserHours();
+}
+
+function renderUserHours(){
+  const box = $("#uHoursList");
+  if (!box) return;
+  const mine = getHours().filter(h => h.userNc === session.nc).sort((a,b) => b.createdAt - a.createdAt);
+  if (!mine.length){ box.innerHTML = `<div class="empty">ساعتی ثبت نشده.</div>`; return; }
+  const totalN = mine.reduce((s,h) => s + h.normal, 0);
+  const totalOT = mine.reduce((s,h) => s + h.ot, 0);
+  box.innerHTML = `
+    <div class="stats" style="margin-bottom:14px">
+      <div class="stat"><div class="k">جمع ساعت عادی</div><div class="v">${faNum(totalN)}</div></div>
+      <div class="stat"><div class="k">جمع اضافه‌کار</div><div class="v">${faNum(totalOT)}</div></div>
+    </div>
+    ${mine.slice(0, 30).map(h => `
+      <div class="req-card" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
+        <div>
+          <b>📅 ${esc(h.date)}</b>
+          <span class="hours-badge" style="margin-right:8px">${faNum(h.normal)} ساعت عادی</span>
+          ${h.ot ? `<span class="hours-badge">${faNum(h.ot)} اضافه‌کار</span>` : ""}
+        </div>
+        ${h.note ? `<div style="color:var(--muted);font-size:12.5px;width:100%">${esc(h.note)}</div>` : ""}
+      </div>
+    `).join("")}
+  `;
+}
+
+/* --- فیش حقوقی من --- */
+function renderMySalary(){
+  const box = $("#mySalaryBox");
+  if (!box) return;
+  const mine = getSalaries().filter(s => s.userNc === session.nc).sort((a,b) => b.createdAt - a.createdAt);
+  if (!mine.length){
+    box.innerHTML = `<div class="empty">هنوز فیش حقوقی برای شما صادر نشده است.</div>`;
+    return;
+  }
+  box.innerHTML = mine.map(s => renderPayslip(s)).join("");
+}
+
+function renderPayslip(s){
+  const user = getUsers().find(u => u.nc === s.userNc);
+  return `
+    <div class="payslip mb" style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;margin-bottom:14px">
+        <div>
+          <b style="font-size:16px">${esc(user?.name || s.userName)}</b><br>
+          <small style="color:var(--muted)">کد ملی: ${esc(s.userNc)}</small>
+        </div>
+        <div style="text-align:left;color:var(--muted);font-size:12.5px">
+          دوره: ${esc(s.month)}/${esc(s.year)}<br>
+          تاریخ صدور: ${esc(s.date)}
+        </div>
+      </div>
+      <div class="payslip-row"><span>ساعت کار عادی</span><span>${faNum(s.normalHours)} ساعت</span></div>
+      <div class="payslip-row"><span>نرخ هر ساعت</span><span>${toman(s.hourlyRate)}</span></div>
+      <div class="payslip-row"><span>حقوق پایه (ساعت × نرخ)</span><span>${toman(s.baseSalary)}</span></div>
+      ${s.otHours ? `<div class="payslip-row"><span>اضافه‌کار (${faNum(s.otHours)} ساعت × ${s.otRate})</span><span>${toman(s.otPay)}</span></div>` : ""}
+      ${s.commission ? `<div class="payslip-row"><span>پورسانت فروش (${s.commissionPct}%)</span><span>${toman(s.commission)}</span></div>` : ""}
+      ${s.benefits ? `<div class="payslip-row"><span>مزایا</span><span>${toman(s.benefits)}</span></div>` : ""}
+      ${s.deductions ? `<div class="payslip-row" style="color:var(--danger)"><span>کسورات</span><span>-${toman(s.deductions)}</span></div>` : ""}
+      <div class="payslip-row total"><span>جمع کل قابل پرداخت</span><span>${toman(s.total)}</span></div>
+      ${s.note ? `<div class="note-box" style="margin-top:12px">📝 ${esc(s.note)}</div>` : ""}
+    </div>
+  `;
+}
+
+/* --- درخواست --- */
 function submitRequest(){
   const box = $("#reqMsg");
   const type = $("#reqType").value;
@@ -1106,8 +1431,9 @@ function submitRequest(){
 }
 
 function renderUserReqs(){
-  const mine = getReqs().filter(r => r.userNc === session.nc).sort((a,b) => b.createdAt - a.createdAt);
   const box = $("#uReqList");
+  if (!box) return;
+  const mine = getReqs().filter(r => r.userNc === session.nc).sort((a,b) => b.createdAt - a.createdAt);
   if (!mine.length){ box.innerHTML = `<div class="empty">درخواستی نیست.</div>`; return; }
   box.innerHTML = mine.map(r => `
     <div class="req-card">
@@ -1128,12 +1454,14 @@ function statusBadge(s){
   return `<span class="badge badge-pend">در انتظار</span>`;
 }
 
+/* --- پیام --- */
 function renderUserMessages(){
+  const box = $("#uMsgList");
+  if (!box) return;
   const all = getMsgs().filter(m =>
     (m.from === session.nc && m.to === "admin") ||
     (m.from === "admin" && m.to === session.nc)
   ).sort((a,b) => a.createdAt - b.createdAt);
-  const box = $("#uMsgList");
   if (!all.length){ box.innerHTML = `<div class="empty">پیامی نیست.</div>`; return; }
   box.innerHTML = all.map(m => `
     <div class="msg-row">
@@ -1162,39 +1490,110 @@ function sendUserMsg(){
 }
 
 function switchUTab(t){
-  $$(".tab").forEach(b => b.classList.toggle("active", b.dataset.tab === t));
-  ["entry","history","requests","messages"].forEach(x => $("#u-tab-" + x).classList.toggle("hidden", x !== t));
+  $$("#uTabs .tab").forEach(b => b.classList.toggle("active", b.dataset.tab === t));
+  ["entry","history","hours","mysalary","requests","messages"].forEach(x => {
+    const el = $("#u-tab-" + x);
+    if (el) el.classList.toggle("hidden", x !== t);
+  });
   if (t === "requests") renderUserReqs();
   if (t === "messages") renderUserMessages();
   if (t === "history") renderUserHistory();
+  if (t === "mysalary") renderMySalary();
+  if (t === "hours") renderUserHours();
 }
 
-/* ============ Admin Panel ============ */
-let selectedChatUser = null;
+/* =========================================================
+   ADMIN / ACCOUNTANT PANEL
+   ========================================================= */
+function buildAdminTabs(){
+  const role = getRole(session);
+  const tabs = [{ id: "dash", label: "📊 داشبورد" }];
+
+  if (isAdmin()){
+    tabs.push({ id: "today", label: "📅 حضور امروز" });
+    tabs.push({ id: "reports", label: "🗂 گزارش‌ها" });
+  }
+
+  tabs.push({ id: "requests", label: "📋 درخواست‌ها" });
+  tabs.push({ id: "messages", label: "💬 پیام‌ها" });
+
+  if (isAdmin()){
+    tabs.push({ id: "broadcast", label: "📢 اعلان" });
+    tabs.push({ id: "users", label: "👥 مدیریت کاربران" });
+  }
+
+  tabs.push({ id: "hours", label: "⏰ ساعت کار" });
+  tabs.push({ id: "salary", label: "💰 محاسبه حقوق" });
+
+  if (isAdmin()){
+    tabs.push({ id: "sync", label: "🔄 اتاق سینک" });
+    tabs.push({ id: "data", label: "💾 داده‌ها" });
+  }
+
+  const box = $("#aTabs");
+  box.innerHTML = tabs.map((t, i) =>
+    `<button class="tab ${i===0?'active':''}" data-atab="${t.id}" onclick="switchATab('${t.id}')">${t.label}</button>`
+  ).join("");
+
+  ["dash","today","reports","requests","messages","broadcast","users","hours","salary","sync","data"].forEach(x => {
+    const el = $("#a-tab-" + x);
+    if (el) el.classList.add("hidden");
+  });
+  const firstEl = $("#a-tab-" + (tabs[0]?.id || "dash"));
+  if (firstEl) firstEl.classList.remove("hidden");
+}
 
 function initAdmin(){
-  const sel = $("#flUser");
-  sel.innerHTML = `<option value="">همه کاربران</option>` +
-    getUsers().filter(u => u.role === "user").map(u => `<option value="${esc(u.nc)}">${esc(u.name)} — ${esc(u.nc)}</option>`).join("");
-  renderDash(); renderToday(); renderAdminReports();
+  $("#aRoleBadge").outerHTML = roleBadge(getRole(session)).replace('class="badge', 'id="aRoleBadge" class="badge');
+  buildAdminTabs();
+
+  // populate user selects
+  const users = getUsers().filter(u => getRole(u) !== "admin" || isAdmin());
+  const optsUsers = users.map(u => `<option value="${esc(u.nc)}">${esc(u.name)} — ${roleLabel(getRole(u))}</option>`).join("");
+
+  if ($("#flUser")) $("#flUser").innerHTML = `<option value="">همه کاربران</option>` + optsUsers;
+  if ($("#ahUser")) $("#ahUser").innerHTML = optsUsers;
+  if ($("#ahFilterUser")) $("#ahFilterUser").innerHTML = `<option value="">همه کاربران</option>` + optsUsers;
+  if ($("#salUser")) $("#salUser").innerHTML = optsUsers;
+
+  // init year select
+  if ($("#salYear")){
+    const y = new Date().getFullYear();
+    $("#salYear").innerHTML = [y-1, y, y+1].map(x => `<option value="${x}">${x}</option>`).join("");
+    $("#salYear").value = y;
+  }
+  if ($("#salMonth")){
+    $("#salMonth").value = String(new Date().getMonth() + 1).padStart(2, "0");
+  }
+
+  renderDash();
+  if (isAdmin()) { renderToday(); renderAdminReports(); }
   renderAdminReqs(); renderUserPick(); renderBCList();
+  if (isAdmin()) renderUsersList();
+  renderAdminHours();
+  renderSalaryHistory();
   renderSyncTab();
-  switchATab("dash");
 }
 
 function switchATab(t){
-  $$(".tab").forEach(b => b.classList.toggle("active", b.dataset.atab === t));
-  ["dash","today","reports","requests","messages","broadcast","sync","data"].forEach(x =>
-    $("#a-tab-" + x).classList.toggle("hidden", x !== t));
+  $$("#aTabs .tab").forEach(b => b.classList.toggle("active", b.dataset.atab === t));
+  ["dash","today","reports","requests","messages","broadcast","users","hours","salary","sync","data"].forEach(x => {
+    const el = $("#a-tab-" + x);
+    if (el) el.classList.toggle("hidden", x !== t);
+  });
   if (t === "dash") renderDash();
   if (t === "today") renderToday();
   if (t === "reports") renderAdminReports();
   if (t === "requests") renderAdminReqs();
   if (t === "messages") renderUserPick();
   if (t === "broadcast") renderBCList();
+  if (t === "users") renderUsersList();
+  if (t === "hours") renderAdminHours();
+  if (t === "salary") renderSalaryHistory();
   if (t === "sync") renderSyncTab();
 }
 
+/* --- داشبورد --- */
 function dateRange(period){
   const recs = getRecs();
   const now = new Date();
@@ -1207,37 +1606,36 @@ function dateRange(period){
 }
 
 function renderDash(){
-  const today = dateRange("today");
-  const week  = dateRange("week");
-  const month = dateRange("month");
-  const all   = getRecs();
-  const todayKeyStr = todayKey();
-  const todayCount = all.filter(r => r.date === todayKeyStr).length;
+  const today = dateRange("today"), week = dateRange("week"), month = dateRange("month"), all = getRecs();
+  const todayCount = all.filter(r => r.date === todayKey()).length;
   const pendReq = getReqs().filter(r => r.status === "pending").length;
+  const salaries = getSalaries();
+  const thisMonth = String(new Date().getMonth() + 1).padStart(2, "0");
+  const thisYear = String(new Date().getFullYear());
+  const monthSalaryTotal = salaries.filter(s => s.month === thisMonth && s.year === thisYear).reduce((a,b) => a + b.total, 0);
 
-  $("#dToday").textContent = toman(today.reduce((s,r) => s+r.total, 0));
-  $("#dWeek").textContent  = toman(week.reduce((s,r) => s+r.total, 0));
-  $("#dMonth").textContent = toman(month.reduce((s,r) => s+r.total, 0));
-  $("#dAll").textContent   = toman(all.reduce((s,r) => s+r.total, 0));
-  $("#dCntToday").textContent = faNum(todayCount);
-  $("#dCntWeek").textContent  = faNum(all.filter(r => r.createdAt >= (Date.now() - 7*86400000)).length);
-  $("#dCntMonth").textContent = faNum(all.filter(r => r.createdAt >= (Date.now() - 30*86400000)).length);
-  $("#dPendReq").textContent  = faNum(pendReq);
+  if ($("#dToday")) $("#dToday").textContent = toman(today.reduce((s,r) => s+r.total, 0));
+  if ($("#dWeek"))  $("#dWeek").textContent  = toman(week.reduce((s,r) => s+r.total, 0));
+  if ($("#dMonth")) $("#dMonth").textContent = toman(month.reduce((s,r) => s+r.total, 0));
+  if ($("#dAll"))   $("#dAll").textContent   = toman(all.reduce((s,r) => s+r.total, 0));
+  if ($("#dStaff")) $("#dStaff").textContent = faNum(getUsers().filter(u => getRole(u) !== "admin").length);
+  if ($("#dCntToday")) $("#dCntToday").textContent = faNum(todayCount);
+  if ($("#dPendReq"))  $("#dPendReq").textContent  = faNum(pendReq);
+  if ($("#dSalaryTotal")) $("#dSalaryTotal").textContent = toman(monthSalaryTotal);
 
   const days = [];
   for (let i = 6; i >= 0; i--){
     const d = new Date(); d.setDate(d.getDate() - i);
     const key = new Intl.DateTimeFormat("fa-IR-u-nu-latn",{year:"numeric",month:"2-digit",day:"2-digit"}).format(d);
-    const total = all.filter(r => r.date === key).reduce((s,r) => s+r.total, 0);
-    days.push({ key, total });
+    days.push({ key, total: all.filter(r => r.date === key).reduce((s,r) => s+r.total, 0) });
   }
   const max = Math.max(...days.map(d => d.total), 1);
-  $("#chart7").innerHTML = `
+  if ($("#chart7")) $("#chart7").innerHTML = `
     <div style="display:flex;gap:10px;align-items:flex-end;height:220px;padding:10px 4px">
       ${days.map(d => `
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end">
           <div style="font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums">${faNum(d.total)}</div>
-          <div style="width:100%;max-width:50px;height:${Math.max(6,(d.total/max)*160)}px;border-radius:8px 8px 2px 2px;background:linear-gradient(180deg,#c9a7eb,#7fd8e8);box-shadow:0 0 18px rgba(150,120,220,.4)"></div>
+          <div style="width:100%;max-width:50px;height:${Math.max(6,(d.total/max)*160)}px;border-radius:8px 8px 2px 2px;background:linear-gradient(180deg,#c9a7eb,#7fd8e8);"></div>
           <div style="font-size:11px;color:var(--muted)">${esc(d.key.slice(5))}</div>
         </div>
       `).join("")}
@@ -1245,26 +1643,40 @@ function renderDash(){
   `;
 }
 
+/* --- حضور --- */
 function renderToday(){
-  const users = getUsers().filter(u => u.role === "user");
+  const box = $("#todayList");
+  if (!box) return;
+  const users = getUsers().filter(u => getRole(u) !== "admin");
   const today = todayKey();
   const recs = getRecs().filter(r => r.date === today);
+  const hoursToday = getHours().filter(h => h.date === today);
   const reqs = getReqs();
-  $("#todayList").innerHTML = users.map(u => {
+
+  box.innerHTML = users.map(u => {
     const rec = recs.find(r => r.userNc === u.nc);
+    const hrs = hoursToday.filter(h => h.userNc === u.nc);
     const leave = reqs.find(r => r.userNc === u.nc && r.status === "approved" && (r.from === today || r.to === today));
-    let status, cls, sum = "—";
-    if (rec){ status = "✅ گزارش ثبت شده"; cls = "badge-ok"; sum = toman(rec.total); }
-    else if (leave){ status = "🏖 در مرخصی"; cls = "badge-pend"; sum = "—"; }
-    else { status = "❌ ثبت نشده"; cls = "badge-rej"; sum = "—"; }
+    let status, cls, extra = "";
+    if (rec){ status = "✅ گزارش فروش"; cls = "badge-ok"; extra = toman(rec.total); }
+    else if (hrs.length){ status = "⏰ ساعت کار ثبت شده"; cls = "badge-seller"; extra = faNum(hrs.reduce((s,h) => s+h.normal+h.ot, 0)) + " ساعت"; }
+    else if (leave){ status = "🏖 در مرخصی"; cls = "badge-pend"; }
+    else { status = "❌ ثبت نشده"; cls = "badge-rej"; }
     return `
-      <div class="req-card" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:center">
-        <div><b>${esc(u.name)}</b><br><small style="color:var(--muted)">کد: ${esc(u.nc)}</small></div>
-        <div style="text-align:left"><span class="badge ${cls}">${status}</span>${rec ? `<div class="money" style="margin-top:6px">${sum}</div>` : ""}</div>
+      <div class="user-card">
+        <div>
+          <b>${esc(u.name)}</b> ${roleBadge(getRole(u))}<br>
+          <small style="color:var(--muted)">کد: ${esc(u.nc)}</small>
+        </div>
+        <div style="text-align:left">
+          <span class="badge ${cls}">${status}</span>
+          ${extra ? `<div class="money" style="margin-top:6px">${extra}</div>` : ""}
+        </div>
       </div>`;
   }).join("");
 }
 
+/* --- گزارش‌ها --- */
 function filteredRecs(){
   const u = $("#flUser") ? $("#flUser").value : "";
   const f = normDigits($("#flFrom")?.value || "");
@@ -1277,8 +1689,9 @@ function filteredRecs(){
 }
 
 function renderAdminReports(){
-  const recs = filteredRecs();
   const box = $("#adminTable");
+  if (!box) return;
+  const recs = filteredRecs();
   if (!recs.length){ box.innerHTML = `<div class="empty">گزارشی نیست.</div>`; return; }
   box.innerHTML = `
     <div class="tbl-wrap"><table>
@@ -1304,8 +1717,7 @@ function renderAdminReports(){
             </td>
           </tr>`;
       }).join("")}</tbody>
-    </table></div>
-  `;
+    </table></div>`;
 }
 function clearFilters(){
   if ($("#flUser")) $("#flUser").value = "";
@@ -1343,9 +1755,11 @@ function delRec(id){
   renderAdminReports(); renderDash(); renderToday();
 }
 
+/* --- درخواست‌ها --- */
 function renderAdminReqs(){
-  const reqs = getReqs().sort((a,b) => b.createdAt - a.createdAt);
   const box = $("#adminReqList");
+  if (!box) return;
+  const reqs = getReqs().sort((a,b) => b.createdAt - a.createdAt);
   if (!reqs.length){ box.innerHTML = `<div class="empty">درخواستی نیست.</div>`; return; }
   box.innerHTML = reqs.map(r => `
     <div class="req-card">
@@ -1371,14 +1785,11 @@ function approveReq(id){
   const reqs = getReqs();
   const r = reqs.find(x => x.id === id);
   if (!r) return;
-  r.status = "approved";
-  setReqs(reqs);
+  r.status = "approved"; setReqs(reqs);
   const notifs = getNotifs();
-  notifs.push({
-    id: uid(), to: r.userNc, from: "مدیر",
+  notifs.push({ id: uid(), to: r.userNc, from: "مدیر",
     text: `✅ درخواست ${r.type} شما با کد ${r.code} تأیید شد.`,
-    date: todayKey(), time: nowTime(), createdAt: Date.now()
-  });
+    date: todayKey(), time: nowTime(), createdAt: Date.now() });
   setNotifs(notifs);
   renderAdminReqs(); renderDash();
 }
@@ -1388,15 +1799,11 @@ function rejectReq(id){
   if (!r) return;
   const note = prompt("دلیل رد:", r.adminNote || "");
   if (note === null) return;
-  r.status = "rejected";
-  r.adminNote = note;
-  setReqs(reqs);
+  r.status = "rejected"; r.adminNote = note; setReqs(reqs);
   const notifs = getNotifs();
-  notifs.push({
-    id: uid(), to: r.userNc, from: "مدیر",
+  notifs.push({ id: uid(), to: r.userNc, from: "مدیر",
     text: `❌ درخواست ${r.type} شما با کد ${r.code} رد شد. ${note ? "دلیل: " + note : ""}`,
-    date: todayKey(), time: nowTime(), createdAt: Date.now()
-  });
+    date: todayKey(), time: nowTime(), createdAt: Date.now() });
   setNotifs(notifs);
   renderAdminReqs(); renderDash();
 }
@@ -1406,14 +1813,16 @@ function updateReqNote(id, note){
   if (r){ r.adminNote = note; setReqs(reqs); }
 }
 
+/* --- پیام‌ها --- */
 function renderUserPick(){
-  const users = getUsers().filter(u => u.role === "user");
   const box = $("#userPickList");
+  if (!box) return;
+  const users = getUsers().filter(u => getRole(u) !== "admin");
   box.innerHTML = users.map(u => {
     const unread = getMsgs().filter(m => m.from === u.nc && m.to === "admin" && !m.read).length;
     return `
       <div class="pick ${selectedChatUser === u.nc ? "active" : ""}" onclick="openChat('${u.nc}')">
-        <div><b>${esc(u.name)}</b><br><small style="color:var(--muted)">${esc(u.nc)}</small></div>
+        <div><b>${esc(u.name)}</b> ${roleBadge(getRole(u))}<br><small style="color:var(--muted)">${esc(u.nc)}</small></div>
         ${unread ? `<span class="badge badge-pend">${faNum(unread)} پیام</span>` : ""}
       </div>`;
   }).join("");
@@ -1459,6 +1868,7 @@ function sendAdminMsg(){
   openChat(selectedChatUser);
 }
 
+/* --- اعلان --- */
 function broadcastMsg(){
   const text = $("#bcText").value.trim();
   if (!text) return alert("متن خالی است.");
@@ -1466,19 +1876,18 @@ function broadcastMsg(){
   bcs.push({ id: uid(), text, date: todayKey(), time: nowTime(), createdAt: Date.now() });
   setBC(bcs);
   const notifs = getNotifs();
-  getUsers().filter(u => u.role === "user").forEach(u => {
-    notifs.push({
-      id: uid(), to: u.nc, from: "مدیر", text,
-      date: todayKey(), time: nowTime(), createdAt: Date.now()
-    });
+  getUsers().forEach(u => {
+    notifs.push({ id: uid(), to: u.nc, from: "مدیر", text,
+      date: todayKey(), time: nowTime(), createdAt: Date.now() });
   });
   setNotifs(notifs);
   showMsg($("#aAlert"), "✅ اعلان ارسال شد.", "ok");
   renderBCList();
 }
 function renderBCList(){
-  const list = getBC().sort((a,b) => b.createdAt - a.createdAt);
   const box = $("#bcList");
+  if (!box) return;
+  const list = getBC().sort((a,b) => b.createdAt - a.createdAt);
   if (!list.length){ box.innerHTML = `<div class="empty">اعلانی نیست.</div>`; return; }
   box.innerHTML = list.map(b => `
     <div class="req-card">
@@ -1487,10 +1896,369 @@ function renderBCList(){
     </div>`).join("");
 }
 
+/* =========================================================
+   USER MANAGEMENT
+   ========================================================= */
+function renderUsersList(){
+  const box = $("#usersList");
+  if (!box) return;
+  const users = getUsers();
+  if (!users.length){ box.innerHTML = `<div class="empty">کاربری نیست.</div>`; return; }
+  box.innerHTML = users.map(u => {
+    const role = getRole(u);
+    const hours = getHours().filter(h => h.userNc === u.nc);
+    const totalN = hours.reduce((s,h) => s + h.normal, 0);
+    const totalOT = hours.reduce((s,h) => s + h.ot, 0);
+    const canEdit = role !== "admin" || isAdmin();
+    return `
+      <div class="user-card">
+        <div style="flex:1;min-width:200px">
+          <b>${esc(u.name)}</b> ${roleBadge(role)}
+          <div style="color:var(--muted);font-size:12.5px;margin-top:6px">
+            کد ملی: <span class="code-badge">${esc(u.nc)}</span>
+            ${u.hireDate ? ` • استخدام: ${esc(u.hireDate)}` : ""}
+          </div>
+          <div style="color:var(--muted);font-size:12.5px;margin-top:6px">
+            ${u.hourlyRate ? `💵 دستمزد ساعتی: ${toman(u.hourlyRate)}` : ""}
+            ${u.commission ? ` • 📈 پورسانت: ${faNum(u.commission)}%` : ""}
+          </div>
+          ${hours.length ? `<div style="margin-top:6px;color:var(--muted);font-size:12px">⏰ مجموع: ${faNum(totalN)} ساعت عادی${totalOT ? ` + ${faNum(totalOT)} اضافه‌کار` : ""}</div>` : ""}
+          ${u.note ? `<div class="note-box" style="margin-top:8px;font-size:12px">${esc(u.note)}</div>` : ""}
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          ${canEdit ? `
+            <button class="btn btn-ghost btn-sm" onclick="openUserModal('${esc(u.nc)}')">✏️ ویرایش</button>
+            ${role !== "admin" ? `<button class="btn btn-danger btn-sm" onclick="deleteUser('${esc(u.nc)}')">🗑 حذف</button>` : ""}
+          ` : ""}
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+function genRandomNc(){
+  let nc = "";
+  for (let i = 0; i < 10; i++) nc += Math.floor(Math.random() * 10);
+  // اطمینان از یکتا بودن
+  if (getUsers().some(u => u.nc === nc)) return genRandomNc();
+  $("#umNc").value = nc;
+}
+function genRandomPass(){
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789";
+  let pass = "";
+  for (let i = 0; i < 10; i++) pass += chars[Math.floor(Math.random() * chars.length)];
+  $("#umPass").value = pass;
+}
+
+function openUserModal(nc){
+  const modal = $("#userModal");
+  $("#umMsg").innerHTML = "";
+  if (nc){
+    const u = getUsers().find(x => x.nc === nc);
+    if (!u) return;
+    $("#userModalTitle").textContent = "ویرایش کاربر: " + u.name;
+    $("#umOldNc").value = u.nc;
+    $("#umName").value = u.name;
+    $("#umRole").value = getRole(u);
+    $("#umNc").value = u.nc;
+    $("#umPass").value = u.pass;
+    $("#umHourly").value = u.hourlyRate || 0;
+    $("#umCommission").value = u.commission || 0;
+    $("#umHire").value = u.hireDate || "";
+    $("#umBenefits").value = u.benefits || 0;
+    $("#umNote").value = u.note || "";
+  } else {
+    $("#userModalTitle").textContent = "افزودن کاربر جدید";
+    $("#umOldNc").value = "";
+    $("#umName").value = "";
+    $("#umRole").value = "seller";
+    $("#umNc").value = "";
+    $("#umPass").value = "";
+    $("#umHourly").value = 0;
+    $("#umCommission").value = 0;
+    $("#umHire").value = "";
+    $("#umBenefits").value = 0;
+    $("#umNote").value = "";
+  }
+  modal.classList.remove("hidden");
+}
+function closeUserModal(){ $("#userModal").classList.add("hidden"); }
+
+function saveUser(){
+  const box = $("#umMsg");
+  const oldNc = $("#umOldNc").value;
+  const name = $("#umName").value.trim();
+  const nc = normDigits($("#umNc").value);
+  const pass = $("#umPass").value.trim();
+  const role = $("#umRole").value;
+  const hourlyRate = Number(normDigits($("#umHourly").value) || 0);
+  const commission = Number(normDigits($("#umCommission").value) || 0);
+  const hireDate = $("#umHire").value.trim();
+  const benefits = Number(normDigits($("#umBenefits").value) || 0);
+  const note = $("#umNote").value.trim();
+
+  if (!name) return showMsg(box, "نام را وارد کنید.", "error");
+  if (!nc) return showMsg(box, "کد ملی را وارد کنید.", "error");
+  if (!pass || pass.length < 4) return showMsg(box, "رمز حداقل ۴ کاراکتر باشد.", "error");
+
+  const users = getUsers();
+  // چک تکراری
+  const dup = users.find(u => u.nc === nc && u.nc !== oldNc);
+  if (dup) return showMsg(box, "این کد ملی قبلاً استفاده شده است.", "error");
+
+  if (oldNc){
+    // ویرایش
+    const idx = users.findIndex(u => u.nc === oldNc);
+    if (idx === -1) return showMsg(box, "کاربر پیدا نشد.", "error");
+    // اگر کد ملی عوض شد، رکوردها رو هم آپدیت کن
+    if (oldNc !== nc){
+      const recs = getRecs().map(r => r.userNc === oldNc ? {...r, userNc: nc, userName: name} : r);
+      setRecs(recs);
+      const hours = getHours().map(h => h.userNc === oldNc ? {...h, userNc: nc, userName: name} : h);
+      setHours(hours);
+      const salaries = getSalaries().map(s => s.userNc === oldNc ? {...s, userNc: nc, userName: name} : s);
+      setSalaries(salaries);
+      const reqs = getReqs().map(r => r.userNc === oldNc ? {...r, userNc: nc, userName: name} : r);
+      setReqs(reqs);
+      const msgs = getMsgs().map(m => {
+        if (m.from === oldNc) return {...m, from: nc};
+        if (m.to === oldNc) return {...m, to: nc};
+        return m;
+      });
+      setMsgs(msgs);
+      const notifs = getNotifs().map(n => n.to === oldNc ? {...n, to: nc} : n);
+      setNotifs(notifs);
+    }
+    users[idx] = { ...users[idx], nc, name, pass, role, hourlyRate, commission, hireDate, benefits, note };
+    setUsers(users);
+    showMsg(box, "✅ کاربر ویرایش شد.", "ok");
+  } else {
+    users.push({ nc, pass, name, role, hourlyRate, commission, hireDate, benefits, note });
+    setUsers(users);
+    showMsg(box, "✅ کاربر جدید اضافه شد.", "ok");
+  }
+  setTimeout(() => { closeUserModal(); initAdmin(); }, 800);
+}
+
+function deleteUser(nc){
+  const u = getUsers().find(x => x.nc === nc);
+  if (!u) return;
+  if (getRole(u) === "admin") return alert("نمی‌توان مدیر اصلی را حذف کرد.");
+  if (!confirm(`کاربر «${u.name}» حذف شود؟ گزارش‌ها و ساعت‌های او باقی می‌مانند.`)) return;
+  setUsers(getUsers().filter(x => x.nc !== nc));
+  initAdmin();
+}
+
+/* =========================================================
+   HOURS MANAGEMENT
+   ========================================================= */
+function adminSubmitHours(){
+  const box = $("#adminHoursMsg");
+  const userNc = $("#ahUser").value;
+  const date = $("#ahDate").value.trim() || todayKey();
+  const n = Number(normDigits($("#ahNormal").value) || 0);
+  const ot = Number(normDigits($("#ahOT").value) || 0);
+  const otRate = Number(normDigits($("#ahOTRate").value) || CONFIG.overtimeRateDefault);
+  const note = $("#ahNote").value.trim();
+  if (!userNc) return showMsg(box, "کاربر را انتخاب کنید.", "error");
+  if (n <= 0 && ot <= 0) return showMsg(box, "ساعت را وارد کنید.", "error");
+  const user = getUsers().find(u => u.nc === userNc);
+  const hours = getHours();
+  hours.push({
+    id: uid(), userNc, userName: user?.name || "", date,
+    normal: n, ot, otRate, note, createdAt: Date.now(), enteredBy: session.name
+  });
+  setHours(hours);
+  $("#ahNormal").value = ""; $("#ahOT").value = ""; $("#ahNote").value = "";
+  showMsg(box, "✅ ساعت کار ثبت شد.", "ok");
+  renderAdminHours();
+}
+
+function renderAdminHours(){
+  const box = $("#adminHoursList");
+  if (!box) return;
+  const filter = $("#ahFilterUser") ? $("#ahFilterUser").value : "";
+  const list = getHours()
+    .filter(h => !filter || h.userNc === filter)
+    .sort((a,b) => b.createdAt - a.createdAt);
+  if (!list.length){ box.innerHTML = `<div class="empty">ساعتی ثبت نشده.</div>`; return; }
+  box.innerHTML = `
+    <div class="tbl-wrap"><table>
+      <thead><tr>
+        <th>کاربر</th><th>تاریخ</th><th>ساعت عادی</th><th>اضافه‌کار</th><th>ضریب OT</th><th>توضیحات</th><th>ثبت توسط</th><th>حذف</th>
+      </tr></thead>
+      <tbody>${list.map(h => `
+        <tr>
+          <td>${esc(h.userName)}</td>
+          <td>${esc(h.date)}</td>
+          <td>${faNum(h.normal)}</td>
+          <td>${h.ot ? faNum(h.ot) : "—"}</td>
+          <td>${h.ot ? faNum(h.otRate) : "—"}</td>
+          <td style="color:var(--muted);font-size:12.5px">${esc(h.note || "—")}</td>
+          <td style="color:var(--muted);font-size:12px">${esc(h.enteredBy || "—")}</td>
+          <td><button class="btn btn-danger btn-sm" onclick="delHours('${h.id}')">🗑</button></td>
+        </tr>
+      `).join("")}</tbody>
+    </table></div>`;
+}
+function delHours(id){
+  if (!confirm("این رکورد حذف شود؟")) return;
+  setHours(getHours().filter(h => h.id !== id));
+  renderAdminHours();
+}
+
+/* =========================================================
+   SALARY CALCULATION
+   ========================================================= */
+function calcSalary(){
+  const box = $("#salaryMsg");
+  const userNc = $("#salUser").value;
+  const month = $("#salMonth").value;
+  const year = $("#salYear").value;
+  if (!userNc) return showMsg(box, "کاربر را انتخاب کنید.", "error");
+  const user = getUsers().find(u => u.nc === userNc);
+  if (!user) return showMsg(box, "کاربر پیدا نشد.", "error");
+
+  // فیلتر ساعت‌های ماه (بر اساس ماه میلادی برای سادگی)
+  const monthInt = parseInt(month, 10);
+  const yearInt = parseInt(year, 10);
+  const hours = getHours().filter(h => {
+    if (h.userNc !== userNc) return false;
+    // تاریخ ذخیره‌شده به صورت شمسی است — از createdAt برای فیلتر ماه استفاده می‌کنیم
+    const d = new Date(h.createdAt);
+    return (d.getMonth() + 1) === monthInt && d.getFullYear() === yearInt;
+  });
+
+  const normalHours = hours.reduce((s,h) => s + h.normal, 0);
+  const otHours = hours.reduce((s,h) => s + h.ot, 0);
+  const avgOtRate = hours.length ? (hours.reduce((s,h) => s + h.otRate, 0) / hours.length) : CONFIG.overtimeRateDefault;
+
+  const hourlyRate = user.hourlyRate || 0;
+  const baseSalary = normalHours * hourlyRate;
+  const otPay = otHours * hourlyRate * avgOtRate;
+
+  // پورسانت بر اساس مجموع فروش ماه
+  const monthRecs = getRecs().filter(r => {
+    if (r.userNc !== userNc) return false;
+    const d = new Date(r.createdAt);
+    return (d.getMonth() + 1) === monthInt && d.getFullYear() === yearInt;
+  });
+  const monthSales = monthRecs.reduce((s,r) => s + r.total, 0);
+  const commissionPct = user.commission || 0;
+  const commission = Math.round(monthSales * commissionPct / 100);
+
+  const benefits = user.benefits || 0;
+  const deductions = 0; // قابل تنظیم - بعداً اضافه می‌کنیم
+
+  const total = baseSalary + otPay + commission + benefits - deductions;
+
+  const sal = {
+    id: uid(),
+    userNc, userName: user.name,
+    month, year,
+    date: todayKey(),
+    normalHours, otHours, otRate: avgOtRate,
+    hourlyRate,
+    baseSalary, otPay, commissionPct, commission, benefits, deductions, total,
+    monthSales,
+    note: "",
+    createdAt: Date.now(),
+    issuedBy: session.name
+  };
+
+  // ذخیره موقت در یک متغیر برای ارسال
+  window._pendingSalary = sal;
+
+  $("#salaryPreview").innerHTML = `
+    <div class="payslip">
+      <div style="display:flex;justify-content:space-between;margin-bottom:14px">
+        <div>
+          <b style="font-size:16px">${esc(user.name)}</b> ${roleBadge(getRole(user))}<br>
+          <small style="color:var(--muted)">کد ملی: ${esc(userNc)}</small>
+        </div>
+        <div style="text-align:left;color:var(--muted);font-size:12.5px">
+          دوره: ${esc(month)}/${esc(year)}<br>
+          فروش ماه: ${toman(monthSales)}
+        </div>
+      </div>
+      <div class="payslip-row"><span>ساعت کار عادی</span><span>${faNum(normalHours)} ساعت</span></div>
+      <div class="payslip-row"><span>نرخ هر ساعت</span><span>${toman(hourlyRate)}</span></div>
+      <div class="payslip-row"><span>حقوق پایه</span><span>${toman(baseSalary)}</span></div>
+      ${otHours ? `<div class="payslip-row"><span>اضافه‌کار (${faNum(otHours)} ساعت × ${faNum(avgOtRate)})</span><span>${toman(otPay)}</span></div>` : ""}
+      ${commission ? `<div class="payslip-row"><span>پورسانت فروش (${faNum(commissionPct)}%)</span><span>${toman(commission)}</span></div>` : ""}
+      ${benefits ? `<div class="payslip-row"><span>مزایا</span><span>${toman(benefits)}</span></div>` : ""}
+      ${deductions ? `<div class="payslip-row" style="color:var(--danger)"><span>کسورات</span><span>-${toman(deductions)}</span></div>` : ""}
+      <div class="payslip-row total"><span>جمع کل قابل پرداخت</span><span>${toman(total)}</span></div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+      <button class="btn btn-gold" onclick="issueSalary()">📤 صدور و ارسال فیش به ${esc(user.name)}</button>
+    </div>
+  `;
+}
+
+function issueSalary(){
+  const sal = window._pendingSalary;
+  if (!sal) return;
+  const salaries = getSalaries();
+  salaries.push(sal);
+  setSalaries(salaries);
+
+  // ارسال اعلان به کاربر
+  const notifs = getNotifs();
+  notifs.push({
+    id: uid(), to: sal.userNc, from: "حسابدار",
+    text: `💰 فیش حقوقی شما برای دوره ${sal.month}/${sal.year} صادر شد. مبلغ قابل پرداخت: ${toman(sal.total)}`,
+    date: todayKey(), time: nowTime(), createdAt: Date.now()
+  });
+  setNotifs(notifs);
+
+  showMsg($("#salaryMsg"), "✅ فیش صادر و به کاربر ارسال شد.", "ok");
+  $("#salaryPreview").innerHTML = "";
+  window._pendingSalary = null;
+  renderSalaryHistory();
+}
+
+function renderSalaryHistory(){
+  const box = $("#salaryHistory");
+  if (!box) return;
+  const list = getSalaries().sort((a,b) => b.createdAt - a.createdAt);
+  if (!list.length){ box.innerHTML = `<div class="empty">فیشی صادر نشده.</div>`; return; }
+  box.innerHTML = list.map(s => {
+    const user = getUsers().find(u => u.nc === s.userNc);
+    return `
+      <div class="user-card">
+        <div>
+          <b>${esc(user?.name || s.userName)}</b><br>
+          <small style="color:var(--muted)">دوره: ${esc(s.month)}/${esc(s.year)} • صادر شده در ${esc(s.date)} توسط ${esc(s.issuedBy || "—")}</small>
+        </div>
+        <div style="text-align:left">
+          <span class="money" style="font-size:16px">${toman(s.total)}</span><br>
+          <button class="btn btn-ghost btn-sm mt-s" onclick="viewSalary('${s.id}')">مشاهده فیش</button>
+          <button class="btn btn-danger btn-sm" onclick="delSalary('${s.id}')">حذف</button>
+        </div>
+      </div>`;
+  }).join("");
+}
+function viewSalary(id){
+  const s = getSalaries().find(x => x.id === id);
+  if (!s) return;
+  $("#recDetail").innerHTML = renderPayslip(s) + `<button class="btn btn-ghost mt" onclick="closeRecModal()">بستن</button>`;
+  $("#recModal").classList.remove("hidden");
+}
+function delSalary(id){
+  if (!confirm("این فیش حذف شود؟")) return;
+  setSalaries(getSalaries().filter(s => s.id !== id));
+  renderSalaryHistory();
+}
+
+/* =========================================================
+   DATA
+   ========================================================= */
 function exportAll(){
   const data = {
     users: getUsers(), recs: getRecs(), reqs: getReqs(),
     msgs: getMsgs(), notifs: getNotifs(), bc: getBC(),
+    hours: getHours(), salaries: getSalaries(),
     exportedAt: new Date().toISOString()
   };
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
@@ -1507,12 +2275,14 @@ function importAll(e){
     try {
       const data = JSON.parse(fr.result);
       if (!confirm("داده‌های فعلی جایگزین می‌شوند. ادامه؟")) return;
-      if (data.users)  save(K.users, data.users);
-      if (data.recs)   save(K.recs, data.recs);
-      if (data.reqs)   save(K.reqs, data.reqs);
-      if (data.msgs)   save(K.msgs, data.msgs);
-      if (data.notifs) save(K.notifs, data.notifs);
-      if (data.bc)     save(K.bc, data.bc);
+      if (data.users)    save(K.users, data.users);
+      if (data.recs)     save(K.recs, data.recs);
+      if (data.reqs)     save(K.reqs, data.reqs);
+      if (data.msgs)     save(K.msgs, data.msgs);
+      if (data.notifs)   save(K.notifs, data.notifs);
+      if (data.bc)       save(K.bc, data.bc);
+      if (data.hours)    save(K.hours, data.hours);
+      if (data.salaries) save(K.salary, data.salaries);
       alert("✅ بارگذاری شد.");
       location.reload();
     } catch(err){ alert("فایل نامعتبر."); }
@@ -1534,7 +2304,7 @@ function exportCSV(){
   a.click();
 }
 function wipeRecs(){
-  if (!confirm("همه گزارش‌ها پاک شوند؟")) return;
+  if (!confirm("همه گزارش‌های فروش پاک شوند؟")) return;
   setRecs([]); renderDash(); renderAdminReports(); renderToday();
 }
 function wipeAll(){
@@ -1553,6 +2323,9 @@ function cleanOldRecs(){
   alert("✅ انجام شد.");
 }
 
+/* =========================================================
+   PASSWORD
+   ========================================================= */
 function openChangePass(){
   $("#pmOld").value = ""; $("#pmNew").value = ""; $("#pmNew2").value = "";
   $("#pmMsg").innerHTML = "";
@@ -1565,7 +2338,7 @@ function saveNewPass(){
   const n2   = normDigits($("#pmNew2").value);
   const box  = $("#pmMsg");
   if (!oldP || !n1 || !n2) return showMsg(box, "همه فیلدها الزامی است.", "error");
-  if (oldP !== session.pass) return showMsg(box, "رمز فعلی اشتباه است.", "error");
+  if (normDigits(oldP) !== normDigits(session.pass)) return showMsg(box, "رمز فعلی اشتباه است.", "error");
   if (n1.length < 6) return showMsg(box, "رمز جدید حداقل ۶ کاراکتر.", "error");
   if (n1 !== n2) return showMsg(box, "تکرار رمز مطابقت ندارد.", "error");
   const users = getUsers();
@@ -1576,7 +2349,9 @@ function saveNewPass(){
   setTimeout(closeChangePass, 1200);
 }
 
-/* ============ Init ============ */
+/* =========================================================
+   INIT
+   ========================================================= */
 (function init(){
   const sess = load(K.sess, null);
   if (sess){
@@ -1590,8 +2365,14 @@ document.addEventListener("keydown", e => {
   if (e.key === "Enter" && !$("#loginView").classList.contains("hidden")) doLogin();
 });
 document.addEventListener("click", e => {
-  if (["passModal","recModal","joinModal"].includes(e.target.id)) e.target.classList.add("hidden");
+  if (["passModal","recModal","joinModal","userModal"].includes(e.target.id)) e.target.classList.add("hidden");
 });
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(e => console.log('SW:', e));
+  });
+}
 </script>
 </body>
-        </html>
+  </html>
