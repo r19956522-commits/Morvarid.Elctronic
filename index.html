@@ -1,2453 +1,1430 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>مروارید | سامانه جامع فروش و حقوق</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23e8dff5'/></svg>">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#070a12">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>کلاسی | محمدرسول یزدیان</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#070a12;--card:rgba(18,24,42,.72);--card2:rgba(26,32,54,.85);--border:rgba(180,170,255,.16);--text:#eae8f7;--muted:#9693b6;--accent:#c9a7eb;--accent2:#7fd8e8;--gold:#e6c88a;--danger:#ff7a90;--ok:#6ee7b7;--warn:#f0c66a;--shadow:0 20px 60px rgba(0,0,0,.55);}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{font-family:Vazirmatn,system-ui,sans-serif;background:radial-gradient(1200px 800px at 85% -10%,#221650 0%,transparent 60%),radial-gradient(900px 700px at -10% 105%,#0c2c3d 0%,transparent 55%),linear-gradient(160deg,#070a12,#0b1020 50%,#070a12);color:var(--text);min-height:100vh;overflow-x:hidden;position:relative;}
-.pearl-field{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-.pearl{position:absolute;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff 0%,#f6f1fd 16%,#ded4f2 38%,#a99fd0 66%,#4e4770 100%);box-shadow:inset -8px -10px 22px rgba(0,0,0,.35),inset 6px 8px 20px rgba(255,255,255,.45),0 0 45px rgba(190,170,255,.22);opacity:.5;animation:float 12s ease-in-out infinite;}
-@keyframes float{0%,100%{transform:translateY(0) translateX(0) rotate(0)}50%{transform:translateY(-32px) translateX(14px) rotate(8deg)}}
-.p1{width:120px;height:120px;top:8%;left:6%;animation-duration:14s}.p2{width:70px;height:70px;top:22%;right:9%;animation-duration:11s;animation-delay:-3s}.p3{width:180px;height:180px;bottom:6%;left:12%;animation-duration:17s;animation-delay:-6s;opacity:.35}.p4{width:54px;height:54px;bottom:24%;right:16%;animation-duration:10s;animation-delay:-2s}.p5{width:90px;height:90px;top:52%;left:48%;animation-duration:15s;animation-delay:-8s;opacity:.22}.p6{width:42px;height:42px;top:70%;right:6%;animation-duration:9s;animation-delay:-4s}
-.wrap{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:22px}
-.hidden{display:none !important}
-.card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:24px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:var(--shadow);}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px}
-.brand{display:flex;align-items:center;gap:12px}
-.brand-pearl{width:46px;height:46px;border-radius:50%;flex:none;background:radial-gradient(circle at 32% 28%,#fff 0%,#f6f1fd 18%,#ded4f2 40%,#a99fd0 68%,#4e4770 100%);box-shadow:inset -5px -6px 14px rgba(0,0,0,.35),inset 4px 5px 12px rgba(255,255,255,.5),0 0 26px rgba(190,170,255,.4);}
-.brand h1{margin:0;font-size:24px;letter-spacing:.5px;background:linear-gradient(90deg,#fff,#e2d3ff 40%,#9fe6f0 75%,#e6c88a);-webkit-background-clip:text;background-clip:text;color:transparent;}
-.brand small{display:block;color:var(--muted);font-size:12px;font-weight:400;margin-top:2px}
-label{display:block;font-size:13px;color:var(--muted);margin:0 0 7px 0}
-input,textarea,select{width:100%;padding:11px 14px;border-radius:13px;background:rgba(10,14,26,.75);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:14px;transition:.2s;outline:none;}
-input:focus,textarea:focus,select:focus{border-color:rgba(201,167,235,.55);box-shadow:0 0 0 4px rgba(201,167,235,.12)}
-input::placeholder,textarea::placeholder{color:#5f5c7e}
-textarea{resize:vertical;min-height:78px}
-input[type=file]{padding:8px;font-size:12.5px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:13px;border:1px solid transparent;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap;}
-.btn-primary{background:linear-gradient(135deg,#b58ae0,#7fd8e8);color:#0a0e1a;box-shadow:0 8px 26px rgba(150,120,220,.35)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(150,120,220,.5)}
-.btn-ghost{background:rgba(255,255,255,.05);border-color:var(--border);color:var(--text)}
-.btn-ghost:hover{background:rgba(255,255,255,.1)}
-.btn-danger{background:rgba(255,122,144,.14);border-color:rgba(255,122,144,.35);color:var(--danger)}
-.btn-danger:hover{background:rgba(255,122,144,.24)}
-.btn-ok{background:rgba(110,231,183,.14);border-color:rgba(110,231,183,.35);color:var(--ok)}
-.btn-ok:hover{background:rgba(110,231,183,.24)}
-.btn-gold{background:rgba(230,200,138,.14);border-color:rgba(230,200,138,.35);color:var(--gold)}
-.btn-gold:hover{background:rgba(230,200,138,.24)}
-.btn-sm{padding:7px 13px;font-size:12.5px;border-radius:10px}
-.btn:disabled{opacity:.45;cursor:not-allowed;transform:none !important}
-#loginView{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
-.login-box{width:100%;max-width:440px}
-.login-head{text-align:center;margin-bottom:24px}
-.login-head .big-pearl{width:104px;height:104px;margin:0 auto 18px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff 0%,#f6f1fd 16%,#ded4f2 38%,#a99fd0 66%,#4e4770 100%);box-shadow:inset -10px -12px 26px rgba(0,0,0,.35),inset 7px 9px 22px rgba(255,255,255,.55),0 0 60px rgba(190,170,255,.45);animation:float 8s ease-in-out infinite;}
-.login-head h2{margin:0 0 6px;font-size:26px;background:linear-gradient(90deg,#fff,#d9c7ff,#9fe6f0);-webkit-background-clip:text;background-clip:text;color:transparent;}
-.login-head p{margin:0;color:var(--muted);font-size:13.5px}
-.alert{padding:12px 16px;border-radius:13px;font-size:13.5px;margin-bottom:16px;display:flex;align-items:flex-start;gap:9px;line-height:1.7}
-.alert-error{background:rgba(255,122,144,.12);border:1px solid rgba(255,122,144,.3);color:#ffb3c0}
-.alert-ok{background:rgba(110,231,183,.1);border:1px solid rgba(110,231,183,.3);color:#9df3d3}
-.alert-warn{background:rgba(230,200,138,.1);border:1px solid rgba(230,200,138,.3);color:#f0d9a8}
-.alert-info{background:rgba(127,216,232,.1);border:1px solid rgba(127,216,232,.28);color:#a8e8f3}
-.inv-card{border:1px solid var(--border);border-radius:16px;padding:14px;margin-bottom:12px;background:rgba(255,255,255,.02)}
-.inv-card .row-inv{display:grid;grid-template-columns:1.1fr 1.4fr 1.1fr 40px;gap:9px;margin-bottom:9px;align-items:center}
-.inv-card .del{width:40px;height:40px;border-radius:11px;border:1px solid rgba(255,122,144,.3);background:rgba(255,122,144,.1);color:var(--danger);cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;}
-.inv-card .del:hover{background:rgba(255,122,144,.25)}
-.thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-.thumb{position:relative;width:70px;height:70px;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
-.thumb img{width:100%;height:100%;object-fit:cover}
-.thumb .x{position:absolute;top:2px;left:2px;background:rgba(255,80,110,.85);color:#fff;width:20px;height:20px;border-radius:50%;border:0;cursor:pointer;font-size:12px;line-height:1}
-.tbl-wrap{overflow-x:auto;border-radius:16px;border:1px solid var(--border)}
-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px}
-th{background:rgba(255,255,255,.045);color:var(--muted);padding:11px 13px;text-align:right;font-weight:600;font-size:12.5px;white-space:nowrap}
-td{padding:11px 13px;border-top:1px solid rgba(255,255,255,.05);vertical-align:middle}
-tbody tr:hover{background:rgba(255,255,255,.03)}
-.money{font-variant-numeric:tabular-nums;color:var(--gold);font-weight:600;letter-spacing:.3px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px}
-.stat{background:var(--card2);border:1px solid var(--border);border-radius:17px;padding:16px 17px}
-.stat .k{color:var(--muted);font-size:12px;margin-bottom:6px}
-.stat .v{font-size:20px;font-weight:700;color:var(--accent)}
-.stat .v.gold{color:var(--gold)}.stat .v.ok{color:var(--ok)}.stat .v.warn{color:var(--warn)}
-.tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
-.tab{padding:9px 17px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--muted);cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;transition:.2s;}
-.tab:hover{color:var(--text);background:rgba(255,255,255,.07)}
-.tab.active{background:linear-gradient(135deg,rgba(181,138,224,.28),rgba(127,216,232,.2));color:#fff;border-color:rgba(201,167,235,.45);}
-.modal-bg{position:fixed;inset:0;background:rgba(4,6,12,.8);backdrop-filter:blur(8px);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;}
-.modal{width:100%;max-width:560px;animation:pop .22s ease;max-height:90vh;overflow-y:auto}
-@keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
-.row{display:flex;gap:12px;flex-wrap:wrap}
-.row>*{flex:1;min-width:170px}
-.mt{margin-top:18px}.mb{margin-bottom:18px}.mt-s{margin-top:10px}
-.sec-title{font-size:16px;font-weight:700;margin:0 0 16px;display:flex;align-items:center;gap:9px}
-.sec-title::before{content:'';width:4px;height:18px;border-radius:3px;background:linear-gradient(180deg,#c9a7eb,#7fd8e8);}
-.empty{text-align:center;padding:36px 20px;color:var(--muted);font-size:13.5px}
-.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11.5px;font-weight:600}
-.badge-user{background:rgba(127,216,232,.14);color:#9fe6f0;border:1px solid rgba(127,216,232,.28)}
-.badge-admin{background:rgba(230,200,138,.14);color:#f0d9a8;border:1px solid rgba(230,200,138,.28)}
-.badge-ok{background:rgba(110,231,183,.14);color:#9df3d3;border:1px solid rgba(110,231,183,.28)}
-.badge-pend{background:rgba(240,198,106,.14);color:#f0d9a8;border:1px solid rgba(240,198,106,.28)}
-.badge-rej{background:rgba(255,122,144,.14);color:#ffb3c0;border:1px solid rgba(255,122,144,.28)}
-.badge-acc{background:rgba(181,138,224,.18);color:#e2d3ff;border:1px solid rgba(181,138,224,.36)}
-.badge-seller{background:rgba(127,216,232,.14);color:#9fe6f0;border:1px solid rgba(127,216,232,.28)}
-.badge-worker{background:rgba(110,231,183,.14);color:#9df3d3;border:1px solid rgba(110,231,183,.28)}
-.clock{font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--muted);background:rgba(255,255,255,.04);border:1px solid var(--border);padding:7px 14px;border-radius:12px;white-space:nowrap}
-.sync{display:flex;align-items:center;gap:7px;font-size:12px;padding:7px 13px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--border);white-space:nowrap}
-.sync .dot{width:9px;height:9px;border-radius:50%;background:#666}
-.sync.online .dot{background:#6ee7b7;box-shadow:0 0 8px #6ee7b7}
-.sync.syncing .dot{background:#f0c66a;animation:pulse 1s infinite}
-.sync.offline .dot{background:#ff7a90}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.msg-list{max-height:420px;overflow-y:auto;padding:12px;border:1px solid var(--border);border-radius:16px;background:rgba(0,0,0,.18);margin-bottom:12px}
-.msg{max-width:75%;margin-bottom:10px;padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.6;word-wrap:break-word}
-.msg .mt-time{font-size:11px;color:var(--muted);display:block;margin-top:4px}
-.msg-me{background:linear-gradient(135deg,rgba(181,138,224,.3),rgba(127,216,232,.2));color:#fff;margin-right:auto;border-top-right-radius:4px}
-.msg-them{background:rgba(255,255,255,.06);border:1px solid var(--border);margin-left:auto;border-top-left-radius:4px}
-.msg-row{display:flex}
-.user-pick{display:grid;gap:10px}
-.user-pick .pick{padding:14px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.03);cursor:pointer;transition:.2s;display:flex;justify-content:space-between;align-items:center}
-.user-pick .pick:hover{background:rgba(255,255,255,.07);border-color:rgba(201,167,235,.4)}
-.user-pick .pick.active{background:linear-gradient(135deg,rgba(181,138,224,.22),rgba(127,216,232,.15));border-color:rgba(201,167,235,.55)}
-.note-box{border:1px dashed rgba(201,167,235,.35);border-radius:14px;padding:12px 16px;background:rgba(181,138,224,.06);font-size:13px;line-height:1.8;color:#d9d0f0}
-.foot{text-align:center;color:#4b4866;font-size:12px;padding:26px 10px 10px;line-height:1.8}
-.foot b{color:#7a6faf}
-.code-badge{font-family:monospace;background:rgba(255,255,255,.06);padding:2px 8px;border-radius:6px;font-size:12px;color:var(--accent2);letter-spacing:1px}
-.req-card{border:1px solid var(--border);border-radius:15px;padding:15px;margin-bottom:11px;background:rgba(255,255,255,.02)}
-.req-card h4{margin:0 0 8px;font-size:14px}
-.req-card .meta{font-size:12px;color:var(--muted);margin-bottom:9px;display:flex;gap:14px;flex-wrap:wrap}
-.room-code{font-family:monospace;font-size:16px;letter-spacing:1px;font-weight:800;text-align:center;padding:14px;border-radius:14px;background:linear-gradient(135deg,rgba(181,138,224,.2),rgba(127,216,232,.15));border:2px dashed rgba(201,167,235,.5);color:#fff;margin:14px 0;word-break:break-all}
-/* فیش حقوقی استاندارد */
-.payslip{border:2px solid var(--border);border-radius:16px;padding:0;background:#fff;color:#1a1a2e;overflow:hidden;font-family:Vazirmatn,sans-serif}
-.payslip-head{background:linear-gradient(135deg,#1a1a40,#2d1b5e);color:#fff;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.payslip-head h2{margin:0;font-size:19px;letter-spacing:.5px}
-.payslip-head .sub{font-size:12px;opacity:.85;margin-top:4px}
-.payslip-logo{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff 0%,#f6f1fd 18%,#ded4f2 40%,#a99fd0 68%,#4e4770 100%);box-shadow:0 0 20px rgba(190,170,255,.5);}
-.payslip-meta{background:#f5f3fb;padding:14px 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;border-bottom:1px solid #e0dced}
-.payslip-meta .f{font-size:11px;color:#6a6a8a;margin-bottom:3px}
-.payslip-meta .v{font-size:13.5px;font-weight:700;color:#1a1a2e}
-.payslip-body{padding:18px 22px}
-.ps-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:auto}
-.ps-table th{background:#1a1a40;color:#fff;padding:10px 14px;text-align:right;font-weight:600;font-size:12.5px}
-.ps-table td{padding:10px 14px;border-bottom:1px solid #eceaf3;color:#1a1a2e;text-align:right}
-.ps-table tr:nth-child(even) td{background:#faf9fd}
-.ps-table td.amt{font-variant-numeric:tabular-nums;font-weight:700;color:#1a1a40;letter-spacing:.3px}
-.ps-section{margin-top:14px;font-size:12.5px;font-weight:700;color:#4a3f7a;padding:8px 0;border-bottom:2px solid #4a3f7a;}
-.ps-total{background:linear-gradient(135deg,#e8e2f5,#d9cff0);padding:14px 22px;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:800;color:#1a1a40;border-top:2px solid #4a3f7a}
-.ps-total .big{font-size:19px;color:#1a1a40;letter-spacing:1px}
-.ps-foot{padding:14px 22px;background:#f5f3fb;font-size:11.5px;color:#6a6a8a;text-align:center;border-top:1px dashed #cfc8e0;line-height:1.8}
-.ps-sign{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:18px 22px;background:#faf9fd}
-.ps-sign .box{text-align:center;font-size:11.5px;color:#6a6a8a;padding-top:36px;border-top:1px solid #cfc8e0}
-.user-card{border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:12px;background:rgba(255,255,255,.02);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
-.hours-badge{font-family:monospace;background:rgba(127,216,232,.14);color:#9fe6f0;padding:4px 10px;border-radius:8px;font-size:12.5px}
-@media(max-width:640px){
-  .inv-card .row-inv{grid-template-columns:1fr 1fr}
-  .inv-card .del{width:100%;grid-column:1/-1;height:36px}
-  .wrap{padding:14px}.card{padding:18px;border-radius:18px}
-  .brand h1{font-size:19px}
-  .ps-table th, .ps-table td{padding:8px 10px;font-size:12px}
+:root{
+  --txt:#e9edff; --muted:#8b97c7; --line:rgba(255,255,255,.09);
+  --glass:rgba(255,255,255,.045); --glass2:rgba(255,255,255,.08);
+  --a1:#4f8cff; --a2:#a855f7; --a3:#22d3ee;
+  --ok:#22c55e; --warn:#f59e0b; --bad:#ef4444;
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{
+  font-family:'Vazirmatn',Tahoma,system-ui,sans-serif;
+  background:#05070f;color:var(--txt);overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;line-height:1.9;
+}
+button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
+button{cursor:pointer;border:none;background:none}
+a{color:var(--a3);text-decoration:none}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:rgba(255,255,255,.03)}
+::-webkit-scrollbar-thumb{background:linear-gradient(#4f8cff,#a855f7);border-radius:20px}
+
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;
+  background:radial-gradient(1200px 800px at 85% -10%,#16204d 0%,transparent 60%),
+             radial-gradient(1000px 700px at 0% 100%,#1a1040 0%,transparent 60%),#05070f;}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.45;animation:float 20s ease-in-out infinite}
+.b1{width:520px;height:520px;background:#3b6dff;top:-180px;left:-140px}
+.b2{width:460px;height:460px;background:#a855f7;bottom:-160px;right:-120px;animation-delay:-7s}
+.b3{width:380px;height:380px;background:#06b6d4;top:42%;left:55%;animation-delay:-13s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(60px,-45px) scale(1.12)}66%{transform:translate(-55px,55px) scale(.9)}}
+.grid-overlay{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:54px 54px;
+  -webkit-mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 78%);
+  mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 78%);}
+
+.logo-svg{width:100%;height:100%;display:block}
+.spin{transform-origin:50% 50%;animation:spin 14s linear infinite}
+.spin-rev{transform-origin:50% 50%;animation:spin 9s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pulse{animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+
+.login-wrap{position:fixed;inset:0;display:grid;place-items:center;padding:20px;z-index:50;
+  backdrop-filter:blur(2px)}
+.login-card{width:min(430px,100%);padding:34px 28px 28px;border-radius:26px;text-align:center;
+  background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.03));
+  border:1px solid var(--line);backdrop-filter:blur(24px);
+  box-shadow:0 30px 80px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.15);
+  animation:pop .6s cubic-bezier(.2,.9,.3,1.3)}
+@keyframes pop{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
+.login-logo{width:104px;height:104px;margin:0 auto 14px}
+.login-card h1{font-size:1.5rem;font-weight:800;letter-spacing:-.5px;
+  background:linear-gradient(90deg,#7fb0ff,#c9a3ff,#6fe3f7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.login-card .sub{color:var(--muted);font-size:.85rem;margin-bottom:22px}
+.field{text-align:right;margin-bottom:14px}
+.field label{display:block;font-size:.78rem;color:var(--muted);margin-bottom:6px;padding-right:4px}
+.field input{width:100%;padding:13px 15px;border-radius:14px;background:rgba(0,0,0,.32);
+  border:1px solid var(--line);outline:none;transition:.25s;letter-spacing:1px}
+.field input:focus{border-color:var(--a1);box-shadow:0 0 0 4px rgba(79,140,255,.16);background:rgba(0,0,0,.45)}
+.btn-main{width:100%;padding:14px;border-radius:14px;font-weight:700;font-size:1rem;color:#fff;
+  background:linear-gradient(120deg,#4f8cff,#a855f7,#22d3ee);background-size:220% 100%;
+  transition:.4s;box-shadow:0 12px 30px rgba(79,140,255,.35)}
+.btn-main:hover{background-position:100% 0;transform:translateY(-2px);box-shadow:0 18px 40px rgba(168,85,247,.45)}
+.msg{font-size:.82rem;margin-top:12px;min-height:22px}
+.msg.err{color:#ff8b8b}.msg.ok{color:#7ff0b0}
+.hint{font-size:.72rem;color:var(--muted);margin-top:16px;line-height:1.9;opacity:.85}
+
+header{position:sticky;top:0;z-index:30;backdrop-filter:blur(18px);
+  background:linear-gradient(180deg,rgba(8,11,26,.92),rgba(8,11,26,.62));
+  border-bottom:1px solid var(--line)}
+.hwrap{max-width:1220px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;flex:1;min-width:220px}
+.brand .lg{width:52px;height:52px;flex:none}
+.brand h2{font-size:1.05rem;font-weight:800;line-height:1.5}
+.brand h2 span{display:block;font-size:.72rem;font-weight:400;color:var(--muted)}
+.clock{text-align:left;font-variant-numeric:tabular-nums;font-size:.85rem;color:var(--muted);line-height:1.7}
+.clock b{display:block;font-size:1.28rem;font-weight:700;letter-spacing:1px;
+  background:linear-gradient(90deg,#7fb0ff,#6fe3f7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.icon-btn{padding:9px 14px;border-radius:12px;background:var(--glass);border:1px solid var(--line);
+  font-size:.8rem;transition:.25s}
+.icon-btn:hover{background:var(--glass2);transform:translateY(-2px);border-color:var(--a1)}
+
+nav{max-width:1220px;margin:auto;padding:12px 18px 0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+.tab{white-space:nowrap;padding:9px 16px;border-radius:14px;font-size:.85rem;color:var(--muted);
+  border:1px solid transparent;transition:.25s}
+.tab:hover{color:var(--txt);background:var(--glass)}
+.tab.active{color:#fff;background:linear-gradient(120deg,rgba(79,140,255,.28),rgba(168,85,247,.28));
+  border-color:rgba(120,160,255,.4);box-shadow:0 8px 24px rgba(79,140,255,.2)}
+
+main{max-width:1220px;margin:auto;padding:20px 18px 90px}
+.panel{display:none;animation:fade .45s ease}
+.panel.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.card{background:linear-gradient(160deg,rgba(255,255,255,.065),rgba(255,255,255,.02));
+  border:1px solid var(--line);border-radius:var(--r);padding:18px;backdrop-filter:blur(14px);
+  box-shadow:0 16px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.07)}
+.sec-title{display:flex;align-items:center;gap:10px;font-size:1.05rem;font-weight:700;margin-bottom:14px}
+.sec-title .dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(120deg,var(--a1),var(--a3));
+  box-shadow:0 0 14px var(--a1);animation:pulse 2s infinite}
+.grid{display:grid;gap:14px}
+.g-stats{grid-template-columns:repeat(auto-fit,minmax(155px,1fr))}
+.g-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.g-3{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.g-week{grid-template-columns:repeat(7,minmax(0,1fr))}
+
+.stat{position:relative;overflow:hidden;border-radius:16px;padding:16px;border:1px solid var(--line);
+  background:linear-gradient(150deg,rgba(255,255,255,.07),rgba(255,255,255,.02));transition:.3s}
+.stat:hover{transform:translateY(-4px);border-color:rgba(120,160,255,.45);box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.stat .v{font-size:1.7rem;font-weight:800;background:linear-gradient(90deg,#8fb6ff,#c9a3ff);
+  -webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.4}
+.stat .k{font-size:.75rem;color:var(--muted)}
+.stat::after{content:'';position:absolute;inset:auto -30% -60% auto;width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(79,140,255,.35),transparent 70%)}
+
+.course{position:relative;border-radius:16px;padding:15px;border:1px solid var(--line);
+  background:linear-gradient(150deg,rgba(255,255,255,.06),rgba(255,255,255,.015));transition:.3s;overflow:hidden}
+.course:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(0,0,0,.5)}
+.course .bar{position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;border-radius:4px}
+.course h4{font-size:.95rem;font-weight:700;margin-bottom:6px;padding-inline-start:10px}
+.course .meta{font-size:.75rem;color:var(--muted);padding-inline-start:10px;line-height:2}
+.badge{display:inline-block;padding:2px 9px;border-radius:8px;font-size:.7rem;
+  background:rgba(79,140,255,.18);border:1px solid rgba(79,140,255,.3);color:#a9c7ff}
+
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{padding:7px 14px;border-radius:12px;font-size:.78rem;border:1px solid var(--line);
+  background:var(--glass);color:var(--muted);transition:.22s;white-space:nowrap}
+.chip:hover{color:var(--txt);transform:translateY(-2px)}
+.chip.active{color:#fff;border-color:transparent;background:linear-gradient(120deg,var(--a1),var(--a2));
+  box-shadow:0 8px 22px rgba(79,140,255,.35)}
+
+.inp,textarea.inp,select.inp{width:100%;padding:11px 13px;border-radius:12px;background:rgba(0,0,0,.3);
+  border:1px solid var(--line);outline:none;transition:.22s}
+.inp:focus{border-color:var(--a1);box-shadow:0 0 0 4px rgba(79,140,255,.15)}
+textarea.inp{resize:vertical;min-height:90px;line-height:1.9}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.row > *{flex:1;min-width:130px}
+label.lb{display:block;font-size:.75rem;color:var(--muted);margin-bottom:5px}
+.btn{padding:11px 18px;border-radius:12px;font-size:.83rem;font-weight:600;color:#fff;
+  background:linear-gradient(120deg,var(--a1),var(--a2));transition:.3s;
+  box-shadow:0 8px 22px rgba(79,140,255,.28);white-space:nowrap}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(168,85,247,.4)}
+.btn.ghost{background:var(--glass);border:1px solid var(--line);box-shadow:none;color:var(--txt)}
+.btn.ghost:hover{background:var(--glass2);border-color:var(--a1)}
+.btn.danger{background:linear-gradient(120deg,#ef4444,#b91c1c);box-shadow:0 8px 22px rgba(239,68,68,.3)}
+.btn.ok{background:linear-gradient(120deg,#22c55e,#15803d);box-shadow:0 8px 22px rgba(34,197,94,.3)}
+.btn.sm{padding:7px 12px;font-size:.75rem;border-radius:10px}
+
+.att-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
+.att{padding:9px 6px;border-radius:11px;text-align:center;font-size:.73rem;border:1px solid var(--line);
+  background:rgba(255,255,255,.035);cursor:pointer;transition:.2s;user-select:none;line-height:1.8}
+.att small{display:block;font-size:.62rem;color:var(--muted)}
+.att:hover{transform:translateY(-3px);border-color:var(--a1)}
+.att.p{background:rgba(34,197,94,.2);border-color:rgba(34,197,94,.55);color:#9df5c0}
+.att.a{background:rgba(239,68,68,.2);border-color:rgba(239,68,68,.55);color:#ffb3b3}
+.att.l{background:rgba(245,158,11,.2);border-color:rgba(245,158,11,.55);color:#ffd79a}
+.att.future{opacity:.34;pointer-events:none}
+.progress{height:9px;border-radius:20px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:12px}
+.progress i{display:block;height:100%;border-radius:20px;background:linear-gradient(90deg,#22c55e,#4f8cff);
+  transition:width .6s cubic-bezier(.2,.9,.3,1)}
+
+.item{display:flex;gap:12px;align-items:flex-start;padding:13px;border-radius:14px;
+  background:rgba(255,255,255,.04);border:1px solid var(--line);margin-bottom:9px;transition:.25s}
+.item:hover{background:rgba(255,255,255,.07);border-color:rgba(120,160,255,.35)}
+.item .body{flex:1;min-width:0}
+.item h5{font-size:.88rem;font-weight:600;margin-bottom:3px;word-break:break-word}
+.item p{font-size:.78rem;color:var(--muted);white-space:pre-wrap;word-break:break-word}
+.item .t{font-size:.68rem;color:var(--muted);opacity:.8;margin-top:5px}
+.acts{display:flex;gap:6px;flex:none;flex-wrap:wrap}
+.mini{padding:6px 10px;border-radius:9px;font-size:.7rem;background:var(--glass);border:1px solid var(--line);transition:.2s}
+.mini:hover{background:var(--glass2);border-color:var(--a1);transform:translateY(-2px)}
+.mini.del:hover{border-color:var(--bad);color:#ff9b9b}
+
+.drop{border:2px dashed rgba(120,160,255,.4);border-radius:16px;padding:26px;text-align:center;
+  transition:.3s;background:rgba(79,140,255,.05);cursor:pointer}
+.drop:hover,.drop.over{border-color:var(--a2);background:rgba(168,85,247,.1);transform:scale(1.01)}
+.drop .ic{font-size:2rem;margin-bottom:8px}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:12px}
+.thumb{border-radius:13px;overflow:hidden;border:1px solid var(--line);background:rgba(0,0,0,.3);
+  transition:.28s;position:relative}
+.thumb:hover{transform:translateY(-4px);border-color:var(--a1);box-shadow:0 16px 34px rgba(0,0,0,.5)}
+.thumb img{width:100%;height:110px;object-fit:cover;display:block}
+.thumb .fi{padding:10px;text-align:center;font-size:1.9rem;height:110px;display:grid;place-items:center;
+  background:linear-gradient(150deg,rgba(239,68,68,.2),rgba(0,0,0,.2))}
+.thumb .cap{padding:8px 10px;font-size:.7rem;color:var(--muted)}
+.thumb .cap b{display:block;color:var(--txt);font-size:.75rem;font-weight:600;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
+.thumb .ov{position:absolute;top:7px;inset-inline-start:7px;display:flex;gap:5px;opacity:0;transition:.25s}
+.thumb:hover .ov{opacity:1}
+.thumb .ov button{width:29px;height:29px;border-radius:9px;background:rgba(0,0,0,.72);backdrop-filter:blur(6px);
+  display:grid;place-items:center;font-size:.8rem;border:1px solid rgba(255,255,255,.15);transition:.2s}
+.thumb .ov button:hover{background:var(--a1);transform:scale(1.1)}
+
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th,td{padding:10px 8px;text-align:right;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:500;font-size:.75rem}
+tbody tr:hover{background:rgba(255,255,255,.04)}
+.score-pill{padding:3px 11px;border-radius:9px;font-weight:700;font-size:.8rem}
+.sp-a{background:rgba(34,197,94,.2);color:#9df5c0}
+.sp-b{background:rgba(79,140,255,.2);color:#a9c7ff}
+.sp-c{background:rgba(245,158,11,.2);color:#ffd79a}
+.sp-d{background:rgba(239,68,68,.2);color:#ffb3b3}
+
+.dsel{display:flex;gap:6px}
+.dsel select{flex:1;padding:10px 6px;border-radius:11px;background:rgba(0,0,0,.3);
+  border:1px solid var(--line);outline:none;text-align:center;font-size:.8rem}
+.dsel select:focus{border-color:var(--a1)}
+
+.wday{border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.03);padding:11px;min-height:130px}
+.wday h6{font-size:.78rem;text-align:center;color:var(--muted);margin-bottom:9px;padding-bottom:8px;
+  border-bottom:1px solid var(--line)}
+.wday.today h6{color:#fff}
+.wday.today{border-color:rgba(79,140,255,.55);background:rgba(79,140,255,.1);
+  box-shadow:0 0 0 1px rgba(79,140,255,.25), 0 14px 34px rgba(79,140,255,.15)}
+.wc{padding:8px;border-radius:10px;font-size:.7rem;margin-bottom:7px;line-height:1.8;
+  background:rgba(255,255,255,.06);border-inline-start:3px solid var(--a1);transition:.25s}
+.wc:hover{background:rgba(255,255,255,.12);transform:translateX(-3px)}
+.wc b{display:block;font-size:.74rem;font-weight:600;margin-bottom:2px}
+.wc span{color:var(--muted);font-size:.65rem}
+
+/* یادداشت‌های تاریخ‌دار */
+.upnote{padding:11px 13px;border-radius:12px;margin-bottom:8px;font-size:.78rem;
+  background:linear-gradient(120deg,rgba(79,140,255,.13),rgba(168,85,247,.08));
+  border:1px solid rgba(120,160,255,.28);border-inline-start:4px solid var(--a2);transition:.25s}
+.upnote:hover{transform:translateX(-4px);box-shadow:0 12px 28px rgba(0,0,0,.35)}
+.upnote b{display:block;font-size:.85rem;font-weight:600;color:#fff;margin-bottom:4px}
+.upnote .dt{font-size:.68rem;color:var(--a3);margin-top:5px;display:flex;align-items:center;gap:6px}
+.upnote .dt .dchip{padding:1px 8px;border-radius:7px;background:rgba(255,255,255,.08);color:#fff}
+
+#toast{position:fixed;bottom:24px;inset-inline-start:24px;z-index:200;display:flex;flex-direction:column;gap:9px}
+.tst{padding:12px 18px;border-radius:13px;font-size:.82rem;color:#fff;backdrop-filter:blur(14px);
+  background:linear-gradient(120deg,rgba(34,197,94,.92),rgba(21,128,61,.92));
+  box-shadow:0 14px 34px rgba(0,0,0,.5);animation:slidein .4s cubic-bezier(.2,.9,.3,1.3)}
+.tst.err{background:linear-gradient(120deg,rgba(239,68,68,.92),rgba(153,27,27,.92))}
+.tst.info{background:linear-gradient(120deg,rgba(79,140,255,.92),rgba(168,85,247,.92))}
+@keyframes slidein{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+.empty{text-align:center;padding:34px 14px;color:var(--muted);font-size:.83rem}
+.empty .e{font-size:2.4rem;margin-bottom:10px;opacity:.6}
+.hidden{display:none!important}
+.mt{margin-top:14px}.mb{margin-bottom:14px}
+.flex-between{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+
+@media(max-width:820px){
+  .g-week{grid-template-columns:1fr 1fr}
+  .brand h2{font-size:.92rem}
+  .clock b{font-size:1.05rem}
+}
+@media(max-width:520px){
+  .g-week{grid-template-columns:1fr}
+  main{padding:14px 12px 90px}
+  .hwrap{padding:10px 12px}
+  nav{padding:10px 12px 0}
 }
 </style>
 </head>
 <body>
 
-<div class="pearl-field">
-  <div class="pearl p1"></div><div class="pearl p2"></div><div class="pearl p3"></div>
-  <div class="pearl p4"></div><div class="pearl p5"></div><div class="pearl p6"></div>
+<div class="bg">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  <div class="grid-overlay"></div>
 </div>
 
-<!-- ورود -->
-<div id="loginView">
-  <div class="login-box">
-    <div class="card">
-      <div class="login-head">
-        <div class="big-pearl"></div>
-        <h2>مروارید</h2>
-        <p>سامانه جامع فروش، حقوق و مکاتبات</p>
-      </div>
-      <div id="loginMsg"></div>
-      <div style="margin-bottom:14px">
-        <label>کد ملی</label>
-        <input id="inNC" type="text" inputmode="numeric" placeholder="کد ملی" autocomplete="username">
-      </div>
-      <div style="margin-bottom:20px">
-        <label>رمز عبور</label>
-        <input id="inPass" type="password" placeholder="رمز عبور" autocomplete="current-password">
-      </div>
-      <button class="btn btn-primary" style="width:100%" onclick="doLogin()">ورود به سامانه</button>
-      <div class="alert alert-info" style="margin:18px 0 0;font-size:12.5px">
-        <span>⏰</span><span>ثبت گزارش فروش فقط از ساعت <b>۱۸:۰۰ تا ۲۴:۰۰</b></span>
-      </div>
+<!-- ================= LOGIN ================= -->
+<div id="loginScreen" class="login-wrap">
+  <div class="login-card">
+    <div class="login-logo">
+      <svg class="logo-svg" viewBox="0 0 100 100">
+        <defs>
+          <linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#4f8cff"/><stop offset="50%" stop-color="#a855f7"/><stop offset="100%" stop-color="#22d3ee"/>
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="50" r="45" fill="none" stroke="url(#lg1)" stroke-width="2" stroke-dasharray="9 9" class="spin"/>
+        <circle cx="50" cy="50" r="35" fill="none" stroke="url(#lg1)" stroke-width="1.2" opacity=".55" class="spin-rev"/>
+        <circle cx="50" cy="50" r="26" fill="rgba(79,140,255,.12)" class="pulse"/>
+        <text x="50" y="61" text-anchor="middle" font-size="25" font-weight="800" fill="url(#lg1)" font-family="Vazirmatn">ک</text>
+      </svg>
     </div>
-    <div class="foot">طراحی و توسعه: <b>مهندس محمدرسول یزدیان</b><br>© مروارید</div>
+    <h1>کلاسی</h1>
+    <p class="sub">سامانه شخصی محمدرسول یزدیان</p>
+
+    <div class="field">
+      <label>کد دانشجویی</label>
+      <input id="inpStudent" inputmode="numeric" placeholder="4032221073" autocomplete="username">
+    </div>
+    <div class="field">
+      <label>کد ملی (رمز ورود)</label>
+      <input id="inpPass" type="password" inputmode="numeric" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <button class="btn-main" id="btnLogin">ورود به کلاسی</button>
+    <div id="loginMsg" class="msg"></div>
+    <p class="hint" id="loginHint"></p>
   </div>
 </div>
 
-<!-- پنل کاربر -->
-<div id="userView" class="hidden">
-  <div class="wrap">
-    <div class="topbar">
+<!-- ================= APP ================= -->
+<div id="app" class="hidden">
+  <header>
+    <div class="hwrap">
       <div class="brand">
-        <div class="brand-pearl"></div>
-        <div>
-          <h1>مروارید</h1>
-          <small>پنل کاربری — <span id="uName"></span> <span id="uRoleBadge"></span></small>
+        <div class="lg">
+          <svg class="logo-svg" viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#4f8cff"/><stop offset="50%" stop-color="#a855f7"/><stop offset="100%" stop-color="#22d3ee"/>
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="45" fill="none" stroke="url(#lg2)" stroke-width="2.5" stroke-dasharray="9 9" class="spin"/>
+            <circle cx="50" cy="50" r="35" fill="none" stroke="url(#lg2)" stroke-width="1.4" opacity=".55" class="spin-rev"/>
+            <circle cx="50" cy="50" r="26" fill="rgba(79,140,255,.13)" class="pulse"/>
+            <text x="50" y="61" text-anchor="middle" font-size="25" font-weight="800" fill="url(#lg2)" font-family="Vazirmatn">ک</text>
+          </svg>
         </div>
+        <h2>کلاسی<span>محمدرسول یزدیان</span></h2>
       </div>
-      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-        <div class="sync" id="uSync"><span class="dot"></span><span>سینک</span></div>
-        <div class="clock" id="clock"></div>
-        <button class="btn btn-ghost btn-sm" onclick="openChangePass()">🔑 تغییر رمز</button>
-        <button class="btn btn-danger btn-sm" onclick="logout()">خروج</button>
+      <div class="clock">
+        <b id="liveTime">--:--:--</b>
+        <span id="liveDate">—</span>
       </div>
+      <button class="icon-btn" id="btnLogout">خروج</button>
     </div>
+  </header>
 
-    <div id="uAlert"></div>
-    <div id="uNotif"></div>
-    <div class="tabs" id="uTabs"></div>
+  <nav id="nav">
+    <button class="tab active" data-tab="dashboard">داشبورد</button>
+    <button class="tab" data-tab="schedule">برنامه هفتگی</button>
+    <button class="tab" data-tab="attendance">حضور و غیاب</button>
+    <button class="tab" data-tab="materials">مطالب درسی</button>
+    <button class="tab" data-tab="notes">نکات و یادآورها</button>
+    <button class="tab" data-tab="grades">نمرات</button>
+    <button class="tab" data-tab="tasks">کارها</button>
+    <button class="tab" data-tab="courses">درس‌ها</button>
+    <button class="tab" data-tab="settings">تنظیمات</button>
+  </nav>
 
-    <!-- ثبت گزارش فروش -->
-    <div id="u-tab-entry" class="hidden">
-      <div class="card">
-        <h3 class="sec-title">ثبت فاکتورهای امروز</h3>
-        <div class="row mb">
-          <div><label>تاریخ</label><input id="fDate" readonly></div>
-          <div><label>ساعت ثبت</label><input id="fTime" readonly></div>
-        </div>
-        <label>فاکتورها (شماره، مشتری، مبلغ و بارگذاری تصویر — هر فایل حداکثر ۲ مگابایت)</label>
-        <div id="invRows"></div>
-        <button class="btn btn-ghost btn-sm" onclick="addInvCard()">＋ افزودن فاکتور</button>
-        <div class="mt">
-          <label>توضیحات</label>
-          <textarea id="fNote" placeholder="توضیحات لازم..."></textarea>
-        </div>
-        <div class="stat mt" style="border-radius:14px">
-          <div class="k">جمع کل فروش امروز</div>
-          <div class="v gold" id="fTotal">۰ ریال</div>
-        </div>
-        <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">
-          <button class="btn btn-primary" id="btnSubmit" onclick="submitReport()">✔ ثبت نهایی گزارش</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- سابقه فروش -->
-    <div id="u-tab-history" class="hidden">
-      <div class="card">
-        <h3 class="sec-title">سابقه گزارش‌های من</h3>
-        <div id="uHistory"></div>
-      </div>
-    </div>
-
-    <!-- ثبت ساعت کار -->
-    <div id="u-tab-hours" class="hidden">
-      <div class="card mb">
-        <h3 class="sec-title">⏰ ثبت ساعت کار امروز</h3>
-        <div id="hoursMsg"></div>
-        <div class="row mb">
-          <div><label>تاریخ (شمسی)</label><input id="hwDate" readonly></div>
-          <div><label>ساعت عادی</label><input id="hwNormal" type="number" step="0.5" placeholder="مثلاً 8" min="0" max="24"></div>
-          <div><label>ساعت اضافه‌کار</label><input id="hwOT" type="number" step="0.5" placeholder="مثلاً 2" min="0" max="24"></div>
-        </div>
-        <div class="row mb">
-          <div><label>قیمت هر ساعت اضافه‌کار (ریال)</label><input id="hwOTPrice" type="number" placeholder="مثلاً 500000" min="0"></div>
-          <div><label>ضریب اضافه‌کار</label><input id="hwOTRate" type="number" step="0.1" value="1.4" min="1" max="3"></div>
-        </div>
-        <div class="mb">
-          <label>توضیحات (اختیاری)</label>
-          <textarea id="hwNote" placeholder="شرح کار..."></textarea>
-        </div>
-        <button class="btn btn-primary" onclick="submitHoursSelf()">✔ ثبت ساعت کار</button>
-      </div>
-      <div class="card">
-        <h3 class="sec-title">📋 ساعت‌های ثبت‌شده من (تا ۱ سال)</h3>
-        <div id="uHoursList"></div>
-      </div>
-    </div>
-
-    <!-- فیش حقوقی من -->
-    <div id="u-tab-mysalary" class="hidden">
-      <div class="card">
-        <h3 class="sec-title">💰 فیش‌های حقوقی من</h3>
-        <div id="mySalaryBox"></div>
-      </div>
-    </div>
-
-    <!-- درخواست‌ها -->
-    <div id="u-tab-requests" class="hidden">
-      <div class="card mb">
-        <h3 class="sec-title">ثبت درخواست جدید</h3>
-        <div id="reqMsg"></div>
-        <div class="row mb">
-          <div>
-            <label>نوع درخواست</label>
-            <select id="reqType">
-              <option>مرخصی روزانه</option>
-              <option>مرخصی ساعتی</option>
-              <option>تغییر شیفت</option>
-              <option>تعویض روز کاری</option>
-              <option>درخواست اضافه‌کار</option>
-              <option>درخواست مساعده</option>
-              <option>سایر</option>
-            </select>
-          </div>
-          <div><label>از تاریخ (شمسی)</label><input id="reqFrom" placeholder="1404/06/01"></div>
-          <div><label>تا تاریخ (شمسی)</label><input id="reqTo" placeholder="1404/06/02"></div>
-        </div>
-        <div class="mb">
-          <label>توضیحات</label>
-          <textarea id="reqText" placeholder="علت درخواست..."></textarea>
-        </div>
-        <button class="btn btn-primary" onclick="submitRequest()">📨 ارسال درخواست</button>
-      </div>
-      <div class="card">
-        <h3 class="sec-title">درخواست‌های من</h3>
-        <div id="uReqList"></div>
-      </div>
-    </div>
-
-    <!-- پیام -->
-    <div id="u-tab-messages" class="hidden">
-      <div class="card">
-        <h3 class="sec-title">💬 گفتگوی خصوصی با مدیر</h3>
-        <div class="alert alert-info" style="font-size:12.5px;margin-bottom:14px">
-          <span>🔒</span><span>این مکالمه فقط بین شما و مدیر قابل مشاهده است.</span>
-        </div>
-        <div id="uMsgList" class="msg-list"></div>
-        <div style="display:flex;gap:10px">
-          <input id="uMsgInput" placeholder="پیام خود را بنویسید..." onkeydown="if(event.key==='Enter')sendUserMsg()">
-          <button class="btn btn-primary" onclick="sendUserMsg()">ارسال</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="foot">طراحی و توسعه: <b>مهندس محمدرسول یزدیان</b> — © مروارید</div>
-  </div>
+  <main>
+    <section class="panel active" id="panel-dashboard"></section>
+    <section class="panel" id="panel-schedule"></section>
+    <section class="panel" id="panel-attendance"></section>
+    <section class="panel" id="panel-materials"></section>
+    <section class="panel" id="panel-notes"></section>
+    <section class="panel" id="panel-grades"></section>
+    <section class="panel" id="panel-tasks"></section>
+    <section class="panel" id="panel-courses"></section>
+    <section class="panel" id="panel-settings"></section>
+  </main>
 </div>
 
-<!-- پنل مدیر / حسابدار -->
-<div id="adminView" class="hidden">
-  <div class="wrap">
-    <div class="topbar">
-      <div class="brand">
-        <div class="brand-pearl"></div>
-        <div>
-          <h1>مروارید</h1>
-          <small>پنل مدیریت <span id="aRoleBadge" class="badge badge-admin">مدیر</span></small>
-        </div>
-      </div>
-      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-        <div class="sync" id="aSync"><span class="dot"></span><span>سینک</span></div>
-        <div class="clock" id="clock2"></div>
-        <button class="btn btn-ghost btn-sm" onclick="openChangePass()">🔑 تغییر رمز</button>
-        <button class="btn btn-danger btn-sm" onclick="logout()">خروج</button>
-      </div>
-    </div>
-
-    <div id="aAlert"></div>
-    <div class="tabs" id="aTabs"></div>
-
-    <!-- داشبورد -->
-    <div id="a-tab-dash" class="hidden">
-      <div class="stats">
-        <div class="stat"><div class="k">فروش امروز</div><div class="v gold" id="dToday">۰</div></div>
-        <div class="stat"><div class="k">فروش این هفته</div><div class="v gold" id="dWeek">۰</div></div>
-        <div class="stat"><div class="k">فروش این ماه</div><div class="v gold" id="dMonth">۰</div></div>
-        <div class="stat"><div class="k">فروش کل</div><div class="v gold" id="dAll">۰</div></div>
-      </div>
-      <div class="stats">
-        <div class="stat"><div class="k">تعداد پرسنل</div><div class="v" id="dStaff">۰</div></div>
-        <div class="stat"><div class="k">گزارش امروز</div><div class="v ok" id="dCntToday">۰</div></div>
-        <div class="stat"><div class="k">درخواست در انتظار</div><div class="v warn" id="dPendReq">۰</div></div>
-        <div class="stat"><div class="k">حقوق ماه جاری</div><div class="v gold" id="dSalaryTotal">۰</div></div>
-      </div>
-      <div class="card">
-        <h3 class="sec-title">نمودار فروش ۷ روز اخیر</h3>
-        <div id="chart7"></div>
-      </div>
-    </div>
-
-    <!-- حضور -->
-    <div id="a-tab-today" class="hidden">
-      <div class="card">
-        <h3 class="sec-title">وضعیت امروز پرسنل</h3>
-        <div id="todayList"></div>
-      </div>
-    </div>
-
-    <!-- گزارش‌ها -->
-    <div id="a-tab-reports" class="hidden">
-      <div class="card mb">
-        <h3 class="sec-title">فیلتر گزارش‌ها</h3>
-        <div class="row">
-          <div><label>کاربر</label><select id="flUser" onchange="renderAdminReports()"><option value="">همه</option></select></div>
-          <div><label>از تاریخ</label><input id="flFrom" placeholder="1404/06/01" oninput="renderAdminReports()"></div>
-          <div><label>تا تاریخ</label><input id="flTo" placeholder="1404/06/31" oninput="renderAdminReports()"></div>
-          <div style="display:flex;align-items:flex-end"><button class="btn btn-ghost btn-sm" onclick="clearFilters()" style="width:100%">پاک کردن</button></div>
-        </div>
-      </div>
-      <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px">
-          <h3 class="sec-title" style="margin:0">گزارش‌ها</h3>
-          <button class="btn btn-ghost btn-sm" onclick="exportCSV()">⬇ خروجی CSV</button>
-        </div>
-        <div id="adminTable"></div>
-      </div>
-    </div>
-
-    <!-- درخواست‌ها -->
-    <div id="a-tab-requests" class="hidden">
-      <div class="card">
-        <h3 class="sec-title">مدیریت درخواست‌ها</h3>
-        <div id="adminReqList"></div>
-      </div>
-    </div>
-
-    <!-- پیام‌ها -->
-    <div id="a-tab-messages" class="hidden">
-      <div class="card mb">
-        <h3 class="sec-title">انتخاب کاربر برای گفتگو</h3>
-        <div class="user-pick" id="userPickList"></div>
-      </div>
-      <div class="card" id="adminChatBox" style="display:none">
-        <h3 class="sec-title" id="chatTitle">گفتگو</h3>
-        <div id="aMsgList" class="msg-list"></div>
-        <div style="display:flex;gap:10px">
-          <input id="aMsgInput" placeholder="پیام..." onkeydown="if(event.key==='Enter')sendAdminMsg()">
-          <button class="btn btn-primary" onclick="sendAdminMsg()">ارسال</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- اعلان -->
-    <div id="a-tab-broadcast" class="hidden">
-      <div class="card mb">
-        <h3 class="sec-title">📢 ارسال اعلان به همه پرسنل</h3>
-        <div class="alert alert-warn">
-          <span>⚠️</span>
-          <span>هشدار خودکار: «در صورتی که فاکتور یا فعالیت خود را ثبت نکنید، درخواست مرخصی شما به‌طور خودکار رد خواهد شد.»</span>
-        </div>
-        <div class="mb">
-          <label>متن اعلان</label>
-          <textarea id="bcText" style="min-height:110px">کاربر گرامی، در صورتی که فاکتور یا فعالیت خود را در موعد مقرر ثبت نکنید، درخواست مرخصی شما به‌طور خودکار رد می‌شود. — مدیریت مروارید</textarea>
-        </div>
-        <button class="btn btn-primary" onclick="broadcastMsg()">📢 ارسال اعلان</button>
-      </div>
-      <div class="card">
-        <h3 class="sec-title">اعلان‌های ارسال‌شده</h3>
-        <div id="bcList"></div>
-      </div>
-    </div>
-
-    <!-- مدیریت کاربران -->
-    <div id="a-tab-users" class="hidden">
-      <div class="card mb">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
-          <h3 class="sec-title" style="margin:0">👥 مدیریت کاربران</h3>
-          <button class="btn btn-primary" onclick="openUserModal()">＋ افزودن کاربر جدید</button>
-        </div>
-      </div>
-      <div class="card">
-        <div id="usersList"></div>
-      </div>
-    </div>
-
-    <!-- ساعت کار (مشترک مدیر و حسابدار) -->
-    <div id="a-tab-hours" class="hidden">
-      <div class="card mb">
-        <h3 class="sec-title">⏰ ثبت ساعت کار کاربران</h3>
-        <div id="adminHoursMsg"></div>
-        <div class="row mb">
-          <div>
-            <label>کاربر</label>
-            <select id="ahUser"></select>
-          </div>
-          <div><label>تاریخ (شمسی)</label><input id="ahDate" placeholder="1404/06/19"></div>
-        </div>
-        <div class="row mb">
-          <div><label>ساعت عادی</label><input id="ahNormal" type="number" step="0.5" min="0" max="24" placeholder="8"></div>
-          <div><label>ساعت اضافه‌کار</label><input id="ahOT" type="number" step="0.5" min="0" max="24" placeholder="0"></div>
-        </div>
-        <div class="row mb">
-          <div><label>قیمت هر ساعت اضافه‌کار (ریال)</label><input id="ahOTPrice" type="number" placeholder="500000" min="0"></div>
-          <div><label>ضریب اضافه‌کار</label><input id="ahOTRate" type="number" step="0.1" min="1" max="3" value="1.4"></div>
-        </div>
-        <div class="mb">
-          <label>توضیحات</label>
-          <textarea id="ahNote" placeholder="شرح کار..."></textarea>
-        </div>
-        <button class="btn btn-primary" onclick="adminSubmitHours()">✔ ثبت ساعت کار</button>
-      </div>
-
-      <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px">
-          <h3 class="sec-title" style="margin:0">ساعت‌های ثبت‌شده</h3>
-          <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <select id="ahFilterUser" onchange="renderAdminHours()" style="width:auto;min-width:180px">
-              <option value="">همه کاربران</option>
-            </select>
-            <select id="ahFilterMonth" onchange="renderAdminHours()" style="width:auto;min-width:140px">
-              <option value="">همه ماه‌ها</option>
-              <option value="1">فروردین</option>
-              <option value="2">اردیبهشت</option>
-              <option value="3">خرداد</option>
-              <option value="4">تیر</option>
-              <option value="5">مرداد</option>
-              <option value="6">شهریور</option>
-              <option value="7">مهر</option>
-              <option value="8">آبان</option>
-              <option value="9">آذر</option>
-              <option value="10">دی</option>
-              <option value="11">بهمن</option>
-              <option value="12">اسفند</option>
-            </select>
-            <button class="btn btn-ghost btn-sm" onclick="renderAdminHours()">🔄 رفرش</button>
-            <button class="btn btn-ghost btn-sm" onclick="exportHoursCSV()">⬇ CSV</button>
-          </div>
-        </div>
-        <div id="adminHoursList"></div>
-      </div>
-    </div>
-
-    <!-- محاسبه حقوق -->
-    <div id="a-tab-salary" class="hidden">
-      <div class="card mb">
-        <h3 class="sec-title">💰 محاسبه حقوق و مزایا</h3>
-        <div id="salaryMsg"></div>
-        <div class="alert alert-info" style="font-size:12.5px">
-          <span>ℹ️</span>
-          <span>با کلیک روی <b>محاسبه</b>، سیستم ساعت‌های شمسی همان ماه را از پنل کاربران جمع می‌زند و فیش حقوقی استاندارد می‌سازد.</span>
-        </div>
-        <div class="row mb">
-          <div>
-            <label>کاربر</label>
-            <select id="salUser"></select>
-          </div>
-          <div>
-            <label>ماه (شمسی)</label>
-            <select id="salMonth">
-              <option value="1">فروردین</option>
-              <option value="2">اردیبهشت</option>
-              <option value="3">خرداد</option>
-              <option value="4">تیر</option>
-              <option value="5">مرداد</option>
-              <option value="6">شهریور</option>
-              <option value="7">مهر</option>
-              <option value="8">آبان</option>
-              <option value="9">آذر</option>
-              <option value="10">دی</option>
-              <option value="11">بهمن</option>
-              <option value="12">اسفند</option>
-            </select>
-          </div>
-          <div>
-            <label>سال (شمسی)</label>
-            <select id="salYear"></select>
-          </div>
-          <div style="display:flex;align-items:flex-end">
-            <button class="btn btn-gold" style="width:100%" onclick="calcSalary()">🔢 محاسبه حقوق</button>
-          </div>
-        </div>
-
-        <h4 class="ps-section" style="margin-top:20px">کسورات و تنظیمات اضافی</h4>
-        <div class="row mb">
-          <div><label>بیمه (ریال)</label><input id="salInsurance" type="number" placeholder="0" value="0"></div>
-          <div><label>مالیات (ریال)</label><input id="salTax" type="number" placeholder="0" value="0"></div>
-          <div><label>مساعده پرداخت‌شده (ریال)</label><input id="salAdvance" type="number" placeholder="0" value="0"></div>
-          <div><label>سایر کسورات (ریال)</label><input id="salOtherDeduct" type="number" placeholder="0" value="0"></div>
-        </div>
-        <div class="row mb">
-          <div><label>مزایای اضافی این ماه (ریال)</label><input id="salExtraBenefits" type="number" placeholder="0" value="0"></div>
-          <div><label>پاداش (ریال)</label><input id="salBonus" type="number" placeholder="0" value="0"></div>
-        </div>
-
-        <div id="salaryPreview" class="mt"></div>
-      </div>
-
-      <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px">
-          <h3 class="sec-title" style="margin:0">📋 فیش‌های صادر شده</h3>
-          <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <select id="salFilterUser" onchange="renderSalaryHistory()" style="width:auto;min-width:180px">
-              <option value="">همه کاربران</option>
-            </select>
-            <button class="btn btn-ghost btn-sm" onclick="renderSalaryHistory()">🔄 رفرش</button>
-          </div>
-        </div>
-        <div id="salaryHistory"></div>
-      </div>
-    </div>
-
-    <!-- اتاق سینک -->
-    <div id="a-tab-sync" class="hidden">
-      <div class="card mb">
-        <h3 class="sec-title">🔄 اتاق سینک</h3>
-        <div id="syncStatusBox"></div>
-        <div id="syncNotConnected">
-          <h4 style="color:var(--accent);margin-bottom:12px">وضعیت: متصل نیست</h4>
-          <div style="margin-bottom:14px">
-            <label>توکن گیت‌هاب (ghp_...)</label>
-            <input id="ghTokenInput" placeholder="ghp_xxxxxxxxxxxxxxxx" style="font-family:monospace;font-size:13px">
-          </div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <button class="btn btn-primary" onclick="createRoom()">➕ ایجاد اتاق جدید</button>
-            <button class="btn btn-ghost" onclick="showJoinRoom()">🔗 اتصال به اتاق موجود</button>
-          </div>
-        </div>
-        <div id="syncConnected" class="hidden">
-          <h4 style="color:var(--ok);margin-bottom:12px">✅ متصل هستید</h4>
-          <label>کد اتاق:</label>
-          <div class="room-code" id="roomCodeDisplay">—</div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
-            <button class="btn btn-primary" onclick="copyRoomCode()">📋 کپی</button>
-            <button class="btn btn-ghost" onclick="syncNow(true)">🔄 سینک فوری</button>
-            <button class="btn btn-danger" onclick="disconnectRoom()">🚪 قطع</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- داده‌ها -->
-    <div id="a-tab-data" class="hidden">
-      <div class="card mb">
-        <h3 class="sec-title">💾 پشتیبان‌گیری</h3>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <button class="btn btn-primary" onclick="exportAll()">⬇ خروجی کامل</button>
-          <button class="btn btn-ghost" onclick="document.getElementById('importFile').click()">⬆ ورودی</button>
-          <input type="file" id="importFile" accept=".json" style="display:none" onchange="importAll(event)">
-        </div>
-      </div>
-      <div class="card">
-        <h3 class="sec-title">⚠️ ناحیه خطر</h3>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <button class="btn btn-danger" onclick="wipeRecs()">پاک کردن همه گزارش‌ها</button>
-          <button class="btn btn-danger" onclick="wipeAll()">پاک کردن کامل</button>
-          <button class="btn btn-ghost" onclick="cleanOldRecs()">حذف گزارش‌های +۲ سال</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="foot">طراحی و توسعه: <b>مهندس محمدرسول یزدیان</b> — © مروارید</div>
-  </div>
-</div>
-
-<!-- مودال‌ها -->
-<div id="passModal" class="modal-bg hidden">
-  <div class="card modal">
-    <h3 class="sec-title">تغییر رمز عبور</h3>
-    <div id="pmMsg"></div>
-    <div style="margin-bottom:13px"><label>رمز فعلی</label><input id="pmOld" type="password"></div>
-    <div style="margin-bottom:13px"><label>رمز جدید</label><input id="pmNew" type="password" placeholder="حداقل ۶ کاراکتر"></div>
-    <div style="margin-bottom:20px"><label>تکرار رمز جدید</label><input id="pmNew2" type="password"></div>
-    <div style="display:flex;gap:10px">
-      <button class="btn btn-primary" style="flex:1" onclick="saveNewPass()">ذخیره</button>
-      <button class="btn btn-ghost" onclick="closeChangePass()">انصراف</button>
-    </div>
-  </div>
-</div>
-
-<div id="recModal" class="modal-bg hidden">
-  <div class="card modal" style="max-width:720px">
-    <h3 class="sec-title" id="recModalTitle">جزئیات</h3>
-    <div id="recDetail"></div>
-    <button class="btn btn-ghost mt" onclick="closeRecModal()">بستن</button>
-  </div>
-</div>
-
-<div id="joinModal" class="modal-bg hidden">
-  <div class="card modal">
-    <h3 class="sec-title">🔗 اتصال به اتاق</h3>
-    <div id="jmMsg"></div>
-    <label>کد اتاق</label>
-    <input id="jmCode" placeholder="xxxxxxxxxxxxxxxx" style="text-align:center;font-family:monospace;font-size:15px">
-    <label style="margin-top:12px">توکن گیت‌هاب</label>
-    <input id="jmToken" placeholder="ghp_xxxxxxxxxxxxxxxx" style="font-family:monospace;font-size:13px">
-    <div style="display:flex;gap:10px;margin-top:18px">
-      <button class="btn btn-primary" style="flex:1" onclick="joinRoom()">اتصال</button>
-      <button class="btn btn-ghost" onclick="document.getElementById('joinModal').classList.add('hidden')">انصراف</button>
-    </div>
-  </div>
-</div>
-
-<div id="userModal" class="modal-bg hidden">
-  <div class="card modal">
-    <h3 class="sec-title" id="userModalTitle">افزودن کاربر جدید</h3>
-    <div id="umMsg"></div>
-    <input type="hidden" id="umOldNc">
-    <div class="row mb">
-      <div><label>نام و نام خانوادگی</label><input id="umName" placeholder="مثلاً: علی رضایی"></div>
-      <div>
-        <label>نقش / سمت</label>
-        <select id="umRole">
-          <option value="seller">فروشنده</option>
-          <option value="worker">کارگر</option>
-          <option value="accountant">حسابدار</option>
-          <option value="manager">سرپرست</option>
-          <option value="other">سایر</option>
-        </select>
-      </div>
-    </div>
-    <div class="row mb">
-      <div>
-        <label>کد ملی / نام کاربری</label>
-        <div style="display:flex;gap:8px">
-          <input id="umNc" placeholder="کد ملی" style="font-family:monospace">
-          <button class="btn btn-ghost btn-sm" type="button" onclick="genRandomNc()">🎲</button>
-        </div>
-      </div>
-      <div>
-        <label>رمز عبور</label>
-        <div style="display:flex;gap:8px">
-          <input id="umPass" placeholder="رمز" style="font-family:monospace">
-          <button class="btn btn-ghost btn-sm" type="button" onclick="genRandomPass()">🎲</button>
-        </div>
-      </div>
-    </div>
-    <div class="row mb">
-      <div><label>دستمزد ساعتی (ریال)</label><input id="umHourly" type="number" placeholder="مثلاً 800000" value="0"></div>
-      <div><label>قیمت هر ساعت اضافه‌کار (ریال)</label><input id="umOTPrice" type="number" placeholder="مثلاً 1200000" value="0"></div>
-    </div>
-    <div class="row mb">
-      <div><label>درصد پورسانت از فروش (%)</label><input id="umCommission" type="number" step="0.1" placeholder="0" value="0"></div>
-      <div><label>مزایای ماهانه ثابت (ریال)</label><input id="umBenefits" type="number" placeholder="0" value="0"></div>
-    </div>
-    <div class="row mb">
-      <div><label>تاریخ استخدام (شمسی)</label><input id="umHire" placeholder="1404/01/01"></div>
-      <div><label>شماره پرسنلی</label><input id="umPersonalNo" placeholder="مثلاً 1001"></div>
-    </div>
-    <div class="mb">
-      <label>یادداشت مدیر</label>
-      <textarea id="umNote" placeholder="توضیحات درباره این کاربر..."></textarea>
-    </div>
-    <div style="display:flex;gap:10px">
-      <button class="btn btn-primary" style="flex:1" onclick="saveUser()">💾 ذخیره</button>
-      <button class="btn btn-ghost" onclick="closeUserModal()">انصراف</button>
-    </div>
-  </div>
-</div>
+<div id="toast"></div>
+<input type="file" id="filePicker" class="hidden" accept="image/*,application/pdf">
 
 <script>
-/* ============ CONFIG ============ */
-const CONFIG = {
-  siteName: "مروارید",
-  designer: "مهندس محمدرسول یزدیان",
-  entryStartHour: 18,
-  entryEndHour: 24,
-  retainYears: 2,
-  hoursRetainDays: 365,
-  overtimeRateDefault: 1.4,
-  maxFileSize: 2 * 1024 * 1024  // 2 مگابایت
-};
+/* ============ تاریخ شمسی ============ */
+const div=(a,b)=>~~(a/b), mod=(a,b)=>a-~~(a/b)*b;
+function g2j(gy,gm,gd){
+  const gdm=[0,31,59,90,120,151,181,212,243,273,304,334];
+  let jy=(gy<=1600)?0:979;
+  gy-=(gy<=1600)?621:1600;
+  const gy2=(gm>2)?(gy+1):gy;
+  let days=(365*gy)+div(gy2+3,4)-div(gy2+99,100)+div(gy2+399,400)-80+gd+gdm[gm-1];
+  jy+=33*div(days,12053); days=mod(days,12053);
+  jy+=4*div(days,1461);   days=mod(days,1461);
+  jy+=div(days-1,365);
+  if(days>365) days=mod(days-1,365);
+  const jm=(days<186)?1+div(days,31):7+div(days-186,30);
+  const jd=1+((days<186)?mod(days,31):mod(days-186,30));
+  return [jy,jm,jd];
+}
+function j2g(jy,jm,jd){
+  let gy=(jy<=979)?621:1600;
+  jy-=(jy<=979)?0:979;
+  let days=(365*jy)+(div(jy,33)*8)+div(mod(jy,33)+3,4)+78+jd+((jm<7)?(jm-1)*31:((jm-7)*30)+186);
+  gy+=400*div(days,146097); days=mod(days,146097);
+  if(days>36524){ gy+=100*div(--days,36524); days=mod(days,36524); if(days>=365) days++; }
+  gy+=4*div(days,1461); days=mod(days,1461);
+  gy+=div(days,365); if(days>365) days=mod(days,365);
+  let gd=days+1;
+  const leap=((gy%4===0&&gy%100!==0)||(gy%400===0))?29:28;
+  const sa=[0,31,leap,31,30,31,30,31,31,30,31,30,31];
+  let gm; for(gm=0;gm<13&&gd>sa[gm];gm++) gd-=sa[gm];
+  return [gy,gm,gd];
+}
+function isLeapJ(jy){ const g=j2g(jy,12,30); const b=g2j(g[0],g[1],g[2]); return b[1]===12; }
+function jMonthLength(jy,jm){ if(jm<=6)return 31; if(jm<=11)return 30; return isLeapJ(jy)?30:29; }
+function todayJ(){ const d=new Date(); return g2j(d.getFullYear(),d.getMonth()+1,d.getDate()); }
+function fmtJ(y,m,d){ return y+'/'+String(m).padStart(2,'0')+'/'+String(d).padStart(2,'0'); }
+function parseJ(s){ const p=String(s).split('/').map(Number); return [p[0],p[1],p[2]]; }
+function cmpJ(a,b){ return (a[0]-b[0])||(a[1]-b[1])||(a[2]-b[2]); }
+function addDaysJ(y,m,d,n){
+  const g=j2g(y,m,d); const dt=new Date(g[0],g[1]-1,g[2]); dt.setDate(dt.getDate()+n);
+  return g2j(dt.getFullYear(),dt.getMonth()+1,dt.getDate());
+}
+function addMonthsJ(y,m,d,n){
+  let mm=m+n, yy=y+Math.floor((mm-1)/12); mm=((mm-1)%12+12)%12+1;
+  const dd=Math.min(d,jMonthLength(yy,mm));
+  return [yy,mm,dd];
+}
+function wdOf(y,m,d){ const g=j2g(y,m,d); return new Date(g[0],g[1]-1,g[2]).getDay(); }
+function diffDaysJ(a,b){
+  const g1=j2g(a[0],a[1],a[2]), g2=j2g(b[0],b[1],b[2]);
+  const d1=new Date(g1[0],g1[1]-1,g1[2]), d2=new Date(g2[0],g2[1]-1,g2[2]);
+  return Math.round((d2-d1)/86400000);
+}
+const WDAYS=['یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه','شنبه'];
+const WORDER=[6,0,1,2,3,4,5];
+const MONTHS=['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
 
-const JALALI_MONTHS = ["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
+const FA='۰۱۲۳۴۵۶۷۸۹';
+function toFa(s){ return String(s).replace(/\d/g,d=>FA[+d]); }
+function toEn(s){ return String(s).replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)); }
+function faDate(str){ return toFa(str); }
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
-const ROLES = {
-  admin:      { label: "مدیر",      badge: "badge-admin" },
-  accountant: { label: "حسابدار",   badge: "badge-acc" },
-  seller:     { label: "فروشنده",   badge: "badge-seller" },
-  worker:     { label: "کارگر",     badge: "badge-worker" },
-  manager:    { label: "سرپرست",    badge: "badge-user" },
-  other:      { label: "سایر",      badge: "badge-user" }
-};
-
-const DEFAULT_USERS = [
-  { nc: "0372892361", pass: "4032221073", name: "فروشنده ۱", role: "seller", hourlyRate: 0, otPrice: 0, commission: 0, hireDate: "", benefits: 0, personalNo: "", note: "" },
-  { nc: "0372892363", pass: "4032221075", name: "فروشنده ۲", role: "seller", hourlyRate: 0, otPrice: 0, commission: 0, hireDate: "", benefits: 0, personalNo: "", note: "" },
-  { nc: "0372892365", pass: "4042222077", name: "فروشنده ۳", role: "seller", hourlyRate: 0, otPrice: 0, commission: 0, hireDate: "", benefits: 0, personalNo: "", note: "" },
-  { nc: "admin",      pass: "Admin@1403",  name: "مدیر فروشگاه", role: "admin", hourlyRate: 0, otPrice: 0, commission: 0, hireDate: "", benefits: 0, personalNo: "", note: "" }
+/* ============ داده‌های پیش‌فرض ============ */
+const LS_KEY='kelasi_app_v1';
+const DEFAULT_COURSES=[
+ {code:'21107',name:'آزمایشگاه سیستم‌های کنترل دیجیتال',unit:1,teacher:'جناب آقای علی عامی',
+  days:[1],time:'۱۰:۰۰ - ۱۲:۰۰',examDate:'',examTime:'',color:'#4f8cff'},
+ {code:'21098',name:'اصول سیستم‌های مخابراتی',unit:3,teacher:'جناب آقای دکتر آرش کریمیانی',
+  days:[1,2],time:'دوشنبه ۱۴:۰۰-۱۵:۰۰ | سه‌شنبه ۱۵:۰۰-۱۷:۰۰',examDate:'1405/10/23',examTime:'۰۸:۳۰',color:'#a855f7'},
+ {code:'21192',name:'الکترونیک ۲',unit:3,teacher:'جناب آقای دکتر عبدالمجید عبدالهی فرد',
+  days:[0,1],time:'یکشنبه ۱۸:۰۰-۲۰:۰۰ | دوشنبه ۱۷:۰۰-۱۸:۰۰',examDate:'1405/10/21',examTime:'۱۴:۰۰',color:'#22d3ee'},
+ {code:'10061',name:'مبانی برخورد با حوادث و سوانح',unit:1,teacher:'جناب آقای مجید رضمانی',
+  days:[0],time:'۱۶:۰۰ - ۱۸:۰۰',examDate:'',examTime:'',color:'#f59e0b'},
+ {code:'10006',name:'انقلاب اسلامی ایران',unit:3,teacher:'جناب آقای دکتر علی ملکی',
+  days:[2],time:'۱۰:۰۰ - ۱۲:۰۰',examDate:'1405/10/15',examTime:'۱۰:۰۰',color:'#22c55e'},
+ {code:'21101',name:'سیستم‌های دیجیتال ۲',unit:3,teacher:'جناب آقای دکتر علی محمدفتوحی',
+  days:[0,2],time:'یکشنبه ۱۰:۰۰-۱۲:۰۰ | سه‌شنبه ۱۰:۰۰-۱۲:۰۰',examDate:'1405/10/13',examTime:'۱۴:۰۰',color:'#ec4899'},
+ {code:'21093',name:'سیستم‌های کنترل خطی',unit:3,teacher:'جناب آقای دکتر علی کاظمی',
+  days:[0,2],time:'یکشنبه ۱۶:۰۰-۱۸:۰۰ | سه‌شنبه ۱۴:۰۰-۱۶:۰۰',examDate:'1405/10/20',examTime:'۰۸:۳۰',color:'#8b5cf6'},
+ {code:'10059',name:'تاریخ و مقررات دفاع مقدس',unit:1,teacher:'جناب آقای محمد مهدی محمودیان',
+  days:[1,2],time:'۰۸:۰۰ - ۱۰:۰۰',examDate:'1405/10/15',examTime:'۱۱:۳۰',color:'#14b8a6'},
+ {code:'21096',name:'ماشین‌های الکتریکی ۱',unit:2,teacher:'جناب آقای دکتر سجاد صدر',
+  days:[1],time:'۱۷:۰۰ - ۱۸:۰۰',examDate:'1405/10/19',examTime:'۱۴:۰۰',color:'#f43f5e'}
 ];
-
-/* ============ Storage ============ */
-const K = {
-  users:  "morvarid_users_v6",
-  recs:   "morvarid_recs_v6",
-  reqs:   "morvarid_reqs_v6",
-  msgs:   "morvarid_msgs_v6",
-  notifs: "morvarid_notifs_v6",
-  bc:     "morvarid_bc_v6",
-  sess:   "morvarid_sess_v6",
-  room:   "morvarid_gh_gist_v6",
-  token:  "morvarid_gh_token_v6",
-  lastUp: "morvarid_lastup_v6",
-  hours:  "morvarid_hours_v6",
-  salary: "morvarid_salary_v6"
-};
-const load = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch(e){ return d; } };
-const save = (k, v) => { try{ localStorage.setItem(k, JSON.stringify(v)); } catch(e){ alert("حافظه پر. تصاویر کم‌حجم‌تر بارگذاری کنید."); } };
-
-/* Migration */
-(function migrate(){
-  const v5users = load("morvarid_users_v5", null);
-  if (v5users && !load(K.users, null)){
-    save(K.users, v5users.map(u => ({ ...u, otPrice: u.otPrice || 0, personalNo: u.personalNo || "" })));
-  } else if (!load(K.users, null)) {
-    save(K.users, DEFAULT_USERS);
-  }
-  ["recs","reqs","msgs","notifs","bc","hours","salary"].forEach(key => {
-    const v5 = load("morvarid_" + key + "_v5", null);
-    const nk = key === "salary" ? K.salary : K[key];
-    if (v5 && !load(nk, null)) save(nk, v5);
-  });
-})();
-
-const getUsers    = () => load(K.users, DEFAULT_USERS);
-const setUsers    = u => { save(K.users, u); markLocalChange(); };
-const getRecs     = () => load(K.recs, []);
-const setRecs     = r => { save(K.recs, r); markLocalChange(); };
-const getReqs     = () => load(K.reqs, []);
-const setReqs     = r => { save(K.reqs, r); markLocalChange(); };
-const getMsgs     = () => load(K.msgs, []);
-const setMsgs     = m => { save(K.msgs, m); markLocalChange(); };
-const getNotifs   = () => load(K.notifs, []);
-const setNotifs   = n => { save(K.notifs, n); markLocalChange(); };
-const getBC       = () => load(K.bc, []);
-const setBC       = b => { save(K.bc, b); markLocalChange(); };
-const getHours    = () => load(K.hours, []);
-const setHours    = h => { save(K.hours, h); markLocalChange(); };
-const getSalaries = () => load(K.salary, []);
-const setSalaries = s => { save(K.salary, s); markLocalChange(); };
-
-let session = null;
-let selectedChatUser = null;
-
-/* ============ Number format (ریال) ============ */
-function formatRial(n){
-  const num = Math.round(Number(n) || 0);
-  const neg = num < 0;
-  const str = Math.abs(num).toString();
-  const formatted = str.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-  return (neg ? '-' : '') + formatted;
-}
-function rial(n){ return formatRial(n) + ' ریال'; }
-function numFa(n){ return (Number(n) || 0).toLocaleString('fa-IR'); }
-
-/* ============ Dates (شمسی) ============ */
-function jalaliToday(){
-  return new Intl.DateTimeFormat("fa-IR-u-nu-latn",{year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
-}
-function nowTimeStr(){
-  return new Intl.DateTimeFormat("fa-IR-u-nu-latn",{hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date());
-}
-function jalaliParts(str){
-  // ورودی مثل "1404/06/19"
-  const parts = String(str || "").split(/[\/\-.]/).map(x => parseInt(x, 10));
-  return { year: parts[0] || 0, month: parts[1] || 0, day: parts[2] || 0 };
-}
-function jalaliNowParts(){
-  const d = new Date();
-  const fmt = new Intl.DateTimeFormat("fa-IR-u-nu-latn",{year:"numeric",month:"2-digit",day:"2-digit"});
-  const s = fmt.format(d);
-  return jalaliParts(s);
-}
-
-/* ============ GitHub Sync ============ */
-const GH = {
-  token:    localStorage.getItem(K.token) || "",
-  gistId:   localStorage.getItem(K.room)  || "",
-  syncing:  false,
-  autoTimer: null
-};
-
-async function ghApi(path, method = "GET", body = null) {
-  const headers = {
-    "Accept": "application/vnd.github+json",
-    "Authorization": "Bearer " + GH.token,
-    "X-GitHub-Api-Version": "2022-11-28"
-  };
-  if (body) headers["Content-Type"] = "application/json";
-  const opts = { method, headers };
-  if (body) opts.body = JSON.stringify(body);
-  const res = await fetch("https://api.github.com" + path, opts);
-  if (!res.ok){ const txt = await res.text(); throw new Error("API " + res.status); }
-  return res.json();
-}
-
-function markLocalChange(){
-  localStorage.setItem(K.lastUp, String(Date.now()));
-  schedulePushToCloud();
-}
-let pushTimer = null;
-function schedulePushToCloud(){
-  if (!GH.gistId || !GH.token) return;
-  clearTimeout(pushTimer);
-  pushTimer = setTimeout(() => pushToCloud(), 1000);
-}
-
-function collectAll(){
+function defaultState(){
+  const t=todayJ();
+  const start=addDaysJ(t[0],t[1],t[2],1);
+  const end=addMonthsJ(start[0],start[1],start[2],6);
   return {
-    users:  getUsers(), recs: getRecs(), reqs: getReqs(),
-    msgs:   getMsgs(),  notifs: getNotifs(), bc: getBC(),
-    hours:  getHours(), salaries: getSalaries(),
-    updatedAt: Date.now()
+    auth:null,
+    profile:{name:'محمدرسول یزدیان',studentId:'4032221073',major:'مهندسی برق',
+             faculty:'دانشکده فنی مهندسی',term:'نیمسال اول ۱۴۰۶'},
+    courses:DEFAULT_COURSES.map((c,i)=>({...c,id:'c'+(i+1)})),
+    attendance:{}, notes:{}, grades:{}, tasks:[],
+    settings:{startDate:fmtJ(start[0],start[1],start[2]),endDate:fmtJ(end[0],end[1],end[2])}
   };
 }
 
-function applyCloud(data){
-  if (!data) return;
-  if (Array.isArray(data.users))    save(K.users, data.users);
-  if (Array.isArray(data.recs))     save(K.recs, data.recs);
-  if (Array.isArray(data.reqs))     save(K.reqs, data.reqs);
-  if (Array.isArray(data.msgs))     save(K.msgs, data.msgs);
-  if (Array.isArray(data.notifs))   save(K.notifs, data.notifs);
-  if (Array.isArray(data.bc))       save(K.bc, data.bc);
-  if (Array.isArray(data.hours))    save(K.hours, data.hours);
-  if (Array.isArray(data.salaries)) save(K.salary, data.salaries);
-  localStorage.setItem(K.lastUp, String(data.updatedAt || Date.now()));
+/* ============ ذخیره‌سازی ============ */
+let S=null;
+function loadState(){
+  try{
+    const raw=localStorage.getItem(LS_KEY);
+    if(!raw){ S=defaultState(); return; }
+    const p=JSON.parse(raw);
+    S=Object.assign(defaultState(),p);
+    S.profile=Object.assign(defaultState().profile,p.profile||{});
+    S.settings=Object.assign(defaultState().settings,p.settings||{});
+    S.attendance=p.attendance||{}; S.notes=p.notes||{}; S.grades=p.grades||{}; S.tasks=p.tasks||[];
+    if(!Array.isArray(S.courses)||!S.courses.length) S.courses=defaultState().courses;
+  }catch(e){ S=defaultState(); }
+}
+function save(){
+  try{ localStorage.setItem(LS_KEY,JSON.stringify(S)); }
+  catch(e){ toast('خطا در ذخیره‌سازی مرورگر','err'); }
 }
 
-async function pushToCloud(){
-  if (!GH.gistId || !GH.token || GH.syncing) return;
-  GH.syncing = true;
-  setSyncStatus("syncing");
-  try {
-    const gist = await ghApi("/gists/" + GH.gistId);
-    const files = {};
-    Object.keys(gist.files).forEach(k => { files[k] = { content: gist.files[k].content || "" }; });
-    files["morvarid-data.json"] = { content: JSON.stringify(collectAll(), null, 2) };
-    await ghApi("/gists/" + GH.gistId, "PATCH", { files });
-    setSyncStatus("online");
-  } catch(e){ setSyncStatus("offline"); }
-  GH.syncing = false;
-}
-
-async function pullFromCloud(){
-  if (!GH.gistId || !GH.token) return;
-  try {
-    const gist = await ghApi("/gists/" + GH.gistId);
-    const file = gist.files["morvarid-data.json"];
-    if (!file) return;
-    let content = file.content;
-    if (file.truncated) { const r = await fetch(file.raw_url); content = await r.text(); }
-    const data = JSON.parse(content);
-    const remoteTime = data.updatedAt || 0;
-    const localTime  = Number(localStorage.getItem(K.lastUp) || 0);
-    if (remoteTime > localTime + 500) {
-      applyCloud(data);
-      refreshAllViews();
-    }
-    setSyncStatus("online");
-  } catch(e){ setSyncStatus("offline"); }
-}
-
-function startAutoSync(){
-  stopAutoSync();
-  GH.autoTimer = setInterval(() => pullFromCloud(), 10000);
-  pullFromCloud();
-}
-function stopAutoSync(){ if (GH.autoTimer){ clearInterval(GH.autoTimer); GH.autoTimer = null; } }
-
-async function createRoom(){
-  const box = document.getElementById("syncStatusBox");
-  const tokenInput = document.getElementById("ghTokenInput");
-  const token = tokenInput ? tokenInput.value.trim() : GH.token;
-  if (!token){ box.innerHTML = `<div class="alert alert-error"><span>⛔</span><span>اول توکن را وارد کنید.</span></div>`; return; }
-  GH.token = token;
-  localStorage.setItem(K.token, token);
-  box.innerHTML = `<div class="alert alert-info"><span>⏳</span><span>در حال ایجاد اتاق...</span></div>`;
-  try {
-    const gist = await ghApi("/gists", "POST", {
-      description: "Morvarid Data — " + new Date().toISOString(),
-      public: false,
-      files: { "morvarid-data.json": { content: JSON.stringify(collectAll(), null, 2) } }
-    });
-    GH.gistId = gist.id;
-    localStorage.setItem(K.room, gist.id);
-    startAutoSync(); renderSyncTab();
-    box.innerHTML = `<div class="alert alert-ok"><span>✅</span><span>اتاق ساخته شد!</span></div>`;
-  } catch(e){
-    box.innerHTML = `<div class="alert alert-error"><span>⛔</span><span>خطا: ${e.message}</span></div>`;
-  }
-}
-
-function showJoinRoom(){
-  document.getElementById("jmCode").value = "";
-  document.getElementById("jmToken").value = "";
-  document.getElementById("jmMsg").innerHTML = "";
-  document.getElementById("joinModal").classList.remove("hidden");
-}
-
-async function joinRoom(){
-  const box = document.getElementById("jmMsg");
-  const raw = document.getElementById("jmCode").value.trim();
-  const token = document.getElementById("jmToken").value.trim();
-  if (!raw || !token) return showMsg(box, "کد و توکن را وارد کنید.", "error");
-  let id = raw;
-  if (raw.includes("gist.github.com")) id = raw.split("/").pop().split("#")[0];
-  box.innerHTML = `<div class="alert alert-info"><span>⏳</span><span>در حال اتصال...</span></div>`;
-  try {
-    localStorage.setItem(K.token, token);
-    GH.token = token;
-    const gist = await ghApi("/gists/" + id);
-    const file = gist.files["morvarid-data.json"];
-    if (!file) throw new Error("فایل داده یافت نشد");
-    let content = file.content;
-    if (file.truncated) { const r = await fetch(file.raw_url); content = await r.text(); }
-    const data = JSON.parse(content);
-    if (confirm("به اتاق متصل شوید؟")) {
-      applyCloud(data);
-      GH.gistId = id;
-      localStorage.setItem(K.room, id);
-      startAutoSync();
-      document.getElementById("joinModal").classList.add("hidden");
-      renderSyncTab();
-      location.reload();
-    }
-  } catch(e){ showMsg(box, "ناموفق: " + e.message, "error"); }
-}
-
-function disconnectRoom(){
-  if (!confirm("اتصال قطع شود؟")) return;
-  GH.gistId = "";
-  localStorage.removeItem(K.room);
-  stopAutoSync();
-  renderSyncTab();
-}
-
-function copyRoomCode(){
-  if (!GH.gistId) return;
-  const text = GH.gistId;
-  if (navigator.clipboard) navigator.clipboard.writeText(text).then(() => alert("کپی شد ✅\n" + text)).catch(() => prompt("کپی کنید:", text));
-  else prompt("کپی کنید:", text);
-}
-
-async function syncNow(manual){
-  if (!GH.gistId){ if (manual) alert("ابتدا به اتاق متصل شوید."); return; }
-  setSyncStatus("syncing");
-  await pullFromCloud(); await pushToCloud();
-  if (manual) alert("سینک انجام شد ✅");
-}
-
-function setSyncStatus(s){
-  const els = [document.getElementById("uSync"), document.getElementById("aSync")];
-  els.forEach(el => {
-    if (!el) return;
-    el.classList.remove("online","offline","syncing");
-    el.classList.add(s);
-    const txt = el.querySelector("span:last-child");
-    if (txt) txt.textContent = s === "online" ? "متصل" : s === "syncing" ? "در حال سینک" : "آفلاین";
+/* ============ IndexedDB ============ */
+const DB_NAME='kelasi_files_db', DB_STORE='files';
+let _db=null, _dbFail=false;
+function openDB(){
+  return new Promise((res,rej)=>{
+    if(_dbFail) return rej('no-idb');
+    if(_db) return res(_db);
+    try{
+      const r=indexedDB.open(DB_NAME,1);
+      r.onupgradeneeded=e=>{
+        const d=e.target.result;
+        if(!d.objectStoreNames.contains(DB_STORE)){
+          const st=d.createObjectStore(DB_STORE,{keyPath:'id'});
+          st.createIndex('courseId','courseId',{unique:false});
+        }
+      };
+      r.onsuccess=()=>{ _db=r.result; res(_db); };
+      r.onerror=()=>{ _dbFail=true; rej(r.error); };
+    }catch(e){ _dbFail=true; rej(e); }
   });
 }
+async function filePut(rec){ const d=await openDB(); return new Promise((res,rej)=>{
+  const t=d.transaction(DB_STORE,'readwrite'); t.objectStore(DB_STORE).put(rec);
+  t.oncomplete=()=>res(true); t.onerror=()=>rej(t.error); }); }
+async function fileAll(){ const d=await openDB(); return new Promise((res,rej)=>{
+  const t=d.transaction(DB_STORE,'readonly'); const rq=t.objectStore(DB_STORE).getAll();
+  rq.onsuccess=()=>res(rq.result||[]); rq.onerror=()=>rej(rq.error); }); }
+async function fileGet(id){ const d=await openDB(); return new Promise((res,rej)=>{
+  const t=d.transaction(DB_STORE,'readonly'); const rq=t.objectStore(DB_STORE).get(id);
+  rq.onsuccess=()=>res(rq.result); rq.onerror=()=>rej(rq.error); }); }
+async function fileDel(id){ const d=await openDB(); return new Promise((res,rej)=>{
+  const t=d.transaction(DB_STORE,'readwrite'); t.objectStore(DB_STORE).delete(id);
+  t.oncomplete=()=>res(true); t.onerror=()=>rej(t.error); }); }
 
-function renderSyncTab(){
-  const notConn = document.getElementById("syncNotConnected");
-  const conn    = document.getElementById("syncConnected");
-  const box     = document.getElementById("syncStatusBox");
-  if (!notConn || !conn) return;
-  box.innerHTML = "";
-  if (GH.gistId && GH.token){
-    notConn.classList.add("hidden");
-    conn.classList.remove("hidden");
-    document.getElementById("roomCodeDisplay").textContent = GH.gistId;
-    setSyncStatus("online");
-  } else {
-    notConn.classList.remove("hidden");
-    conn.classList.add("hidden");
-    setSyncStatus("offline");
-    const inp = document.getElementById("ghTokenInput");
-    if (inp && GH.token) inp.value = GH.token;
+/* ============ توست ============ */
+function toast(msg,type){
+  const box=document.getElementById('toast');
+  const el=document.createElement('div');
+  el.className='tst'+(type?' '+type:'');
+  el.textContent=msg;
+  box.appendChild(el);
+  setTimeout(()=>{ el.style.transition='.4s'; el.style.opacity='0'; el.style.transform='translateY(14px)';
+    setTimeout(()=>el.remove(),400); },3000);
+}
+
+/* ============ ورود ============ */
+const loginScreen=document.getElementById('loginScreen');
+const appEl=document.getElementById('app');
+const loginMsg=document.getElementById('loginMsg');
+const loginHint=document.getElementById('loginHint');
+function b64(s){ try{ return btoa(unescape(encodeURIComponent(s))); }catch(e){ return s; } }
+
+function initLogin(){
+  if(S.auth){
+    loginHint.textContent='برای ورود، کد دانشجویی و کد ملی خود را وارد کنید.';
+  }else{
+    loginHint.innerHTML='🔐 <b>اولین ورود:</b> کد دانشجویی و کد ملی خود را وارد کنید تا حساب «کلاسی» شما ساخته شود. کد ملی، رمز ورود شما خواهد بود.';
+    document.getElementById('inpStudent').value=S.profile.studentId||'';
   }
 }
+document.getElementById('btnLogin').addEventListener('click',doLogin);
+document.getElementById('inpPass').addEventListener('keydown',e=>{ if(e.key==='Enter') doLogin(); });
+document.getElementById('inpStudent').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('inpPass').focus(); });
 
-/* ============ Utils ============ */
-const $ = s => document.querySelector(s);
-const $$ = s => document.querySelectorAll(s);
-function normDigits(s){ return String(s ?? "").replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d)).replace(/[٠-٩]/g, d => "٠١٢٣٤٥٦٧٨٩".indexOf(d)).trim(); }
-function withinWindow(){ const h = new Date().getHours(); return h >= CONFIG.entryStartHour && h < CONFIG.entryEndHour; }
-function esc(s){ return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
-function uid(){ return "r_" + Date.now() + "_" + Math.random().toString(36).slice(2,7); }
-function reqCode(){ const d = jalaliToday().replace(/\//g,""); const n = getReqs().length + 1; return `REQ-${d}-${String(n).padStart(3,"0")}`; }
-function getRole(u){ return u.role || "seller"; }
-function roleBadge(r){ const info = ROLES[r] || ROLES.other; return `<span class="badge ${info.badge}">${info.label}</span>`; }
-
-function showMsg(el, text, type){
-  if (typeof el === "string") el = $(el);
-  if (!el) return;
-  el.innerHTML = `<div class="alert alert-${type}"><span>${type==="error"?"⛔":type==="ok"?"✅":type==="warn"?"⚠️":"ℹ️"}</span><span>${text}</span></div>`;
-  if (type !== "error") setTimeout(()=>{ if (el.innerHTML.includes(text)) el.innerHTML=""; }, 6000);
-}
-
-/* ============ Login ============ */
 function doLogin(){
-  const nc = normDigits($("#inNC").value);
-  const ps = normDigits($("#inPass").value);
-  const box = $("#loginMsg");
-  if (!nc || !ps) return showMsg(box, "کد ملی و رمز را وارد کنید.", "error");
-  const u = getUsers().find(x => normDigits(x.nc) === nc && normDigits(x.pass) === ps);
-  if (!u) return showMsg(box, "اطلاعات اشتباه است.", "error");
-  session = u;
-  save(K.sess, { nc: u.nc });
-  $("#inNC").value = ""; $("#inPass").value = "";
-  box.innerHTML = "";
-  enterApp();
-}
-function logout(){
-  localStorage.removeItem(K.sess);
-  session = null;
-  $("#userView").classList.add("hidden");
-  $("#adminView").classList.add("hidden");
-  $("#loginView").classList.remove("hidden");
-}
-function isAdmin(){ return session && getRole(session) === "admin"; }
-function isAccountant(){ return session && getRole(session) === "accountant"; }
-function isStaff(){ return isAdmin() || isAccountant(); }
-function isSeller(){ return session && (getRole(session) === "seller" || getRole(session) === "manager"); }
+  const sid=toEn(document.getElementById('inpStudent').value.trim());
+  const pw =toEn(document.getElementById('inpPass').value.trim());
+  loginMsg.className='msg';
+  if(!sid||sid.length<4){ loginMsg.textContent='کد دانشجویی را درست وارد کنید.'; loginMsg.classList.add('err'); return; }
+  if(!pw||pw.length<6){ loginMsg.textContent='کد ملی باید حداقل ۶ رقم باشد.'; loginMsg.classList.add('err'); return; }
 
+  if(!S.auth){
+    S.auth={ studentId:sid, pass:b64(pw) };
+    S.profile.studentId=sid;
+    save();
+    loginMsg.textContent='حساب ساخته شد! در حال ورود به کلاسی...';
+    loginMsg.classList.add('ok');
+    setTimeout(enterApp,450);
+    return;
+  }
+  if(sid!==S.auth.studentId || b64(pw)!==S.auth.pass){
+    loginMsg.textContent='کد دانشجویی یا کد ملی اشتباه است.';
+    loginMsg.classList.add('err');
+    document.querySelector('.login-card').animate(
+      [{transform:'translateX(0)'},{transform:'translateX(-9px)'},{transform:'translateX(9px)'},{transform:'translateX(0)'}],
+      {duration:340,easing:'ease-in-out'});
+    return;
+  }
+  loginMsg.textContent='خوش آمدی محمدرسول!';
+  loginMsg.classList.add('ok');
+  setTimeout(enterApp,300);
+}
 function enterApp(){
-  $("#loginView").classList.add("hidden");
-  if (isStaff()) {
-    $("#adminView").classList.remove("hidden");
-    $("#userView").classList.add("hidden");
-    initAdmin();
-  } else {
-    $("#userView").classList.remove("hidden");
-    $("#adminView").classList.add("hidden");
-    initUser();
-  }
-  tickClock();
-  if (GH.gistId && GH.token) startAutoSync();
+  loginScreen.classList.add('hidden');
+  appEl.classList.remove('hidden');
+  document.getElementById('inpPass').value='';
+  renderAll();
+  startClock();
 }
+document.getElementById('btnLogout').addEventListener('click',()=>{
+  appEl.classList.add('hidden');
+  loginScreen.classList.remove('hidden');
+  loginMsg.textContent=''; loginMsg.className='msg';
+  initLogin();
+});
 
-function tickClock(){
-  const txt = `🕐 ${nowTimeStr()} — ${jalaliToday()}`;
-  if ($("#clock"))  $("#clock").textContent = txt;
-  if ($("#clock2")) $("#clock2").textContent = txt;
-}
-setInterval(tickClock, 15000);
-
-function refreshAllViews(){
-  if (!session) return;
-  if (isStaff()) {
-    if ($("#a-tab-dash") && !$("#a-tab-dash").classList.contains("hidden")) renderDash();
-    if ($("#a-tab-today") && !$("#a-tab-today").classList.contains("hidden")) renderToday();
-    if ($("#a-tab-reports") && !$("#a-tab-reports").classList.contains("hidden")) renderAdminReports();
-    if ($("#a-tab-requests") && !$("#a-tab-requests").classList.contains("hidden")) renderAdminReqs();
-    if ($("#a-tab-messages") && !$("#a-tab-messages").classList.contains("hidden")) renderUserPick();
-    if ($("#a-tab-broadcast") && !$("#a-tab-broadcast").classList.contains("hidden")) renderBCList();
-    if ($("#a-tab-users") && !$("#a-tab-users").classList.contains("hidden")) renderUsersList();
-    if ($("#a-tab-hours") && !$("#a-tab-hours").classList.contains("hidden")) renderAdminHours();
-    if ($("#a-tab-salary") && !$("#a-tab-salary").classList.contains("hidden")) renderSalaryHistory();
-  } else {
-    if ($("#u-tab-history") && !$("#u-tab-history").classList.contains("hidden")) renderUserHistory();
-    if ($("#u-tab-requests") && !$("#u-tab-requests").classList.contains("hidden")) renderUserReqs();
-    if ($("#u-tab-messages") && !$("#u-tab-messages").classList.contains("hidden")) renderUserMessages();
-    if ($("#u-tab-mysalary") && !$("#u-tab-mysalary").classList.contains("hidden")) renderMySalary();
-    if ($("#u-tab-hours") && !$("#u-tab-hours").classList.contains("hidden")) renderUserHours();
-  }
-}
-
-/* =========================================================
-   USER PANEL
-   ========================================================= */
-function buildUserTabs(){
-  const role = getRole(session);
-  const tabs = [];
-  if (role === "seller" || role === "manager") {
-    tabs.push({ id: "entry", label: "📝 ثبت گزارش" });
-    tabs.push({ id: "history", label: "📚 سابقه" });
-  }
-  if (["worker","seller","manager","accountant"].includes(role)) {
-    tabs.push({ id: "hours", label: "⏰ ثبت ساعت کار" });
-  }
-  tabs.push({ id: "mysalary", label: "💰 فیش حقوقی من" });
-  tabs.push({ id: "requests", label: "📋 درخواست‌ها" });
-  tabs.push({ id: "messages", label: "💬 پیام با مدیر" });
-
-  const box = $("#uTabs");
-  box.innerHTML = tabs.map((t, i) =>
-    `<button class="tab ${i===0?'active':''}" data-tab="${t.id}" onclick="switchUTab('${t.id}')">${t.label}</button>`
-  ).join("");
-
-  ["entry","history","hours","mysalary","requests","messages"].forEach(x => {
-    const el = $("#u-tab-" + x);
-    if (el) el.classList.add("hidden");
-  });
-  const first = tabs[0]?.id || "mysalary";
-  const firstEl = $("#u-tab-" + first);
-  if (firstEl) firstEl.classList.remove("hidden");
-}
-
-function initUser(){
-  $("#uName").textContent = session.name;
-  $("#uRoleBadge").innerHTML = roleBadge(getRole(session));
-  buildUserTabs();
-
-  const alertBox = $("#uAlert");
-  if (isSeller() && !withinWindow()){
-    showMsg(alertBox, `خارج از بازه ثبت. فقط از <b>${CONFIG.entryStartHour}:۰۰</b> تا <b>${CONFIG.entryEndHour}:۰۰</b>`, "warn");
-    if ($("#btnSubmit")) $("#btnSubmit").disabled = true;
-  } else {
-    alertBox.innerHTML = "";
-    if ($("#btnSubmit")) $("#btnSubmit").disabled = false;
-  }
-
-  if ($("#fDate")) $("#fDate").value = jalaliToday();
-  if ($("#fTime")) $("#fTime").value = nowTimeStr();
-  if ($("#hwDate")) $("#hwDate").value = jalaliToday();
-
-  if (isSeller()){
-    const today = jalaliToday();
-    const existing = getRecs().find(r => r.userNc === session.nc && r.date === today);
-    if ($("#invRows")) {
-      $("#invRows").innerHTML = "";
-      if (existing){
-        existing.invoices.forEach(i => addInvCard(i));
-        if (!existing.invoices.length) addInvCard();
-        $("#fNote").value = existing.note || "";
-      } else { addInvCard(); }
-      updateTotal();
-    }
-    renderUserHistory();
-  }
-  if ($("#hwOTPrice") && session.otPrice) $("#hwOTPrice").value = session.otPrice;
-
-  renderUserNotifs(); renderUserReqs(); renderUserMessages();
-  renderMySalary(); renderUserHours(); renderSyncTab();
-}
-
-function addInvCard(data = {}){
-  const wrap = $("#invRows"); if (!wrap) return;
-  const div = document.createElement("div");
-  div.className = "inv-card";
-  div.innerHTML = `
-    <div class="row-inv">
-      <input class="inv-no"   placeholder="شماره فاکتور" value="${esc(data.no||"")}">
-      <input class="inv-cust" placeholder="نام مشتری"   value="${esc(data.customer||"")}">
-      <input class="inv-amt"  type="number" inputmode="numeric" placeholder="مبلغ (ریال)" value="${data.amount||""}">
-      <button class="del" title="حذف" type="button">×</button>
-    </div>
-    <div>
-      <label style="margin-bottom:4px">📎 تصویر / مدرک (حداکثر ۲ مگابایت)</label>
-      <input class="inv-file" type="file" accept="image/*,application/pdf" multiple>
-      <div class="thumbs"></div>
-    </div>
-  `;
-  const fileInput = div.querySelector(".inv-file");
-  const thumbs = div.querySelector(".thumbs");
-  div._files = data.files ? [...data.files] : [];
-
-  function renderThumbs(){
-    thumbs.innerHTML = div._files.map((f, i) => `
-      <div class="thumb" title="${esc(f.name||"")}">
-        ${f.type && f.type.startsWith("image") ? `<img src="${f.data}">` : `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:10px;color:#fff;background:#333;text-align:center;padding:4px">${esc(f.name||"فایل")}</div>`}
-        <button class="x" data-i="${i}">×</button>
-      </div>
-    `).join("");
-    thumbs.querySelectorAll(".x").forEach(b => b.onclick = () => {
-      div._files.splice(+b.dataset.i, 1);
-      renderThumbs();
-    });
-  }
-  renderThumbs();
-
-  fileInput.addEventListener("change", async () => {
-    for (const f of fileInput.files){
-      if (f.size > CONFIG.maxFileSize){
-        alert(`فایل «${f.name}» بزرگ‌تر از ۲ مگابایت است.\nاندازه: ${(f.size/1024/1024).toFixed(2)} مگابایت`);
-        continue;
-      }
-      const data = await new Promise(r => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(f); });
-      div._files.push({ name: f.name, type: f.type, data });
-    }
-    fileInput.value = "";
-    renderThumbs();
-  });
-
-  div.querySelector(".inv-amt").addEventListener("input", updateTotal);
-  div.querySelector(".del").addEventListener("click", () => {
-    if ($("#invRows").children.length === 1){
-      div.querySelectorAll("input[type=text],input[type=number]").forEach(i => i.value = "");
-      div._files = []; renderThumbs();
-    } else div.remove();
-    updateTotal();
-  });
-  wrap.appendChild(div);
-  updateTotal();
-}
-
-function collectInvoices(){
-  const wrap = $("#invRows"); if (!wrap) return [];
-  return [...wrap.children].map(row => ({
-    no:       row.querySelector(".inv-no").value.trim(),
-    customer: row.querySelector(".inv-cust").value.trim(),
-    amount:   Number(normDigits(row.querySelector(".inv-amt").value)||0),
-    files:    row._files || []
-  })).filter(i => i.no || i.customer || i.amount || (i.files && i.files.length));
-}
-function updateTotal(){
-  if (!$("#fTotal")) return;
-  const t = collectInvoices().reduce((s,i) => s + (i.amount||0), 0);
-  $("#fTotal").textContent = rial(t);
-}
-
-function submitReport(){
-  const box = $("#uAlert");
-  if (!withinWindow()) return showMsg(box, "خارج از بازه.", "error");
-  const invoices = collectInvoices();
-  if (!invoices.length) return showMsg(box, "حداقل یک فاکتور وارد کنید.", "error");
-  if (invoices.some(i => !i.no)) return showMsg(box, "شماره فاکتور الزامی است.", "error");
-  if (invoices.some(i => !i.amount || i.amount <= 0)) return showMsg(box, "مبلغ باید مثبت باشد.", "error");
-
-  const today = jalaliToday();
-  const total = invoices.reduce((s,i) => s + i.amount, 0);
-  const recs = getRecs();
-  const rec = {
-    id: uid(), userNc: session.nc, userName: session.name,
-    date: today, time: nowTimeStr(), invoices, total,
-    note: $("#fNote").value.trim(), createdAt: Date.now()
+/* ============ ساعت ============ */
+let clockTimer=null;
+function startClock(){
+  if(clockTimer) clearInterval(clockTimer);
+  const t=document.getElementById('liveTime');
+  const d=document.getElementById('liveDate');
+  const tick=()=>{
+    const n=new Date();
+    t.textContent=toFa(String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0')+':'+String(n.getSeconds()).padStart(2,'0'));
+    const j=todayJ();
+    d.textContent=WDAYS[wdOf(j[0],j[1],j[2])]+' | '+toFa(fmtJ(j[0],j[1],j[2]));
   };
-  const idx = recs.findIndex(r => r.userNc === session.nc && r.date === today);
-  if (idx > -1) recs[idx] = rec; else recs.push(rec);
-  setRecs(recs);
-  showMsg(box, "✅ گزارش ثبت شد.", "ok");
-  renderUserHistory();
+  tick(); clockTimer=setInterval(tick,1000);
 }
 
-function renderUserHistory(){
-  const box = $("#uHistory"); if (!box) return;
-  const mine = getRecs().filter(r => r.userNc === session.nc).sort((a,b) => b.createdAt - a.createdAt);
-  if (!mine.length){ box.innerHTML = `<div class="empty">گزارشی ثبت نشده.</div>`; return; }
-  const totalAll = mine.reduce((s,r) => s + r.total, 0);
-  box.innerHTML = `
-    <div class="stats" style="margin-bottom:18px">
-      <div class="stat"><div class="k">تعداد گزارش</div><div class="v">${numFa(mine.length)}</div></div>
-      <div class="stat"><div class="k">جمع کل</div><div class="v gold">${rial(totalAll)}</div></div>
-    </div>
-    ${mine.map(r => `
-      <div class="req-card">
-        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px">
-          <b>📅 ${esc(r.date)} — ${esc(r.time)}</b>
-          <span class="money">${rial(r.total)}</span>
-        </div>
-        <div class="tbl-wrap"><table style="min-width:auto">
-          <thead><tr><th>فاکتور</th><th>مشتری</th><th>مبلغ</th><th>مدارک</th></tr></thead>
-          <tbody>${r.invoices.map(i => `
-            <tr><td>${esc(i.no)}</td><td>${esc(i.customer||"—")}</td>
-            <td class="money">${formatRial(i.amount)}</td>
-            <td>${i.files && i.files.length ? `<span class="badge badge-ok">${numFa(i.files.length)} فایل</span>` : "—"}</td></tr>
-          `).join("")}</tbody>
-        </table></div>
-        ${r.note ? `<div style="margin-top:10px;color:var(--muted);font-size:13px">📝 ${esc(r.note)}</div>` : ""}
-      </div>
-    `).join("")}
-  `;
+/* ============ تب‌ها ============ */
+document.getElementById('nav').addEventListener('click',e=>{
+  const b=e.target.closest('.tab'); if(!b) return;
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='panel-'+b.dataset.tab));
+  renderAll();
+});
+
+/* ============ کمک‌کننده ============ */
+function getCourse(id){ return S.courses.find(c=>c.id===id); }
+function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
+function nowJ(){ return fmtJ(...todayJ()); }
+function sessionDates(course){
+  const out=[];
+  let [y,m,d]=parseJ(S.settings.startDate);
+  const end=parseJ(S.settings.endDate);
+  let guard=0;
+  while(guard++<500){
+    if(cmpJ([y,m,d],end)>0) break;
+    if((course.days||[]).includes(wdOf(y,m,d))) out.push(fmtJ(y,m,d));
+    const L=jMonthLength(y,m); d++; if(d>L){ d=1; m++; if(m>12){ m=1; y++; } }
+  }
+  return out;
 }
-
-function renderUserNotifs(){
-  const box = $("#uNotif"); if (!box) return;
-  const list = getNotifs().filter(n => n.to === session.nc || n.to === "all");
-  if (!list.length){ box.innerHTML = ""; return; }
-  const last = list[list.length-1];
-  box.innerHTML = `<div class="alert alert-warn"><span>🔔</span><span>${esc(last.text)}<br><small style="opacity:.7">— ${esc(last.from)} • ${esc(last.date)}</small></span></div>`;
+function courseAvg(cid){
+  const g=S.grades[cid]||[];
+  if(!g.length) return null;
+  let sum=0,w=0;
+  g.forEach(x=>{ const ww=Number(x.weight)||1; sum+=Number(x.score)*ww; w+=ww; });
+  return w? (sum/w) : null;
 }
-
-/* --- ساعت کار کاربر --- */
-function submitHoursSelf(){
-  const box = $("#hoursMsg");
-  const date = $("#hwDate").value;
-  const n = Number(normDigits($("#hwNormal").value) || 0);
-  const ot = Number(normDigits($("#hwOT").value) || 0);
-  const otPrice = Number(normDigits($("#hwOTPrice").value) || session.otPrice || 0);
-  const otRate = Number(normDigits($("#hwOTRate").value) || CONFIG.overtimeRateDefault);
-  const note = $("#hwNote").value.trim();
-  if (n <= 0 && ot <= 0) return showMsg(box, "حداقل یکی از ساعت‌ها باید مثبت باشد.", "error");
-  if (ot > 0 && otPrice <= 0) return showMsg(box, "برای اضافه‌کار، قیمت هر ساعت را وارد کنید.", "error");
-
-  const parts = jalaliParts(date);
-  const hours = getHours();
-  hours.push({
-    id: uid(), userNc: session.nc, userName: session.name,
-    date, jalaliYear: parts.year, jalaliMonth: parts.month, jalaliDay: parts.day,
-    normal: n, ot, otPrice, otRate,
-    note, createdAt: Date.now(), enteredBy: session.name
+function totalAvg(){
+  let sum=0,w=0;
+  S.courses.forEach(c=>{
+    const a=courseAvg(c.id);
+    if(a!==null){ const u=Number(c.unit)||1; sum+=a*u; w+=u; }
   });
-  setHours(hours);
-  $("#hwNormal").value = ""; $("#hwOT").value = ""; $("#hwNote").value = "";
-  showMsg(box, "✅ ساعت کار ثبت شد.", "ok");
-  renderUserHours();
+  return w? sum/w : null;
+}
+function scoreClass(s){ if(s>=17) return 'sp-a'; if(s>=14) return 'sp-b'; if(s>=10) return 'sp-c'; return 'sp-d'; }
+
+/* ============ رندر کلی ============ */
+function renderAll(){
+  if(!S) return;
+  renderDashboard();
+  renderSchedule();
+  renderAttendance();
+  renderMaterials();
+  renderNotes();
+  renderGrades();
+  renderTasks();
+  renderCourses();
+  renderSettings();
 }
 
-function renderUserHours(){
-  const box = $("#uHoursList"); if (!box) return;
-  const mine = getHours()
-    .filter(h => h.userNc === session.nc)
-    .sort((a,b) => b.createdAt - a.createdAt);
-  if (!mine.length){ box.innerHTML = `<div class="empty">ساعتی ثبت نشده.</div>`; return; }
-  const totalN = mine.reduce((s,h) => s + h.normal, 0);
-  const totalOT = mine.reduce((s,h) => s + h.ot, 0);
-  const totalOTPay = mine.reduce((s,h) => s + (h.ot * (h.otPrice||0)), 0);
+/* ============ انتخاب تاریخ ============ */
+function dateSelects(prefix,val){
+  const [y,m,d]=(val? parseJ(val) : todayJ());
+  let ys='',ms='',ds='';
+  for(let i=1405;i<=1406;i++) ys+=`<option value="${i}" ${i===y?'selected':''}>${toFa(i)}</option>`;
+  for(let i=1;i<=12;i++) ms+=`<option value="${i}" ${i===m?'selected':''}>${MONTHS[i-1]}</option>`;
+  const L=jMonthLength(y,m);
+  for(let i=1;i<=L;i++) ds+=`<option value="${i}" ${i===Math.min(d,L)?'selected':''}>${toFa(i)}</option>`;
+  return `<div class="dsel" data-prefix="${prefix}">
+    <select class="dy" onchange="syncDaySelect(this)">${ys}</select>
+    <select class="dm" onchange="syncDaySelect(this)">${ms}</select>
+    <select class="dd">${ds}</select>
+  </div>`;
+}
+function syncDaySelect(el){
+  const box=el.closest('.dsel');
+  const y=+box.querySelector('.dy').value, m=+box.querySelector('.dm').value;
+  const dd=box.querySelector('.dd'); const cur=+dd.value||1;
+  const L=jMonthLength(y,m);
+  dd.innerHTML='';
+  for(let i=1;i<=L;i++) dd.insertAdjacentHTML('beforeend',`<option value="${i}" ${i===Math.min(cur,L)?'selected':''}>${toFa(i)}</option>`);
+}
+function readDateSelects(prefix){
+  const box=document.querySelector(`.dsel[data-prefix="${prefix}"]`);
+  if(!box) return null;
+  return fmtJ(+box.querySelector('.dy').value,+box.querySelector('.dm').value,+box.querySelector('.dd').value);
+}
 
-  // خلاصه ماهانه
-  const byMonth = {};
-  mine.forEach(h => {
-    const key = `${h.jalaliYear}/${String(h.jalaliMonth).padStart(2,'0')}`;
-    if (!byMonth[key]) byMonth[key] = { n: 0, ot: 0, otPay: 0 };
-    byMonth[key].n += h.normal;
-    byMonth[key].ot += h.ot;
-    byMonth[key].otPay += h.ot * (h.otPrice || 0);
+/* ============ داشبورد ============ */
+function renderDashboard(){
+  const j=todayJ();
+  const todayWd=wdOf(j[0],j[1],j[2]);
+  const todays=S.courses.filter(c=>(c.days||[]).includes(todayWd));
+  const units=S.courses.reduce((a,c)=>a+(Number(c.unit)||0),0);
+  const avg=totalAvg();
+  const openTasks=S.tasks.filter(t=>!t.done).length;
+  const doneTasks=S.tasks.filter(t=>t.done).length;
+
+  // یادداشت‌های تاریخ‌دار
+  const allNotes=[];
+  Object.keys(S.notes||{}).forEach(cid=>{
+    (S.notes[cid]||[]).forEach(n=>{ if(n.due) allNotes.push({...n, courseId:cid}); });
   });
+  const upNotes=allNotes
+    .map(n=>({...n, d:diffDaysJ(j,parseJ(n.due))}))
+    .filter(n=>n.d>=0)
+    .sort((a,b)=>a.d-b.d)
+    .slice(0,6);
 
-  box.innerHTML = `
-    <div class="stats" style="margin-bottom:14px">
-      <div class="stat"><div class="k">جمع ساعت عادی (کل)</div><div class="v">${numFa(totalN)}</div></div>
-      <div class="stat"><div class="k">جمع اضافه‌کار (کل)</div><div class="v">${numFa(totalOT)}</div></div>
-      <div class="stat"><div class="k">جمع مبلغ اضافه‌کار</div><div class="v gold">${rial(totalOTPay)}</div></div>
-    </div>
-    <h4 class="ps-section" style="color:var(--accent);border-color:var(--accent)">خلاصه ماهانه (شمسی)</h4>
-    <div class="tbl-wrap mb"><table>
-      <thead><tr><th>ماه</th><th>ساعت عادی</th><th>اضافه‌کار</th><th>مبلغ اضافه‌کار</th></tr></thead>
-      <tbody>${Object.entries(byMonth).sort().reverse().map(([k,v]) => `
-        <tr>
-          <td>${k}</td>
-          <td>${numFa(v.n)}</td>
-          <td>${numFa(v.ot)}</td>
-          <td class="money">${formatRial(v.otPay)}</td>
-        </tr>
-      `).join("")}</tbody>
-    </table></div>
-    <h4 class="ps-section" style="color:var(--accent);border-color:var(--accent)">رکوردهای اخیر</h4>
-    ${mine.slice(0, 40).map(h => `
-      <div class="req-card" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
-        <div>
-          <b>📅 ${esc(h.date)}</b>
-          <span class="hours-badge" style="margin-right:8px">${numFa(h.normal)} ساعت عادی</span>
-          ${h.ot ? `<span class="hours-badge">${numFa(h.ot)} اضافه‌کار × ${formatRial(h.otPrice||0)}</span>` : ""}
-        </div>
-        ${h.note ? `<div style="color:var(--muted);font-size:12.5px;width:100%">${esc(h.note)}</div>` : ""}
-      </div>
-    `).join("")}
-  `;
-}
+  const exams=S.courses.filter(c=>c.examDate)
+    .map(c=>({c,d:diffDaysJ([j[0],j[1],j[2]],parseJ(c.examDate))}))
+    .filter(x=>x.d>=0).sort((a,b)=>a.d-b.d);
 
-/* --- فیش حقوقی من --- */
-function renderMySalary(){
-  const box = $("#mySalaryBox"); if (!box) return;
-  const mine = getSalaries()
-    .filter(s => s.userNc === session.nc)
-    .sort((a,b) => b.createdAt - a.createdAt);
-  if (!mine.length){ box.innerHTML = `<div class="empty">هنوز فیش حقوقی صادر نشده.</div>`; return; }
-  box.innerHTML = mine.map(s => renderPayslip(s)).join("");
-}
+  const upTasks=S.tasks.filter(t=>!t.done&&t.due)
+    .map(t=>({t,d:diffDaysJ([j[0],j[1],j[2]],parseJ(t.due))}))
+    .sort((a,b)=>a.d-b.d).slice(0,5);
 
-function renderPayslip(s){
-  const user = getUsers().find(u => u.nc === s.userNc);
-  const role = getRole(user || { role: "other" });
-  const roleInfo = ROLES[role] || ROLES.other;
-  return `
-  <div class="payslip mb" style="margin-bottom:20px">
-    <div class="payslip-head">
-      <div style="display:flex;align-items:center;gap:12px">
-        <div class="payslip-logo"></div>
-        <div>
-          <h2>فیش حقوقی — مروارید</h2>
-          <div class="sub">سامانه جامع فروش و حقوق</div>
-        </div>
-      </div>
-      <div style="text-align:left">
-        <div style="font-size:11px;opacity:.85">شماره فیش</div>
-        <div style="font-family:monospace;font-size:12px">${esc(s.id.slice(-10).toUpperCase())}</div>
-        <div style="font-size:11px;opacity:.85;margin-top:6px">تاریخ صدور</div>
-        <div style="font-size:12px">${esc(s.date)}</div>
-      </div>
+  document.getElementById('panel-dashboard').innerHTML=`
+  <div class="grid g-stats mb">
+    <div class="stat"><div class="v">${toFa(S.courses.length)}</div><div class="k">تعداد درس‌ها</div></div>
+    <div class="stat"><div class="v">${toFa(units)}</div><div class="k">مجموع واحدها</div></div>
+    <div class="stat"><div class="v">${avg===null?'—':toFa(avg.toFixed(2))}</div><div class="k">میانگین نمرات</div></div>
+    <div class="stat"><div class="v">${toFa(openTasks)}</div><div class="k">کارهای در انتظار</div></div>
+    <div class="stat"><div class="v">${toFa(doneTasks)}</div><div class="k">کارهای انجام‌شده</div></div>
+  </div>
+
+  <div class="grid g-2 mb">
+    <div class="card">
+      <div class="sec-title"><span class="dot"></span> کلاس‌های امروز — ${WDAYS[todayWd]}</div>
+      ${todays.length? todays.map(c=>`
+        <div class="item" style="border-inline-start:3px solid ${c.color}">
+          <div class="body">
+            <h5>${esc(c.name)} <span class="badge">${toFa(c.unit)} واحد</span></h5>
+            <p>${esc(c.time)} • ${esc(c.teacher)}</p>
+          </div>
+        </div>`).join('')
+      : `<div class="empty"><div class="e">☕</div>امروز کلاسی نداری. وقت استراحت یا مطالعه است!</div>`}
     </div>
 
-    <div class="payslip-meta">
-      <div><div class="f">نام و نام خانوادگی</div><div class="v">${esc(user?.name || s.userName)}</div></div>
-      <div><div class="f">کد ملی</div><div class="v">${esc(s.userNc)}</div></div>
-      <div><div class="f">سمت</div><div class="v">${roleInfo.label}</div></div>
-      <div><div class="f">شماره پرسنلی</div><div class="v">${esc(user?.personalNo || "—")}</div></div>
-      <div><div class="f">دوره پرداخت</div><div class="v">${esc(JALALI_MONTHS[s.monthNum-1] || s.month)} ${esc(s.year)}</div></div>
-      <div><div class="f">تاریخ استخدام</div><div class="v">${esc(user?.hireDate || "—")}</div></div>
+    <div class="card">
+      <div class="sec-title"><span class="dot"></span> ⏰ یادآورهای تاریخ‌دار</div>
+      ${upNotes.length? upNotes.map(n=>{
+        const c=n.courseId?getCourse(n.courseId):null;
+        return `<div class="upnote">
+          <b>${esc(n.title||'یادآور')}</b>
+          ${n.text?`<div style="font-size:.75rem;color:var(--muted)">${esc(n.text)}</div>`:''}
+          <div class="dt">
+            📅 <span class="dchip">${faDate(n.due)}</span>
+            ${c?`📚 ${esc(c.name)}`:''}
+            ${n.d===0?'<span style="color:#ff9b9b">— امروز!</span>':`<span>— ${toFa(n.d)} روز مانده</span>`}
+          </div>
+        </div>`;
+      }).join('')
+      : `<div class="empty"><div class="e">🔔</div>یادآور تاریخ‌داری ثبت نشده.<br><span style="font-size:.72rem">از تب «نکات و یادآورها» اضافه کن.</span></div>`}
+    </div>
+  </div>
+
+  <div class="grid g-2 mb">
+    <div class="card">
+      <div class="sec-title"><span class="dot"></span> امتحان‌های پیش‌رو</div>
+      ${exams.length? exams.map(x=>`
+        <div class="item" style="border-inline-start:3px solid ${x.c.color}">
+          <div class="body">
+            <h5>${esc(x.c.name)}</h5>
+            <p>${faDate(x.c.examDate)} ساعت ${esc(x.c.examTime||'—')}</p>
+            <div class="t">${x.d===0?'🔥 امروز!':toFa(x.d)+' روز مانده'}</div>
+          </div>
+        </div>`).join('')
+      : `<div class="empty"><div class="e">📅</div>امتحانی ثبت نشده است.</div>`}
     </div>
 
-    <div class="payslip-body">
-      <table class="ps-table">
-        <thead>
-          <tr><th style="width:60%">شرح</th><th>مقدار</th><th>مبلغ (ریال)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>حقوق پایه (ساعت عادی × نرخ)</td><td>${numFa(s.normalHours)} ساعت</td><td class="amt">${formatRial(s.baseSalary)}</td></tr>
-          <tr><td>نرخ هر ساعت کار عادی</td><td>—</td><td class="amt">${formatRial(s.hourlyRate)}</td></tr>
-          ${s.otHours ? `<tr><td>اضافه‌کار</td><td>${numFa(s.otHours)} ساعت</td><td class="amt">${formatRial(s.otPay)}</td></tr>` : ""}
-          ${s.otHours ? `<tr><td>میانگین نرخ اضافه‌کار</td><td>—</td><td class="amt">${formatRial(s.avgOTPrice)}</td></tr>` : ""}
-          ${s.commission ? `<tr><td>پورسانت فروش (${numFa(s.commissionPct)}%)</td><td>${formatRial(s.monthSales)}</td><td class="amt">${formatRial(s.commission)}</td></tr>` : ""}
-          ${s.benefits ? `<tr><td>مزایای ماهانه</td><td>—</td><td class="amt">${formatRial(s.benefits)}</td></tr>` : ""}
-          ${s.extraBenefits ? `<tr><td>مزایای اضافی</td><td>—</td><td class="amt">${formatRial(s.extraBenefits)}</td></tr>` : ""}
-          ${s.bonus ? `<tr><td>پاداش</td><td>—</td><td class="amt">${formatRial(s.bonus)}</td></tr>` : ""}
-        </tbody>
-      </table>
-
-      <div class="ps-section">جمع ناخالص پرداختی</div>
-      <table class="ps-table">
-        <tbody>
-          <tr><td>مجموع حقوق و مزایا</td><td class="amt">${formatRial(s.grossPay)}</td></tr>
-        </tbody>
-      </table>
-
-      ${(s.insurance || s.tax || s.advance || s.otherDeduct) ? `
-      <div class="ps-section" style="color:#a03e5a;border-color:#a03e5a">کسورات</div>
-      <table class="ps-table">
-        <tbody>
-          ${s.insurance ? `<tr><td>بیمه تأمین اجتماعی</td><td class="amt" style="color:#a03e5a">-${formatRial(s.insurance)}</td></tr>` : ""}
-          ${s.tax ? `<tr><td>مالیات بر درآمد</td><td class="amt" style="color:#a03e5a">-${formatRial(s.tax)}</td></tr>` : ""}
-          ${s.advance ? `<tr><td>مساعده پرداخت‌شده</td><td class="amt" style="color:#a03e5a">-${formatRial(s.advance)}</td></tr>` : ""}
-          ${s.otherDeduct ? `<tr><td>سایر کسورات</td><td class="amt" style="color:#a03e5a">-${formatRial(s.otherDeduct)}</td></tr>` : ""}
-          <tr style="background:#fbeeee"><td><b>جمع کسورات</b></td><td class="amt" style="color:#a03e5a"><b>-${formatRial(s.totalDeduct)}</b></td></tr>
-        </tbody>
-      </table>` : ""}
-    </div>
-
-    <div class="ps-total">
-      <span>خالص پرداختی این دوره</span>
-      <span class="big">${formatRial(s.netPay)} ریال</span>
-    </div>
-
-    <div class="ps-sign">
-      <div class="box">مهر و امضای کارفرما</div>
-      <div class="box">امضای کارمند</div>
-    </div>
-
-    <div class="ps-foot">
-      این فیش به صورت خودکار توسط سامانه مروارید صادر شده است.<br>
-      طراحی و توسعه: <b>مهندس محمدرسول یزدیان</b>
+    <div class="card">
+      <div class="sec-title"><span class="dot"></span> کارهای نزدیک</div>
+      ${upTasks.length? upTasks.map(x=>`
+        <div class="item">
+          <div class="body">
+            <h5>${esc(x.t.title)}</h5>
+            <p>${esc(x.t.desc||'')}</p>
+            <div class="t">موعد: ${faDate(x.t.due)} ${x.d<0?'(گذشته)':x.d===0?'(امروز)':''}</div>
+          </div>
+        </div>`).join('')
+      : `<div class="empty"><div class="e">✅</div>کار در انتظاری نداری. آفرین!</div>`}
     </div>
   </div>`;
 }
 
-/* --- درخواست --- */
-function submitRequest(){
-  const box = $("#reqMsg");
-  const type = $("#reqType").value;
-  const from = $("#reqFrom").value.trim();
-  const to   = $("#reqTo").value.trim();
-  const text = $("#reqText").value.trim();
-  if (!text) return showMsg(box, "توضیحات لازم است.", "error");
-  const reqs = getReqs();
-  const r = {
-    id: uid(), code: reqCode(),
-    userNc: session.nc, userName: session.name,
-    type, from, to, text, status: "pending",
-    createdAt: Date.now(), date: jalaliToday(), time: nowTimeStr(), adminNote: ""
-  };
-  reqs.push(r); setReqs(reqs);
-  $("#reqFrom").value = ""; $("#reqTo").value = ""; $("#reqText").value = "";
-  showMsg(box, `✅ ثبت شد. کد: <span class="code-badge">${r.code}</span>`, "ok");
-  renderUserReqs();
-}
-
-function renderUserReqs(){
-  const box = $("#uReqList"); if (!box) return;
-  const mine = getReqs().filter(r => r.userNc === session.nc).sort((a,b) => b.createdAt - a.createdAt);
-  if (!mine.length){ box.innerHTML = `<div class="empty">درخواستی نیست.</div>`; return; }
-  box.innerHTML = mine.map(r => `
-    <div class="req-card">
-      <h4>${esc(r.type)} ${statusBadge(r.status)}</h4>
-      <div class="meta">
-        <span>کد: <span class="code-badge">${esc(r.code)}</span></span>
-        <span>📅 ${esc(r.date)}</span>
-        ${r.from ? `<span>از ${esc(r.from)} ${r.to ? "تا " + esc(r.to) : ""}</span>` : ""}
-      </div>
-      <div style="font-size:13.5px">${esc(r.text)}</div>
-      ${r.adminNote ? `<div class="note-box" style="margin-top:10px">📝 پاسخ مدیر: ${esc(r.adminNote)}</div>` : ""}
+/* ============ برنامه هفتگی ============ */
+function renderSchedule(){
+  const j=todayJ(); const todayWd=wdOf(j[0],j[1],j[2]);
+  let cols='';
+  WORDER.forEach(wd=>{
+    const list=S.courses.filter(c=>(c.days||[]).includes(wd));
+    cols+=`<div class="wday ${wd===todayWd?'today':''}">
+      <h6>${WDAYS[wd]}${wd===todayWd?' • امروز':''}</h6>
+      ${list.length? list.map(c=>`
+        <div class="wc" style="border-inline-start-color:${c.color}">
+          <b>${esc(c.name)}</b>
+          <span>${esc(c.time)}</span>
+        </div>`).join('')
+      : `<div style="text-align:center;color:var(--muted);font-size:.7rem;padding:14px 0">—</div>`}
+    </div>`;
+  });
+  const totalUnits=S.courses.reduce((a,c)=>a+(Number(c.unit)||0),0);
+  document.getElementById('panel-schedule').innerHTML=`
+  <div class="card mb">
+    <div class="flex-between">
+      <div class="sec-title" style="margin:0"><span class="dot"></span> برنامه هفتگی — ${esc(S.profile.term)}</div>
+      <span class="badge">${toFa(S.courses.length)} درس • ${toFa(totalUnits)} واحد</span>
     </div>
-  `).join("");
-}
-function statusBadge(s){
-  if (s === "approved") return `<span class="badge badge-ok">تأیید</span>`;
-  if (s === "rejected") return `<span class="badge badge-rej">رد</span>`;
-  return `<span class="badge badge-pend">در انتظار</span>`;
+  </div>
+  <div class="grid g-week">${cols}</div>
+  <div class="card mt">
+    <div class="sec-title"><span class="dot"></span> جدول درس‌ها</div>
+    <div style="overflow-x:auto">
+    <table>
+      <thead><tr><th>کد</th><th>نام درس</th><th>واحد</th><th>استاد</th><th>زمان</th><th>امتحان</th></tr></thead>
+      <tbody>
+      ${S.courses.map(c=>`<tr>
+        <td>${toFa(c.code)}</td>
+        <td style="color:${c.color};font-weight:600">${esc(c.name)}</td>
+        <td>${toFa(c.unit)}</td>
+        <td style="font-size:.75rem">${esc(c.teacher||'—')}</td>
+        <td style="font-size:.75rem">${esc(c.time||'—')}</td>
+        <td style="font-size:.75rem">${c.examDate?faDate(c.examDate)+(c.examTime?' • '+esc(c.examTime):''):'—'}</td>
+      </tr>`).join('')}
+      </tbody>
+    </table></div>
+  </div>`;
 }
 
-function renderUserMessages(){
-  const box = $("#uMsgList"); if (!box) return;
-  const all = getMsgs().filter(m =>
-    (m.from === session.nc && m.to === "admin") ||
-    (m.from === "admin" && m.to === session.nc)
-  ).sort((a,b) => a.createdAt - b.createdAt);
-  if (!all.length){ box.innerHTML = `<div class="empty">پیامی نیست.</div>`; return; }
-  box.innerHTML = all.map(m => `
-    <div class="msg-row">
-      <div class="msg ${m.from === session.nc ? "msg-me" : "msg-them"}">
-        ${esc(m.text)}
-        <span class="mt-time">${esc(m.date)} ${esc(m.time)}</span>
-      </div>
+/* ============ حضور و غیاب ============ */
+let attCourse=null;
+function renderAttendance(){
+  const p=document.getElementById('panel-attendance');
+  if(!S.courses.length){ p.innerHTML=`<div class="card"><div class="empty">درسی ثبت نشده</div></div>`; return; }
+  if(!attCourse||!getCourse(attCourse)) attCourse=S.courses[0].id;
+  const c=getCourse(attCourse);
+  const dates=sessionDates(c);
+  const rec=S.attendance[c.id]||{};
+  const today=nowJ();
+
+  let present=0,absent=0,late=0,past=0;
+  dates.forEach(d=>{
+    if(cmpJ(parseJ(d),parseJ(today))>0) return;
+    past++;
+    const st=rec[d];
+    if(st==='p')present++; else if(st==='a')absent++; else if(st==='l')late++;
+  });
+  const pct = past? Math.round(((present+late*0.5)/past)*100) : 0;
+
+  const chips=S.courses.map(x=>`<button class="chip ${x.id===c.id?'active':''}" data-att="${x.id}">${esc(x.name)}</button>`).join('');
+  const grid=dates.map(d=>{
+    const st=rec[d]||'';
+    const isFuture=cmpJ(parseJ(d),parseJ(today))>0;
+    const label=st==='p'?'حاضر':st==='a'?'غایب':st==='l'?'تأخیر':'ثبت نشده';
+    return `<div class="att ${st} ${isFuture?'future':''}" data-date="${d}" title="کلیک برای تغییر وضعیت">
+      ${faDate(d)}<small>${label}</small></div>`;
+  }).join('');
+
+  p.innerHTML=`
+  <div class="chips">${chips}</div>
+  <div class="card mb">
+    <div class="flex-between">
+      <div class="sec-title" style="margin:0"><span class="dot"></span> ${esc(c.name)}</div>
+      <span class="badge">${toFa(c.unit)} واحد • ${esc(c.teacher||'')}</span>
     </div>
-  `).join("");
-  box.scrollTop = box.scrollHeight;
-}
-
-function sendUserMsg(){
-  const inp = $("#uMsgInput");
-  const text = inp.value.trim();
-  if (!text) return;
-  const msgs = getMsgs();
-  msgs.push({
-    id: uid(), from: session.nc, to: "admin",
-    fromName: session.name, text,
-    date: jalaliToday(), time: nowTimeStr(), createdAt: Date.now()
-  });
-  setMsgs(msgs);
-  inp.value = "";
-  renderUserMessages();
-}
-
-function switchUTab(t){
-  $$("#uTabs .tab").forEach(b => b.classList.toggle("active", b.dataset.tab === t));
-  ["entry","history","hours","mysalary","requests","messages"].forEach(x => {
-    const el = $("#u-tab-" + x);
-    if (el) el.classList.toggle("hidden", x !== t);
-  });
-  if (t === "requests") renderUserReqs();
-  if (t === "messages") renderUserMessages();
-  if (t === "history") renderUserHistory();
-  if (t === "mysalary") renderMySalary();
-  if (t === "hours") renderUserHours();
-}
-
-/* =========================================================
-   ADMIN / ACCOUNTANT PANEL
-   ========================================================= */
-function buildAdminTabs(){
-  const tabs = [{ id: "dash", label: "📊 داشبورد" }];
-  if (isAdmin()){
-    tabs.push({ id: "today", label: "📅 حضور امروز" });
-    tabs.push({ id: "reports", label: "🗂 گزارش‌ها" });
-  }
-  tabs.push({ id: "requests", label: "📋 درخواست‌ها" });
-  tabs.push({ id: "messages", label: "💬 پیام‌ها" });
-  if (isAdmin()){
-    tabs.push({ id: "broadcast", label: "📢 اعلان" });
-    tabs.push({ id: "users", label: "👥 مدیریت کاربران" });
-  }
-  tabs.push({ id: "hours", label: "⏰ ساعت کار" });
-  tabs.push({ id: "salary", label: "💰 محاسبه حقوق" });
-  if (isAdmin()){
-    tabs.push({ id: "sync", label: "🔄 اتاق سینک" });
-    tabs.push({ id: "data", label: "💾 داده‌ها" });
-  }
-  const box = $("#aTabs");
-  box.innerHTML = tabs.map((t, i) =>
-    `<button class="tab ${i===0?'active':''}" data-atab="${t.id}" onclick="switchATab('${t.id}')">${t.label}</button>`
-  ).join("");
-  ["dash","today","reports","requests","messages","broadcast","users","hours","salary","sync","data"].forEach(x => {
-    const el = $("#a-tab-" + x);
-    if (el) el.classList.add("hidden");
-  });
-  const firstEl = $("#a-tab-" + (tabs[0]?.id || "dash"));
-  if (firstEl) firstEl.classList.remove("hidden");
-}
-
-function initAdmin(){
-  $("#aRoleBadge").outerHTML = roleBadge(getRole(session)).replace('class="badge', 'id="aRoleBadge" class="badge');
-  buildAdminTabs();
-
-  const users = getUsers().filter(u => getRole(u) !== "admin" || isAdmin());
-  const optsUsers = users.map(u => `<option value="${esc(u.nc)}">${esc(u.name)} — ${ROLES[getRole(u)]?.label || "—"}</option>`).join("");
-
-  if ($("#flUser")) $("#flUser").innerHTML = `<option value="">همه کاربران</option>` + optsUsers;
-  if ($("#ahUser")) $("#ahUser").innerHTML = optsUsers;
-  if ($("#ahFilterUser")) $("#ahFilterUser").innerHTML = `<option value="">همه کاربران</option>` + optsUsers;
-  if ($("#salUser")) $("#salUser").innerHTML = optsUsers;
-  if ($("#salFilterUser")) $("#salFilterUser").innerHTML = `<option value="">همه کاربران</option>` + optsUsers;
-
-  // سال شمسی
-  if ($("#salYear")){
-    const now = jalaliNowParts();
-    const years = [now.year-1, now.year, now.year+1];
-    $("#salYear").innerHTML = years.map(y => `<option value="${y}">${y}</option>`).join("");
-    $("#salYear").value = now.year;
-    if ($("#salMonth")) $("#salMonth").value = String(now.month);
-  }
-
-  renderDash();
-  if (isAdmin()) { renderToday(); renderAdminReports(); renderUsersList(); }
-  renderAdminReqs(); renderUserPick(); renderBCList();
-  renderAdminHours(); renderSalaryHistory(); renderSyncTab();
-}
-
-function switchATab(t){
-  $$("#aTabs .tab").forEach(b => b.classList.toggle("active", b.dataset.atab === t));
-  ["dash","today","reports","requests","messages","broadcast","users","hours","salary","sync","data"].forEach(x => {
-    const el = $("#a-tab-" + x);
-    if (el) el.classList.toggle("hidden", x !== t);
-  });
-  if (t === "dash") renderDash();
-  if (t === "today") renderToday();
-  if (t === "reports") renderAdminReports();
-  if (t === "requests") renderAdminReqs();
-  if (t === "messages") renderUserPick();
-  if (t === "broadcast") renderBCList();
-  if (t === "users") renderUsersList();
-  if (t === "hours") renderAdminHours();
-  if (t === "salary") renderSalaryHistory();
-  if (t === "sync") renderSyncTab();
-}
-
-function dateRange(period){
-  const recs = getRecs(); const now = new Date(); const start = new Date(now);
-  if (period === "today"){ start.setHours(0,0,0,0); }
-  else if (period === "week"){ const d = now.getDay(); const diff = (d+1)%7; start.setDate(now.getDate() - diff); start.setHours(0,0,0,0); }
-  else if (period === "month"){ start.setDate(1); start.setHours(0,0,0,0); }
-  else return recs;
-  return recs.filter(r => r.createdAt >= start.getTime());
-}
-
-function renderDash(){
-  const today = dateRange("today"), week = dateRange("week"), month = dateRange("month"), all = getRecs();
-  const todayCount = all.filter(r => r.date === jalaliToday()).length;
-  const pendReq = getReqs().filter(r => r.status === "pending").length;
-  const salaries = getSalaries();
-  const now = jalaliNowParts();
-  const monthSalaryTotal = salaries.filter(s => s.monthNum === now.month && String(s.year) === String(now.year)).reduce((a,b) => a + b.netPay, 0);
-
-  if ($("#dToday")) $("#dToday").textContent = rial(today.reduce((s,r) => s+r.total, 0));
-  if ($("#dWeek"))  $("#dWeek").textContent  = rial(week.reduce((s,r) => s+r.total, 0));
-  if ($("#dMonth")) $("#dMonth").textContent = rial(month.reduce((s,r) => s+r.total, 0));
-  if ($("#dAll"))   $("#dAll").textContent   = rial(all.reduce((s,r) => s+r.total, 0));
-  if ($("#dStaff")) $("#dStaff").textContent = numFa(getUsers().filter(u => getRole(u) !== "admin").length);
-  if ($("#dCntToday")) $("#dCntToday").textContent = numFa(todayCount);
-  if ($("#dPendReq"))  $("#dPendReq").textContent  = numFa(pendReq);
-  if ($("#dSalaryTotal")) $("#dSalaryTotal").textContent = rial(monthSalaryTotal);
-
-  const days = [];
-  for (let i = 6; i >= 0; i--){
-    const d = new Date(); d.setDate(d.getDate() - i);
-    const key = new Intl.DateTimeFormat("fa-IR-u-nu-latn",{year:"numeric",month:"2-digit",day:"2-digit"}).format(d);
-    days.push({ key, total: all.filter(r => r.date === key).reduce((s,r) => s+r.total, 0) });
-  }
-  const max = Math.max(...days.map(d => d.total), 1);
-  if ($("#chart7")) $("#chart7").innerHTML = `
-    <div style="display:flex;gap:10px;align-items:flex-end;height:220px;padding:10px 4px">
-      ${days.map(d => `
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end">
-          <div style="font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums">${formatRial(d.total)}</div>
-          <div style="width:100%;max-width:50px;height:${Math.max(6,(d.total/max)*160)}px;border-radius:8px 8px 2px 2px;background:linear-gradient(180deg,#c9a7eb,#7fd8e8);"></div>
-          <div style="font-size:11px;color:var(--muted)">${esc(d.key.slice(5))}</div>
-        </div>
-      `).join("")}
+    <div class="grid g-stats mt" style="grid-template-columns:repeat(auto-fit,minmax(110px,1fr))">
+      <div class="stat"><div class="v" style="color:#9df5c0">${toFa(present)}</div><div class="k">حاضر</div></div>
+      <div class="stat"><div class="v" style="color:#ffd79a">${toFa(late)}</div><div class="k">تأخیر</div></div>
+      <div class="stat"><div class="v" style="color:#ffb3b3">${toFa(absent)}</div><div class="k">غایب</div></div>
+      <div class="stat"><div class="v">${toFa(past)}</div><div class="k">جلسات گذشته</div></div>
+      <div class="stat"><div class="v">${toFa(pct)}٪</div><div class="k">درصد حضور</div></div>
     </div>
-  `;
-}
+    <div class="progress"><i style="width:${pct}%"></i></div>
+    <p style="font-size:.72rem;color:var(--muted);margin-top:10px">
+      روی هر جلسه بزن تا وضعیتش بین «حاضر ← غایب ← تأخیر ← پاک» بچرخد.
+    </p>
+  </div>
+  <div class="card">
+    <div class="sec-title"><span class="dot"></span> جلسات (${toFa(dates.length)} جلسه در ۶ ماه)</div>
+    <div class="att-grid">${grid||'<div class="empty">جلسه‌ای تعریف نشده</div>'}</div>
+  </div>`;
 
-function renderToday(){
-  const box = $("#todayList"); if (!box) return;
-  const users = getUsers().filter(u => getRole(u) !== "admin");
-  const today = jalaliToday();
-  const recs = getRecs().filter(r => r.date === today);
-  const hoursToday = getHours().filter(h => h.date === today);
-  const reqs = getReqs();
-
-  box.innerHTML = users.map(u => {
-    const rec = recs.find(r => r.userNc === u.nc);
-    const hrs = hoursToday.filter(h => h.userNc === u.nc);
-    const leave = reqs.find(r => r.userNc === u.nc && r.status === "approved" && (r.from === today || r.to === today));
-    let status, cls, extra = "";
-    if (rec){ status = "✅ گزارش فروش"; cls = "badge-ok"; extra = rial(rec.total); }
-    else if (hrs.length){ status = "⏰ ساعت کار ثبت شده"; cls = "badge-seller"; extra = numFa(hrs.reduce((s,h) => s+h.normal+h.ot, 0)) + " ساعت"; }
-    else if (leave){ status = "🏖 در مرخصی"; cls = "badge-pend"; }
-    else { status = "❌ ثبت نشده"; cls = "badge-rej"; }
-    return `
-      <div class="user-card">
-        <div>
-          <b>${esc(u.name)}</b> ${roleBadge(getRole(u))}<br>
-          <small style="color:var(--muted)">کد: ${esc(u.nc)}</small>
-        </div>
-        <div style="text-align:left">
-          <span class="badge ${cls}">${status}</span>
-          ${extra ? `<div class="money" style="margin-top:6px">${extra}</div>` : ""}
-        </div>
-      </div>`;
-  }).join("");
-}
-
-function filteredRecs(){
-  const u = $("#flUser") ? $("#flUser").value : "";
-  const f = normDigits($("#flFrom")?.value || "");
-  const t = normDigits($("#flTo")?.value || "");
-  return getRecs()
-    .filter(r => !u || r.userNc === u)
-    .filter(r => !f || r.date >= f)
-    .filter(r => !t || r.date <= t)
-    .sort((a,b) => b.createdAt - a.createdAt);
-}
-
-function renderAdminReports(){
-  const box = $("#adminTable"); if (!box) return;
-  const recs = filteredRecs();
-  if (!recs.length){ box.innerHTML = `<div class="empty">گزارشی نیست.</div>`; return; }
-  box.innerHTML = `
-    <div class="tbl-wrap"><table>
-      <thead><tr>
-        <th>#</th><th>کاربر</th><th>کد ملی</th><th>تاریخ</th><th>ساعت</th>
-        <th>فاکتورها</th><th>جمع</th><th>مدارک</th><th>عملیات</th>
-      </tr></thead>
-      <tbody>${recs.map((r,i) => {
-        const fcount = r.invoices.reduce((s,inv) => s + ((inv.files||[]).length), 0);
-        return `
-          <tr>
-            <td>${numFa(i+1)}</td>
-            <td><b>${esc(r.userName)}</b></td>
-            <td style="color:var(--muted)">${esc(r.userNc)}</td>
-            <td>${esc(r.date)}</td>
-            <td>${esc(r.time)}</td>
-            <td>${numFa(r.invoices.length)}</td>
-            <td class="money">${formatRial(r.total)}</td>
-            <td>${fcount ? `<span class="badge badge-ok">${numFa(fcount)}</span>` : "—"}</td>
-            <td>
-              <button class="btn btn-ghost btn-sm" onclick="viewRec('${r.id}')">مشاهده</button>
-              <button class="btn btn-danger btn-sm" onclick="delRec('${r.id}')">حذف</button>
-            </td>
-          </tr>`;
-      }).join("")}</tbody>
-    </table></div>`;
-}
-function clearFilters(){
-  if ($("#flUser")) $("#flUser").value = "";
-  if ($("#flFrom")) $("#flFrom").value = "";
-  if ($("#flTo"))   $("#flTo").value = "";
-  renderAdminReports();
-}
-function viewRec(id){
-  const r = getRecs().find(x => x.id === id); if (!r) return;
-  $("#recModalTitle").textContent = "جزئیات گزارش فروش";
-  $("#recDetail").innerHTML = `
-    <div class="mb"><b>${esc(r.userName)}</b> — ${esc(r.userNc)}</div>
-    <div class="mb" style="color:var(--muted)">📅 ${esc(r.date)} — ${esc(r.time)}</div>
-    ${r.invoices.map((i,n) => `
-      <div class="req-card">
-        <b>فاکتور ${n+1}:</b> ${esc(i.no)} — ${esc(i.customer||"—")}
-        <span class="money" style="float:left">${formatRial(i.amount)} ریال</span>
-        ${i.files && i.files.length ? `<div class="thumbs" style="margin-top:8px">
-          ${i.files.map(f => f.type && f.type.startsWith("image")
-            ? `<a class="thumb" href="${f.data}" target="_blank"><img src="${f.data}"></a>`
-            : `<a class="thumb" href="${f.data}" download="${esc(f.name||"file")}" style="display:flex;align-items:center;justify-content:center;background:#222;font-size:10px;color:#fff">${esc(f.name||"فایل")}</a>`
-          ).join("")}
-        </div>` : ""}
-      </div>
-    `).join("")}
-    <div class="stat mt"><div class="k">جمع کل</div><div class="v gold">${rial(r.total)}</div></div>
-    ${r.note ? `<div class="note-box mt">📝 ${esc(r.note)}</div>` : ""}
-  `;
-  $("#recModal").classList.remove("hidden");
-}
-function closeRecModal(){ $("#recModal").classList.add("hidden"); }
-function delRec(id){
-  if (!confirm("این گزارش حذف شود؟")) return;
-  setRecs(getRecs().filter(r => r.id !== id));
-  renderAdminReports(); renderDash(); renderToday();
-}
-
-function renderAdminReqs(){
-  const box = $("#adminReqList"); if (!box) return;
-  const reqs = getReqs().sort((a,b) => b.createdAt - a.createdAt);
-  if (!reqs.length){ box.innerHTML = `<div class="empty">درخواستی نیست.</div>`; return; }
-  box.innerHTML = reqs.map(r => `
-    <div class="req-card">
-      <h4>${esc(r.type)} ${statusBadge(r.status)}</h4>
-      <div class="meta">
-        <span>کد: <span class="code-badge">${esc(r.code)}</span></span>
-        <span>👤 ${esc(r.userName)}</span>
-        <span>📅 ${esc(r.date)}</span>
-        ${r.from ? `<span>از ${esc(r.from)} ${r.to ? "تا " + esc(r.to) : ""}</span>` : ""}
-      </div>
-      <div style="font-size:13.5px;margin-bottom:10px">${esc(r.text)}</div>
-      ${r.status === "pending" ? `
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
-          <button class="btn btn-ok btn-sm" onclick="approveReq('${r.id}')">✔ تأیید</button>
-          <button class="btn btn-danger btn-sm" onclick="rejectReq('${r.id}')">✖ رد</button>
-        </div>` : ""}
-      <input placeholder="یادداشت..." value="${esc(r.adminNote||"")}" 
-        onchange="updateReqNote('${r.id}', this.value)" style="margin-top:6px">
-    </div>
-  `).join("");
-}
-function approveReq(id){
-  const reqs = getReqs(); const r = reqs.find(x => x.id === id); if (!r) return;
-  r.status = "approved"; setReqs(reqs);
-  const notifs = getNotifs();
-  notifs.push({ id: uid(), to: r.userNc, from: "مدیر",
-    text: `✅ درخواست ${r.type} شما با کد ${r.code} تأیید شد.`,
-    date: jalaliToday(), time: nowTimeStr(), createdAt: Date.now() });
-  setNotifs(notifs); renderAdminReqs(); renderDash();
-}
-function rejectReq(id){
-  const reqs = getReqs(); const r = reqs.find(x => x.id === id); if (!r) return;
-  const note = prompt("دلیل رد:", r.adminNote || ""); if (note === null) return;
-  r.status = "rejected"; r.adminNote = note; setReqs(reqs);
-  const notifs = getNotifs();
-  notifs.push({ id: uid(), to: r.userNc, from: "مدیر",
-    text: `❌ درخواست ${r.type} شما با کد ${r.code} رد شد. ${note ? "دلیل: " + note : ""}`,
-    date: jalaliToday(), time: nowTimeStr(), createdAt: Date.now() });
-  setNotifs(notifs); renderAdminReqs(); renderDash();
-}
-function updateReqNote(id, note){
-  const reqs = getReqs(); const r = reqs.find(x => x.id === id);
-  if (r){ r.adminNote = note; setReqs(reqs); }
-}
-
-function renderUserPick(){
-  const box = $("#userPickList"); if (!box) return;
-  const users = getUsers().filter(u => getRole(u) !== "admin");
-  box.innerHTML = users.map(u => {
-    const unread = getMsgs().filter(m => m.from === u.nc && m.to === "admin" && !m.read).length;
-    return `
-      <div class="pick ${selectedChatUser === u.nc ? "active" : ""}" onclick="openChat('${u.nc}')">
-        <div><b>${esc(u.name)}</b> ${roleBadge(getRole(u))}<br><small style="color:var(--muted)">${esc(u.nc)}</small></div>
-        ${unread ? `<span class="badge badge-pend">${numFa(unread)} پیام</span>` : ""}
-      </div>`;
-  }).join("");
-}
-function openChat(nc){
-  selectedChatUser = nc;
-  const u = getUsers().find(x => x.nc === nc);
-  $("#chatTitle").textContent = `گفتگو با ${u.name}`;
-  $("#adminChatBox").style.display = "block";
-  const msgs = getMsgs();
-  msgs.forEach(m => { if (m.from === nc && m.to === "admin") m.read = true; });
-  setMsgs(msgs);
-  const list = msgs.filter(m =>
-    (m.from === nc && m.to === "admin") || (m.from === "admin" && m.to === nc)
-  ).sort((a,b) => a.createdAt - b.createdAt);
-  const box = $("#aMsgList");
-  if (!list.length){ box.innerHTML = `<div class="empty">پیامی نیست.</div>`; }
-  else {
-    box.innerHTML = list.map(m => `
-      <div class="msg-row">
-        <div class="msg ${m.from === "admin" ? "msg-me" : "msg-them"}">
-          ${esc(m.text)}
-          <span class="mt-time">${esc(m.date)} ${esc(m.time)}</span>
-        </div>
-      </div>`).join("");
-    box.scrollTop = box.scrollHeight;
-  }
-  renderUserPick();
-}
-function sendAdminMsg(){
-  if (!selectedChatUser) return;
-  const inp = $("#aMsgInput"); const text = inp.value.trim(); if (!text) return;
-  const msgs = getMsgs();
-  msgs.push({ id: uid(), from: "admin", to: selectedChatUser, fromName: "مدیر", text,
-    date: jalaliToday(), time: nowTimeStr(), createdAt: Date.now(), read: false });
-  setMsgs(msgs); inp.value = ""; openChat(selectedChatUser);
-}
-
-function broadcastMsg(){
-  const text = $("#bcText").value.trim(); if (!text) return alert("متن خالی است.");
-  const bcs = getBC();
-  bcs.push({ id: uid(), text, date: jalaliToday(), time: nowTimeStr(), createdAt: Date.now() });
-  setBC(bcs);
-  const notifs = getNotifs();
-  getUsers().forEach(u => {
-    notifs.push({ id: uid(), to: u.nc, from: "مدیر", text,
-      date: jalaliToday(), time: nowTimeStr(), createdAt: Date.now() });
+  p.querySelectorAll('[data-att]').forEach(b=>b.onclick=()=>{ attCourse=b.dataset.att; renderAttendance(); });
+  p.querySelectorAll('.att').forEach(el=>{
+    el.onclick=()=>{
+      const d=el.dataset.date;
+      const cur=(S.attendance[c.id]||{})[d]||'';
+      const next = cur===''?'p' : cur==='p'?'a' : cur==='a'?'l' : '';
+      S.attendance[c.id]=S.attendance[c.id]||{};
+      if(next) S.attendance[c.id][d]=next; else delete S.attendance[c.id][d];
+      save(); renderAttendance();
+    };
   });
-  setNotifs(notifs);
-  showMsg($("#aAlert"), "✅ اعلان ارسال شد.", "ok");
-  renderBCList();
-}
-function renderBCList(){
-  const box = $("#bcList"); if (!box) return;
-  const list = getBC().sort((a,b) => b.createdAt - a.createdAt);
-  if (!list.length){ box.innerHTML = `<div class="empty">اعلانی نیست.</div>`; return; }
-  box.innerHTML = list.map(b => `
-    <div class="req-card">
-      <div class="meta"><span>📅 ${esc(b.date)} — ${esc(b.time)}</span></div>
-      <div style="font-size:13.5px">${esc(b.text)}</div>
-    </div>`).join("");
 }
 
-/* =========================================================
-   USER MANAGEMENT
-   ========================================================= */
-function renderUsersList(){
-  const box = $("#usersList"); if (!box) return;
-  const users = getUsers();
-  if (!users.length){ box.innerHTML = `<div class="empty">کاربری نیست.</div>`; return; }
-  box.innerHTML = users.map(u => {
-    const role = getRole(u);
-    const hours = getHours().filter(h => h.userNc === u.nc);
-    const totalN = hours.reduce((s,h) => s + h.normal, 0);
-    const totalOT = hours.reduce((s,h) => s + h.ot, 0);
-    const canEdit = role !== "admin" || isAdmin();
-    return `
-      <div class="user-card">
-        <div style="flex:1;min-width:200px">
-          <b>${esc(u.name)}</b> ${roleBadge(role)}
-          <div style="color:var(--muted);font-size:12.5px;margin-top:6px">
-            کد ملی: <span class="code-badge">${esc(u.nc)}</span>
-            ${u.personalNo ? ` • پرسنلی: <span class="code-badge">${esc(u.personalNo)}</span>` : ""}
-            ${u.hireDate ? ` • استخدام: ${esc(u.hireDate)}` : ""}
+/* ============ مطالب درسی ============ */
+const MAX_FILE=5*1024*1024;
+let matCourse=null;
+async function renderMaterials(){
+  const p=document.getElementById('panel-materials');
+  if(!S.courses.length){ p.innerHTML=`<div class="card"><div class="empty">درسی ثبت نشده</div></div>`; return; }
+  if(!matCourse||!getCourse(matCourse)) matCourse=S.courses[0].id;
+  const c=getCourse(matCourse);
+
+  let files=[];
+  try{ files=(await fileAll()).filter(f=>f.courseId===c.id); }
+  catch(e){ files=[]; }
+
+  const total=files.reduce((a,f)=>a+f.size,0);
+  const chips=S.courses.map(x=>`<button class="chip ${x.id===c.id?'active':''}" data-mat="${x.id}">${esc(x.name)}</button>`).join('');
+
+  const cards=files.map(f=>{
+    const isImg=(f.type||'').startsWith('image/');
+    const prev=isImg? `<img src="${f.url}" alt="">` : `<div class="fi">📄</div>`;
+    return `<div class="thumb">
+      <div class="ov">
+        <button data-view="${f.id}" title="مشاهده">👁</button>
+        <button data-dl="${f.id}" title="دانلود">⬇</button>
+        <button data-rm="${f.id}" title="حذف">🗑</button>
+      </div>
+      ${prev}
+      <div class="cap">
+        <b>${esc(f.name)}</b>
+        ${toFa((f.size/1024/1024).toFixed(2))} مگابایت • ${faDate(f.at)}
+      </div>
+    </div>`;
+  }).join('');
+
+  p.innerHTML=`
+  <div class="chips">${chips}</div>
+  <div class="card mb">
+    <div class="flex-between">
+      <div class="sec-title" style="margin:0"><span class="dot"></span> مطالب درسی — ${esc(c.name)}</div>
+      <span class="badge">${toFa(files.length)} فایل • ${toFa((total/1024/1024).toFixed(2))} مگابایت</span>
+    </div>
+    <div class="drop mt" id="dropZone">
+      <div class="ic">📤</div>
+      <b>فایل را اینجا رها کن یا کلیک کن</b>
+      <p style="font-size:.75rem;color:var(--muted);margin-top:6px">
+        تصویر (JPG/PNG/…) یا PDF — حداکثر ۵ مگابایت برای هر فایل
+      </p>
+    </div>
+    <div class="thumbs">${cards||''}</div>
+    ${files.length?'':'<div class="empty"><div class="e">📂</div>هنوز فایلی برای این درس آپلود نشده است.</div>'}
+  </div>`;
+
+  p.querySelectorAll('[data-mat]').forEach(b=>b.onclick=()=>{ matCourse=b.dataset.mat; renderMaterials(); });
+  const dz=p.querySelector('#dropZone');
+  dz.onclick=()=>pickFile(c.id);
+  dz.addEventListener('dragover',e=>{ e.preventDefault(); dz.classList.add('over'); });
+  dz.addEventListener('dragleave',()=>dz.classList.remove('over'));
+  dz.addEventListener('drop',e=>{
+    e.preventDefault(); dz.classList.remove('over');
+    const f=e.dataTransfer.files[0]; if(f) handleUpload(f,c.id);
+  });
+  p.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>viewFile(b.dataset.view));
+  p.querySelectorAll('[data-dl]').forEach(b=>b.onclick=()=>downloadFile(b.dataset.dl));
+  p.querySelectorAll('[data-rm]').forEach(b=>b.onclick=async()=>{
+    if(!confirm('این فایل حذف شود؟')) return;
+    try{ await fileDel(b.dataset.rm); toast('فایل حذف شد','info'); }catch(e){ toast('خطا در حذف','err'); }
+    renderMaterials();
+  });
+}
+function pickFile(cid){
+  const inp=document.getElementById('filePicker');
+  inp.value='';
+  inp.onchange=()=>{ const f=inp.files[0]; if(f) handleUpload(f,cid); };
+  inp.click();
+}
+async function handleUpload(file,cid){
+  if(file.size>MAX_FILE){ toast('حجم فایل بیشتر از ۵ مگابایت است!','err'); return; }
+  const okType = (file.type||'').startsWith('image/') || file.type==='application/pdf' || /\.(pdf|jpe?g|png|gif|webp|bmp)$/i.test(file.name);
+  if(!okType){ toast('فقط تصویر یا PDF مجاز است','err'); return; }
+  try{
+    const rec={ id:uid(), courseId:cid, name:file.name, type:file.type||'',
+                size:file.size, at:nowJ(), blob:file };
+    await filePut(rec);
+    toast('فایل با موفقیت بارگذاری شد ✅');
+    renderMaterials();
+  }catch(e){ toast('ذخیره‌سازی مرورگر اجازه نداد. با یک وب‌سرور محلی اجرا کن.','err'); }
+}
+async function viewFile(id){
+  try{
+    const r=await fileGet(id); if(!r) return;
+    const url=URL.createObjectURL(r.blob);
+    window.open(url,'_blank');
+    setTimeout(()=>URL.revokeObjectURL(url),60000);
+  }catch(e){ toast('خطا در بازکردن فایل','err'); }
+}
+async function downloadFile(id){
+  try{
+    const r=await fileGet(id); if(!r) return;
+    const url=URL.createObjectURL(r.blob);
+    const a=document.createElement('a'); a.href=url; a.download=r.name; a.click();
+    setTimeout(()=>URL.revokeObjectURL(url),5000);
+  }catch(e){ toast('خطا در دانلود','err'); }
+}
+
+/* ============ نکات و یادآورها (تاریخ‌دار) ============ */
+let noteCourse=null;
+function renderNotes(){
+  const p=document.getElementById('panel-notes');
+  if(!S.courses.length){ p.innerHTML=`<div class="card"><div class="empty">درسی ثبت نشده</div></div>`; return; }
+  if(!noteCourse||!getCourse(noteCourse)) noteCourse=S.courses[0].id;
+  const c=getCourse(noteCourse);
+  const list=(S.notes[c.id]||[]).slice().reverse();
+  const chips=S.courses.map(x=>`<button class="chip ${x.id===c.id?'active':''}" data-note="${x.id}">${esc(x.name)}</button>`).join('');
+
+  const j=todayJ();
+
+  p.innerHTML=`
+  <div class="chips">${chips}</div>
+  <div class="card mb">
+    <div class="sec-title"><span class="dot"></span> افزودن نکته یا یادآور — ${esc(c.name)}</div>
+    <div class="row">
+      <div style="min-width:200px"><label class="lb">عنوان</label><input class="inp" id="noteTitle" placeholder="مثلاً: امتحان کنترل خطی"></div>
+      <div style="min-width:220px"><label class="lb">تاریخ یادآور (اختیاری)</label>${dateSelects('notedue')}</div>
+    </div>
+    <div class="mt"><label class="lb">متن نکته</label>
+      <textarea class="inp" id="noteText" placeholder="مثلاً: در این تاریخ امتحان کنترل خطی دارم، فصل‌های ۱ تا ۵ را مرور کنم..."></textarea>
+    </div>
+    <button class="btn mt" id="noteAdd">➕ افزودن</button>
+    <p style="font-size:.7rem;color:var(--muted);margin-top:8px">
+      اگر تاریخ بذاری، این یادآور در داشبورد و تقویم هم نمایش داده می‌شه.
+    </p>
+  </div>
+  <div class="card">
+    <div class="sec-title"><span class="dot"></span> نکات و یادآورهای ${esc(c.name)} (${toFa(list.length)})</div>
+    ${list.length? list.map(n=>{
+      let dd=null;
+      if(n.due) dd=diffDaysJ(j,parseJ(n.due));
+      return `<div class="item" style="${n.due?'border-inline-start:4px solid #a855f7':''}">
+        <div class="body">
+          <h5>${esc(n.title||'بدون عنوان')}</h5>
+          <p>${esc(n.text)}</p>
+          <div class="t">
+            📌 ثبت: ${faDate(n.at)}
+            ${n.due?` • ⏰ یادآور: <b style="color:#a9c7ff">${faDate(n.due)}</b> ${dd!==null?(dd===0?'(امروز)':dd>0?`(${toFa(dd)} روز مانده)`:'(گذشته)'):''}`:''}
           </div>
-          <div style="color:var(--muted);font-size:12.5px;margin-top:6px">
-            ${u.hourlyRate ? `💵 دستمزد ساعتی: ${rial(u.hourlyRate)}` : ""}
-            ${u.otPrice ? ` • ⏰ اضافه‌کار: ${rial(u.otPrice)}` : ""}
-            ${u.commission ? ` • 📈 پورسانت: ${numFa(u.commission)}%` : ""}
+        </div>
+        <div class="acts">
+          <button class="mini del" data-ndel="${n.id}">حذف</button>
+        </div>
+      </div>`;
+    }).join('')
+    : `<div class="empty"><div class="e">📝</div>هنوز نکته‌ای ثبت نشده است.</div>`}
+  </div>`;
+
+  p.querySelectorAll('[data-note]').forEach(b=>b.onclick=()=>{ noteCourse=b.dataset.note; renderNotes(); });
+  p.querySelector('#noteAdd').onclick=()=>{
+    const t=p.querySelector('#noteTitle').value.trim();
+    const x=p.querySelector('#noteText').value.trim();
+    const due=readDateSelects('notedue');
+    if(!t&&!x){ toast('عنوان یا متن را وارد کن','err'); return; }
+    S.notes[c.id]=S.notes[c.id]||[];
+    S.notes[c.id].push({id:uid(),title:t,text:x,due:due||'',at:nowJ()});
+    save(); toast('ذخیره شد ✅'); renderNotes(); renderDashboard();
+  };
+  p.querySelectorAll('[data-ndel]').forEach(b=>b.onclick=()=>{
+    S.notes[c.id]=S.notes[c.id].filter(x=>x.id!==b.dataset.ndel);
+    save(); renderNotes(); renderDashboard();
+  });
+}
+
+/* ============ نمرات ============ */
+let gradeCourse=null;
+function renderGrades(){
+  const p=document.getElementById('panel-grades');
+  if(!S.courses.length){ p.innerHTML=`<div class="card"><div class="empty">درسی ثبت نشده</div></div>`; return; }
+  if(!gradeCourse||!getCourse(gradeCourse)) gradeCourse=S.courses[0].id;
+  const c=getCourse(gradeCourse);
+  const list=(S.grades[c.id]||[]);
+  const avg=courseAvg(c.id);
+  const chips=S.courses.map(x=>{
+    const a=courseAvg(x.id);
+    return `<button class="chip ${x.id===c.id?'active':''}" data-grade="${x.id}">${esc(x.name)}${a!==null?' ('+toFa(a.toFixed(1))+')':''}</button>`;
+  }).join('');
+
+  p.innerHTML=`
+  <div class="chips">${chips}</div>
+  <div class="card mb">
+    <div class="flex-between">
+      <div class="sec-title" style="margin:0"><span class="dot"></span> نمرات — ${esc(c.name)}</div>
+      <span class="badge">میانگین درس: ${avg===null?'—':toFa(avg.toFixed(2))}</span>
+    </div>
+    <div class="row mt">
+      <div style="min-width:170px"><label class="lb">عنوان (مثلاً میان‌ترم)</label><input class="inp" id="gTitle" placeholder="میان‌ترم"></div>
+      <div style="max-width:110px"><label class="lb">نمره (از ۲۰)</label><input class="inp" id="gScore" type="number" min="0" max="20" step="0.25" placeholder="18.5"></div>
+      <div style="max-width:110px"><label class="lb">ضریب</label><input class="inp" id="gWeight" type="number" min="0.5" step="0.5" value="1"></div>
+      <div style="flex:none"><button class="btn" id="gAdd">➕ ثبت نمره</button></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="sec-title"><span class="dot"></span> لیست نمرات (${toFa(list.length)})</div>
+    ${list.length? `<div style="overflow-x:auto"><table>
+      <thead><tr><th>عنوان</th><th>نمره</th><th>ضریب</th><th>تاریخ</th><th></th></tr></thead>
+      <tbody>${list.map(g=>`<tr>
+        <td>${esc(g.title)}</td>
+        <td><span class="score-pill ${scoreClass(Number(g.score))}">${toFa(g.score)}</span></td>
+        <td>${toFa(g.weight||1)}</td>
+        <td style="font-size:.72rem;color:var(--muted)">${faDate(g.at)}</td>
+        <td><button class="mini del" data-gdel="${g.id}">حذف</button></td>
+      </tr>`).join('')}</tbody></table></div>`
+    : `<div class="empty"><div class="e">📊</div>هنوز نمره‌ای ثبت نشده است.</div>`}
+  </div>
+  <div class="card mt">
+    <div class="sec-title"><span class="dot"></span> کارنامه کلی (وزنی بر اساس واحد)</div>
+    <div class="grid g-stats">
+      ${S.courses.map(x=>{
+        const a=courseAvg(x.id);
+        return `<div class="stat">
+          <div class="v" style="color:${a===null?'#8b97c7':a>=17?'#9df5c0':a>=14?'#a9c7ff':a>=10?'#ffd79a':'#ffb3b3'}">
+            ${a===null?'—':toFa(a.toFixed(2))}</div>
+          <div class="k">${esc(x.name)} <span style="opacity:.6">(${toFa(x.unit)} واحد)</span></div>
+        </div>`;
+      }).join('')}
+    </div>
+    <div class="stat mt" style="background:linear-gradient(120deg,rgba(79,140,255,.18),rgba(168,85,247,.18))">
+      <div class="v" style="font-size:2rem">${totalAvg()===null?'—':toFa(totalAvg().toFixed(2))}</div>
+      <div class="k">معدل کل (وزنی بر اساس واحد)</div>
+    </div>
+  </div>`;
+
+  p.querySelectorAll('[data-grade]').forEach(b=>b.onclick=()=>{ gradeCourse=b.dataset.grade; renderGrades(); });
+  p.querySelector('#gAdd').onclick=()=>{
+    const t=p.querySelector('#gTitle').value.trim();
+    const s=Number(toEn(p.querySelector('#gScore').value));
+    const w=Number(toEn(p.querySelector('#gWeight').value))||1;
+    if(!t){ toast('عنوان نمره را وارد کن','err'); return; }
+    if(isNaN(s)||s<0||s>20){ toast('نمره باید بین ۰ تا ۲۰ باشد','err'); return; }
+    S.grades[c.id]=S.grades[c.id]||[];
+    S.grades[c.id].push({id:uid(),title:t,score:s,weight:w,at:nowJ()});
+    save(); toast('نمره ثبت شد ✅'); renderGrades(); renderDashboard();
+  };
+  p.querySelectorAll('[data-gdel]').forEach(b=>b.onclick=()=>{
+    S.grades[c.id]=S.grades[c.id].filter(x=>x.id!==b.dataset.gdel);
+    save(); renderGrades(); renderDashboard();
+  });
+}
+
+/* ============ کارها ============ */
+let taskFilter='all';
+function renderTasks(){
+  const p=document.getElementById('panel-tasks');
+  const j=todayJ();
+  let list=S.tasks.slice().sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999'));
+  if(taskFilter==='open') list=list.filter(t=>!t.done);
+  else if(taskFilter==='done') list=list.filter(t=>t.done);
+  else if(taskFilter==='soon') list=list.filter(t=>!t.done&&t.due&&diffDaysJ(j,parseJ(t.due))<=7&&diffDaysJ(j,parseJ(t.due))>=-1);
+
+  const courseOpts=S.courses.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');
+
+  p.innerHTML=`
+  <div class="card mb">
+    <div class="sec-title"><span class="dot"></span> افزودن کار / یادآور</div>
+    <div class="row">
+      <div style="min-width:190px"><label class="lb">عنوان</label><input class="inp" id="tTitle" placeholder="مثلاً: حل تمرین فصل ۵"></div>
+      <div style="min-width:170px"><label class="lb">درس مربوطه</label><select class="inp" id="tCourse"><option value="">— عمومی —</option>${courseOpts}</select></div>
+      <div style="min-width:200px"><label class="lb">موعد انجام</label>${dateSelects('taskdue')}</div>
+      <div style="max-width:130px"><label class="lb">اولویت</label>
+        <select class="inp" id="tPrio"><option value="mid">متوسط</option><option value="high">بالا</option><option value="low">پایین</option></select>
+      </div>
+      <div style="flex:none"><button class="btn" id="tAdd">➕ افزودن</button></div>
+    </div>
+    <div class="mt"><label class="lb">توضیح (اختیاری)</label><textarea class="inp" id="tDesc" style="min-height:70px"></textarea></div>
+  </div>
+
+  <div class="chips">
+    <button class="chip ${taskFilter==='all'?'active':''}" data-tf="all">همه (${toFa(S.tasks.length)})</button>
+    <button class="chip ${taskFilter==='open'?'active':''}" data-tf="open">در انتظار (${toFa(S.tasks.filter(t=>!t.done).length)})</button>
+    <button class="chip ${taskFilter==='soon'?'active':''}" data-tf="soon">نزدیک</button>
+    <button class="chip ${taskFilter==='done'?'active':''}" data-tf="done">انجام‌شده (${toFa(S.tasks.filter(t=>t.done).length)})</button>
+  </div>
+
+  <div class="card">
+    ${list.length? list.map(t=>{
+      const c=t.courseId?getCourse(t.courseId):null;
+      const dd=t.due?diffDaysJ(j,parseJ(t.due)):null;
+      const late=!t.done&&dd!==null&&dd<0;
+      const pr=t.prio==='high'?'🔴':t.prio==='low'?'🟢':'🟡';
+      return `<div class="item" style="${t.done?'opacity:.5':''}">
+        <div style="padding-top:3px">
+          <input type="checkbox" ${t.done?'checked':''} data-ttog="${t.id}" style="width:19px;height:19px;accent-color:#4f8cff;cursor:pointer">
+        </div>
+        <div class="body">
+          <h5 style="${t.done?'text-decoration:line-through':''}">${pr} ${esc(t.title)}</h5>
+          ${t.desc?`<p>${esc(t.desc)}</p>`:''}
+          <div class="t">
+            ${c?`📚 ${esc(c.name)} • `:''}
+            ${t.due?`📅 ${faDate(t.due)} ${dd!==null?(dd===0?'(امروز)':dd>0?`(${toFa(dd)} روز مانده)`:'(گذشته)'):''}`:''}
+            ${late?' ⚠️':''}
           </div>
-          ${hours.length ? `<div style="margin-top:6px;color:var(--muted);font-size:12px">⏰ مجموع: ${numFa(totalN)} ساعت${totalOT ? ` + ${numFa(totalOT)} اضافه‌کار` : ""}</div>` : ""}
         </div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap">
-          ${canEdit ? `
-            <button class="btn btn-ghost btn-sm" onclick="openUserModal('${esc(u.nc)}')">✏️ ویرایش</button>
-            ${role !== "admin" ? `<button class="btn btn-danger btn-sm" onclick="deleteUser('${esc(u.nc)}')">🗑 حذف</button>` : ""}
-          ` : ""}
-        </div>
+        <div class="acts"><button class="mini del" data-tdel="${t.id}">حذف</button></div>
       </div>`;
-  }).join("");
-}
+    }).join('') : `<div class="empty"><div class="e">🗒️</div>کاری در این بخش وجود ندارد.</div>`}
+  </div>`;
 
-function genRandomNc(){
-  let nc = "";
-  for (let i = 0; i < 10; i++) nc += Math.floor(Math.random() * 10);
-  if (getUsers().some(u => u.nc === nc)) return genRandomNc();
-  $("#umNc").value = nc;
-}
-function genRandomPass(){
-  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789";
-  let pass = "";
-  for (let i = 0; i < 10; i++) pass += chars[Math.floor(Math.random() * chars.length)];
-  $("#umPass").value = pass;
-}
+  p.querySelectorAll('[data-tf]').forEach(b=>b.onclick=()=>{ taskFilter=b.dataset.tf; renderTasks(); });
 
-function openUserModal(nc){
-  const modal = $("#userModal");
-  $("#umMsg").innerHTML = "";
-  if (nc){
-    const u = getUsers().find(x => x.nc === nc); if (!u) return;
-    $("#userModalTitle").textContent = "ویرایش کاربر: " + u.name;
-    $("#umOldNc").value = u.nc;
-    $("#umName").value = u.name;
-    $("#umRole").value = getRole(u);
-    $("#umNc").value = u.nc;
-    $("#umPass").value = u.pass;
-    $("#umHourly").value = u.hourlyRate || 0;
-    $("#umOTPrice").value = u.otPrice || 0;
-    $("#umCommission").value = u.commission || 0;
-    $("#umHire").value = u.hireDate || "";
-    $("#umBenefits").value = u.benefits || 0;
-    $("#umPersonalNo").value = u.personalNo || "";
-    $("#umNote").value = u.note || "";
-  } else {
-    $("#userModalTitle").textContent = "افزودن کاربر جدید";
-    $("#umOldNc").value = "";
-    $("#umName").value = ""; $("#umRole").value = "seller";
-    $("#umNc").value = ""; $("#umPass").value = "";
-    $("#umHourly").value = 0; $("#umOTPrice").value = 0;
-    $("#umCommission").value = 0; $("#umHire").value = "";
-    $("#umBenefits").value = 0; $("#umPersonalNo").value = ""; $("#umNote").value = "";
-  }
-  modal.classList.remove("hidden");
-}
-function closeUserModal(){ $("#userModal").classList.add("hidden"); }
-
-function saveUser(){
-  const box = $("#umMsg");
-  const oldNc = $("#umOldNc").value;
-  const name = $("#umName").value.trim();
-  const nc = normDigits($("#umNc").value);
-  const pass = $("#umPass").value.trim();
-  const role = $("#umRole").value;
-  const hourlyRate = Number(normDigits($("#umHourly").value) || 0);
-  const otPrice = Number(normDigits($("#umOTPrice").value) || 0);
-  const commission = Number(normDigits($("#umCommission").value) || 0);
-  const hireDate = $("#umHire").value.trim();
-  const benefits = Number(normDigits($("#umBenefits").value) || 0);
-  const personalNo = $("#umPersonalNo").value.trim();
-  const note = $("#umNote").value.trim();
-
-  if (!name || !nc || !pass) return showMsg(box, "نام، کد ملی و رمز الزامی است.", "error");
-  if (pass.length < 4) return showMsg(box, "رمز حداقل ۴ کاراکتر.", "error");
-
-  const users = getUsers();
-  const dup = users.find(u => u.nc === nc && u.nc !== oldNc);
-  if (dup) return showMsg(box, "این کد ملی قبلاً استفاده شده.", "error");
-
-  if (oldNc){
-    const idx = users.findIndex(u => u.nc === oldNc);
-    if (idx === -1) return showMsg(box, "کاربر یافت نشد.", "error");
-    if (oldNc !== nc){
-      setRecs(getRecs().map(r => r.userNc === oldNc ? {...r, userNc: nc, userName: name} : r));
-      setHours(getHours().map(h => h.userNc === oldNc ? {...h, userNc: nc, userName: name} : h));
-      setSalaries(getSalaries().map(s => s.userNc === oldNc ? {...s, userNc: nc, userName: name} : s));
-      setReqs(getReqs().map(r => r.userNc === oldNc ? {...r, userNc: nc, userName: name} : r));
-      setMsgs(getMsgs().map(m => {
-        if (m.from === oldNc) return {...m, from: nc};
-        if (m.to === oldNc) return {...m, to: nc};
-        return m;
-      }));
-      setNotifs(getNotifs().map(n => n.to === oldNc ? {...n, to: nc} : n));
-    }
-    users[idx] = { ...users[idx], nc, name, pass, role, hourlyRate, otPrice, commission, hireDate, benefits, personalNo, note };
-    setUsers(users);
-    showMsg(box, "✅ ویرایش شد.", "ok");
-  } else {
-    users.push({ nc, pass, name, role, hourlyRate, otPrice, commission, hireDate, benefits, personalNo, note });
-    setUsers(users);
-    showMsg(box, "✅ کاربر اضافه شد.", "ok");
-  }
-  setTimeout(() => { closeUserModal(); initAdmin(); }, 800);
-}
-
-function deleteUser(nc){
-  const u = getUsers().find(x => x.nc === nc); if (!u) return;
-  if (getRole(u) === "admin") return alert("مدیر اصلی حذف نمی‌شود.");
-  if (!confirm(`کاربر «${u.name}» حذف شود؟`)) return;
-  setUsers(getUsers().filter(x => x.nc !== nc));
-  initAdmin();
-}
-
-/* =========================================================
-   HOURS MANAGEMENT (admin + accountant)
-   ========================================================= */
-function adminSubmitHours(){
-  const box = $("#adminHoursMsg");
-  const userNc = $("#ahUser").value;
-  const date = $("#ahDate").value.trim() || jalaliToday();
-  const n = Number(normDigits($("#ahNormal").value) || 0);
-  const ot = Number(normDigits($("#ahOT").value) || 0);
-  const otPrice = Number(normDigits($("#ahOTPrice").value) || 0);
-  const otRate = Number(normDigits($("#ahOTRate").value) || CONFIG.overtimeRateDefault);
-  const note = $("#ahNote").value.trim();
-  if (!userNc) return showMsg(box, "کاربر را انتخاب کنید.", "error");
-  if (n <= 0 && ot <= 0) return showMsg(box, "ساعت را وارد کنید.", "error");
-  if (ot > 0 && otPrice <= 0) return showMsg(box, "قیمت هر ساعت اضافه‌کار را وارد کنید.", "error");
-  const user = getUsers().find(u => u.nc === userNc);
-  const parts = jalaliParts(date);
-  const hours = getHours();
-  hours.push({
-    id: uid(), userNc, userName: user?.name || "", date,
-    jalaliYear: parts.year, jalaliMonth: parts.month, jalaliDay: parts.day,
-    normal: n, ot, otPrice, otRate, note,
-    createdAt: Date.now(), enteredBy: session.name
+  p.querySelector('#tAdd').onclick=()=>{
+    const title=p.querySelector('#tTitle').value.trim();
+    if(!title){ toast('عنوان کار را وارد کن','err'); return; }
+    const due=readDateSelects('taskdue');
+    const s=parseJ(S.settings.startDate), e=parseJ(S.settings.endDate), dj=parseJ(due);
+    if(cmpJ(dj,s)<0||cmpJ(dj,e)>0){ toast('تاریخ باید بین '+faDate(S.settings.startDate)+' و '+faDate(S.settings.endDate)+' باشد','err'); return; }
+    S.tasks.push({id:uid(),title,desc:p.querySelector('#tDesc').value.trim(),
+      courseId:p.querySelector('#tCourse').value,due,prio:p.querySelector('#tPrio').value,
+      done:false,at:nowJ()});
+    save(); toast('کار اضافه شد ✅'); renderTasks(); renderDashboard();
+  };
+  p.querySelectorAll('[data-ttog]').forEach(c=>c.onchange=()=>{
+    const t=S.tasks.find(x=>x.id===c.dataset.ttog); if(t){ t.done=c.checked; save(); renderTasks(); renderDashboard(); }
   });
-  setHours(hours);
-  $("#ahNormal").value = ""; $("#ahOT").value = ""; $("#ahNote").value = "";
-  showMsg(box, "✅ ساعت ثبت شد.", "ok");
-  renderAdminHours();
+  p.querySelectorAll('[data-tdel]').forEach(b=>b.onclick=()=>{
+    S.tasks=S.tasks.filter(x=>x.id!==b.dataset.tdel); save(); renderTasks(); renderDashboard();
+  });
 }
 
-function renderAdminHours(){
-  const box = $("#adminHoursList"); if (!box) return;
-  const filterUser = $("#ahFilterUser") ? $("#ahFilterUser").value : "";
-  const filterMonth = $("#ahFilterMonth") ? $("#ahFilterMonth").value : "";
-  let list = getHours()
-    .filter(h => !filterUser || h.userNc === filterUser)
-    .filter(h => !filterMonth || String(h.jalaliMonth) === filterMonth)
-    .sort((a,b) => b.createdAt - a.createdAt);
-
-  // حذف خودکار ساعت‌های قدیمی‌تر از یک سال
-  const cutoff = Date.now() - (CONFIG.hoursRetainDays * 24 * 3600 * 1000);
-  const stale = list.filter(h => h.createdAt < cutoff);
-  if (stale.length){
-    const idsToRemove = new Set(stale.map(h => h.id));
-    setHours(getHours().filter(h => !idsToRemove.has(h.id)));
-    list = list.filter(h => !idsToRemove.has(h.id));
-  }
-
-  if (!list.length){ box.innerHTML = `<div class="empty">ساعتی ثبت نشده.</div>`; return; }
-
-  const totalN = list.reduce((s,h) => s + h.normal, 0);
-  const totalOT = list.reduce((s,h) => s + h.ot, 0);
-  const totalOTPay = list.reduce((s,h) => s + h.ot * (h.otPrice || 0), 0);
-
-  box.innerHTML = `
-    <div class="stats mb">
-      <div class="stat"><div class="k">تعداد رکورد</div><div class="v">${numFa(list.length)}</div></div>
-      <div class="stat"><div class="k">ساعت عادی</div><div class="v">${numFa(totalN)}</div></div>
-      <div class="stat"><div class="k">اضافه‌کار</div><div class="v">${numFa(totalOT)}</div></div>
-      <div class="stat"><div class="k">مبلغ اضافه‌کار</div><div class="v gold">${rial(totalOTPay)}</div></div>
+/* ============ مدیریت درس‌ها ============ */
+function renderCourses(){
+  const p=document.getElementById('panel-courses');
+  const dayOpts=WORDER.map(wd=>`<option value="${wd}">${WDAYS[wd]}</option>`).join('');
+  p.innerHTML=`
+  <div class="card mb">
+    <div class="sec-title"><span class="dot"></span> افزودن درس جدید</div>
+    <div class="row">
+      <div style="max-width:120px"><label class="lb">کد درس</label><input class="inp" id="cCode" placeholder="21107"></div>
+      <div style="min-width:200px"><label class="lb">نام درس</label><input class="inp" id="cName" placeholder="نام درس"></div>
+      <div style="max-width:100px"><label class="lb">واحد</label><input class="inp" id="cUnit" type="number" min="0" max="6" value="3"></div>
+      <div style="min-width:180px"><label class="lb">استاد</label><input class="inp" id="cTeacher" placeholder="نام استاد"></div>
     </div>
-    <div class="tbl-wrap"><table>
-      <thead><tr>
-        <th>کاربر</th><th>تاریخ (شمسی)</th><th>ساعت عادی</th><th>اضافه‌کار</th>
-        <th>قیمت OT</th><th>ضریب</th><th>مبلغ OT</th><th>توضیحات</th><th>ثبت توسط</th><th>عملیات</th>
-      </tr></thead>
-      <tbody>${list.map(h => `
-        <tr>
-          <td>${esc(h.userName)}</td>
-          <td>${esc(h.date)}</td>
-          <td>${numFa(h.normal)}</td>
-          <td>${h.ot ? numFa(h.ot) : "—"}</td>
-          <td>${h.otPrice ? formatRial(h.otPrice) : "—"}</td>
-          <td>${h.ot ? numFa(h.otRate) : "—"}</td>
-          <td class="money">${h.ot ? formatRial(h.ot * h.otPrice) : "—"}</td>
-          <td style="color:var(--muted);font-size:12.5px">${esc(h.note || "—")}</td>
-          <td style="color:var(--muted);font-size:12px">${esc(h.enteredBy || "—")}</td>
-          <td><button class="btn btn-danger btn-sm" onclick="delHours('${h.id}')">🗑</button></td>
-        </tr>
-      `).join("")}</tbody>
-    </table></div>`;
-}
-function delHours(id){
-  if (!confirm("این رکورد حذف شود؟")) return;
-  setHours(getHours().filter(h => h.id !== id));
-  renderAdminHours();
-}
-function exportHoursCSV(){
-  const list = getHours().sort((a,b) => b.createdAt - a.createdAt);
-  if (!list.length) return alert("ساعتی نیست.");
-  const rows = [["کاربر","کد ملی","تاریخ","ساعت عادی","اضافه‌کار","قیمت OT (ریال)","ضریب","مبلغ OT (ریال)","توضیحات","ثبت توسط"]];
-  list.forEach(h => rows.push([h.userName, h.userNc, h.date, h.normal, h.ot, h.otPrice||0, h.otRate||0, h.ot*(h.otPrice||0), h.note||"", h.enteredBy||""]));
-  const csv = "\uFEFF" + rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(",")).join("\n");
-  const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = `morvarid-hours-${jalaliToday().replace(/\//g,"-")}.csv`;
-  a.click();
-}
-
-/* =========================================================
-   SALARY CALCULATION
-   ========================================================= */
-function calcSalary(){
-  const box = $("#salaryMsg");
-  const userNc = $("#salUser").value;
-  const monthNum = parseInt($("#salMonth").value, 10);
-  const year = parseInt($("#salYear").value, 10);
-  if (!userNc) return showMsg(box, "کاربر را انتخاب کنید.", "error");
-  const user = getUsers().find(u => u.nc === userNc);
-  if (!user) return showMsg(box, "کاربر یافت نشد.", "error");
-
-  // فیلتر ساعت‌های ماه شمسی
-  const monthHours = getHours().filter(h =>
-    h.userNc === userNc &&
-    h.jalaliYear === year &&
-    h.jalaliMonth === monthNum
-  );
-  const normalHours = monthHours.reduce((s,h) => s + h.normal, 0);
-  const otHours = monthHours.reduce((s,h) => s + h.ot, 0);
-  const otPay = monthHours.reduce((s,h) => s + h.ot * (h.otPrice || 0), 0);
-  const avgOTPrice = otHours > 0 ? Math.round(otPay / otHours) : 0;
-
-  // پورسانت فروش
-  const monthRecs = getRecs().filter(r => {
-    if (r.userNc !== userNc) return false;
-    const p = jalaliParts(r.date);
-    return p.year === year && p.month === monthNum;
-  });
-  const monthSales = monthRecs.reduce((s,r) => s + r.total, 0);
-  const commissionPct = user.commission || 0;
-  const commission = Math.round(monthSales * commissionPct / 100);
-
-  const hourlyRate = user.hourlyRate || 0;
-  const baseSalary = normalHours * hourlyRate;
-
-  const benefits = user.benefits || 0;
-  const extraBenefits = Number(normDigits($("#salExtraBenefits").value) || 0);
-  const bonus = Number(normDigits($("#salBonus").value) || 0);
-  const insurance = Number(normDigits($("#salInsurance").value) || 0);
-  const tax = Number(normDigits($("#salTax").value) || 0);
-  const advance = Number(normDigits($("#salAdvance").value) || 0);
-  const otherDeduct = Number(normDigits($("#salOtherDeduct").value) || 0);
-
-  const grossPay = baseSalary + otPay + commission + benefits + extraBenefits + bonus;
-  const totalDeduct = insurance + tax + advance + otherDeduct;
-  const netPay = grossPay - totalDeduct;
-
-  const sal = {
-    id: uid(),
-    userNc, userName: user.name,
-    monthNum, month: String(monthNum).padStart(2,"0"), year,
-    date: jalaliToday(),
-    normalHours, otHours, avgOTPrice, otPay,
-    hourlyRate, baseSalary,
-    commissionPct, commission, monthSales,
-    benefits, extraBenefits, bonus,
-    insurance, tax, advance, otherDeduct,
-    grossPay, totalDeduct, netPay,
-    note: "", createdAt: Date.now(),
-    issuedBy: session.name
-  };
-  window._pendingSalary = sal;
-
-  $("#salaryPreview").innerHTML = renderPayslip(sal) + `
-    <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
-      <button class="btn btn-gold" onclick="issueSalary()">📤 صدور و ارسال فیش به ${esc(user.name)}</button>
-      <button class="btn btn-ghost" onclick="document.getElementById('salaryPreview').innerHTML=''">لغو</button>
+    <div class="row mt">
+      <div style="min-width:200px"><label class="lb">زمان کلاس (متن)</label><input class="inp" id="cTime" placeholder="دوشنبه ۱۰:۰۰-۱۲:۰۰"></div>
+      <div style="min-width:170px"><label class="lb">روزهای هفته</label>
+        <select class="inp" id="cDays" multiple size="3" style="min-height:76px">${dayOpts}</select>
+      </div>
+      <div style="max-width:160px"><label class="lb">تاریخ امتحان</label><input class="inp" id="cExam" placeholder="1405/10/20"></div>
+      <div style="max-width:120px"><label class="lb">ساعت امتحان</label><input class="inp" id="cExamT" placeholder="۰۸:۳۰"></div>
+      <div style="max-width:110px"><label class="lb">رنگ</label><input class="inp" id="cColor" type="color" value="#4f8cff" style="padding:4px;height:44px"></div>
+      <div style="flex:none"><button class="btn" id="cAdd">➕ افزودن درس</button></div>
     </div>
-  `;
-}
+  </div>
 
-function issueSalary(){
-  const sal = window._pendingSalary;
-  if (!sal) return;
-  const salaries = getSalaries();
-  salaries.push(sal);
-  setSalaries(salaries);
+  <div class="grid g-3">
+    ${S.courses.map(c=>`
+      <div class="course">
+        <span class="bar" style="background:${c.color}"></span>
+        <h4>${esc(c.name)}</h4>
+        <div class="meta">
+          کد: ${toFa(c.code)} • ${toFa(c.unit)} واحد<br>
+          👨‍🏫 ${esc(c.teacher||'—')}<br>
+          🕐 ${esc(c.time||'—')}<br>
+          📅 ${(c.days||[]).map(d=>WDAYS[d]).join('، ')||'—'}<br>
+          ${c.examDate?`📝 امتحان: ${faDate(c.examDate)} ${esc(c.examTime||'')}`:'📝 امتحان: —'}
+        </div>
+        <div class="acts mt">
+          <button class="mini" data-cedit="${c.id}">ویرایش</button>
+          <button class="mini del" data-cdel="${c.id}">حذف</button>
+        </div>
+      </div>`).join('')}
+  </div>`;
 
-  const notifs = getNotifs();
-  notifs.push({
-    id: uid(), to: sal.userNc, from: "حسابدار",
-    text: `💰 فیش حقوقی شما برای ${JALALI_MONTHS[sal.monthNum-1]} ${sal.year} صادر شد. خالص پرداختی: ${rial(sal.netPay)}`,
-    date: jalaliToday(), time: nowTimeStr(), createdAt: Date.now()
+  p.querySelector('#cAdd').onclick=()=>{
+    const name=p.querySelector('#cName').value.trim();
+    if(!name){ toast('نام درس را وارد کن','err'); return; }
+    const days=Array.from(p.querySelector('#cDays').selectedOptions).map(o=>+o.value);
+    S.courses.push({
+      id:uid(), code:p.querySelector('#cCode').value.trim()||'—', name,
+      unit:Number(p.querySelector('#cUnit').value)||1,
+      teacher:p.querySelector('#cTeacher').value.trim(),
+      time:p.querySelector('#cTime').value.trim(),
+      days:days.length?days:[1],
+      examDate:toEn(p.querySelector('#cExam').value.trim()),
+      examTime:p.querySelector('#cExamT').value.trim(),
+      color:p.querySelector('#cColor').value
+    });
+    save(); toast('درس اضافه شد ✅'); renderAll();
+  };
+  p.querySelectorAll('[data-cdel]').forEach(b=>b.onclick=()=>{
+    if(!confirm('این درس و تمام داده‌هایش حذف شود؟')) return;
+    const id=b.dataset.cdel;
+    S.courses=S.courses.filter(c=>c.id!==id);
+    delete S.attendance[id]; delete S.notes[id]; delete S.grades[id];
+    S.tasks=S.tasks.filter(t=>t.courseId!==id);
+    save(); toast('درس حذف شد','info'); renderAll();
   });
-  setNotifs(notifs);
-
-  showMsg($("#salaryMsg"), "✅ فیش صادر و به کاربر ارسال شد.", "ok");
-  $("#salaryPreview").innerHTML = "";
-  window._pendingSalary = null;
-  renderSalaryHistory();
-  renderDash();
-}
-
-function renderSalaryHistory(){
-  const box = $("#salaryHistory"); if (!box) return;
-  const filterUser = $("#salFilterUser") ? $("#salFilterUser").value : "";
-  const list = getSalaries()
-    .filter(s => !filterUser || s.userNc === filterUser)
-    .sort((a,b) => b.createdAt - a.createdAt);
-  if (!list.length){ box.innerHTML = `<div class="empty">فیشی صادر نشده.</div>`; return; }
-  box.innerHTML = list.map(s => {
-    const user = getUsers().find(u => u.nc === s.userNc);
-    return `
-      <div class="user-card">
-        <div>
-          <b>${esc(user?.name || s.userName)}</b><br>
-          <small style="color:var(--muted)">دوره: ${esc(JALALI_MONTHS[s.monthNum-1] || s.month)} ${esc(s.year)} • صدور: ${esc(s.date)} توسط ${esc(s.issuedBy || "—")}</small>
-        </div>
-        <div style="text-align:left">
-          <span class="money" style="font-size:16px">${rial(s.netPay)}</span><br>
-          <button class="btn btn-ghost btn-sm mt-s" onclick="viewSalary('${s.id}')">مشاهده فیش</button>
-          <button class="btn btn-danger btn-sm" onclick="delSalary('${s.id}')">حذف</button>
-        </div>
-      </div>`;
-  }).join("");
-}
-function viewSalary(id){
-  const s = getSalaries().find(x => x.id === id); if (!s) return;
-  $("#recModalTitle").textContent = "فیش حقوقی";
-  $("#recDetail").innerHTML = renderPayslip(s);
-  $("#recModal").classList.remove("hidden");
-}
-function delSalary(id){
-  if (!confirm("این فیش حذف شود؟")) return;
-  setSalaries(getSalaries().filter(s => s.id !== id));
-  renderSalaryHistory();
-}
-
-/* =========================================================
-   DATA
-   ========================================================= */
-function exportAll(){
-  const data = {
-    users: getUsers(), recs: getRecs(), reqs: getReqs(),
-    msgs: getMsgs(), notifs: getNotifs(), bc: getBC(),
-    hours: getHours(), salaries: getSalaries(),
-    exportedAt: new Date().toISOString()
-  };
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = `morvarid-backup-${jalaliToday().replace(/\//g,"-")}.json`;
-  a.click();
-}
-function importAll(e){
-  const file = e.target.files[0]; if (!file) return;
-  const fr = new FileReader();
-  fr.onload = () => {
-    try {
-      const data = JSON.parse(fr.result);
-      if (!confirm("داده‌ها جایگزین می‌شوند. ادامه؟")) return;
-      if (data.users)    save(K.users, data.users);
-      if (data.recs)     save(K.recs, data.recs);
-      if (data.reqs)     save(K.reqs, data.reqs);
-      if (data.msgs)     save(K.msgs, data.msgs);
-      if (data.notifs)   save(K.notifs, data.notifs);
-      if (data.bc)       save(K.bc, data.bc);
-      if (data.hours)    save(K.hours, data.hours);
-      if (data.salaries) save(K.salary, data.salaries);
-      alert("✅ بارگذاری شد.");
-      location.reload();
-    } catch(err){ alert("فایل نامعتبر."); }
-  };
-  fr.readAsText(file);
-}
-function exportCSV(){
-  const recs = filteredRecs();
-  if (!recs.length) return alert("گزارشی نیست.");
-  const rows = [["کاربر","کد ملی","تاریخ","ساعت","شماره فاکتور","مشتری","مبلغ (ریال)","جمع روز","تعداد مدارک","توضیحات"]];
-  recs.forEach(r => r.invoices.forEach(i => {
-    rows.push([r.userName, r.userNc, r.date, r.time, i.no, i.customer||"", i.amount, r.total, (i.files||[]).length, r.note||""]);
-  }));
-  const csv = "\uFEFF" + rows.map(row => row.map(c => `"${String(c).replace(/"/g,'""')}"`).join(",")).join("\n");
-  const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = `morvarid-report-${jalaliToday().replace(/\//g,"-")}.csv`;
-  a.click();
-}
-function wipeRecs(){
-  if (!confirm("همه گزارش‌ها پاک شوند؟")) return;
-  setRecs([]); renderDash(); renderAdminReports(); renderToday();
-}
-function wipeAll(){
-  if (!confirm("همه داده‌ها پاک شوند؟")) return;
-  if (!confirm("مطمئنید؟")) return;
-  Object.values(K).forEach(k => localStorage.removeItem(k));
-  location.reload();
-}
-function cleanOldRecs(){
-  const cutoff = Date.now() - (CONFIG.retainYears * 365 * 86400000);
-  const filtered = getRecs().filter(r => r.createdAt >= cutoff);
-  const removed = getRecs().length - filtered.length;
-  if (!removed) return alert("گزارشی قدیمی‌تر از ۲ سال نیست.");
-  if (!confirm(`${removed} گزارش حذف شود؟`)) return;
-  setRecs(filtered); renderDash(); renderAdminReports();
-  alert("✅ انجام شد.");
-}
-
-/* =========================================================
-   PASSWORD
-   ========================================================= */
-function openChangePass(){
-  $("#pmOld").value = ""; $("#pmNew").value = ""; $("#pmNew2").value = "";
-  $("#pmMsg").innerHTML = ""; $("#passModal").classList.remove("hidden");
-}
-function closeChangePass(){ $("#passModal").classList.add("hidden"); }
-function saveNewPass(){
-  const oldP = normDigits($("#pmOld").value);
-  const n1   = normDigits($("#pmNew").value);
-  const n2   = normDigits($("#pmNew2").value);
-  const box  = $("#pmMsg");
-  if (!oldP || !n1 || !n2) return showMsg(box, "همه فیلدها الزامی است.", "error");
-  if (normDigits(oldP) !== normDigits(session.pass)) return showMsg(box, "رمز فعلی اشتباه است.", "error");
-  if (n1.length < 6) return showMsg(box, "رمز جدید حداقل ۶ کاراکتر.", "error");
-  if (n1 !== n2) return showMsg(box, "تکرار رمز مطابقت ندارد.", "error");
-  const users = getUsers();
-  users.find(u => u.nc === session.nc).pass = n1;
-  setUsers(users); session.pass = n1;
-  showMsg(box, "✅ رمز تغییر کرد.", "ok");
-  setTimeout(closeChangePass, 1200);
-}
-
-/* =========================================================
-   INIT
-   ========================================================= */
-(function init(){
-  const sess = load(K.sess, null);
-  if (sess){
-    const u = getUsers().find(x => x.nc === sess.nc);
-    if (u){ session = u; enterApp(); return; }
-  }
-  $("#loginView").classList.remove("hidden");
-})();
-
-document.addEventListener("keydown", e => {
-  if (e.key === "Enter" && !$("#loginView").classList.contains("hidden")) doLogin();
-});
-document.addEventListener("click", e => {
-  if (["passModal","recModal","joinModal","userModal"].includes(e.target.id)) e.target.classList.add("hidden");
-});
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').catch(e => console.log('SW:', e));
+  p.querySelectorAll('[data-cedit]').forEach(b=>b.onclick=()=>{
+    const c=getCourse(b.dataset.cedit); if(!c) return;
+    const name=prompt('نام درس:',c.name); if(name===null) return;
+    const unit=prompt('تعداد واحد:',c.unit); if(unit===null) return;
+    const teacher=prompt('نام استاد:',c.teacher||''); if(teacher===null) return;
+    const time=prompt('زمان کلاس:',c.time||''); if(time===null) return;
+    const examDate=prompt('تاریخ امتحان (مثال 1405/10/20):',c.examDate||''); if(examDate===null) return;
+    c.name=name.trim()||c.name; c.unit=Number(toEn(unit))||c.unit;
+    c.teacher=teacher.trim(); c.time=time.trim(); c.examDate=toEn(examDate.trim());
+    save(); toast('ویرایش شد ✅'); renderAll();
   });
 }
+
+/* ============ تنظیمات ============ */
+function renderSettings(){
+  const p=document.getElementById('panel-settings');
+  p.innerHTML=`
+  <div class="grid g-2">
+    <div class="card">
+      <div class="sec-title"><span class="dot"></span> اطلاعات من</div>
+      <div class="mb"><label class="lb">نام و نام خانوادگی</label><input class="inp" id="sName" value="${esc(S.profile.name)}"></div>
+      <div class="mb"><label class="lb">کد دانشجویی</label><input class="inp" id="sSid" value="${esc(S.auth?S.auth.studentId:S.profile.studentId)}"></div>
+      <div class="mb"><label class="lb">رشته</label><input class="inp" id="sMajor" value="${esc(S.profile.major)}"></div>
+      <div class="mb"><label class="lb">دانشکده</label><input class="inp" id="sFaculty" value="${esc(S.profile.faculty)}"></div>
+      <div class="mb"><label class="lb">نیمسال</label><input class="inp" id="sTerm" value="${esc(S.profile.term)}"></div>
+      <button class="btn" id="sSave">💾 ذخیره اطلاعات</button>
+    </div>
+
+    <div class="card">
+      <div class="sec-title"><span class="dot"></span> تغییر رمز ورود (کد ملی)</div>
+      <div class="mb"><label class="lb">کد ملی فعلی</label><input class="inp" id="pOld" type="password"></div>
+      <div class="mb"><label class="lb">کد ملی جدید</label><input class="inp" id="pNew" type="password"></div>
+      <div class="mb"><label class="lb">تکرار کد ملی جدید</label><input class="inp" id="pNew2" type="password"></div>
+      <button class="btn" id="pSave">🔐 تغییر رمز</button>
+      <hr style="border:none;border-top:1px solid var(--line);margin:22px 0">
+      <div class="sec-title"><span class="dot"></span> بازه تقویم (۶ ماه)</div>
+      <div class="row">
+        <div><label class="lb">شروع</label><input class="inp" id="stStart" value="${esc(S.settings.startDate)}" readonly></div>
+        <div><label class="lb">پایان</label><input class="inp" id="stEnd" value="${esc(S.settings.endDate)}" readonly></div>
+      </div>
+      <button class="btn ghost mt" id="stReset">🔄 بازنشانی بازه (از فردا تا ۶ ماه)</button>
+    </div>
+
+    <div class="card">
+      <div class="sec-title"><span class="dot"></span> پشتیبان‌گیری</div>
+      <p style="font-size:.8rem;color:var(--muted);margin-bottom:12px">
+        اطلاعات درس‌ها، حضور، نکات، نمرات و کارها ذخیره می‌شود. (فایل‌های آپلودی جداگانه در مرورگر)
+      </p>
+      <div class="row">
+        <button class="btn ok" id="expBtn">⬇ خروجی پشتیبان (JSON)</button>
+        <button class="btn ghost" id="impBtn">⬆ بازیابی از فایل</button>
+      </div>
+      <input type="file" id="impFile" accept=".json" class="hidden">
+    </div>
+
+    <div class="card">
+      <div class="sec-title"><span class="dot"></span> وضعیت ذخیره‌سازی</div>
+      <div class="stat mb"><div class="v" id="stFiles">—</div><div class="k">فایل ذخیره‌شده</div></div>
+      <div class="stat mb"><div class="v" id="stSize">—</div><div class="k">حجم کل فایل‌ها</div></div>
+      <button class="btn danger mt" id="wipeBtn">🗑 پاک‌کردن تمام داده‌ها</button>
+    </div>
+  </div>`;
+
+  p.querySelector('#sSave').onclick=()=>{
+    S.profile.name=p.querySelector('#sName').value.trim()||S.profile.name;
+    S.profile.major=p.querySelector('#sMajor').value.trim();
+    S.profile.faculty=p.querySelector('#sFaculty').value.trim();
+    S.profile.term=p.querySelector('#sTerm').value.trim();
+    const nsid=toEn(p.querySelector('#sSid').value.trim());
+    if(nsid.length>=4){ S.profile.studentId=nsid; if(S.auth) S.auth.studentId=nsid; }
+    save(); toast('اطلاعات ذخیره شد ✅'); renderAll();
+  };
+  p.querySelector('#pSave').onclick=()=>{
+    const o=toEn(p.querySelector('#pOld').value.trim());
+    const n=toEn(p.querySelector('#pNew').value.trim());
+    const n2=toEn(p.querySelector('#pNew2').value.trim());
+    if(b64(o)!==S.auth.pass){ toast('کد ملی فعلی اشتباه است','err'); return; }
+    if(n.length<6){ toast('کد ملی جدید حداقل ۶ رقم','err'); return; }
+    if(n!==n2){ toast('تکرار رمز مطابقت ندارد','err'); return; }
+    S.auth.pass=b64(n); save(); toast('رمز تغییر کرد ✅');
+    p.querySelector('#pOld').value=p.querySelector('#pNew').value=p.querySelector('#pNew2').value='';
+  };
+  p.querySelector('#stReset').onclick=()=>{
+    const t=todayJ();
+    const s=addDaysJ(t[0],t[1],t[2],1);
+    const e=addMonthsJ(s[0],s[1],s[2],6);
+    S.settings.startDate=fmtJ(s[0],s[1],s[2]);
+    S.settings.endDate=fmtJ(e[0],e[1],e[2]);
+    save(); toast('بازه تقویم بازنشانی شد ✅'); renderAll();
+  };
+  p.querySelector('#expBtn').onclick=()=>{
+    const data=JSON.stringify(S,null,2);
+    const blob=new Blob([data],{type:'application/json'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='kelasi-backup-'+nowJ().replace(/\//g,'-')+'.json';
+    a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href),5000);
+    toast('فایل پشتیبان دانلود شد ✅');
+  };
+  p.querySelector('#impBtn').onclick=()=>p.querySelector('#impFile').click();
+  p.querySelector('#impFile').onchange=e=>{
+    const f=e.target.files[0]; if(!f) return;
+    const r=new FileReader();
+    r.onload=()=>{
+      try{
+        const d=JSON.parse(r.result);
+        if(!d.courses) throw 0;
+        S=Object.assign(defaultState(),d); save(); toast('بازیابی انجام شد ✅'); renderAll();
+      }catch(err){ toast('فایل پشتیبان نامعتبر است','err'); }
+    };
+    r.readAsText(f);
+  };
+  p.querySelector('#wipeBtn').onclick=async()=>{
+    if(!confirm('همه داده‌ها پاک شوند؟ این کار قابل بازگشت نیست!')) return;
+    localStorage.removeItem(LS_KEY);
+    try{
+      const d=await openDB();
+      const t=d.transaction(DB_STORE,'readwrite');
+      t.objectStore(DB_STORE).clear();
+    }catch(e){}
+    location.reload();
+  };
+  fileAll().then(fs=>{
+    const el1=p.querySelector('#stFiles'), el2=p.querySelector('#stSize');
+    if(!el1) return;
+    el1.textContent=toFa(fs.length);
+    const tot=fs.reduce((a,f)=>a+f.size,0);
+    el2.textContent=toFa((tot/1024/1024).toFixed(2))+' MB';
+  }).catch(()=>{
+    const el1=p.querySelector('#stFiles');
+    if(el1){ el1.textContent='ناموجود'; p.querySelector('#stSize').textContent='ناموجود'; }
+  });
+}
+
+/* ============ راه‌اندازی ============ */
+loadState();
+initLogin();
+document.getElementById('inpStudent').value=S.profile.studentId||'';
+document.getElementById('inpPass').focus();
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey&&e.key==='Enter'&&!loginScreen.classList.contains('hidden')) doLogin();
+});
 </script>
 </body>
-            </html>
+  </html>
