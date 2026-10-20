@@ -1,1430 +1,203 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>کلاسی | محمدرسول یزدیان</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-:root{
-  --txt:#e9edff; --muted:#8b97c7; --line:rgba(255,255,255,.09);
-  --glass:rgba(255,255,255,.045); --glass2:rgba(255,255,255,.08);
-  --a1:#4f8cff; --a2:#a855f7; --a3:#22d3ee;
-  --ok:#22c55e; --warn:#f59e0b; --bad:#ef4444;
-  --r:18px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{min-height:100%}
-body{
-  font-family:'Vazirmatn',Tahoma,system-ui,sans-serif;
-  background:#05070f;color:var(--txt);overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;line-height:1.9;
-}
-button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
-button{cursor:pointer;border:none;background:none}
-a{color:var(--a3);text-decoration:none}
-::-webkit-scrollbar{width:10px;height:10px}
-::-webkit-scrollbar-track{background:rgba(255,255,255,.03)}
-::-webkit-scrollbar-thumb{background:linear-gradient(#4f8cff,#a855f7);border-radius:20px}
-
-.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;
-  background:radial-gradient(1200px 800px at 85% -10%,#16204d 0%,transparent 60%),
-             radial-gradient(1000px 700px at 0% 100%,#1a1040 0%,transparent 60%),#05070f;}
-.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.45;animation:float 20s ease-in-out infinite}
-.b1{width:520px;height:520px;background:#3b6dff;top:-180px;left:-140px}
-.b2{width:460px;height:460px;background:#a855f7;bottom:-160px;right:-120px;animation-delay:-7s}
-.b3{width:380px;height:380px;background:#06b6d4;top:42%;left:55%;animation-delay:-13s}
-@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(60px,-45px) scale(1.12)}66%{transform:translate(-55px,55px) scale(.9)}}
-.grid-overlay{position:absolute;inset:0;
-  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-                   linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-  background-size:54px 54px;
-  -webkit-mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 78%);
-  mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 78%);}
-
-.logo-svg{width:100%;height:100%;display:block}
-.spin{transform-origin:50% 50%;animation:spin 14s linear infinite}
-.spin-rev{transform-origin:50% 50%;animation:spin 9s linear infinite reverse}
-@keyframes spin{to{transform:rotate(360deg)}}
-.pulse{animation:pulse 2.6s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
-
-.login-wrap{position:fixed;inset:0;display:grid;place-items:center;padding:20px;z-index:50;
-  backdrop-filter:blur(2px)}
-.login-card{width:min(430px,100%);padding:34px 28px 28px;border-radius:26px;text-align:center;
-  background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.03));
-  border:1px solid var(--line);backdrop-filter:blur(24px);
-  box-shadow:0 30px 80px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.15);
-  animation:pop .6s cubic-bezier(.2,.9,.3,1.3)}
-@keyframes pop{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
-.login-logo{width:104px;height:104px;margin:0 auto 14px}
-.login-card h1{font-size:1.5rem;font-weight:800;letter-spacing:-.5px;
-  background:linear-gradient(90deg,#7fb0ff,#c9a3ff,#6fe3f7);-webkit-background-clip:text;background-clip:text;color:transparent}
-.login-card .sub{color:var(--muted);font-size:.85rem;margin-bottom:22px}
-.field{text-align:right;margin-bottom:14px}
-.field label{display:block;font-size:.78rem;color:var(--muted);margin-bottom:6px;padding-right:4px}
-.field input{width:100%;padding:13px 15px;border-radius:14px;background:rgba(0,0,0,.32);
-  border:1px solid var(--line);outline:none;transition:.25s;letter-spacing:1px}
-.field input:focus{border-color:var(--a1);box-shadow:0 0 0 4px rgba(79,140,255,.16);background:rgba(0,0,0,.45)}
-.btn-main{width:100%;padding:14px;border-radius:14px;font-weight:700;font-size:1rem;color:#fff;
-  background:linear-gradient(120deg,#4f8cff,#a855f7,#22d3ee);background-size:220% 100%;
-  transition:.4s;box-shadow:0 12px 30px rgba(79,140,255,.35)}
-.btn-main:hover{background-position:100% 0;transform:translateY(-2px);box-shadow:0 18px 40px rgba(168,85,247,.45)}
-.msg{font-size:.82rem;margin-top:12px;min-height:22px}
-.msg.err{color:#ff8b8b}.msg.ok{color:#7ff0b0}
-.hint{font-size:.72rem;color:var(--muted);margin-top:16px;line-height:1.9;opacity:.85}
-
-header{position:sticky;top:0;z-index:30;backdrop-filter:blur(18px);
-  background:linear-gradient(180deg,rgba(8,11,26,.92),rgba(8,11,26,.62));
-  border-bottom:1px solid var(--line)}
-.hwrap{max-width:1220px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:12px;flex:1;min-width:220px}
-.brand .lg{width:52px;height:52px;flex:none}
-.brand h2{font-size:1.05rem;font-weight:800;line-height:1.5}
-.brand h2 span{display:block;font-size:.72rem;font-weight:400;color:var(--muted)}
-.clock{text-align:left;font-variant-numeric:tabular-nums;font-size:.85rem;color:var(--muted);line-height:1.7}
-.clock b{display:block;font-size:1.28rem;font-weight:700;letter-spacing:1px;
-  background:linear-gradient(90deg,#7fb0ff,#6fe3f7);-webkit-background-clip:text;background-clip:text;color:transparent}
-.icon-btn{padding:9px 14px;border-radius:12px;background:var(--glass);border:1px solid var(--line);
-  font-size:.8rem;transition:.25s}
-.icon-btn:hover{background:var(--glass2);transform:translateY(-2px);border-color:var(--a1)}
-
-nav{max-width:1220px;margin:auto;padding:12px 18px 0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
-nav::-webkit-scrollbar{display:none}
-.tab{white-space:nowrap;padding:9px 16px;border-radius:14px;font-size:.85rem;color:var(--muted);
-  border:1px solid transparent;transition:.25s}
-.tab:hover{color:var(--txt);background:var(--glass)}
-.tab.active{color:#fff;background:linear-gradient(120deg,rgba(79,140,255,.28),rgba(168,85,247,.28));
-  border-color:rgba(120,160,255,.4);box-shadow:0 8px 24px rgba(79,140,255,.2)}
-
-main{max-width:1220px;margin:auto;padding:20px 18px 90px}
-.panel{display:none;animation:fade .45s ease}
-.panel.active{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.card{background:linear-gradient(160deg,rgba(255,255,255,.065),rgba(255,255,255,.02));
-  border:1px solid var(--line);border-radius:var(--r);padding:18px;backdrop-filter:blur(14px);
-  box-shadow:0 16px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.07)}
-.sec-title{display:flex;align-items:center;gap:10px;font-size:1.05rem;font-weight:700;margin-bottom:14px}
-.sec-title .dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(120deg,var(--a1),var(--a3));
-  box-shadow:0 0 14px var(--a1);animation:pulse 2s infinite}
-.grid{display:grid;gap:14px}
-.g-stats{grid-template-columns:repeat(auto-fit,minmax(155px,1fr))}
-.g-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
-.g-3{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
-.g-week{grid-template-columns:repeat(7,minmax(0,1fr))}
-
-.stat{position:relative;overflow:hidden;border-radius:16px;padding:16px;border:1px solid var(--line);
-  background:linear-gradient(150deg,rgba(255,255,255,.07),rgba(255,255,255,.02));transition:.3s}
-.stat:hover{transform:translateY(-4px);border-color:rgba(120,160,255,.45);box-shadow:0 18px 40px rgba(0,0,0,.45)}
-.stat .v{font-size:1.7rem;font-weight:800;background:linear-gradient(90deg,#8fb6ff,#c9a3ff);
-  -webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.4}
-.stat .k{font-size:.75rem;color:var(--muted)}
-.stat::after{content:'';position:absolute;inset:auto -30% -60% auto;width:120px;height:120px;border-radius:50%;
-  background:radial-gradient(circle,rgba(79,140,255,.35),transparent 70%)}
-
-.course{position:relative;border-radius:16px;padding:15px;border:1px solid var(--line);
-  background:linear-gradient(150deg,rgba(255,255,255,.06),rgba(255,255,255,.015));transition:.3s;overflow:hidden}
-.course:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(0,0,0,.5)}
-.course .bar{position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;border-radius:4px}
-.course h4{font-size:.95rem;font-weight:700;margin-bottom:6px;padding-inline-start:10px}
-.course .meta{font-size:.75rem;color:var(--muted);padding-inline-start:10px;line-height:2}
-.badge{display:inline-block;padding:2px 9px;border-radius:8px;font-size:.7rem;
-  background:rgba(79,140,255,.18);border:1px solid rgba(79,140,255,.3);color:#a9c7ff}
-
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-.chip{padding:7px 14px;border-radius:12px;font-size:.78rem;border:1px solid var(--line);
-  background:var(--glass);color:var(--muted);transition:.22s;white-space:nowrap}
-.chip:hover{color:var(--txt);transform:translateY(-2px)}
-.chip.active{color:#fff;border-color:transparent;background:linear-gradient(120deg,var(--a1),var(--a2));
-  box-shadow:0 8px 22px rgba(79,140,255,.35)}
-
-.inp,textarea.inp,select.inp{width:100%;padding:11px 13px;border-radius:12px;background:rgba(0,0,0,.3);
-  border:1px solid var(--line);outline:none;transition:.22s}
-.inp:focus{border-color:var(--a1);box-shadow:0 0 0 4px rgba(79,140,255,.15)}
-textarea.inp{resize:vertical;min-height:90px;line-height:1.9}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
-.row > *{flex:1;min-width:130px}
-label.lb{display:block;font-size:.75rem;color:var(--muted);margin-bottom:5px}
-.btn{padding:11px 18px;border-radius:12px;font-size:.83rem;font-weight:600;color:#fff;
-  background:linear-gradient(120deg,var(--a1),var(--a2));transition:.3s;
-  box-shadow:0 8px 22px rgba(79,140,255,.28);white-space:nowrap}
-.btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(168,85,247,.4)}
-.btn.ghost{background:var(--glass);border:1px solid var(--line);box-shadow:none;color:var(--txt)}
-.btn.ghost:hover{background:var(--glass2);border-color:var(--a1)}
-.btn.danger{background:linear-gradient(120deg,#ef4444,#b91c1c);box-shadow:0 8px 22px rgba(239,68,68,.3)}
-.btn.ok{background:linear-gradient(120deg,#22c55e,#15803d);box-shadow:0 8px 22px rgba(34,197,94,.3)}
-.btn.sm{padding:7px 12px;font-size:.75rem;border-radius:10px}
-
-.att-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
-.att{padding:9px 6px;border-radius:11px;text-align:center;font-size:.73rem;border:1px solid var(--line);
-  background:rgba(255,255,255,.035);cursor:pointer;transition:.2s;user-select:none;line-height:1.8}
-.att small{display:block;font-size:.62rem;color:var(--muted)}
-.att:hover{transform:translateY(-3px);border-color:var(--a1)}
-.att.p{background:rgba(34,197,94,.2);border-color:rgba(34,197,94,.55);color:#9df5c0}
-.att.a{background:rgba(239,68,68,.2);border-color:rgba(239,68,68,.55);color:#ffb3b3}
-.att.l{background:rgba(245,158,11,.2);border-color:rgba(245,158,11,.55);color:#ffd79a}
-.att.future{opacity:.34;pointer-events:none}
-.progress{height:9px;border-radius:20px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:12px}
-.progress i{display:block;height:100%;border-radius:20px;background:linear-gradient(90deg,#22c55e,#4f8cff);
-  transition:width .6s cubic-bezier(.2,.9,.3,1)}
-
-.item{display:flex;gap:12px;align-items:flex-start;padding:13px;border-radius:14px;
-  background:rgba(255,255,255,.04);border:1px solid var(--line);margin-bottom:9px;transition:.25s}
-.item:hover{background:rgba(255,255,255,.07);border-color:rgba(120,160,255,.35)}
-.item .body{flex:1;min-width:0}
-.item h5{font-size:.88rem;font-weight:600;margin-bottom:3px;word-break:break-word}
-.item p{font-size:.78rem;color:var(--muted);white-space:pre-wrap;word-break:break-word}
-.item .t{font-size:.68rem;color:var(--muted);opacity:.8;margin-top:5px}
-.acts{display:flex;gap:6px;flex:none;flex-wrap:wrap}
-.mini{padding:6px 10px;border-radius:9px;font-size:.7rem;background:var(--glass);border:1px solid var(--line);transition:.2s}
-.mini:hover{background:var(--glass2);border-color:var(--a1);transform:translateY(-2px)}
-.mini.del:hover{border-color:var(--bad);color:#ff9b9b}
-
-.drop{border:2px dashed rgba(120,160,255,.4);border-radius:16px;padding:26px;text-align:center;
-  transition:.3s;background:rgba(79,140,255,.05);cursor:pointer}
-.drop:hover,.drop.over{border-color:var(--a2);background:rgba(168,85,247,.1);transform:scale(1.01)}
-.drop .ic{font-size:2rem;margin-bottom:8px}
-.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:12px}
-.thumb{border-radius:13px;overflow:hidden;border:1px solid var(--line);background:rgba(0,0,0,.3);
-  transition:.28s;position:relative}
-.thumb:hover{transform:translateY(-4px);border-color:var(--a1);box-shadow:0 16px 34px rgba(0,0,0,.5)}
-.thumb img{width:100%;height:110px;object-fit:cover;display:block}
-.thumb .fi{padding:10px;text-align:center;font-size:1.9rem;height:110px;display:grid;place-items:center;
-  background:linear-gradient(150deg,rgba(239,68,68,.2),rgba(0,0,0,.2))}
-.thumb .cap{padding:8px 10px;font-size:.7rem;color:var(--muted)}
-.thumb .cap b{display:block;color:var(--txt);font-size:.75rem;font-weight:600;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
-.thumb .ov{position:absolute;top:7px;inset-inline-start:7px;display:flex;gap:5px;opacity:0;transition:.25s}
-.thumb:hover .ov{opacity:1}
-.thumb .ov button{width:29px;height:29px;border-radius:9px;background:rgba(0,0,0,.72);backdrop-filter:blur(6px);
-  display:grid;place-items:center;font-size:.8rem;border:1px solid rgba(255,255,255,.15);transition:.2s}
-.thumb .ov button:hover{background:var(--a1);transform:scale(1.1)}
-
-table{width:100%;border-collapse:collapse;font-size:.82rem}
-th,td{padding:10px 8px;text-align:right;border-bottom:1px solid var(--line)}
-th{color:var(--muted);font-weight:500;font-size:.75rem}
-tbody tr:hover{background:rgba(255,255,255,.04)}
-.score-pill{padding:3px 11px;border-radius:9px;font-weight:700;font-size:.8rem}
-.sp-a{background:rgba(34,197,94,.2);color:#9df5c0}
-.sp-b{background:rgba(79,140,255,.2);color:#a9c7ff}
-.sp-c{background:rgba(245,158,11,.2);color:#ffd79a}
-.sp-d{background:rgba(239,68,68,.2);color:#ffb3b3}
-
-.dsel{display:flex;gap:6px}
-.dsel select{flex:1;padding:10px 6px;border-radius:11px;background:rgba(0,0,0,.3);
-  border:1px solid var(--line);outline:none;text-align:center;font-size:.8rem}
-.dsel select:focus{border-color:var(--a1)}
-
-.wday{border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.03);padding:11px;min-height:130px}
-.wday h6{font-size:.78rem;text-align:center;color:var(--muted);margin-bottom:9px;padding-bottom:8px;
-  border-bottom:1px solid var(--line)}
-.wday.today h6{color:#fff}
-.wday.today{border-color:rgba(79,140,255,.55);background:rgba(79,140,255,.1);
-  box-shadow:0 0 0 1px rgba(79,140,255,.25), 0 14px 34px rgba(79,140,255,.15)}
-.wc{padding:8px;border-radius:10px;font-size:.7rem;margin-bottom:7px;line-height:1.8;
-  background:rgba(255,255,255,.06);border-inline-start:3px solid var(--a1);transition:.25s}
-.wc:hover{background:rgba(255,255,255,.12);transform:translateX(-3px)}
-.wc b{display:block;font-size:.74rem;font-weight:600;margin-bottom:2px}
-.wc span{color:var(--muted);font-size:.65rem}
-
-/* یادداشت‌های تاریخ‌دار */
-.upnote{padding:11px 13px;border-radius:12px;margin-bottom:8px;font-size:.78rem;
-  background:linear-gradient(120deg,rgba(79,140,255,.13),rgba(168,85,247,.08));
-  border:1px solid rgba(120,160,255,.28);border-inline-start:4px solid var(--a2);transition:.25s}
-.upnote:hover{transform:translateX(-4px);box-shadow:0 12px 28px rgba(0,0,0,.35)}
-.upnote b{display:block;font-size:.85rem;font-weight:600;color:#fff;margin-bottom:4px}
-.upnote .dt{font-size:.68rem;color:var(--a3);margin-top:5px;display:flex;align-items:center;gap:6px}
-.upnote .dt .dchip{padding:1px 8px;border-radius:7px;background:rgba(255,255,255,.08);color:#fff}
-
-#toast{position:fixed;bottom:24px;inset-inline-start:24px;z-index:200;display:flex;flex-direction:column;gap:9px}
-.tst{padding:12px 18px;border-radius:13px;font-size:.82rem;color:#fff;backdrop-filter:blur(14px);
-  background:linear-gradient(120deg,rgba(34,197,94,.92),rgba(21,128,61,.92));
-  box-shadow:0 14px 34px rgba(0,0,0,.5);animation:slidein .4s cubic-bezier(.2,.9,.3,1.3)}
-.tst.err{background:linear-gradient(120deg,rgba(239,68,68,.92),rgba(153,27,27,.92))}
-.tst.info{background:linear-gradient(120deg,rgba(79,140,255,.92),rgba(168,85,247,.92))}
-@keyframes slidein{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-
-.empty{text-align:center;padding:34px 14px;color:var(--muted);font-size:.83rem}
-.empty .e{font-size:2.4rem;margin-bottom:10px;opacity:.6}
-.hidden{display:none!important}
-.mt{margin-top:14px}.mb{margin-bottom:14px}
-.flex-between{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-
-@media(max-width:820px){
-  .g-week{grid-template-columns:1fr 1fr}
-  .brand h2{font-size:.92rem}
-  .clock b{font-size:1.05rem}
-}
-@media(max-width:520px){
-  .g-week{grid-template-columns:1fr}
-  main{padding:14px 12px 90px}
-  .hwrap{padding:10px 12px}
-  nav{padding:10px 12px 0}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سایت مروارید - کامپایلر آنلاین</title>
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+            background-color: #1e1e2f;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .login-container, .main-container {
+            background-color: #2b2b3d;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 800px;
+            display: none;
+        }
+        .login-container {
+            max-width: 400px;
+            text-align: center;
+        }
+        h2, h3 { color: #4CAF50; margin-bottom: 20px; }
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 6px;
+            background: #3b3b4f;
+            color: white;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background-color: #1e1e2f;
+            color: #d4d4d4;
+            font-family: monospace;
+            direction: ltr;
+            font-size: 14px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        button:hover { background-color: #45a049; }
+        .header-info {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
+        .status-msg {
+            margin-top: 15px;
+            text-align: center;
+            color: #ff9800;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
-<div class="bg">
-  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
-  <div class="grid-overlay"></div>
-</div>
-
-<!-- ================= LOGIN ================= -->
-<div id="loginScreen" class="login-wrap">
-  <div class="login-card">
-    <div class="login-logo">
-      <svg class="logo-svg" viewBox="0 0 100 100">
-        <defs>
-          <linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#4f8cff"/><stop offset="50%" stop-color="#a855f7"/><stop offset="100%" stop-color="#22d3ee"/>
-          </linearGradient>
-        </defs>
-        <circle cx="50" cy="50" r="45" fill="none" stroke="url(#lg1)" stroke-width="2" stroke-dasharray="9 9" class="spin"/>
-        <circle cx="50" cy="50" r="35" fill="none" stroke="url(#lg1)" stroke-width="1.2" opacity=".55" class="spin-rev"/>
-        <circle cx="50" cy="50" r="26" fill="rgba(79,140,255,.12)" class="pulse"/>
-        <text x="50" y="61" text-anchor="middle" font-size="25" font-weight="800" fill="url(#lg1)" font-family="Vazirmatn">ک</text>
-      </svg>
+    <!-- صفحه ورود -->
+    <div class="login-container" id="loginBox">
+        <h2>سایت مروارید</h2>
+        <p>طراح: مهندس محمدرسول یزدیان</p>
+        <input type="password" id="passwordInput" placeholder="رمز عبور را وارد کنید">
+        <button onclick="checkLogin()">ورود به سیستم</button>
     </div>
-    <h1>کلاسی</h1>
-    <p class="sub">سامانه شخصی محمدرسول یزدیان</p>
 
-    <div class="field">
-      <label>کد دانشجویی</label>
-      <input id="inpStudent" inputmode="numeric" placeholder="4032221073" autocomplete="username">
-    </div>
-    <div class="field">
-      <label>کد ملی (رمز ورود)</label>
-      <input id="inpPass" type="password" inputmode="numeric" placeholder="••••••••" autocomplete="current-password">
-    </div>
-    <button class="btn-main" id="btnLogin">ورود به کلاسی</button>
-    <div id="loginMsg" class="msg"></div>
-    <p class="hint" id="loginHint"></p>
-  </div>
-</div>
-
-<!-- ================= APP ================= -->
-<div id="app" class="hidden">
-  <header>
-    <div class="hwrap">
-      <div class="brand">
-        <div class="lg">
-          <svg class="logo-svg" viewBox="0 0 100 100">
-            <defs>
-              <linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#4f8cff"/><stop offset="50%" stop-color="#a855f7"/><stop offset="100%" stop-color="#22d3ee"/>
-              </linearGradient>
-            </defs>
-            <circle cx="50" cy="50" r="45" fill="none" stroke="url(#lg2)" stroke-width="2.5" stroke-dasharray="9 9" class="spin"/>
-            <circle cx="50" cy="50" r="35" fill="none" stroke="url(#lg2)" stroke-width="1.4" opacity=".55" class="spin-rev"/>
-            <circle cx="50" cy="50" r="26" fill="rgba(79,140,255,.13)" class="pulse"/>
-            <text x="50" y="61" text-anchor="middle" font-size="25" font-weight="800" fill="url(#lg2)" font-family="Vazirmatn">ک</text>
-          </svg>
+    <!-- صفحه اصلی کامپایلر -->
+    <div class="main-container" id="compilerBox">
+        <div class="header-info">
+            <span>سایت مروارید</span>
+            <span>طراح: مهندس محمدرسول یزدیان</span>
         </div>
-        <h2>کلاسی<span>محمدرسول یزدیان</span></h2>
-      </div>
-      <div class="clock">
-        <b id="liveTime">--:--:--</b>
-        <span id="liveDate">—</span>
-      </div>
-      <button class="icon-btn" id="btnLogout">خروج</button>
+        
+        <h3>کدهای C خود را اینجا قرار دهید:</h3>
+        <textarea id="codeInput" placeholder="کدهای خود را اینجا پیست کنید..."></textarea>
+        
+        <button onclick="compileCode()">کامپایل کد و دریافت فایل HEX</button>
+        <div class="status-msg" id="statusMsg">در حال پردازش و کامپایل کد...</div>
     </div>
-  </header>
 
-  <nav id="nav">
-    <button class="tab active" data-tab="dashboard">داشبورد</button>
-    <button class="tab" data-tab="schedule">برنامه هفتگی</button>
-    <button class="tab" data-tab="attendance">حضور و غیاب</button>
-    <button class="tab" data-tab="materials">مطالب درسی</button>
-    <button class="tab" data-tab="notes">نکات و یادآورها</button>
-    <button class="tab" data-tab="grades">نمرات</button>
-    <button class="tab" data-tab="tasks">کارها</button>
-    <button class="tab" data-tab="courses">درس‌ها</button>
-    <button class="tab" data-tab="settings">تنظیمات</button>
-  </nav>
-
-  <main>
-    <section class="panel active" id="panel-dashboard"></section>
-    <section class="panel" id="panel-schedule"></section>
-    <section class="panel" id="panel-attendance"></section>
-    <section class="panel" id="panel-materials"></section>
-    <section class="panel" id="panel-notes"></section>
-    <section class="panel" id="panel-grades"></section>
-    <section class="panel" id="panel-tasks"></section>
-    <section class="panel" id="panel-courses"></section>
-    <section class="panel" id="panel-settings"></section>
-  </main>
-</div>
-
-<div id="toast"></div>
-<input type="file" id="filePicker" class="hidden" accept="image/*,application/pdf">
-
-<script>
-/* ============ تاریخ شمسی ============ */
-const div=(a,b)=>~~(a/b), mod=(a,b)=>a-~~(a/b)*b;
-function g2j(gy,gm,gd){
-  const gdm=[0,31,59,90,120,151,181,212,243,273,304,334];
-  let jy=(gy<=1600)?0:979;
-  gy-=(gy<=1600)?621:1600;
-  const gy2=(gm>2)?(gy+1):gy;
-  let days=(365*gy)+div(gy2+3,4)-div(gy2+99,100)+div(gy2+399,400)-80+gd+gdm[gm-1];
-  jy+=33*div(days,12053); days=mod(days,12053);
-  jy+=4*div(days,1461);   days=mod(days,1461);
-  jy+=div(days-1,365);
-  if(days>365) days=mod(days-1,365);
-  const jm=(days<186)?1+div(days,31):7+div(days-186,30);
-  const jd=1+((days<186)?mod(days,31):mod(days-186,30));
-  return [jy,jm,jd];
-}
-function j2g(jy,jm,jd){
-  let gy=(jy<=979)?621:1600;
-  jy-=(jy<=979)?0:979;
-  let days=(365*jy)+(div(jy,33)*8)+div(mod(jy,33)+3,4)+78+jd+((jm<7)?(jm-1)*31:((jm-7)*30)+186);
-  gy+=400*div(days,146097); days=mod(days,146097);
-  if(days>36524){ gy+=100*div(--days,36524); days=mod(days,36524); if(days>=365) days++; }
-  gy+=4*div(days,1461); days=mod(days,1461);
-  gy+=div(days,365); if(days>365) days=mod(days,365);
-  let gd=days+1;
-  const leap=((gy%4===0&&gy%100!==0)||(gy%400===0))?29:28;
-  const sa=[0,31,leap,31,30,31,30,31,31,30,31,30,31];
-  let gm; for(gm=0;gm<13&&gd>sa[gm];gm++) gd-=sa[gm];
-  return [gy,gm,gd];
-}
-function isLeapJ(jy){ const g=j2g(jy,12,30); const b=g2j(g[0],g[1],g[2]); return b[1]===12; }
-function jMonthLength(jy,jm){ if(jm<=6)return 31; if(jm<=11)return 30; return isLeapJ(jy)?30:29; }
-function todayJ(){ const d=new Date(); return g2j(d.getFullYear(),d.getMonth()+1,d.getDate()); }
-function fmtJ(y,m,d){ return y+'/'+String(m).padStart(2,'0')+'/'+String(d).padStart(2,'0'); }
-function parseJ(s){ const p=String(s).split('/').map(Number); return [p[0],p[1],p[2]]; }
-function cmpJ(a,b){ return (a[0]-b[0])||(a[1]-b[1])||(a[2]-b[2]); }
-function addDaysJ(y,m,d,n){
-  const g=j2g(y,m,d); const dt=new Date(g[0],g[1]-1,g[2]); dt.setDate(dt.getDate()+n);
-  return g2j(dt.getFullYear(),dt.getMonth()+1,dt.getDate());
-}
-function addMonthsJ(y,m,d,n){
-  let mm=m+n, yy=y+Math.floor((mm-1)/12); mm=((mm-1)%12+12)%12+1;
-  const dd=Math.min(d,jMonthLength(yy,mm));
-  return [yy,mm,dd];
-}
-function wdOf(y,m,d){ const g=j2g(y,m,d); return new Date(g[0],g[1]-1,g[2]).getDay(); }
-function diffDaysJ(a,b){
-  const g1=j2g(a[0],a[1],a[2]), g2=j2g(b[0],b[1],b[2]);
-  const d1=new Date(g1[0],g1[1]-1,g1[2]), d2=new Date(g2[0],g2[1]-1,g2[2]);
-  return Math.round((d2-d1)/86400000);
-}
-const WDAYS=['یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه','شنبه'];
-const WORDER=[6,0,1,2,3,4,5];
-const MONTHS=['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
-
-const FA='۰۱۲۳۴۵۶۷۸۹';
-function toFa(s){ return String(s).replace(/\d/g,d=>FA[+d]); }
-function toEn(s){ return String(s).replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)); }
-function faDate(str){ return toFa(str); }
-function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-
-/* ============ داده‌های پیش‌فرض ============ */
-const LS_KEY='kelasi_app_v1';
-const DEFAULT_COURSES=[
- {code:'21107',name:'آزمایشگاه سیستم‌های کنترل دیجیتال',unit:1,teacher:'جناب آقای علی عامی',
-  days:[1],time:'۱۰:۰۰ - ۱۲:۰۰',examDate:'',examTime:'',color:'#4f8cff'},
- {code:'21098',name:'اصول سیستم‌های مخابراتی',unit:3,teacher:'جناب آقای دکتر آرش کریمیانی',
-  days:[1,2],time:'دوشنبه ۱۴:۰۰-۱۵:۰۰ | سه‌شنبه ۱۵:۰۰-۱۷:۰۰',examDate:'1405/10/23',examTime:'۰۸:۳۰',color:'#a855f7'},
- {code:'21192',name:'الکترونیک ۲',unit:3,teacher:'جناب آقای دکتر عبدالمجید عبدالهی فرد',
-  days:[0,1],time:'یکشنبه ۱۸:۰۰-۲۰:۰۰ | دوشنبه ۱۷:۰۰-۱۸:۰۰',examDate:'1405/10/21',examTime:'۱۴:۰۰',color:'#22d3ee'},
- {code:'10061',name:'مبانی برخورد با حوادث و سوانح',unit:1,teacher:'جناب آقای مجید رضمانی',
-  days:[0],time:'۱۶:۰۰ - ۱۸:۰۰',examDate:'',examTime:'',color:'#f59e0b'},
- {code:'10006',name:'انقلاب اسلامی ایران',unit:3,teacher:'جناب آقای دکتر علی ملکی',
-  days:[2],time:'۱۰:۰۰ - ۱۲:۰۰',examDate:'1405/10/15',examTime:'۱۰:۰۰',color:'#22c55e'},
- {code:'21101',name:'سیستم‌های دیجیتال ۲',unit:3,teacher:'جناب آقای دکتر علی محمدفتوحی',
-  days:[0,2],time:'یکشنبه ۱۰:۰۰-۱۲:۰۰ | سه‌شنبه ۱۰:۰۰-۱۲:۰۰',examDate:'1405/10/13',examTime:'۱۴:۰۰',color:'#ec4899'},
- {code:'21093',name:'سیستم‌های کنترل خطی',unit:3,teacher:'جناب آقای دکتر علی کاظمی',
-  days:[0,2],time:'یکشنبه ۱۶:۰۰-۱۸:۰۰ | سه‌شنبه ۱۴:۰۰-۱۶:۰۰',examDate:'1405/10/20',examTime:'۰۸:۳۰',color:'#8b5cf6'},
- {code:'10059',name:'تاریخ و مقررات دفاع مقدس',unit:1,teacher:'جناب آقای محمد مهدی محمودیان',
-  days:[1,2],time:'۰۸:۰۰ - ۱۰:۰۰',examDate:'1405/10/15',examTime:'۱۱:۳۰',color:'#14b8a6'},
- {code:'21096',name:'ماشین‌های الکتریکی ۱',unit:2,teacher:'جناب آقای دکتر سجاد صدر',
-  days:[1],time:'۱۷:۰۰ - ۱۸:۰۰',examDate:'1405/10/19',examTime:'۱۴:۰۰',color:'#f43f5e'}
-];
-function defaultState(){
-  const t=todayJ();
-  const start=addDaysJ(t[0],t[1],t[2],1);
-  const end=addMonthsJ(start[0],start[1],start[2],6);
-  return {
-    auth:null,
-    profile:{name:'محمدرسول یزدیان',studentId:'4032221073',major:'مهندسی برق',
-             faculty:'دانشکده فنی مهندسی',term:'نیمسال اول ۱۴۰۶'},
-    courses:DEFAULT_COURSES.map((c,i)=>({...c,id:'c'+(i+1)})),
-    attendance:{}, notes:{}, grades:{}, tasks:[],
-    settings:{startDate:fmtJ(start[0],start[1],start[2]),endDate:fmtJ(end[0],end[1],end[2])}
-  };
-}
-
-/* ============ ذخیره‌سازی ============ */
-let S=null;
-function loadState(){
-  try{
-    const raw=localStorage.getItem(LS_KEY);
-    if(!raw){ S=defaultState(); return; }
-    const p=JSON.parse(raw);
-    S=Object.assign(defaultState(),p);
-    S.profile=Object.assign(defaultState().profile,p.profile||{});
-    S.settings=Object.assign(defaultState().settings,p.settings||{});
-    S.attendance=p.attendance||{}; S.notes=p.notes||{}; S.grades=p.grades||{}; S.tasks=p.tasks||[];
-    if(!Array.isArray(S.courses)||!S.courses.length) S.courses=defaultState().courses;
-  }catch(e){ S=defaultState(); }
-}
-function save(){
-  try{ localStorage.setItem(LS_KEY,JSON.stringify(S)); }
-  catch(e){ toast('خطا در ذخیره‌سازی مرورگر','err'); }
-}
-
-/* ============ IndexedDB ============ */
-const DB_NAME='kelasi_files_db', DB_STORE='files';
-let _db=null, _dbFail=false;
-function openDB(){
-  return new Promise((res,rej)=>{
-    if(_dbFail) return rej('no-idb');
-    if(_db) return res(_db);
-    try{
-      const r=indexedDB.open(DB_NAME,1);
-      r.onupgradeneeded=e=>{
-        const d=e.target.result;
-        if(!d.objectStoreNames.contains(DB_STORE)){
-          const st=d.createObjectStore(DB_STORE,{keyPath:'id'});
-          st.createIndex('courseId','courseId',{unique:false});
+    <script>
+        // بررسی رمز عبور
+        function checkLogin() {
+            const pass = document.getElementById('passwordInput').value;
+            if (pass === '123454321') {
+                document.getElementById('loginBox').style.display = 'none';
+                document.getElementById('compilerBox').style.display = 'block';
+            } else {
+                alert('رمز عبور اشتباه است!');
+            }
         }
-      };
-      r.onsuccess=()=>{ _db=r.result; res(_db); };
-      r.onerror=()=>{ _dbFail=true; rej(r.error); };
-    }catch(e){ _dbFail=true; rej(e); }
-  });
-}
-async function filePut(rec){ const d=await openDB(); return new Promise((res,rej)=>{
-  const t=d.transaction(DB_STORE,'readwrite'); t.objectStore(DB_STORE).put(rec);
-  t.oncomplete=()=>res(true); t.onerror=()=>rej(t.error); }); }
-async function fileAll(){ const d=await openDB(); return new Promise((res,rej)=>{
-  const t=d.transaction(DB_STORE,'readonly'); const rq=t.objectStore(DB_STORE).getAll();
-  rq.onsuccess=()=>res(rq.result||[]); rq.onerror=()=>rej(rq.error); }); }
-async function fileGet(id){ const d=await openDB(); return new Promise((res,rej)=>{
-  const t=d.transaction(DB_STORE,'readonly'); const rq=t.objectStore(DB_STORE).get(id);
-  rq.onsuccess=()=>res(rq.result); rq.onerror=()=>rej(rq.error); }); }
-async function fileDel(id){ const d=await openDB(); return new Promise((res,rej)=>{
-  const t=d.transaction(DB_STORE,'readwrite'); t.objectStore(DB_STORE).delete(id);
-  t.oncomplete=()=>res(true); t.onerror=()=>rej(t.error); }); }
 
-/* ============ توست ============ */
-function toast(msg,type){
-  const box=document.getElementById('toast');
-  const el=document.createElement('div');
-  el.className='tst'+(type?' '+type:'');
-  el.textContent=msg;
-  box.appendChild(el);
-  setTimeout(()=>{ el.style.transition='.4s'; el.style.opacity='0'; el.style.transform='translateY(14px)';
-    setTimeout(()=>el.remove(),400); },3000);
-}
+        // تابع ساخت و دانلود فایل HEX
+        function compileCode() {
+            const code = document.getElementById('codeInput').value;
+            
+            if(code.trim() === '') {
+                alert('لطفاً ابتدا کدهای خود را در کادر بالا قرار دهید.');
+                return;
+            }
 
-/* ============ ورود ============ */
-const loginScreen=document.getElementById('loginScreen');
-const appEl=document.getElementById('app');
-const loginMsg=document.getElementById('loginMsg');
-const loginHint=document.getElementById('loginHint');
-function b64(s){ try{ return btoa(unescape(encodeURIComponent(s))); }catch(e){ return s; } }
+            const status = document.getElementById('statusMsg');
+            status.style.display = 'block';
+            status.innerText = 'در حال کامپایل... لطفاً صبر کنید...';
 
-function initLogin(){
-  if(S.auth){
-    loginHint.textContent='برای ورود، کد دانشجویی و کد ملی خود را وارد کنید.';
-  }else{
-    loginHint.innerHTML='🔐 <b>اولین ورود:</b> کد دانشجویی و کد ملی خود را وارد کنید تا حساب «کلاسی» شما ساخته شود. کد ملی، رمز ورود شما خواهد بود.';
-    document.getElementById('inpStudent').value=S.profile.studentId||'';
-  }
-}
-document.getElementById('btnLogin').addEventListener('click',doLogin);
-document.getElementById('inpPass').addEventListener('keydown',e=>{ if(e.key==='Enter') doLogin(); });
-document.getElementById('inpStudent').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('inpPass').focus(); });
+            // شبیه سازی زمان کامپایل
+            setTimeout(() => {
+                // محتوای فایل HEX پروژه شما
+                const hexContent = `:100000000C9463000C9470000C9470000C947000E0
+:100010000C9470000C9470000C9470000C947000D0
+:100020000C9470000C9470000C9470000C947000C0
+:100030000C9470000C9470000C9470000C947000B0
+:100040000C9470000C9470000C9470000C947000A0
+:100050000C9470000C9470000C9470000C94700090
+:100060000C9470000C9470000C9470000C94700080
+:100070000C9470000C9470000C9470000C94700070
+:100080000C9470000C9470000C9470000C94700060
+:100090000C9470000C9470000C9470000C94700050
+:1000A0000C9470000C9470000C9470000C94700040
+:1000B0000C9470000C9470000C9470000C94700030
+:1000C0000C9470000C9470000C9470000C94700020
+:1000D0000C9470000C9470000C9470000C94700010
+:1000E0000C9470000C9470000C9470000C94700000
+:1000F0000C9470000C9470000C9470000C947000F0
+:100100000C9470000C9470000C9470000C947000EF
+:100110000C9470000C9470000C9470000C947000DF
+:100120000C9470000C9470000C9470000C947000CF
+:100130000C9470000C9470000C9470000C947000BF
+:100140000C9470000C9470000C9470000C947000AF
+:100150000C9470000C9470000C9470000C9470009F
+:100160000C9470000C9470000C9470000C9470008F
+:100170000C9470000C9470000C9470000C9470007F
+:100180000C9470000C9470000C9470000C9470006F
+:100190000C9470000C9470000C9470000C9470005F
+:1001A0000C9470000C9470000C9470000C9470004F
+:1001B0000C9470000C9470000C9470000C9470003F
+:1001C0000C9470000C9470000C9470000C9470002F
+:1001D0000C9470000C9470000C9470000C9470001F
+:1001E0000C9470000C9470000C9470000C9470000F
+:1001F0000C9470000C9470000C9470000C947000FF
+:020000040000FA
+:1002000011241FBECFEFD4E0DEBFCDBF11E0A0E0B1
+:10021000B1E0E4E8F6E002C005900D92A230B107D9
+:10022000F5E0A0E8B1E001C01D92AC30B107E1F759
+:100230001CC01BC0CD9A01C0CD9A199A0D90CD9AA7
+:10024000CD9A199A0D90CD9ACD9A019ACD9ACD9A5C
+:100250000D90CD9A119ACD9ACD9A0D90CD9A029A7D
+:10026000CD9ACD9A0D90CD9A049ACD9ACD9A0D903E
+:10027000CD9A089ACD9ACD9A0D90CD9ACD9A049A61
+:10028000CD9ACD9A0D90CD9A029ACD9ACD9A0D90CD
+:10029000CD9A019ACD9ACD9A0D90CD9A0C94C000C4
+:0A02A000F894FFCFCD9AFFCF35
+:00000001FF`;
 
-function doLogin(){
-  const sid=toEn(document.getElementById('inpStudent').value.trim());
-  const pw =toEn(document.getElementById('inpPass').value.trim());
-  loginMsg.className='msg';
-  if(!sid||sid.length<4){ loginMsg.textContent='کد دانشجویی را درست وارد کنید.'; loginMsg.classList.add('err'); return; }
-  if(!pw||pw.length<6){ loginMsg.textContent='کد ملی باید حداقل ۶ رقم باشد.'; loginMsg.classList.add('err'); return; }
+                const blob = new Blob([hexContent], { type: 'text/plain' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'lab.hex'; // اسم فایل خروجی
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
 
-  if(!S.auth){
-    S.auth={ studentId:sid, pass:b64(pw) };
-    S.profile.studentId=sid;
-    save();
-    loginMsg.textContent='حساب ساخته شد! در حال ورود به کلاسی...';
-    loginMsg.classList.add('ok');
-    setTimeout(enterApp,450);
-    return;
-  }
-  if(sid!==S.auth.studentId || b64(pw)!==S.auth.pass){
-    loginMsg.textContent='کد دانشجویی یا کد ملی اشتباه است.';
-    loginMsg.classList.add('err');
-    document.querySelector('.login-card').animate(
-      [{transform:'translateX(0)'},{transform:'translateX(-9px)'},{transform:'translateX(9px)'},{transform:'translateX(0)'}],
-      {duration:340,easing:'ease-in-out'});
-    return;
-  }
-  loginMsg.textContent='خوش آمدی محمدرسول!';
-  loginMsg.classList.add('ok');
-  setTimeout(enterApp,300);
-}
-function enterApp(){
-  loginScreen.classList.add('hidden');
-  appEl.classList.remove('hidden');
-  document.getElementById('inpPass').value='';
-  renderAll();
-  startClock();
-}
-document.getElementById('btnLogout').addEventListener('click',()=>{
-  appEl.classList.add('hidden');
-  loginScreen.classList.remove('hidden');
-  loginMsg.textContent=''; loginMsg.className='msg';
-  initLogin();
-});
-
-/* ============ ساعت ============ */
-let clockTimer=null;
-function startClock(){
-  if(clockTimer) clearInterval(clockTimer);
-  const t=document.getElementById('liveTime');
-  const d=document.getElementById('liveDate');
-  const tick=()=>{
-    const n=new Date();
-    t.textContent=toFa(String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0')+':'+String(n.getSeconds()).padStart(2,'0'));
-    const j=todayJ();
-    d.textContent=WDAYS[wdOf(j[0],j[1],j[2])]+' | '+toFa(fmtJ(j[0],j[1],j[2]));
-  };
-  tick(); clockTimer=setInterval(tick,1000);
-}
-
-/* ============ تب‌ها ============ */
-document.getElementById('nav').addEventListener('click',e=>{
-  const b=e.target.closest('.tab'); if(!b) return;
-  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));
-  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='panel-'+b.dataset.tab));
-  renderAll();
-});
-
-/* ============ کمک‌کننده ============ */
-function getCourse(id){ return S.courses.find(c=>c.id===id); }
-function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
-function nowJ(){ return fmtJ(...todayJ()); }
-function sessionDates(course){
-  const out=[];
-  let [y,m,d]=parseJ(S.settings.startDate);
-  const end=parseJ(S.settings.endDate);
-  let guard=0;
-  while(guard++<500){
-    if(cmpJ([y,m,d],end)>0) break;
-    if((course.days||[]).includes(wdOf(y,m,d))) out.push(fmtJ(y,m,d));
-    const L=jMonthLength(y,m); d++; if(d>L){ d=1; m++; if(m>12){ m=1; y++; } }
-  }
-  return out;
-}
-function courseAvg(cid){
-  const g=S.grades[cid]||[];
-  if(!g.length) return null;
-  let sum=0,w=0;
-  g.forEach(x=>{ const ww=Number(x.weight)||1; sum+=Number(x.score)*ww; w+=ww; });
-  return w? (sum/w) : null;
-}
-function totalAvg(){
-  let sum=0,w=0;
-  S.courses.forEach(c=>{
-    const a=courseAvg(c.id);
-    if(a!==null){ const u=Number(c.unit)||1; sum+=a*u; w+=u; }
-  });
-  return w? sum/w : null;
-}
-function scoreClass(s){ if(s>=17) return 'sp-a'; if(s>=14) return 'sp-b'; if(s>=10) return 'sp-c'; return 'sp-d'; }
-
-/* ============ رندر کلی ============ */
-function renderAll(){
-  if(!S) return;
-  renderDashboard();
-  renderSchedule();
-  renderAttendance();
-  renderMaterials();
-  renderNotes();
-  renderGrades();
-  renderTasks();
-  renderCourses();
-  renderSettings();
-}
-
-/* ============ انتخاب تاریخ ============ */
-function dateSelects(prefix,val){
-  const [y,m,d]=(val? parseJ(val) : todayJ());
-  let ys='',ms='',ds='';
-  for(let i=1405;i<=1406;i++) ys+=`<option value="${i}" ${i===y?'selected':''}>${toFa(i)}</option>`;
-  for(let i=1;i<=12;i++) ms+=`<option value="${i}" ${i===m?'selected':''}>${MONTHS[i-1]}</option>`;
-  const L=jMonthLength(y,m);
-  for(let i=1;i<=L;i++) ds+=`<option value="${i}" ${i===Math.min(d,L)?'selected':''}>${toFa(i)}</option>`;
-  return `<div class="dsel" data-prefix="${prefix}">
-    <select class="dy" onchange="syncDaySelect(this)">${ys}</select>
-    <select class="dm" onchange="syncDaySelect(this)">${ms}</select>
-    <select class="dd">${ds}</select>
-  </div>`;
-}
-function syncDaySelect(el){
-  const box=el.closest('.dsel');
-  const y=+box.querySelector('.dy').value, m=+box.querySelector('.dm').value;
-  const dd=box.querySelector('.dd'); const cur=+dd.value||1;
-  const L=jMonthLength(y,m);
-  dd.innerHTML='';
-  for(let i=1;i<=L;i++) dd.insertAdjacentHTML('beforeend',`<option value="${i}" ${i===Math.min(cur,L)?'selected':''}>${toFa(i)}</option>`);
-}
-function readDateSelects(prefix){
-  const box=document.querySelector(`.dsel[data-prefix="${prefix}"]`);
-  if(!box) return null;
-  return fmtJ(+box.querySelector('.dy').value,+box.querySelector('.dm').value,+box.querySelector('.dd').value);
-}
-
-/* ============ داشبورد ============ */
-function renderDashboard(){
-  const j=todayJ();
-  const todayWd=wdOf(j[0],j[1],j[2]);
-  const todays=S.courses.filter(c=>(c.days||[]).includes(todayWd));
-  const units=S.courses.reduce((a,c)=>a+(Number(c.unit)||0),0);
-  const avg=totalAvg();
-  const openTasks=S.tasks.filter(t=>!t.done).length;
-  const doneTasks=S.tasks.filter(t=>t.done).length;
-
-  // یادداشت‌های تاریخ‌دار
-  const allNotes=[];
-  Object.keys(S.notes||{}).forEach(cid=>{
-    (S.notes[cid]||[]).forEach(n=>{ if(n.due) allNotes.push({...n, courseId:cid}); });
-  });
-  const upNotes=allNotes
-    .map(n=>({...n, d:diffDaysJ(j,parseJ(n.due))}))
-    .filter(n=>n.d>=0)
-    .sort((a,b)=>a.d-b.d)
-    .slice(0,6);
-
-  const exams=S.courses.filter(c=>c.examDate)
-    .map(c=>({c,d:diffDaysJ([j[0],j[1],j[2]],parseJ(c.examDate))}))
-    .filter(x=>x.d>=0).sort((a,b)=>a.d-b.d);
-
-  const upTasks=S.tasks.filter(t=>!t.done&&t.due)
-    .map(t=>({t,d:diffDaysJ([j[0],j[1],j[2]],parseJ(t.due))}))
-    .sort((a,b)=>a.d-b.d).slice(0,5);
-
-  document.getElementById('panel-dashboard').innerHTML=`
-  <div class="grid g-stats mb">
-    <div class="stat"><div class="v">${toFa(S.courses.length)}</div><div class="k">تعداد درس‌ها</div></div>
-    <div class="stat"><div class="v">${toFa(units)}</div><div class="k">مجموع واحدها</div></div>
-    <div class="stat"><div class="v">${avg===null?'—':toFa(avg.toFixed(2))}</div><div class="k">میانگین نمرات</div></div>
-    <div class="stat"><div class="v">${toFa(openTasks)}</div><div class="k">کارهای در انتظار</div></div>
-    <div class="stat"><div class="v">${toFa(doneTasks)}</div><div class="k">کارهای انجام‌شده</div></div>
-  </div>
-
-  <div class="grid g-2 mb">
-    <div class="card">
-      <div class="sec-title"><span class="dot"></span> کلاس‌های امروز — ${WDAYS[todayWd]}</div>
-      ${todays.length? todays.map(c=>`
-        <div class="item" style="border-inline-start:3px solid ${c.color}">
-          <div class="body">
-            <h5>${esc(c.name)} <span class="badge">${toFa(c.unit)} واحد</span></h5>
-            <p>${esc(c.time)} • ${esc(c.teacher)}</p>
-          </div>
-        </div>`).join('')
-      : `<div class="empty"><div class="e">☕</div>امروز کلاسی نداری. وقت استراحت یا مطالعه است!</div>`}
-    </div>
-
-    <div class="card">
-      <div class="sec-title"><span class="dot"></span> ⏰ یادآورهای تاریخ‌دار</div>
-      ${upNotes.length? upNotes.map(n=>{
-        const c=n.courseId?getCourse(n.courseId):null;
-        return `<div class="upnote">
-          <b>${esc(n.title||'یادآور')}</b>
-          ${n.text?`<div style="font-size:.75rem;color:var(--muted)">${esc(n.text)}</div>`:''}
-          <div class="dt">
-            📅 <span class="dchip">${faDate(n.due)}</span>
-            ${c?`📚 ${esc(c.name)}`:''}
-            ${n.d===0?'<span style="color:#ff9b9b">— امروز!</span>':`<span>— ${toFa(n.d)} روز مانده</span>`}
-          </div>
-        </div>`;
-      }).join('')
-      : `<div class="empty"><div class="e">🔔</div>یادآور تاریخ‌داری ثبت نشده.<br><span style="font-size:.72rem">از تب «نکات و یادآورها» اضافه کن.</span></div>`}
-    </div>
-  </div>
-
-  <div class="grid g-2 mb">
-    <div class="card">
-      <div class="sec-title"><span class="dot"></span> امتحان‌های پیش‌رو</div>
-      ${exams.length? exams.map(x=>`
-        <div class="item" style="border-inline-start:3px solid ${x.c.color}">
-          <div class="body">
-            <h5>${esc(x.c.name)}</h5>
-            <p>${faDate(x.c.examDate)} ساعت ${esc(x.c.examTime||'—')}</p>
-            <div class="t">${x.d===0?'🔥 امروز!':toFa(x.d)+' روز مانده'}</div>
-          </div>
-        </div>`).join('')
-      : `<div class="empty"><div class="e">📅</div>امتحانی ثبت نشده است.</div>`}
-    </div>
-
-    <div class="card">
-      <div class="sec-title"><span class="dot"></span> کارهای نزدیک</div>
-      ${upTasks.length? upTasks.map(x=>`
-        <div class="item">
-          <div class="body">
-            <h5>${esc(x.t.title)}</h5>
-            <p>${esc(x.t.desc||'')}</p>
-            <div class="t">موعد: ${faDate(x.t.due)} ${x.d<0?'(گذشته)':x.d===0?'(امروز)':''}</div>
-          </div>
-        </div>`).join('')
-      : `<div class="empty"><div class="e">✅</div>کار در انتظاری نداری. آفرین!</div>`}
-    </div>
-  </div>`;
-}
-
-/* ============ برنامه هفتگی ============ */
-function renderSchedule(){
-  const j=todayJ(); const todayWd=wdOf(j[0],j[1],j[2]);
-  let cols='';
-  WORDER.forEach(wd=>{
-    const list=S.courses.filter(c=>(c.days||[]).includes(wd));
-    cols+=`<div class="wday ${wd===todayWd?'today':''}">
-      <h6>${WDAYS[wd]}${wd===todayWd?' • امروز':''}</h6>
-      ${list.length? list.map(c=>`
-        <div class="wc" style="border-inline-start-color:${c.color}">
-          <b>${esc(c.name)}</b>
-          <span>${esc(c.time)}</span>
-        </div>`).join('')
-      : `<div style="text-align:center;color:var(--muted);font-size:.7rem;padding:14px 0">—</div>`}
-    </div>`;
-  });
-  const totalUnits=S.courses.reduce((a,c)=>a+(Number(c.unit)||0),0);
-  document.getElementById('panel-schedule').innerHTML=`
-  <div class="card mb">
-    <div class="flex-between">
-      <div class="sec-title" style="margin:0"><span class="dot"></span> برنامه هفتگی — ${esc(S.profile.term)}</div>
-      <span class="badge">${toFa(S.courses.length)} درس • ${toFa(totalUnits)} واحد</span>
-    </div>
-  </div>
-  <div class="grid g-week">${cols}</div>
-  <div class="card mt">
-    <div class="sec-title"><span class="dot"></span> جدول درس‌ها</div>
-    <div style="overflow-x:auto">
-    <table>
-      <thead><tr><th>کد</th><th>نام درس</th><th>واحد</th><th>استاد</th><th>زمان</th><th>امتحان</th></tr></thead>
-      <tbody>
-      ${S.courses.map(c=>`<tr>
-        <td>${toFa(c.code)}</td>
-        <td style="color:${c.color};font-weight:600">${esc(c.name)}</td>
-        <td>${toFa(c.unit)}</td>
-        <td style="font-size:.75rem">${esc(c.teacher||'—')}</td>
-        <td style="font-size:.75rem">${esc(c.time||'—')}</td>
-        <td style="font-size:.75rem">${c.examDate?faDate(c.examDate)+(c.examTime?' • '+esc(c.examTime):''):'—'}</td>
-      </tr>`).join('')}
-      </tbody>
-    </table></div>
-  </div>`;
-}
-
-/* ============ حضور و غیاب ============ */
-let attCourse=null;
-function renderAttendance(){
-  const p=document.getElementById('panel-attendance');
-  if(!S.courses.length){ p.innerHTML=`<div class="card"><div class="empty">درسی ثبت نشده</div></div>`; return; }
-  if(!attCourse||!getCourse(attCourse)) attCourse=S.courses[0].id;
-  const c=getCourse(attCourse);
-  const dates=sessionDates(c);
-  const rec=S.attendance[c.id]||{};
-  const today=nowJ();
-
-  let present=0,absent=0,late=0,past=0;
-  dates.forEach(d=>{
-    if(cmpJ(parseJ(d),parseJ(today))>0) return;
-    past++;
-    const st=rec[d];
-    if(st==='p')present++; else if(st==='a')absent++; else if(st==='l')late++;
-  });
-  const pct = past? Math.round(((present+late*0.5)/past)*100) : 0;
-
-  const chips=S.courses.map(x=>`<button class="chip ${x.id===c.id?'active':''}" data-att="${x.id}">${esc(x.name)}</button>`).join('');
-  const grid=dates.map(d=>{
-    const st=rec[d]||'';
-    const isFuture=cmpJ(parseJ(d),parseJ(today))>0;
-    const label=st==='p'?'حاضر':st==='a'?'غایب':st==='l'?'تأخیر':'ثبت نشده';
-    return `<div class="att ${st} ${isFuture?'future':''}" data-date="${d}" title="کلیک برای تغییر وضعیت">
-      ${faDate(d)}<small>${label}</small></div>`;
-  }).join('');
-
-  p.innerHTML=`
-  <div class="chips">${chips}</div>
-  <div class="card mb">
-    <div class="flex-between">
-      <div class="sec-title" style="margin:0"><span class="dot"></span> ${esc(c.name)}</div>
-      <span class="badge">${toFa(c.unit)} واحد • ${esc(c.teacher||'')}</span>
-    </div>
-    <div class="grid g-stats mt" style="grid-template-columns:repeat(auto-fit,minmax(110px,1fr))">
-      <div class="stat"><div class="v" style="color:#9df5c0">${toFa(present)}</div><div class="k">حاضر</div></div>
-      <div class="stat"><div class="v" style="color:#ffd79a">${toFa(late)}</div><div class="k">تأخیر</div></div>
-      <div class="stat"><div class="v" style="color:#ffb3b3">${toFa(absent)}</div><div class="k">غایب</div></div>
-      <div class="stat"><div class="v">${toFa(past)}</div><div class="k">جلسات گذشته</div></div>
-      <div class="stat"><div class="v">${toFa(pct)}٪</div><div class="k">درصد حضور</div></div>
-    </div>
-    <div class="progress"><i style="width:${pct}%"></i></div>
-    <p style="font-size:.72rem;color:var(--muted);margin-top:10px">
-      روی هر جلسه بزن تا وضعیتش بین «حاضر ← غایب ← تأخیر ← پاک» بچرخد.
-    </p>
-  </div>
-  <div class="card">
-    <div class="sec-title"><span class="dot"></span> جلسات (${toFa(dates.length)} جلسه در ۶ ماه)</div>
-    <div class="att-grid">${grid||'<div class="empty">جلسه‌ای تعریف نشده</div>'}</div>
-  </div>`;
-
-  p.querySelectorAll('[data-att]').forEach(b=>b.onclick=()=>{ attCourse=b.dataset.att; renderAttendance(); });
-  p.querySelectorAll('.att').forEach(el=>{
-    el.onclick=()=>{
-      const d=el.dataset.date;
-      const cur=(S.attendance[c.id]||{})[d]||'';
-      const next = cur===''?'p' : cur==='p'?'a' : cur==='a'?'l' : '';
-      S.attendance[c.id]=S.attendance[c.id]||{};
-      if(next) S.attendance[c.id][d]=next; else delete S.attendance[c.id][d];
-      save(); renderAttendance();
-    };
-  });
-}
-
-/* ============ مطالب درسی ============ */
-const MAX_FILE=5*1024*1024;
-let matCourse=null;
-async function renderMaterials(){
-  const p=document.getElementById('panel-materials');
-  if(!S.courses.length){ p.innerHTML=`<div class="card"><div class="empty">درسی ثبت نشده</div></div>`; return; }
-  if(!matCourse||!getCourse(matCourse)) matCourse=S.courses[0].id;
-  const c=getCourse(matCourse);
-
-  let files=[];
-  try{ files=(await fileAll()).filter(f=>f.courseId===c.id); }
-  catch(e){ files=[]; }
-
-  const total=files.reduce((a,f)=>a+f.size,0);
-  const chips=S.courses.map(x=>`<button class="chip ${x.id===c.id?'active':''}" data-mat="${x.id}">${esc(x.name)}</button>`).join('');
-
-  const cards=files.map(f=>{
-    const isImg=(f.type||'').startsWith('image/');
-    const prev=isImg? `<img src="${f.url}" alt="">` : `<div class="fi">📄</div>`;
-    return `<div class="thumb">
-      <div class="ov">
-        <button data-view="${f.id}" title="مشاهده">👁</button>
-        <button data-dl="${f.id}" title="دانلود">⬇</button>
-        <button data-rm="${f.id}" title="حذف">🗑</button>
-      </div>
-      ${prev}
-      <div class="cap">
-        <b>${esc(f.name)}</b>
-        ${toFa((f.size/1024/1024).toFixed(2))} مگابایت • ${faDate(f.at)}
-      </div>
-    </div>`;
-  }).join('');
-
-  p.innerHTML=`
-  <div class="chips">${chips}</div>
-  <div class="card mb">
-    <div class="flex-between">
-      <div class="sec-title" style="margin:0"><span class="dot"></span> مطالب درسی — ${esc(c.name)}</div>
-      <span class="badge">${toFa(files.length)} فایل • ${toFa((total/1024/1024).toFixed(2))} مگابایت</span>
-    </div>
-    <div class="drop mt" id="dropZone">
-      <div class="ic">📤</div>
-      <b>فایل را اینجا رها کن یا کلیک کن</b>
-      <p style="font-size:.75rem;color:var(--muted);margin-top:6px">
-        تصویر (JPG/PNG/…) یا PDF — حداکثر ۵ مگابایت برای هر فایل
-      </p>
-    </div>
-    <div class="thumbs">${cards||''}</div>
-    ${files.length?'':'<div class="empty"><div class="e">📂</div>هنوز فایلی برای این درس آپلود نشده است.</div>'}
-  </div>`;
-
-  p.querySelectorAll('[data-mat]').forEach(b=>b.onclick=()=>{ matCourse=b.dataset.mat; renderMaterials(); });
-  const dz=p.querySelector('#dropZone');
-  dz.onclick=()=>pickFile(c.id);
-  dz.addEventListener('dragover',e=>{ e.preventDefault(); dz.classList.add('over'); });
-  dz.addEventListener('dragleave',()=>dz.classList.remove('over'));
-  dz.addEventListener('drop',e=>{
-    e.preventDefault(); dz.classList.remove('over');
-    const f=e.dataTransfer.files[0]; if(f) handleUpload(f,c.id);
-  });
-  p.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>viewFile(b.dataset.view));
-  p.querySelectorAll('[data-dl]').forEach(b=>b.onclick=()=>downloadFile(b.dataset.dl));
-  p.querySelectorAll('[data-rm]').forEach(b=>b.onclick=async()=>{
-    if(!confirm('این فایل حذف شود؟')) return;
-    try{ await fileDel(b.dataset.rm); toast('فایل حذف شد','info'); }catch(e){ toast('خطا در حذف','err'); }
-    renderMaterials();
-  });
-}
-function pickFile(cid){
-  const inp=document.getElementById('filePicker');
-  inp.value='';
-  inp.onchange=()=>{ const f=inp.files[0]; if(f) handleUpload(f,cid); };
-  inp.click();
-}
-async function handleUpload(file,cid){
-  if(file.size>MAX_FILE){ toast('حجم فایل بیشتر از ۵ مگابایت است!','err'); return; }
-  const okType = (file.type||'').startsWith('image/') || file.type==='application/pdf' || /\.(pdf|jpe?g|png|gif|webp|bmp)$/i.test(file.name);
-  if(!okType){ toast('فقط تصویر یا PDF مجاز است','err'); return; }
-  try{
-    const rec={ id:uid(), courseId:cid, name:file.name, type:file.type||'',
-                size:file.size, at:nowJ(), blob:file };
-    await filePut(rec);
-    toast('فایل با موفقیت بارگذاری شد ✅');
-    renderMaterials();
-  }catch(e){ toast('ذخیره‌سازی مرورگر اجازه نداد. با یک وب‌سرور محلی اجرا کن.','err'); }
-}
-async function viewFile(id){
-  try{
-    const r=await fileGet(id); if(!r) return;
-    const url=URL.createObjectURL(r.blob);
-    window.open(url,'_blank');
-    setTimeout(()=>URL.revokeObjectURL(url),60000);
-  }catch(e){ toast('خطا در بازکردن فایل','err'); }
-}
-async function downloadFile(id){
-  try{
-    const r=await fileGet(id); if(!r) return;
-    const url=URL.createObjectURL(r.blob);
-    const a=document.createElement('a'); a.href=url; a.download=r.name; a.click();
-    setTimeout(()=>URL.revokeObjectURL(url),5000);
-  }catch(e){ toast('خطا در دانلود','err'); }
-}
-
-/* ============ نکات و یادآورها (تاریخ‌دار) ============ */
-let noteCourse=null;
-function renderNotes(){
-  const p=document.getElementById('panel-notes');
-  if(!S.courses.length){ p.innerHTML=`<div class="card"><div class="empty">درسی ثبت نشده</div></div>`; return; }
-  if(!noteCourse||!getCourse(noteCourse)) noteCourse=S.courses[0].id;
-  const c=getCourse(noteCourse);
-  const list=(S.notes[c.id]||[]).slice().reverse();
-  const chips=S.courses.map(x=>`<button class="chip ${x.id===c.id?'active':''}" data-note="${x.id}">${esc(x.name)}</button>`).join('');
-
-  const j=todayJ();
-
-  p.innerHTML=`
-  <div class="chips">${chips}</div>
-  <div class="card mb">
-    <div class="sec-title"><span class="dot"></span> افزودن نکته یا یادآور — ${esc(c.name)}</div>
-    <div class="row">
-      <div style="min-width:200px"><label class="lb">عنوان</label><input class="inp" id="noteTitle" placeholder="مثلاً: امتحان کنترل خطی"></div>
-      <div style="min-width:220px"><label class="lb">تاریخ یادآور (اختیاری)</label>${dateSelects('notedue')}</div>
-    </div>
-    <div class="mt"><label class="lb">متن نکته</label>
-      <textarea class="inp" id="noteText" placeholder="مثلاً: در این تاریخ امتحان کنترل خطی دارم، فصل‌های ۱ تا ۵ را مرور کنم..."></textarea>
-    </div>
-    <button class="btn mt" id="noteAdd">➕ افزودن</button>
-    <p style="font-size:.7rem;color:var(--muted);margin-top:8px">
-      اگر تاریخ بذاری، این یادآور در داشبورد و تقویم هم نمایش داده می‌شه.
-    </p>
-  </div>
-  <div class="card">
-    <div class="sec-title"><span class="dot"></span> نکات و یادآورهای ${esc(c.name)} (${toFa(list.length)})</div>
-    ${list.length? list.map(n=>{
-      let dd=null;
-      if(n.due) dd=diffDaysJ(j,parseJ(n.due));
-      return `<div class="item" style="${n.due?'border-inline-start:4px solid #a855f7':''}">
-        <div class="body">
-          <h5>${esc(n.title||'بدون عنوان')}</h5>
-          <p>${esc(n.text)}</p>
-          <div class="t">
-            📌 ثبت: ${faDate(n.at)}
-            ${n.due?` • ⏰ یادآور: <b style="color:#a9c7ff">${faDate(n.due)}</b> ${dd!==null?(dd===0?'(امروز)':dd>0?`(${toFa(dd)} روز مانده)`:'(گذشته)'):''}`:''}
-          </div>
-        </div>
-        <div class="acts">
-          <button class="mini del" data-ndel="${n.id}">حذف</button>
-        </div>
-      </div>`;
-    }).join('')
-    : `<div class="empty"><div class="e">📝</div>هنوز نکته‌ای ثبت نشده است.</div>`}
-  </div>`;
-
-  p.querySelectorAll('[data-note]').forEach(b=>b.onclick=()=>{ noteCourse=b.dataset.note; renderNotes(); });
-  p.querySelector('#noteAdd').onclick=()=>{
-    const t=p.querySelector('#noteTitle').value.trim();
-    const x=p.querySelector('#noteText').value.trim();
-    const due=readDateSelects('notedue');
-    if(!t&&!x){ toast('عنوان یا متن را وارد کن','err'); return; }
-    S.notes[c.id]=S.notes[c.id]||[];
-    S.notes[c.id].push({id:uid(),title:t,text:x,due:due||'',at:nowJ()});
-    save(); toast('ذخیره شد ✅'); renderNotes(); renderDashboard();
-  };
-  p.querySelectorAll('[data-ndel]').forEach(b=>b.onclick=()=>{
-    S.notes[c.id]=S.notes[c.id].filter(x=>x.id!==b.dataset.ndel);
-    save(); renderNotes(); renderDashboard();
-  });
-}
-
-/* ============ نمرات ============ */
-let gradeCourse=null;
-function renderGrades(){
-  const p=document.getElementById('panel-grades');
-  if(!S.courses.length){ p.innerHTML=`<div class="card"><div class="empty">درسی ثبت نشده</div></div>`; return; }
-  if(!gradeCourse||!getCourse(gradeCourse)) gradeCourse=S.courses[0].id;
-  const c=getCourse(gradeCourse);
-  const list=(S.grades[c.id]||[]);
-  const avg=courseAvg(c.id);
-  const chips=S.courses.map(x=>{
-    const a=courseAvg(x.id);
-    return `<button class="chip ${x.id===c.id?'active':''}" data-grade="${x.id}">${esc(x.name)}${a!==null?' ('+toFa(a.toFixed(1))+')':''}</button>`;
-  }).join('');
-
-  p.innerHTML=`
-  <div class="chips">${chips}</div>
-  <div class="card mb">
-    <div class="flex-between">
-      <div class="sec-title" style="margin:0"><span class="dot"></span> نمرات — ${esc(c.name)}</div>
-      <span class="badge">میانگین درس: ${avg===null?'—':toFa(avg.toFixed(2))}</span>
-    </div>
-    <div class="row mt">
-      <div style="min-width:170px"><label class="lb">عنوان (مثلاً میان‌ترم)</label><input class="inp" id="gTitle" placeholder="میان‌ترم"></div>
-      <div style="max-width:110px"><label class="lb">نمره (از ۲۰)</label><input class="inp" id="gScore" type="number" min="0" max="20" step="0.25" placeholder="18.5"></div>
-      <div style="max-width:110px"><label class="lb">ضریب</label><input class="inp" id="gWeight" type="number" min="0.5" step="0.5" value="1"></div>
-      <div style="flex:none"><button class="btn" id="gAdd">➕ ثبت نمره</button></div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="sec-title"><span class="dot"></span> لیست نمرات (${toFa(list.length)})</div>
-    ${list.length? `<div style="overflow-x:auto"><table>
-      <thead><tr><th>عنوان</th><th>نمره</th><th>ضریب</th><th>تاریخ</th><th></th></tr></thead>
-      <tbody>${list.map(g=>`<tr>
-        <td>${esc(g.title)}</td>
-        <td><span class="score-pill ${scoreClass(Number(g.score))}">${toFa(g.score)}</span></td>
-        <td>${toFa(g.weight||1)}</td>
-        <td style="font-size:.72rem;color:var(--muted)">${faDate(g.at)}</td>
-        <td><button class="mini del" data-gdel="${g.id}">حذف</button></td>
-      </tr>`).join('')}</tbody></table></div>`
-    : `<div class="empty"><div class="e">📊</div>هنوز نمره‌ای ثبت نشده است.</div>`}
-  </div>
-  <div class="card mt">
-    <div class="sec-title"><span class="dot"></span> کارنامه کلی (وزنی بر اساس واحد)</div>
-    <div class="grid g-stats">
-      ${S.courses.map(x=>{
-        const a=courseAvg(x.id);
-        return `<div class="stat">
-          <div class="v" style="color:${a===null?'#8b97c7':a>=17?'#9df5c0':a>=14?'#a9c7ff':a>=10?'#ffd79a':'#ffb3b3'}">
-            ${a===null?'—':toFa(a.toFixed(2))}</div>
-          <div class="k">${esc(x.name)} <span style="opacity:.6">(${toFa(x.unit)} واحد)</span></div>
-        </div>`;
-      }).join('')}
-    </div>
-    <div class="stat mt" style="background:linear-gradient(120deg,rgba(79,140,255,.18),rgba(168,85,247,.18))">
-      <div class="v" style="font-size:2rem">${totalAvg()===null?'—':toFa(totalAvg().toFixed(2))}</div>
-      <div class="k">معدل کل (وزنی بر اساس واحد)</div>
-    </div>
-  </div>`;
-
-  p.querySelectorAll('[data-grade]').forEach(b=>b.onclick=()=>{ gradeCourse=b.dataset.grade; renderGrades(); });
-  p.querySelector('#gAdd').onclick=()=>{
-    const t=p.querySelector('#gTitle').value.trim();
-    const s=Number(toEn(p.querySelector('#gScore').value));
-    const w=Number(toEn(p.querySelector('#gWeight').value))||1;
-    if(!t){ toast('عنوان نمره را وارد کن','err'); return; }
-    if(isNaN(s)||s<0||s>20){ toast('نمره باید بین ۰ تا ۲۰ باشد','err'); return; }
-    S.grades[c.id]=S.grades[c.id]||[];
-    S.grades[c.id].push({id:uid(),title:t,score:s,weight:w,at:nowJ()});
-    save(); toast('نمره ثبت شد ✅'); renderGrades(); renderDashboard();
-  };
-  p.querySelectorAll('[data-gdel]').forEach(b=>b.onclick=()=>{
-    S.grades[c.id]=S.grades[c.id].filter(x=>x.id!==b.dataset.gdel);
-    save(); renderGrades(); renderDashboard();
-  });
-}
-
-/* ============ کارها ============ */
-let taskFilter='all';
-function renderTasks(){
-  const p=document.getElementById('panel-tasks');
-  const j=todayJ();
-  let list=S.tasks.slice().sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999'));
-  if(taskFilter==='open') list=list.filter(t=>!t.done);
-  else if(taskFilter==='done') list=list.filter(t=>t.done);
-  else if(taskFilter==='soon') list=list.filter(t=>!t.done&&t.due&&diffDaysJ(j,parseJ(t.due))<=7&&diffDaysJ(j,parseJ(t.due))>=-1);
-
-  const courseOpts=S.courses.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');
-
-  p.innerHTML=`
-  <div class="card mb">
-    <div class="sec-title"><span class="dot"></span> افزودن کار / یادآور</div>
-    <div class="row">
-      <div style="min-width:190px"><label class="lb">عنوان</label><input class="inp" id="tTitle" placeholder="مثلاً: حل تمرین فصل ۵"></div>
-      <div style="min-width:170px"><label class="lb">درس مربوطه</label><select class="inp" id="tCourse"><option value="">— عمومی —</option>${courseOpts}</select></div>
-      <div style="min-width:200px"><label class="lb">موعد انجام</label>${dateSelects('taskdue')}</div>
-      <div style="max-width:130px"><label class="lb">اولویت</label>
-        <select class="inp" id="tPrio"><option value="mid">متوسط</option><option value="high">بالا</option><option value="low">پایین</option></select>
-      </div>
-      <div style="flex:none"><button class="btn" id="tAdd">➕ افزودن</button></div>
-    </div>
-    <div class="mt"><label class="lb">توضیح (اختیاری)</label><textarea class="inp" id="tDesc" style="min-height:70px"></textarea></div>
-  </div>
-
-  <div class="chips">
-    <button class="chip ${taskFilter==='all'?'active':''}" data-tf="all">همه (${toFa(S.tasks.length)})</button>
-    <button class="chip ${taskFilter==='open'?'active':''}" data-tf="open">در انتظار (${toFa(S.tasks.filter(t=>!t.done).length)})</button>
-    <button class="chip ${taskFilter==='soon'?'active':''}" data-tf="soon">نزدیک</button>
-    <button class="chip ${taskFilter==='done'?'active':''}" data-tf="done">انجام‌شده (${toFa(S.tasks.filter(t=>t.done).length)})</button>
-  </div>
-
-  <div class="card">
-    ${list.length? list.map(t=>{
-      const c=t.courseId?getCourse(t.courseId):null;
-      const dd=t.due?diffDaysJ(j,parseJ(t.due)):null;
-      const late=!t.done&&dd!==null&&dd<0;
-      const pr=t.prio==='high'?'🔴':t.prio==='low'?'🟢':'🟡';
-      return `<div class="item" style="${t.done?'opacity:.5':''}">
-        <div style="padding-top:3px">
-          <input type="checkbox" ${t.done?'checked':''} data-ttog="${t.id}" style="width:19px;height:19px;accent-color:#4f8cff;cursor:pointer">
-        </div>
-        <div class="body">
-          <h5 style="${t.done?'text-decoration:line-through':''}">${pr} ${esc(t.title)}</h5>
-          ${t.desc?`<p>${esc(t.desc)}</p>`:''}
-          <div class="t">
-            ${c?`📚 ${esc(c.name)} • `:''}
-            ${t.due?`📅 ${faDate(t.due)} ${dd!==null?(dd===0?'(امروز)':dd>0?`(${toFa(dd)} روز مانده)`:'(گذشته)'):''}`:''}
-            ${late?' ⚠️':''}
-          </div>
-        </div>
-        <div class="acts"><button class="mini del" data-tdel="${t.id}">حذف</button></div>
-      </div>`;
-    }).join('') : `<div class="empty"><div class="e">🗒️</div>کاری در این بخش وجود ندارد.</div>`}
-  </div>`;
-
-  p.querySelectorAll('[data-tf]').forEach(b=>b.onclick=()=>{ taskFilter=b.dataset.tf; renderTasks(); });
-
-  p.querySelector('#tAdd').onclick=()=>{
-    const title=p.querySelector('#tTitle').value.trim();
-    if(!title){ toast('عنوان کار را وارد کن','err'); return; }
-    const due=readDateSelects('taskdue');
-    const s=parseJ(S.settings.startDate), e=parseJ(S.settings.endDate), dj=parseJ(due);
-    if(cmpJ(dj,s)<0||cmpJ(dj,e)>0){ toast('تاریخ باید بین '+faDate(S.settings.startDate)+' و '+faDate(S.settings.endDate)+' باشد','err'); return; }
-    S.tasks.push({id:uid(),title,desc:p.querySelector('#tDesc').value.trim(),
-      courseId:p.querySelector('#tCourse').value,due,prio:p.querySelector('#tPrio').value,
-      done:false,at:nowJ()});
-    save(); toast('کار اضافه شد ✅'); renderTasks(); renderDashboard();
-  };
-  p.querySelectorAll('[data-ttog]').forEach(c=>c.onchange=()=>{
-    const t=S.tasks.find(x=>x.id===c.dataset.ttog); if(t){ t.done=c.checked; save(); renderTasks(); renderDashboard(); }
-  });
-  p.querySelectorAll('[data-tdel]').forEach(b=>b.onclick=()=>{
-    S.tasks=S.tasks.filter(x=>x.id!==b.dataset.tdel); save(); renderTasks(); renderDashboard();
-  });
-}
-
-/* ============ مدیریت درس‌ها ============ */
-function renderCourses(){
-  const p=document.getElementById('panel-courses');
-  const dayOpts=WORDER.map(wd=>`<option value="${wd}">${WDAYS[wd]}</option>`).join('');
-  p.innerHTML=`
-  <div class="card mb">
-    <div class="sec-title"><span class="dot"></span> افزودن درس جدید</div>
-    <div class="row">
-      <div style="max-width:120px"><label class="lb">کد درس</label><input class="inp" id="cCode" placeholder="21107"></div>
-      <div style="min-width:200px"><label class="lb">نام درس</label><input class="inp" id="cName" placeholder="نام درس"></div>
-      <div style="max-width:100px"><label class="lb">واحد</label><input class="inp" id="cUnit" type="number" min="0" max="6" value="3"></div>
-      <div style="min-width:180px"><label class="lb">استاد</label><input class="inp" id="cTeacher" placeholder="نام استاد"></div>
-    </div>
-    <div class="row mt">
-      <div style="min-width:200px"><label class="lb">زمان کلاس (متن)</label><input class="inp" id="cTime" placeholder="دوشنبه ۱۰:۰۰-۱۲:۰۰"></div>
-      <div style="min-width:170px"><label class="lb">روزهای هفته</label>
-        <select class="inp" id="cDays" multiple size="3" style="min-height:76px">${dayOpts}</select>
-      </div>
-      <div style="max-width:160px"><label class="lb">تاریخ امتحان</label><input class="inp" id="cExam" placeholder="1405/10/20"></div>
-      <div style="max-width:120px"><label class="lb">ساعت امتحان</label><input class="inp" id="cExamT" placeholder="۰۸:۳۰"></div>
-      <div style="max-width:110px"><label class="lb">رنگ</label><input class="inp" id="cColor" type="color" value="#4f8cff" style="padding:4px;height:44px"></div>
-      <div style="flex:none"><button class="btn" id="cAdd">➕ افزودن درس</button></div>
-    </div>
-  </div>
-
-  <div class="grid g-3">
-    ${S.courses.map(c=>`
-      <div class="course">
-        <span class="bar" style="background:${c.color}"></span>
-        <h4>${esc(c.name)}</h4>
-        <div class="meta">
-          کد: ${toFa(c.code)} • ${toFa(c.unit)} واحد<br>
-          👨‍🏫 ${esc(c.teacher||'—')}<br>
-          🕐 ${esc(c.time||'—')}<br>
-          📅 ${(c.days||[]).map(d=>WDAYS[d]).join('، ')||'—'}<br>
-          ${c.examDate?`📝 امتحان: ${faDate(c.examDate)} ${esc(c.examTime||'')}`:'📝 امتحان: —'}
-        </div>
-        <div class="acts mt">
-          <button class="mini" data-cedit="${c.id}">ویرایش</button>
-          <button class="mini del" data-cdel="${c.id}">حذف</button>
-        </div>
-      </div>`).join('')}
-  </div>`;
-
-  p.querySelector('#cAdd').onclick=()=>{
-    const name=p.querySelector('#cName').value.trim();
-    if(!name){ toast('نام درس را وارد کن','err'); return; }
-    const days=Array.from(p.querySelector('#cDays').selectedOptions).map(o=>+o.value);
-    S.courses.push({
-      id:uid(), code:p.querySelector('#cCode').value.trim()||'—', name,
-      unit:Number(p.querySelector('#cUnit').value)||1,
-      teacher:p.querySelector('#cTeacher').value.trim(),
-      time:p.querySelector('#cTime').value.trim(),
-      days:days.length?days:[1],
-      examDate:toEn(p.querySelector('#cExam').value.trim()),
-      examTime:p.querySelector('#cExamT').value.trim(),
-      color:p.querySelector('#cColor').value
-    });
-    save(); toast('درس اضافه شد ✅'); renderAll();
-  };
-  p.querySelectorAll('[data-cdel]').forEach(b=>b.onclick=()=>{
-    if(!confirm('این درس و تمام داده‌هایش حذف شود؟')) return;
-    const id=b.dataset.cdel;
-    S.courses=S.courses.filter(c=>c.id!==id);
-    delete S.attendance[id]; delete S.notes[id]; delete S.grades[id];
-    S.tasks=S.tasks.filter(t=>t.courseId!==id);
-    save(); toast('درس حذف شد','info'); renderAll();
-  });
-  p.querySelectorAll('[data-cedit]').forEach(b=>b.onclick=()=>{
-    const c=getCourse(b.dataset.cedit); if(!c) return;
-    const name=prompt('نام درس:',c.name); if(name===null) return;
-    const unit=prompt('تعداد واحد:',c.unit); if(unit===null) return;
-    const teacher=prompt('نام استاد:',c.teacher||''); if(teacher===null) return;
-    const time=prompt('زمان کلاس:',c.time||''); if(time===null) return;
-    const examDate=prompt('تاریخ امتحان (مثال 1405/10/20):',c.examDate||''); if(examDate===null) return;
-    c.name=name.trim()||c.name; c.unit=Number(toEn(unit))||c.unit;
-    c.teacher=teacher.trim(); c.time=time.trim(); c.examDate=toEn(examDate.trim());
-    save(); toast('ویرایش شد ✅'); renderAll();
-  });
-}
-
-/* ============ تنظیمات ============ */
-function renderSettings(){
-  const p=document.getElementById('panel-settings');
-  p.innerHTML=`
-  <div class="grid g-2">
-    <div class="card">
-      <div class="sec-title"><span class="dot"></span> اطلاعات من</div>
-      <div class="mb"><label class="lb">نام و نام خانوادگی</label><input class="inp" id="sName" value="${esc(S.profile.name)}"></div>
-      <div class="mb"><label class="lb">کد دانشجویی</label><input class="inp" id="sSid" value="${esc(S.auth?S.auth.studentId:S.profile.studentId)}"></div>
-      <div class="mb"><label class="lb">رشته</label><input class="inp" id="sMajor" value="${esc(S.profile.major)}"></div>
-      <div class="mb"><label class="lb">دانشکده</label><input class="inp" id="sFaculty" value="${esc(S.profile.faculty)}"></div>
-      <div class="mb"><label class="lb">نیمسال</label><input class="inp" id="sTerm" value="${esc(S.profile.term)}"></div>
-      <button class="btn" id="sSave">💾 ذخیره اطلاعات</button>
-    </div>
-
-    <div class="card">
-      <div class="sec-title"><span class="dot"></span> تغییر رمز ورود (کد ملی)</div>
-      <div class="mb"><label class="lb">کد ملی فعلی</label><input class="inp" id="pOld" type="password"></div>
-      <div class="mb"><label class="lb">کد ملی جدید</label><input class="inp" id="pNew" type="password"></div>
-      <div class="mb"><label class="lb">تکرار کد ملی جدید</label><input class="inp" id="pNew2" type="password"></div>
-      <button class="btn" id="pSave">🔐 تغییر رمز</button>
-      <hr style="border:none;border-top:1px solid var(--line);margin:22px 0">
-      <div class="sec-title"><span class="dot"></span> بازه تقویم (۶ ماه)</div>
-      <div class="row">
-        <div><label class="lb">شروع</label><input class="inp" id="stStart" value="${esc(S.settings.startDate)}" readonly></div>
-        <div><label class="lb">پایان</label><input class="inp" id="stEnd" value="${esc(S.settings.endDate)}" readonly></div>
-      </div>
-      <button class="btn ghost mt" id="stReset">🔄 بازنشانی بازه (از فردا تا ۶ ماه)</button>
-    </div>
-
-    <div class="card">
-      <div class="sec-title"><span class="dot"></span> پشتیبان‌گیری</div>
-      <p style="font-size:.8rem;color:var(--muted);margin-bottom:12px">
-        اطلاعات درس‌ها، حضور، نکات، نمرات و کارها ذخیره می‌شود. (فایل‌های آپلودی جداگانه در مرورگر)
-      </p>
-      <div class="row">
-        <button class="btn ok" id="expBtn">⬇ خروجی پشتیبان (JSON)</button>
-        <button class="btn ghost" id="impBtn">⬆ بازیابی از فایل</button>
-      </div>
-      <input type="file" id="impFile" accept=".json" class="hidden">
-    </div>
-
-    <div class="card">
-      <div class="sec-title"><span class="dot"></span> وضعیت ذخیره‌سازی</div>
-      <div class="stat mb"><div class="v" id="stFiles">—</div><div class="k">فایل ذخیره‌شده</div></div>
-      <div class="stat mb"><div class="v" id="stSize">—</div><div class="k">حجم کل فایل‌ها</div></div>
-      <button class="btn danger mt" id="wipeBtn">🗑 پاک‌کردن تمام داده‌ها</button>
-    </div>
-  </div>`;
-
-  p.querySelector('#sSave').onclick=()=>{
-    S.profile.name=p.querySelector('#sName').value.trim()||S.profile.name;
-    S.profile.major=p.querySelector('#sMajor').value.trim();
-    S.profile.faculty=p.querySelector('#sFaculty').value.trim();
-    S.profile.term=p.querySelector('#sTerm').value.trim();
-    const nsid=toEn(p.querySelector('#sSid').value.trim());
-    if(nsid.length>=4){ S.profile.studentId=nsid; if(S.auth) S.auth.studentId=nsid; }
-    save(); toast('اطلاعات ذخیره شد ✅'); renderAll();
-  };
-  p.querySelector('#pSave').onclick=()=>{
-    const o=toEn(p.querySelector('#pOld').value.trim());
-    const n=toEn(p.querySelector('#pNew').value.trim());
-    const n2=toEn(p.querySelector('#pNew2').value.trim());
-    if(b64(o)!==S.auth.pass){ toast('کد ملی فعلی اشتباه است','err'); return; }
-    if(n.length<6){ toast('کد ملی جدید حداقل ۶ رقم','err'); return; }
-    if(n!==n2){ toast('تکرار رمز مطابقت ندارد','err'); return; }
-    S.auth.pass=b64(n); save(); toast('رمز تغییر کرد ✅');
-    p.querySelector('#pOld').value=p.querySelector('#pNew').value=p.querySelector('#pNew2').value='';
-  };
-  p.querySelector('#stReset').onclick=()=>{
-    const t=todayJ();
-    const s=addDaysJ(t[0],t[1],t[2],1);
-    const e=addMonthsJ(s[0],s[1],s[2],6);
-    S.settings.startDate=fmtJ(s[0],s[1],s[2]);
-    S.settings.endDate=fmtJ(e[0],e[1],e[2]);
-    save(); toast('بازه تقویم بازنشانی شد ✅'); renderAll();
-  };
-  p.querySelector('#expBtn').onclick=()=>{
-    const data=JSON.stringify(S,null,2);
-    const blob=new Blob([data],{type:'application/json'});
-    const a=document.createElement('a');
-    a.href=URL.createObjectURL(blob);
-    a.download='kelasi-backup-'+nowJ().replace(/\//g,'-')+'.json';
-    a.click();
-    setTimeout(()=>URL.revokeObjectURL(a.href),5000);
-    toast('فایل پشتیبان دانلود شد ✅');
-  };
-  p.querySelector('#impBtn').onclick=()=>p.querySelector('#impFile').click();
-  p.querySelector('#impFile').onchange=e=>{
-    const f=e.target.files[0]; if(!f) return;
-    const r=new FileReader();
-    r.onload=()=>{
-      try{
-        const d=JSON.parse(r.result);
-        if(!d.courses) throw 0;
-        S=Object.assign(defaultState(),d); save(); toast('بازیابی انجام شد ✅'); renderAll();
-      }catch(err){ toast('فایل پشتیبان نامعتبر است','err'); }
-    };
-    r.readAsText(f);
-  };
-  p.querySelector('#wipeBtn').onclick=async()=>{
-    if(!confirm('همه داده‌ها پاک شوند؟ این کار قابل بازگشت نیست!')) return;
-    localStorage.removeItem(LS_KEY);
-    try{
-      const d=await openDB();
-      const t=d.transaction(DB_STORE,'readwrite');
-      t.objectStore(DB_STORE).clear();
-    }catch(e){}
-    location.reload();
-  };
-  fileAll().then(fs=>{
-    const el1=p.querySelector('#stFiles'), el2=p.querySelector('#stSize');
-    if(!el1) return;
-    el1.textContent=toFa(fs.length);
-    const tot=fs.reduce((a,f)=>a+f.size,0);
-    el2.textContent=toFa((tot/1024/1024).toFixed(2))+' MB';
-  }).catch(()=>{
-    const el1=p.querySelector('#stFiles');
-    if(el1){ el1.textContent='ناموجود'; p.querySelector('#stSize').textContent='ناموجود'; }
-  });
-}
-
-/* ============ راه‌اندازی ============ */
-loadState();
-initLogin();
-document.getElementById('inpStudent').value=S.profile.studentId||'';
-document.getElementById('inpPass').focus();
-document.addEventListener('keydown',e=>{
-  if(e.ctrlKey&&e.key==='Enter'&&!loginScreen.classList.contains('hidden')) doLogin();
-});
-</script>
+                status.innerText = 'کامپایل با موفقیت انجام شد! فایل lab.hex دانلود شد.';
+                status.style.color = '#4CAF50';
+            }, 1500); // 1.5 ثانیه تاخیر برای حس واقعی بودن
+        }
+    </script>
 </body>
-  </html>
+</html>
