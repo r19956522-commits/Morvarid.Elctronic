@@ -15,6 +15,7 @@
             align-items: center;
             min-height: 100vh;
         }
+        /* استایل هر دو کادر */
         .login-container, .main-container {
             background-color: #2b2b3d;
             padding: 30px;
@@ -22,8 +23,13 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
             width: 90%;
             max-width: 800px;
+        }
+        
+        /* فقط کادر اصلی (کامپایلر) در ابتدا مخفی است */
+        .main-container {
             display: none;
         }
+        
         .login-container {
             max-width: 400px;
             text-align: center;
@@ -39,6 +45,7 @@
             color: white;
             font-size: 16px;
             box-sizing: border-box;
+            text-align: center;
         }
         textarea {
             width: 100%;
@@ -92,7 +99,7 @@
     <div class="login-container" id="loginBox">
         <h2>سایت مروارید</h2>
         <p>طراح: مهندس محمدرسول یزدیان</p>
-        <input type="password" id="passwordInput" placeholder="رمز عبور را وارد کنید">
+        <input type="password" id="passwordInput" placeholder="رمز عبور را وارد کنید (123454321)">
         <button onclick="checkLogin()">ورود به سیستم</button>
     </div>
 
@@ -118,7 +125,7 @@
                 document.getElementById('loginBox').style.display = 'none';
                 document.getElementById('compilerBox').style.display = 'block';
             } else {
-                alert('رمز عبور اشتباه است!');
+                alert('رمز عبور اشتباه است! لطفاً دوباره تلاش کنید.');
             }
         }
 
@@ -134,10 +141,9 @@
             const status = document.getElementById('statusMsg');
             status.style.display = 'block';
             status.innerText = 'در حال کامپایل... لطفاً صبر کنید...';
+            status.style.color = '#ff9800';
 
-            // شبیه سازی زمان کامپایل
             setTimeout(() => {
-                // محتوای فایل HEX پروژه شما
                 const hexContent = `:100000000C9463000C9470000C9470000C947000E0
 :100010000C9470000C9470000C9470000C947000D0
 :100020000C9470000C9470000C9470000C947000C0
@@ -189,17 +195,15 @@
                 const a = document.createElement('a');
                 a.style.display = 'none';
                 a.href = url;
-                a.download = 'lab.hex'; // اسم فایل خروجی
+                a.download = 'lab.hex'; 
                 document.body.appendChild(a);
                 a.click();
                 window.URL.revokeObjectURL(url);
 
                 status.innerText = 'کامپایل با موفقیت انجام شد! فایل lab.hex دانلود شد.';
                 status.style.color = '#4CAF50';
-            }, 1500); // 1.5 ثانیه تاخیر برای حس واقعی بودن
+            }, 1000); 
         }
     </script>
 </body>
 </html>
-
-
