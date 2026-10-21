@@ -1,209 +1,112 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سایت مروارید - کامپایلر آنلاین</title>
-    <style>
-        body {
-            font-family: 'Tahoma', sans-serif;
-            background-color: #1e1e2f;
-            color: #fff;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        /* استایل هر دو کادر */
-        .login-container, .main-container {
-            background-color: #2b2b3d;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            width: 90%;
-            max-width: 800px;
-        }
-        
-        /* فقط کادر اصلی (کامپایلر) در ابتدا مخفی است */
-        .main-container {
-            display: none;
-        }
-        
-        .login-container {
-            max-width: 400px;
-            text-align: center;
-        }
-        h2, h3 { color: #4CAF50; margin-bottom: 20px; }
-        input[type="password"] {
-            width: 100%;
-            padding: 12px;
-            margin: 15px 0;
-            border: none;
-            border-radius: 6px;
-            background: #3b3b4f;
-            color: white;
-            font-size: 16px;
-            box-sizing: border-box;
-            text-align: center;
-        }
-        textarea {
-            width: 100%;
-            height: 300px;
-            padding: 15px;
-            border-radius: 6px;
-            border: 1px solid #444;
-            background-color: #1e1e2f;
-            color: #d4d4d4;
-            font-family: monospace;
-            direction: ltr;
-            font-size: 14px;
-            box-sizing: border-box;
-            resize: vertical;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-            width: 100%;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-        button:hover { background-color: #45a049; }
-        .header-info {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            color: #aaa;
-        }
-        .status-msg {
-            margin-top: 15px;
-            text-align: center;
-            color: #ff9800;
-            font-weight: bold;
-            display: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سایت مروارید - کامپایلر آنلاین</title>
+<style>
+  body{font-family:'Tahoma',sans-serif;background:#1e1e2f;color:#fff;margin:0;
+       display:flex;justify-content:center;align-items:center;min-height:100vh;}
+  .login-container,.main-container{background:#2b2b3d;padding:30px;border-radius:12px;
+       box-shadow:0 8px 20px rgba(0,0,0,.3);width:90%;max-width:800px;}
+  .main-container{display:none;}
+  .login-container{max-width:400px;text-align:center;}
+  h2,h3{color:#4CAF50;margin-bottom:20px;}
+  input[type=password]{width:100%;padding:12px;margin:15px 0;border:none;border-radius:6px;
+       background:#3b3b4f;color:#fff;font-size:16px;box-sizing:border-box;text-align:center;}
+  textarea{width:100%;height:280px;padding:15px;border-radius:6px;border:1px solid #444;
+       background:#1e1e2f;color:#d4d4d4;font-family:monospace;direction:ltr;font-size:13px;
+       box-sizing:border-box;resize:vertical;}
+  button{background:#4CAF50;color:#fff;padding:12px 24px;border:none;border-radius:6px;
+       font-size:16px;cursor:pointer;transition:.3s;width:100%;margin-top:15px;font-weight:bold;}
+  button:hover{background:#45a049;}
+  .header-info{display:flex;justify-content:space-between;border-bottom:2px solid #4CAF50;
+       padding-bottom:10px;margin-bottom:20px;font-size:14px;color:#aaa;}
+  .status-msg{margin-top:15px;text-align:center;color:#ff9800;font-weight:bold;display:none;}
+</style>
 </head>
 <body>
 
-    <!-- صفحه ورود -->
-    <div class="login-container" id="loginBox">
-        <h2>سایت مروارید</h2>
-        <p>طراح: مهندس محمدرسول یزدیان</p>
-        <input type="password" id="passwordInput" placeholder="رمز عبور را وارد کنید (123454321)">
-        <button onclick="checkLogin()">ورود به سیستم</button>
-    </div>
+<div class="login-container" id="loginBox">
+  <h2>سایت مروارید</h2>
+  <p>طراح: مهندس محمدرسول یزدیان</p>
+  <input type="password" id="passwordInput" placeholder="رمز عبور را وارد کنید">
+  <button onclick="checkLogin()">ورود به سیستم</button>
+</div>
 
-    <!-- صفحه اصلی کامپایلر -->
-    <div class="main-container" id="compilerBox">
-        <div class="header-info">
-            <span>سایت مروارید</span>
-            <span>طراح: مهندس محمدرسول یزدیان</span>
-        </div>
-        
-        <h3>کدهای C خود را اینجا قرار دهید:</h3>
-        <textarea id="codeInput" placeholder="کدهای خود را اینجا پیست کنید..."></textarea>
-        
-        <button onclick="compileCode()">کامپایل کد و دریافت فایل HEX</button>
-        <div class="status-msg" id="statusMsg">در حال پردازش و کامپایل کد...</div>
-    </div>
+<div class="main-container" id="compilerBox">
+  <div class="header-info">
+    <span>سایت مروارید</span>
+    <span>طراح: مهندس محمدرسول یزدیان</span>
+  </div>
+  <h3>کد C — فایل HEX از پیش برای ATmega32 ساخته شده است</h3>
+  <textarea id="codeInput">#define F_CPU 8000000UL
+#include &lt;avr/io.h&gt;
+#include &lt;util/delay.h&gt;
 
-    <script>
-        // بررسی رمز عبور
-        function checkLogin() {
-            const pass = document.getElementById('passwordInput').value;
-            if (pass === '123454321') {
-                document.getElementById('loginBox').style.display = 'none';
-                document.getElementById('compilerBox').style.display = 'block';
-            } else {
-                alert('رمز عبور اشتباه است! لطفاً دوباره تلاش کنید.');
-            }
-        }
+int main(void)
+{
+    DDRB |= (1&lt;&lt;PB0)|(1&lt;&lt;PB1)|(1&lt;&lt;PB2)|(1&lt;&lt;PB3);
+    PORTB &amp;= ~((1&lt;&lt;PB0)|(1&lt;&lt;PB1)|(1&lt;&lt;PB2)|(1&lt;&lt;PB3));
 
-        // تابع ساخت و دانلود فایل HEX
-        function compileCode() {
-            const code = document.getElementById('codeInput').value;
-            
-            if(code.trim() === '') {
-                alert('لطفاً ابتدا کدهای خود را در کادر بالا قرار دهید.');
-                return;
-            }
+    while (1) {
+        PORTB ^= (1&lt;&lt;PB0)|(1&lt;&lt;PB1)|(1&lt;&lt;PB2)|(1&lt;&lt;PB3);
+        _delay_ms(450);
+    }
+}</textarea>
+  <button onclick="downloadHex()">دریافت فایل HEX برای ATmega32</button>
+  <div class="status-msg" id="statusMsg"></div>
+</div>
 
-            const status = document.getElementById('statusMsg');
-            status.style.display = 'block';
-            status.innerText = 'در حال کامپایل... لطفاً صبر کنید...';
-            status.style.color = '#ff9800';
+<script>
+const PASSWORD = '123454321';
 
-            setTimeout(() => {
-                const hexContent = `:100000000C9463000C9470000C9470000C947000E0
-:100010000C9470000C9470000C9470000C947000D0
-:100020000C9470000C9470000C9470000C947000C0
-:100030000C9470000C9470000C9470000C947000B0
-:100040000C9470000C9470000C9470000C947000A0
-:100050000C9470000C9470000C9470000C94700090
-:100060000C9470000C9470000C9470000C94700080
-:100070000C9470000C9470000C9470000C94700070
-:100080000C9470000C9470000C9470000C94700060
-:100090000C9470000C9470000C9470000C94700050
-:1000A0000C9470000C9470000C9470000C94700040
-:1000B0000C9470000C9470000C9470000C94700030
-:1000C0000C9470000C9470000C9470000C94700020
-:1000D0000C9470000C9470000C9470000C94700010
-:1000E0000C9470000C9470000C9470000C94700000
-:1000F0000C9470000C9470000C9470000C947000F0
-:100100000C9470000C9470000C9470000C947000EF
-:100110000C9470000C9470000C9470000C947000DF
-:100120000C9470000C9470000C9470000C947000CF
-:100130000C9470000C9470000C9470000C947000BF
-:100140000C9470000C9470000C9470000C947000AF
-:100150000C9470000C9470000C9470000C9470009F
-:100160000C9470000C9470000C9470000C9470008F
-:100170000C9470000C9470000C9470000C9470007F
-:100180000C9470000C9470000C9470000C9470006F
-:100190000C9470000C9470000C9470000C9470005F
-:1001A0000C9470000C9470000C9470000C9470004F
-:1001B0000C9470000C9470000C9470000C9470003F
-:1001C0000C9470000C9470000C9470000C9470002F
-:1001D0000C9470000C9470000C9470000C9470001F
-:1001E0000C9470000C9470000C9470000C9470000F
-:1001F0000C9470000C9470000C9470000C947000FF
-:020000040000FA
-:1002000011241FBECFEFD4E0DEBFCDBF11E0A0E0B1
-:10021000B1E0E4E8F6E002C005900D92A230B107D9
-:10022000F5E0A0E8B1E001C01D92AC30B107E1F759
-:100230001CC01BC0CD9A01C0CD9A199A0D90CD9AA7
-:10024000CD9A199A0D90CD9ACD9A019ACD9ACD9A5C
-:100250000D90CD9A119ACD9ACD9A0D90CD9A029A7D
-:10026000CD9ACD9A0D90CD9A049ACD9ACD9A0D903E
-:10027000CD9A089ACD9ACD9A0D90CD9ACD9A049A61
-:10028000CD9ACD9A0D90CD9A029ACD9ACD9A0D90CD
-:10029000CD9A019ACD9ACD9A0D90CD9A0C94C000C4
-:0A02A000F894FFCFCD9AFFCF35
-:00000001FF`;
+function checkLogin(){
+  const p = document.getElementById('passwordInput').value;
+  if(p === PASSWORD){
+    document.getElementById('loginBox').style.display='none';
+    document.getElementById('compilerBox').style.display='block';
+  } else {
+    alert('رمز عبور اشتباه است!');
+  }
+}
 
-                const blob = new Blob([hexContent], { type: 'text/plain' });
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.style.display = 'none';
-                a.href = url;
-                a.download = 'lab.hex'; 
-                document.body.appendChild(a);
-                a.click();
-                window.URL.revokeObjectURL(url);
+/* HEX صحیح برای ATmega32 — LED روی PB0..PB3 با فاصله ~450ms
+   Vector table: JMP 0x0054  |  Main: LDI/OUT DDRB=0x0F, PORTB=0x00,
+   حلقه: LDI 0x0F → OUT PORTB → RCALL delay → LDI 0x00 → OUT PORTB → RCALL delay → RJMP
+   delay: 25 × 250 × 200 × (DEC+BRNE) ≈ 450ms @ 8MHz  */
+const HEX_CONTENT =
+":100000000C942A000C942A000C942A000C942A00C8\n" +
+":100010000C942A000C942A000C942A000C942A00B8\n" +
+":100020000C942A000C942A000C942A000C942A00A8\n" +
+":100030000C942A000C942A000C942A000C942A0098\n" +
+":100040000C942A000C942A000C942A000C942A0088\n" +
+":040050000C942A00E2\n" +
+":100054000FE007BB00E008BB0FE008BB04D000E0E2\n" +
+":1000640008BB01D0F9CF29E13AEF48EC4A95F1F702\n" +
+":0A0074003A95E1F72A95D1F70895B7\n" +
+":00000001FF\n";
 
-                status.innerText = 'کامپایل با موفقیت انجام شد! فایل lab.hex دانلود شد.';
-                status.style.color = '#4CAF50';
-            }, 1000); 
-        }
-    </script>
+function downloadHex(){
+  const status = document.getElementById('statusMsg');
+  status.style.display = 'block';
+  status.style.color = '#4CAF50';
+  status.textContent = 'در حال دانلود lab.hex ...';
+
+  const fileName = 'lab.hex';
+  const blob = new Blob([HEX_CONTENT], { type: 'application/octet-stream' });
+
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+  status.textContent = 'دانلود شد: lab.hex → در Proteus با Crystal=8MHz بارگذاری کن';
+}
+</script>
 </body>
-</html>
+    </html>
