@@ -1,112 +1,63 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>سایت مروارید - کامپایلر آنلاین</title>
-<style>
-  body{font-family:'Tahoma',sans-serif;background:#1e1e2f;color:#fff;margin:0;
-       display:flex;justify-content:center;align-items:center;min-height:100vh;}
-  .login-container,.main-container{background:#2b2b3d;padding:30px;border-radius:12px;
-       box-shadow:0 8px 20px rgba(0,0,0,.3);width:90%;max-width:800px;}
-  .main-container{display:none;}
-  .login-container{max-width:400px;text-align:center;}
-  h2,h3{color:#4CAF50;margin-bottom:20px;}
-  input[type=password]{width:100%;padding:12px;margin:15px 0;border:none;border-radius:6px;
-       background:#3b3b4f;color:#fff;font-size:16px;box-sizing:border-box;text-align:center;}
-  textarea{width:100%;height:280px;padding:15px;border-radius:6px;border:1px solid #444;
-       background:#1e1e2f;color:#d4d4d4;font-family:monospace;direction:ltr;font-size:13px;
-       box-sizing:border-box;resize:vertical;}
-  button{background:#4CAF50;color:#fff;padding:12px 24px;border:none;border-radius:6px;
-       font-size:16px;cursor:pointer;transition:.3s;width:100%;margin-top:15px;font-weight:bold;}
-  button:hover{background:#45a049;}
-  .header-info{display:flex;justify-content:space-between;border-bottom:2px solid #4CAF50;
-       padding-bottom:10px;margin-bottom:20px;font-size:14px;color:#aaa;}
-  .status-msg{margin-top:15px;text-align:center;color:#ff9800;font-weight:bold;display:none;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ساخت فایل HEX استاندارد پروتئوس</title>
+    <style>
+        body { font-family: Tahoma, sans-serif; background-color: #2c3e50; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .box { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); width: 100%; max-width: 400px; text-align: center; }
+        h2 { color: #2980b9; margin-bottom: 10px; font-size: 20px; }
+        p { font-size: 13px; color: #555; margin-bottom: 15px; line-height: 1.5; }
+        textarea { width: 100%; height: 150px; padding: 10px; border: 2px solid #bdc3c7; border-radius: 8px; font-family: monospace; font-size: 12px; direction: ltr; resize: none; box-sizing: border-box; margin-bottom: 15px; }
+        textarea:focus { border-color: #2980b9; outline: none; }
+        button { background-color: #27ae60; color: white; border: none; padding: 15px; border-radius: 8px; font-size: 16px; font-weight: bold; width: 100%; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        button:active { background-color: #219150; transform: translateY(2px); }
+        .note { font-size: 11px; color: #e74c3c; margin-top: 15px; }
+    </style>
 </head>
 <body>
+    <div class="box">
+        <h2>دانلود فایل HEX مخصوص پروتئوس</h2>
+        <p>متن HEX تولید شده را در کادر زیر قرار دهید تا فایل سالم و بدون خطا برای پروتئوس ساخته شود:</p>
+        
+        <textarea id="hexData" placeholder=":100000000C9434000C943E000C943E000C943E0082..."></textarea>
+        
+        <button onclick="buildHex()">دانلود فایل program.hex</button>
+        
+        <div class="note">این ابزار به طور خودکار خط پایان فایل (EOF) را اضافه می‌کند تا پروتئوس ارور ندهد.</div>
+    </div>
 
-<div class="login-container" id="loginBox">
-  <h2>سایت مروارید</h2>
-  <p>طراح: مهندس محمدرسول یزدیان</p>
-  <input type="password" id="passwordInput" placeholder="رمز عبور را وارد کنید">
-  <button onclick="checkLogin()">ورود به سیستم</button>
-</div>
+    <script>
+        function buildHex() {
+            let hexContent = document.getElementById('hexData').value;
+            
+            // حذف فاصله‌های اضافی از ابتدا و انتها
+            hexContent = hexContent.trim();
+            
+            if (!hexContent) {
+                alert("لطفاً ابتدا کد HEX را در کادر قرار دهید.");
+                return;
+            }
 
-<div class="main-container" id="compilerBox">
-  <div class="header-info">
-    <span>سایت مروارید</span>
-    <span>طراح: مهندس محمدرسول یزدیان</span>
-  </div>
-  <h3>کد C — فایل HEX از پیش برای ATmega32 ساخته شده است</h3>
-  <textarea id="codeInput">#define F_CPU 8000000UL
-#include &lt;avr/io.h&gt;
-#include &lt;util/delay.h&gt;
+            // پروتئوس اگر خط پایان را نبیند ارور می‌دهد. این خط آن را اضافه می‌کند.
+            if (!hexContent.endsWith(':00000001FF')) {
+                hexContent += '\n:00000001FF';
+            }
 
-int main(void)
-{
-    DDRB |= (1&lt;&lt;PB0)|(1&lt;&lt;PB1)|(1&lt;&lt;PB2)|(1&lt;&lt;PB3);
-    PORTB &amp;= ~((1&lt;&lt;PB0)|(1&lt;&lt;PB1)|(1&lt;&lt;PB2)|(1&lt;&lt;PB3));
-
-    while (1) {
-        PORTB ^= (1&lt;&lt;PB0)|(1&lt;&lt;PB1)|(1&lt;&lt;PB2)|(1&lt;&lt;PB3);
-        _delay_ms(450);
-    }
-}</textarea>
-  <button onclick="downloadHex()">دریافت فایل HEX برای ATmega32</button>
-  <div class="status-msg" id="statusMsg"></div>
-</div>
-
-<script>
-const PASSWORD = '123454321';
-
-function checkLogin(){
-  const p = document.getElementById('passwordInput').value;
-  if(p === PASSWORD){
-    document.getElementById('loginBox').style.display='none';
-    document.getElementById('compilerBox').style.display='block';
-  } else {
-    alert('رمز عبور اشتباه است!');
-  }
-}
-
-/* HEX صحیح برای ATmega32 — LED روی PB0..PB3 با فاصله ~450ms
-   Vector table: JMP 0x0054  |  Main: LDI/OUT DDRB=0x0F, PORTB=0x00,
-   حلقه: LDI 0x0F → OUT PORTB → RCALL delay → LDI 0x00 → OUT PORTB → RCALL delay → RJMP
-   delay: 25 × 250 × 200 × (DEC+BRNE) ≈ 450ms @ 8MHz  */
-const HEX_CONTENT =
-":100000000C942A000C942A000C942A000C942A00C8\n" +
-":100010000C942A000C942A000C942A000C942A00B8\n" +
-":100020000C942A000C942A000C942A000C942A00A8\n" +
-":100030000C942A000C942A000C942A000C942A0098\n" +
-":100040000C942A000C942A000C942A000C942A0088\n" +
-":040050000C942A00E2\n" +
-":100054000FE007BB00E008BB0FE008BB04D000E0E2\n" +
-":1000640008BB01D0F9CF29E13AEF48EC4A95F1F702\n" +
-":0A0074003A95E1F72A95D1F70895B7\n" +
-":00000001FF\n";
-
-function downloadHex(){
-  const status = document.getElementById('statusMsg');
-  status.style.display = 'block';
-  status.style.color = '#4CAF50';
-  status.textContent = 'در حال دانلود lab.hex ...';
-
-  const fileName = 'lab.hex';
-  const blob = new Blob([HEX_CONTENT], { type: 'application/octet-stream' });
-
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = fileName;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-
-  status.textContent = 'دانلود شد: lab.hex → در Proteus با Crystal=8MHz بارگذاری کن';
-}
-</script>
+            // ساخت فایل برای دانلود
+            const blob = new Blob([hexContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            
+            // نام دقیق فایل که پروتئوس دوست دارد
+            a.download = 'program.hex'; 
+            a.href = url;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
 </body>
-    </html>
+</html>
