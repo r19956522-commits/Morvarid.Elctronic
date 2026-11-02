@@ -9,22 +9,21 @@
         .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 90%; max-width: 350px; }
         h2 { color: #333; margin-bottom: 10px; }
         p { color: #666; font-size: 14px; margin-bottom: 25px; line-height: 1.5; }
-        .download-btn { background-color: #2980b9; color: white; border: none; padding: 15px 30px; font-size: 18px; font-weight: bold; border-radius: 8px; width: 100%; cursor: pointer; transition: 0.3s; }
-        .download-btn:active { background-color: #1c5980; transform: scale(0.98); }
+        .download-btn { background-color: #27ae60; color: white; border: none; padding: 15px 30px; font-size: 18px; font-weight: bold; border-radius: 8px; width: 100%; cursor: pointer; transition: 0.3s; }
+        .download-btn:active { background-color: #219150; transform: scale(0.98); }
     </style>
 </head>
 <body>
 
     <div class="card">
         <h2>دانلود فایل هگز</h2>
-        <p>برای دریافت فایل <b>lab.hex</b> که مخصوص پروتئوس آماده شده است، روی دکمه زیر کلیک کنید.</p>
+        <p>برای دریافت فایل <b>lab.hex</b> بدون مشکل پسوند txt، روی دکمه زیر کلیک کنید.</p>
         <button class="download-btn" onclick="downloadHex()">دانلود lab.hex</button>
     </div>
 
     <script>
         function downloadHex() {
-            // ⚠️ این متن، کدهای واقعی HEX است که پروتئوس می‌خواند.
-            // اگر بعدا خواستید کد خودتان را بگذارید، فقط متن بین دو بک تیک (`) را عوض کنید.
+            // این متن، کدهای واقعی HEX است
             const hexContent = `:100000000C9434000C943E000C943E000C943E0082
 :100010000C943E000C943E000C943E000C943E0068
 :100020000C943E000C943E000C943E000C943E0058
@@ -44,16 +43,14 @@
 :1001000021FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDE
 :00000001FF`;
 
-            // ساخت فایل برای دانلود
-            const blob = new Blob([hexContent], { type: 'text/plain' });
+            // 🔴 نکته مهم: نوع فایل را octet-stream گذاشتیم تا مرورگر پسوند txt ندهد
+            const blob = new Blob([hexContent], { type: 'application/octet-stream' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             
-            // نام دقیق فایل که درخواست کردید
             a.download = 'lab.hex'; 
             a.href = url;
             
-            // اجرای دانلود
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
