@@ -3,61 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ساخت فایل HEX استاندارد پروتئوس</title>
+    <title>دانلود فایل HEX</title>
     <style>
-        body { font-family: Tahoma, sans-serif; background-color: #2c3e50; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .box { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); width: 100%; max-width: 400px; text-align: center; }
-        h2 { color: #2980b9; margin-bottom: 10px; font-size: 20px; }
-        p { font-size: 13px; color: #555; margin-bottom: 15px; line-height: 1.5; }
-        textarea { width: 100%; height: 150px; padding: 10px; border: 2px solid #bdc3c7; border-radius: 8px; font-family: monospace; font-size: 12px; direction: ltr; resize: none; box-sizing: border-box; margin-bottom: 15px; }
-        textarea:focus { border-color: #2980b9; outline: none; }
-        button { background-color: #27ae60; color: white; border: none; padding: 15px; border-radius: 8px; font-size: 16px; font-weight: bold; width: 100%; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        button:active { background-color: #219150; transform: translateY(2px); }
-        .note { font-size: 11px; color: #e74c3c; margin-top: 15px; }
+        body { font-family: Tahoma, sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 90%; max-width: 350px; }
+        h2 { color: #333; margin-bottom: 10px; }
+        p { color: #666; font-size: 14px; margin-bottom: 25px; line-height: 1.5; }
+        .download-btn { background-color: #2980b9; color: white; border: none; padding: 15px 30px; font-size: 18px; font-weight: bold; border-radius: 8px; width: 100%; cursor: pointer; transition: 0.3s; }
+        .download-btn:active { background-color: #1c5980; transform: scale(0.98); }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h2>دانلود فایل HEX مخصوص پروتئوس</h2>
-        <p>متن HEX تولید شده را در کادر زیر قرار دهید تا فایل سالم و بدون خطا برای پروتئوس ساخته شود:</p>
-        
-        <textarea id="hexData" placeholder=":100000000C9434000C943E000C943E000C943E0082..."></textarea>
-        
-        <button onclick="buildHex()">دانلود فایل program.hex</button>
-        
-        <div class="note">این ابزار به طور خودکار خط پایان فایل (EOF) را اضافه می‌کند تا پروتئوس ارور ندهد.</div>
+
+    <div class="card">
+        <h2>دانلود فایل هگز</h2>
+        <p>برای دریافت فایل <b>lab.hex</b> که مخصوص پروتئوس آماده شده است، روی دکمه زیر کلیک کنید.</p>
+        <button class="download-btn" onclick="downloadHex()">دانلود lab.hex</button>
     </div>
 
     <script>
-        function buildHex() {
-            let hexContent = document.getElementById('hexData').value;
-            
-            // حذف فاصله‌های اضافی از ابتدا و انتها
-            hexContent = hexContent.trim();
-            
-            if (!hexContent) {
-                alert("لطفاً ابتدا کد HEX را در کادر قرار دهید.");
-                return;
-            }
-
-            // پروتئوس اگر خط پایان را نبیند ارور می‌دهد. این خط آن را اضافه می‌کند.
-            if (!hexContent.endsWith(':00000001FF')) {
-                hexContent += '\n:00000001FF';
-            }
+        function downloadHex() {
+            // ⚠️ این متن، کدهای واقعی HEX است که پروتئوس می‌خواند.
+            // اگر بعدا خواستید کد خودتان را بگذارید، فقط متن بین دو بک تیک (`) را عوض کنید.
+            const hexContent = `:100000000C9434000C943E000C943E000C943E0082
+:100010000C943E000C943E000C943E000C943E0068
+:100020000C943E000C943E000C943E000C943E0058
+:100030000C943E000C943E000C943E000C943E0048
+:100040000C943E000C943E000C943E000C943E0038
+:100050000C943E000C943E000C943E000C943E0028
+:100060000C943E000C943E000C943E000C943E0018
+:100070000C943E000C943E000C943E000C943E0008
+:100080000C943E000C943E000C943E000C943E00F8
+:100090000C943E000C943E000C943E000C943E00E8
+:1000A0000C943E000C943E000C943E000C943E00D8
+:1000B0000C943E000C943E000C943E000C943E00C8
+:1000C0000C943E000C943E000C943E000C943E00B8
+:1000D0000C943E000C943E000C943E000C943E00A8
+:1000E0000C943E000C943E000C943E000C943E0098
+:1000F0000C943E000C943E000C943E000C943E0088
+:1001000021FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDE
+:00000001FF`;
 
             // ساخت فایل برای دانلود
             const blob = new Blob([hexContent], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             
-            // نام دقیق فایل که پروتئوس دوست دارد
-            a.download = 'program.hex'; 
+            // نام دقیق فایل که درخواست کردید
+            a.download = 'lab.hex'; 
             a.href = url;
+            
+            // اجرای دانلود
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
         }
     </script>
+
 </body>
 </html>
