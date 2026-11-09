@@ -3,59 +3,567 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دانلود فایل HEX استاندارد</title>
+    <title>بانک سوالات جامع سیستم‌های دیجیتال ۲ - محمدرسول یزدیان</title>
+    <!-- فونت فارسی وزیرمتن -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <!-- کتابخانه تبدیل به PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
     <style>
-        body { font-family: Tahoma, sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 90%; max-width: 350px; }
-        h2 { color: #333; margin-bottom: 10px; }
-        p { color: #666; font-size: 14px; margin-bottom: 25px; line-height: 1.5; }
-        .download-btn { background-color: #27ae60; color: white; border: none; padding: 15px 30px; font-size: 18px; font-weight: bold; border-radius: 8px; width: 100%; cursor: pointer; transition: 0.3s; }
-        .download-btn:active { background-color: #219150; transform: scale(0.98); }
+        /* تنظیمات کلی بدنه */
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #34495e;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* طراحی صفحه A4 با حاشیه نوستالژی */
+        .page {
+            background-color: #fcfaf5; /* رنگ کاغذ قدیمی */
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm 15mm;
+            box-sizing: border-box;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            margin-bottom: 30px;
+            border: 10px double #8b5a2b; /* حاشیه دو خطه قهوه‌ای */
+            border-radius: 8px;
+            color: #2c3e50;
+            line-height: 1.9;
+            font-size: 14px;
+        }
+
+        /* هدر جزوه */
+        .header {
+            text-align: center;
+            border-bottom: 3px dashed #c0392b;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #8b5a2b;
+            margin: 0 0 10px 0;
+            font-size: 26px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .header h2 {
+            color: #7f8c8d;
+            margin: 0;
+            font-size: 16px;
+            font-weight: normal;
+        }
+        .header .author {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 10px;
+            background: #fadbd8;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        /* عناوین بخش‌ها */
+        .section-title {
+            background-color: #e8e1d5;
+            color: #6d4c41;
+            padding: 8px 15px;
+            border-right: 6px solid #8b5a2b;
+            border-radius: 4px;
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            page-break-after: avoid;
+        }
+
+        /* استایل باکس سوالات */
+        .question-box {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-right: 4px solid #2980b9;
+            border-radius: 5px;
+            box-shadow: 2px 3px 8px rgba(0,0,0,0.04);
+            page-break-inside: avoid; /* جلوگیری از شکستن سوال */
+        }
+        
+        .q-text {
+            color: #1a5276;
+            font-weight: bold;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .a-box {
+            background-color: #e8f8f5;
+            border: 1px dashed #27ae60;
+            padding: 12px;
+            border-radius: 6px;
+            color: #145a32;
+            font-size: 14px;
+        }
+
+        /* باکس فرمول‌ها */
+        .formula {
+            background-color: #fef9e7;
+            border-left: 4px solid #f1c40f;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: 'Courier New', Courier, monospace;
+            direction: ltr;
+            text-align: left;
+            color: #b7950b;
+            font-weight: bold;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        /* استایل گزینه‌های تستی */
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+            color: #34495e;
+        }
+        .options span {
+            background: #f4f6f7;
+            padding: 4px 12px;
+            border-radius: 4px;
+            border: 1px solid #d5dbdb;
+        }
+
+        /* استایل اشکال گرافیکی */
+        .diagram {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+        }
+
+        /* دکمه دانلود */
+        .download-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #c0392b;
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            font-size: 18px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.5);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .download-btn:hover {
+            background-color: #e74c3c;
+            transform: translateX(-50%) scale(1.05);
+        }
+
+        /* تنظیمات مخصوص چاپ و PDF */
+        @media print {
+            body { background: white; padding: 0; }
+            .page { box-shadow: none; margin: 0; border: 8px double #8b5a2b; width: 100%; padding: 15mm; }
+            .download-btn { display: none; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h2>دانلود فایل هگز استاندارد</h2>
-        <p>برای دریافت فایل <b>lab.hex</b> با چکسام صحیح (بدون خطای پروتئوس) کلیک کنید.</p>
-        <button class="download-btn" onclick="downloadHex()">دانلود lab.hex</button>
+    <!-- دکمه شناور دانلود PDF -->
+    <button class="download-btn" onclick="generatePDF()">📥 دانلود فایل PDF کامل</button>
+
+    <div class="page" id="pdf-content">
+        
+        <!-- هدر -->
+        <div class="header">
+            <h1>بانک سوالات جامع و تشریحی</h1>
+            <h2>درس: سیستم‌های دیجیتال ۲ | دانشگاه تفرش</h2>
+            <div class="author">تهیه‌کننده: محمدرسول یزدیان</div>
+        </div>
+
+        <!-- بخش اول: سوالات چهارگزینه‌ای -->
+        <div class="section-title">بخش اول: سوالات چهارگزینه‌ای (تستی)</div>
+
+        <div class="question-box">
+            <div class="q-text">۱. در ساختار داخلی یک FPGA، کدام بخش وظیفه‌ی برقراری ارتباط و سوییچینگ بین مسیرهای سیم (Wire Segments) را بر عهده دارد؟</div>
+            <div class="options">
+                <span>الف) Logic Block</span>
+                <span>ب) I/O Cell</span>
+                <span>ج) S Block (Switch Block)</span>
+                <span>د) C Block (Connection Block)</span>
+            </div>
+            <div class="a-box"><strong>پاسخ:</strong> ج (سوییچ بلوک وظیفه اتصال سیم‌های افقی و عمودی در تقاطع‌ها را دارد).</div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۲. در یک حافظه ROM با ظرفیت 64 کیلوبایت و گذرگاه داده ۸ بیتی، تعداد خطوط آدرس (Address Bus) مورد نیاز چند عدد است؟</div>
+            <div class="options">
+                <span>الف) ۸</span>
+                <span>ب) ۱۵</span>
+                <span>ج) ۱۶</span>
+                <span>د) ۳۲</span>
+            </div>
+            <div class="a-box"><strong>پاسخ:</strong> ج (چون 64KB = 65536 بایت است و \(2^{16} = 65536\)).</div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۳. در چرخه‌ی فراخوانی دستورالعمل (Fetch)، در زمان T0 کدام عمل رخ می‌دهد و کدهای کنترلی S3 S2 S1 S0 چیست؟</div>
+            <div class="options">
+                <span>الف) IR ← M[AR] ، کد 0011</span>
+                <span>ب) AR ← PC ، کد 0000</span>
+                <span>ج) PC ← PC + 1 ، کد 0101</span>
+                <span>د) AR ← PC ، کد 1111</span>
+            </div>
+            <div class="a-box"><strong>پاسخ:</strong> ب (طبق جدول میکروعملیات صفحه ۲۰ جزوه).</div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۴. معماری‌ای که در آن در هر سیکل کلاک، چندین دستورالعمل به صورت هم‌زمان صادر و اجرا می‌شوند، چه نام دارد؟</div>
+            <div class="options">
+                <span>الف) Superpipelining</span>
+                <span>ب) Superscalar</span>
+                <span>ج) Single Cycle</span>
+                <span>د) Multi-cycle</span>
+            </div>
+            <div class="a-box"><strong>پاسخ:</strong> ب (معماری ابرپردازنده یا Superscalar).</div>
+        </div>
+
+        <!-- بخش دوم: جای خالی -->
+        <div class="section-title">بخش دوم: سوالات جای خالی</div>
+
+        <div class="question-box">
+            <div class="q-text">۱. در ساختار FPGA، بلوک‌های منطقی (Logic Blocks) توسط مسیرهایی به نام .................... به یکدیگر متصل می‌شوند.</div>
+            <div class="a-box"><strong>پاسخ:</strong> Wire Segments (مسیرهای سیم)</div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۲. در یک رجیستر m بیتی، برای انجام عمل شیفت به چپ از سیگنال کنترلی .................... استفاده می‌شود.</div>
+            <div class="a-box"><strong>پاسخ:</strong> Shl (Shift Left)</div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۳. برای انتقال داده‌ها از رجیسترها به گذرگاه مشترک (Common Bus) از قطعه سخت‌افزاری .................... استفاده می‌شود.</div>
+            <div class="a-box"><strong>پاسخ:</strong> مالتی‌پلکسر (MUX)</div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۴. واحد اندازه‌گیری سرعت پردازنده‌ها در انجام عملیات اعشاری، .................... نام دارد که مخفف Floating-point Operations per Second است.</div>
+            <div class="a-box"><strong>پاسخ:</strong> FLOPS</div>
+        </div>
+
+        <!-- بخش سوم: درست / غلط -->
+        <div class="section-title">بخش سوم: سوالات درست / غلط</div>
+
+        <div class="question-box">
+            <div class="q-text">۱. بلوک C (Connection Block) در FPGA وظیفه اتصال سیم‌های افقی و عمودی به یکدیگر را بر عهده دارد.</div>
+            <div class="a-box"><strong>پاسخ:</strong> غلط. وظیفه بلوک C اتصال بلوک منطقی به مسیرهای سیم است. وظیفه بلوک S اتصال سیم‌ها به یکدیگر است.</div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۲. رجیستر Program Counter (PC) همواره آدرس دستورالعمل در حال اجرا را نگه می‌دارد.</div>
+            <div class="a-box"><strong>پاسخ:</strong> غلط. PC آدرس دستورالعمل <strong>بعدی</strong> را نگه می‌دارد.</div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۳. در حالت آدرس‌دهی بالفصل (Immediate)، برای یافتن عملوند باید به حافظه مراجعه کرد.</div>
+            <div class="a-box"><strong>پاسخ:</strong> غلط. در این حالت خودِ داده مستقیماً در دستورالعمل قرار دارد و نیازی به مراجعه به حافظه نیست.</div>
+        </div>
+
+        <!-- بخش چهارم: کوتاه پاسخ -->
+        <div class="section-title">بخش چهارم: سوالات کوتاه پاسخ</div>
+
+        <div class="question-box">
+            <div class="q-text">۱. وظیفه رجیستر IR (Instruction Register) در CPU چیست؟</div>
+            <div class="a-box"><strong>پاسخ:</strong> کد دستورالعمل فعلی که از حافظه خوانده شده است را نگهداری می‌کند تا واحد کنترل (Control Unit) بتواند آن را رمزگشایی و اجرا کند.</div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۲. در معماری خط لوله (Pipelining)، منظور از S-Cache و D-Cache چیست؟</div>
+            <div class="a-box"><strong>پاسخ:</strong> جداسازی حافظه نهان دستورالعمل‌ها (Instruction Cache) از حافظه نهان داده‌ها (Data Cache) برای جلوگیری از تداخل و افزایش سرعت پردازش.</div>
+        </div>
+
+        <!-- بخش پنجم: تشریحی و محاسباتی -->
+        <div class="section-title">بخش پنجم: سوالات تشریحی، تحلیلی و محاسباتی</div>
+
+        <div class="question-box">
+            <div class="q-text">۱. (محاسبه مالتی‌پلکسر): در یک پردازنده ۳۲ رجیستر ۶۴ بیتی داریم. برای طراحی گذرگاه مشترک، به چند عدد مالتی‌پلکسر و هر کدام با چند خط انتخاب نیاز داریم؟ (با رسم شکل)</div>
+            <div class="diagram">
+                <svg width="400" height="120" viewBox="0 0 400 120">
+                    <!-- MUX 0 -->
+                    <rect x="20" y="10" width="60" height="80" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+                    <text x="30" y="55" font-size="12" fill="#1565c0" font-weight="bold">MUX(0)</text>
+                    <text x="10" y="20" font-size="10" fill="#333">R0(0)...R31(0)</text>
+                    <!-- Bus Line 0 -->
+                    <line x1="80" y1="50" x2="300" y2="50" stroke="#1565c0" stroke-width="2"/>
+                    <text x="310" y="55" font-size="12" fill="#333">CB(0)</text>
+                    <!-- Select Lines -->
+                    <line x1="50" y1="90" x2="50" y2="110" stroke="#c62828" stroke-width="2"/>
+                    <text x="35" y="120" font-size="10" fill="#c62828">S0..S4</text>
+
+                    <!-- Dots -->
+                    <text x="150" y="55" font-size="20" fill="#777">...</text>
+
+                    <!-- MUX 63 -->
+                    <rect x="20" y="140" width="60" height="80" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+                    <text x="25" y="185" font-size="12" fill="#1565c0" font-weight="bold">MUX(63)</text>
+                    <text x="5" y="150" font-size="10" fill="#333">R0(63)...R31(63)</text>
+                    <!-- Bus Line 63 -->
+                    <line x1="80" y1="180" x2="300" y2="180" stroke="#1565c0" stroke-width="2"/>
+                    <text x="310" y="185" font-size="12" fill="#333">CB(63)</text>
+                    <!-- Select Lines -->
+                    <line x1="50" y1="220" x2="50" y2="240" stroke="#c62828" stroke-width="2"/>
+                    <text x="35" y="250" font-size="10" fill="#c62828">S0..S4</text>
+                </svg>
+            </div>
+            <div class="a-box">
+                <strong>پاسخ محاسباتی:</strong><br>
+                برای هر بیت از داده (۶۴ بیت) به یک MUX نیاز داریم: <strong>۶۴ عدد MUX</strong>.<br>
+                چون ۳۲ رجیستر داریم، هر MUX باید ۳۲ به ۱ باشد.<br>
+                <div class="formula">
+                    Number of Select Lines = log2(32) = 5
+                </div>
+                یعنی هر MUX دارای ۵ خط انتخاب (S0 تا S4) است.
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۲. (محاسبه خط لوله): یک پردازنده غیر خط لوله هر دستور را در ۵ سیکل اجرا می‌کند. اگر به خط لوله ۵ مرحله‌ای تبدیل شود، برای اجرای ۱۰۰۰ دستورالعمل چه میزان Speedup داریم؟ (با رسم نمودار)</div>
+            <div class="diagram">
+                <svg width="450" height="150" viewBox="0 0 450 150">
+                    <!-- Non-Pipeline -->
+                    <text x="10" y="25" font-size="12" font-weight="bold">Non-Pipeline:</text>
+                    <rect x="100" y="10" width="40" height="20" fill="#ef5350" rx="3"/>
+                    <text x="105" y="24" fill="white" font-size="10">F</text>
+                    <rect x="140" y="10" width="40" height="20" fill="#ffca28" rx="3"/>
+                    <text x="145" y="24" fill="white" font-size="10">D</text>
+                    <rect x="180" y="10" width="40" height="20" fill="#42a5f5" rx="3"/>
+                    <text x="185" y="24" fill="white" font-size="10">E</text>
+                    <rect x="220" y="10" width="40" height="20" fill="#66bb6a" rx="3"/>
+                    <text x="225" y="24" fill="white" font-size="10">W</text>
+
+                    <!-- Pipeline Inst 1 -->
+                    <text x="10" y="65" font-size="12" font-weight="bold">Pipeline:</text>
+                    <rect x="100" y="50" width="40" height="20" fill="#ef5350" rx="3"/>
+                    <text x="105" y="64" fill="white" font-size="10">F</text>
+                    <rect x="140" y="50" width="40" height="20" fill="#ffca28" rx="3"/>
+                    <text x="145" y="64" fill="white" font-size="10">D</text>
+                    <rect x="180" y="50" width="40" height="20" fill="#42a5f5" rx="3"/>
+                    <text x="185" y="64" fill="white" font-size="10">E</text>
+                    <rect x="220" y="50" width="40" height="20" fill="#66bb6a" rx="3"/>
+                    <text x="225" y="64" fill="white" font-size="10">W</text>
+
+                    <!-- Pipeline Inst 2 -->
+                    <rect x="140" y="75" width="40" height="20" fill="#ef5350" rx="3"/>
+                    <text x="145" y="89" fill="white" font-size="10">F</text>
+                    <rect x="180" y="75" width="40" height="20" fill="#ffca28" rx="3"/>
+                    <text x="185" y="89" fill="white" font-size="10">D</text>
+                    <rect x="220" y="75" width="40" height="20" fill="#42a5f5" rx="3"/>
+                    <text x="225" y="89" fill="white" font-size="10">E</text>
+                    <rect x="260" y="75" width="40" height="20" fill="#66bb6a" rx="3"/>
+                    <text x="265" y="89" fill="white" font-size="10">W</text>
+
+                    <!-- Pipeline Inst 3 -->
+                    <rect x="180" y="100" width="40" height="20" fill="#ef5350" rx="3"/>
+                    <text x="185" y="114" fill="white" font-size="10">F</text>
+                    <rect x="220" y="100" width="40" height="20" fill="#ffca28" rx="3"/>
+                    <text x="225" y="114" fill="white" font-size="10">D</text>
+                    <rect x="260" y="100" width="40" height="20" fill="#42a5f5" rx="3"/>
+                    <text x="265" y="114" fill="white" font-size="10">E</text>
+                    <rect x="300" y="100" width="40" height="20" fill="#66bb6a" rx="3"/>
+                    <text x="305" y="114" fill="white" font-size="10">W</text>
+                </svg>
+            </div>
+            <div class="a-box">
+                <strong>پاسخ محاسباتی:</strong><br>
+                <div class="formula">
+                    Speedup = (n × k) / (k + (n - 1))
+                </div>
+                زمان غیر خط لوله: \(1000 \times 5 = 5000\) سیکل.<br>
+                زمان خط لوله: \(5 + (1000 - 1) = 1004\) سیکل.<br>
+                <div class="formula">
+                    Speedup = 5000 / 1004 ≈ 4.98
+                </div>
+                یعنی تقریباً <strong>۴.۹۸ برابر</strong> سریع‌تر می‌شود.
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۳. (تحلیل میکروعملیات): در زمان T1 (چرخه فراخوانی)، مقدار شمارنده SC چقدر است؟ کدام سیگنال‌های کنترلی فعال هستند و کدهای S3 S2 S1 S0 چه عددی است؟</div>
+            <div class="a-box">
+                <strong>پاسخ تحلیلی:</strong><br>
+                - شمارنده SC در مرحله <strong>T1</strong> است.<br>
+                - سیگنال‌های فعال: <strong>RD</strong> (خواندن حافظه)، <strong>LD(IR)</strong> (ذخیره دستور در IR)، <strong>INC(PC)</strong> (افزایش PC).<br>
+                - کدهای S3 S2 S1 S0 برابر با <strong>0011</strong> است (طبق جدول صفحه ۲۱ جزوه).
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۴. (استدلال آدرس‌دهی): اگر R1 = ۱۰۰ و Mem(100) = ۲۰۰ باشد. در دستور `R7 = Mem(R1)` مقدار نهایی R7 چقدر است؟ نام این حالت چیست؟</div>
+            <div class="a-box">
+                <strong>پاسخ استدلالی:</strong><br>
+                دستور یعنی آدرس موجود در R1 (که ۱۰۰ است) را گرفته و محتوای آن خانه را بخواند. پس R7 = <strong>۲۰۰</strong> می‌شود.<br>
+                این حالت <strong>حافظه‌ای غیرمستقیم با اشاره‌گر رجیستری (Register Indirect)</strong> است.
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۵. (تحلیل FPGA): فرض کنید یک سیگنال باید از یک Logic Block به یک I/O Cell منتقل شود. توضیح دهید این سیگنال از چه بلوک‌هایی عبور می‌کند و اگر بلوک‌های S خراب شوند چه می‌شود؟</div>
+            <div class="a-box">
+                <strong>پاسخ تحلیلی:</strong><br>
+                سیگنال ابتدا از طریق یک <strong>C-Block</strong> از Logic Block به مسیرهای سیم متصل می‌شود. سپس برای تغییر مسیر در تقاطع، باید از <strong>S-Block</strong> عبور کند. در نهایت برای رسیدن به I/O Cell مجدداً از یک C-Block استفاده می‌کند. اگر S-Blockها خراب شوند، مسیریابی (Routing) بین بلوک‌های منطقی مختل شده و FPGA نمی‌تواند عملکرد تعریف‌شده را اجرا کند.
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۶. (تحلیل فرمت دستورالعمل): یک معماری ۱۶ بیتی است: ۴ بیت Op-code، ۴ بیت رجیستر مقصد، ۲ بیت حالت آدرس‌دهی، ۶ بیت آدرس. الف) حداکثر چند دستورالعمل؟ ب) چند رجیستر؟</div>
+            <div class="a-box">
+                <strong>پاسخ محاسباتی:</strong><br>
+                الف) ۴ بیت Op-code: \(2^4 = 16\) نوع دستورالعمل.<br>
+                ب) ۴ بیت رجیستر: \(2^4 = 16\) رجیستر.
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۷. (تحلیل عملکرد): پردازنده Core i7 با کلاک ۴.۵ گیگاهرتز و CPI=2. زمان اجرای ۱۰ میلیون دستور چقدر است؟</div>
+            <div class="a-box">
+                <strong>پاسخ محاسباتی:</strong><br>
+                <div class="formula">
+                    Time = (Instructions × CPI) / Clock Rate
+                </div>
+                <div class="formula">
+                    Time = (10,000,000 × 2) / 4,500,000,000 ≈ 0.00444 s
+                </div>
+                یعنی حدود <strong>۴.۴۴ میلی‌ثانیه</strong>.
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۸. (تحلیل تصادم گذرگاه): اگر در گذرگاه مشترک، همزمان دو MUX مقادیر متفاوتی را روی خط قرار دهند چه اتفاقی می‌افتد؟</div>
+            <div class="a-box">
+                <strong>پاسخ استدلالی:</strong><br>
+                این حالت <strong>تصادم گذرگاه (Bus Contention)</strong> نام دارد. جریان الکتریکی زیادی از یک خروجی به خروجی دیگر جاری شده، ممکن است به مدار آسیب بزند یا مقدار روی گذرگاه نامشخص (X) شود.
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۹. (محاسبات حافظه): یک حافظه ROM با ظرفیت ۳۲ کیلوبایت و گذرگاه داده ۱۶ بیتی داریم. الف) چند خط آدرس نیاز دارد؟ ب) آخرین آدرس حافظه در مبنای هگز چیست؟</div>
+            <div class="a-box">
+                <strong>پاسخ محاسباتی:</strong><br>
+                الف) ۳۲ کیلوبایت = 32 × 1024 = 32768 آدرس.<br>
+                <div class="formula">
+                    2^n = 32768  =>  n = 15
+                </div>
+                بنابراین به <strong>۱۵ خط آدرس</strong> نیاز دارد.<br>
+                ب) آخرین آدرس برابر است با \(2^{15} - 1 = 32767\). در مبنای هگزادسیمال می‌شود <strong>7FFF</strong>.
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۱۰. (تحلیل رجیستر): مقدار فعلی رجیستر `1100` است. اگر به ترتیب `Clr`، سپس `Inc` و سپس `Shl` اعمال شود، مقدار نهایی چیست؟</div>
+            <div class="a-box">
+                <strong>پاسخ تحلیلی:</strong><br>
+                1. `Clr`: صفر می‌شود (`0000`).<br>
+                2. `Inc`: یک واحد افزایش (`0001`).<br>
+                3. `Shl`: شیفت به چپ (`0010`).<br>
+                مقدار نهایی: <strong>0010</strong> (عدد ۲).
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۱۱. (دیکودر جدول کنترل): اگر شمارنده SC مقدار `0011` را نشان دهد، کدام T فعال می‌شود؟ برای T8 چه مقداری لازم است؟</div>
+            <div class="a-box">
+                <strong>پاسخ محاسباتی:</strong><br>
+                `0011` در مبنای دو برابر ۳ است، پس خروجی <strong>T3</strong> فعال می‌شود.<br>
+                برای T8، شمارنده باید <strong>1000</strong> باشد.
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۱۲. (چرخه فراخوانی دستورالعمل): مراحل T0 و T1 را با میکروعملیات و سیگنال‌ها بنویسید.</div>
+            <div class="a-box">
+                <strong>پاسخ تشریحی:</strong><br>
+                <strong>T0:</strong> انتقال آدرس از PC به AR. میکروعملیات: `AR ← PC` ، سیگنال‌ها: `S3 S2 S1 S0 = 0000` و `LD(AR)`.<br>
+                <strong>T1:</strong> خواندن دستور و افزایش PC. میکروعملیات: `IR ← M[AR] , PC ← PC + 1` ، سیگنال‌ها: `RD`, `S3 S2 S1 S0 = 0011`, `LD(IR)`, `INC(PC)`.
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۱۳. (تفاوت آدرس‌دهی): تفاوت حالت آدرس‌دهی بالفصل (Immediate) و حافظه‌ای مستقیم (Direct Memory) را با مثال توضیح دهید.</div>
+            <div class="a-box">
+                <strong>پاسخ تشریحی:</strong><br>
+                - <strong>بالفصل:</strong> خودِ داده در دستورالعمل است. مثال: `R7 = 22` (عدد ۲۲ مستقیماً در R7 قرار می‌گیرد).<br>
+                - <strong>حافظه‌ای مستقیم:</strong> آدرس خانه حافظه در دستورالعمل است. مثال: `R7 = Mem(22)` (به خانه ۲۲ مراجعه کرده و محتوای آن را در R7 قرار بده).
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۱۴. (استدلال سرعت): چرا افزایش ترانزیستورها به تنهایی نمی‌تواند سرعت را بی‌نهایت افزایش دهد؟</div>
+            <div class="a-box">
+                <strong>پاسخ تحلیلی:</strong><br>
+                افزایش ترانزیستور یعنی گرمای بیشتر و مصرف انرژی بالاتر. کوچک‌سازی بیش از حد باعث نشتی جریان و پدیده‌های کوانتومی می‌شود. همچنین افزایش فرکانس با محدودیت تأخیر سیم‌ها مواجه است. به همین دلیل به جای ترانزیستور بیشتر، از <strong>موازی‌سازی (Pipeline و Superscalar)</strong> استفاده می‌کنند.
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-text">۱۵. (تفاوت معماری‌ها): تفاوت معماری Superscalar و Superpipelining چیست؟</div>
+            <div class="a-box">
+                <strong>پاسخ تشریحی:</strong><br>
+                - <strong>Superpipelining:</strong> افزایش تعداد مراحل خط لوله (عمیق‌تر شدن) برای بالا بردن فرکانس کلاک.<br>
+                - <strong>Superscalar:</strong> مجهز شدن پردازنده به چندین واحد اجرایی برای صدور و اجرای هم‌زمان چندین دستورالعمل مستقل در هر سیکل کلاک.
+            </div>
+        </div>
+
     </div>
 
+    <!-- اسکریپت تولید PDF -->
     <script>
-        function downloadHex() {
-            // 🔹 داده‌های خام حافظه فلش (بدون چکسام)
-            const data = new Uint8Array(256); // یک آرایه 256 بایتی پر از صفر
-            // اینجا می‌توانید کدهای واقعی خود را قرار دهید، فعلاً یک فایل تستی خالی است
+        function generatePDF() {
+            const element = document.getElementById('pdf-content');
+            const btn = document.querySelector('.download-btn');
+            
+            // تغییر وضعیت دکمه
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '⏳ در حال ساخت فایل PDF...';
+            btn.disabled = true;
+            btn.style.backgroundColor = '#7f8c8d';
 
-            // 🔹 تابع ساخت یک رکورد استاندارد Intel HEX با چکسام صحیح
-            function makeRecord(type, offset, bytes) {
-                let record = [bytes.length, (offset >> 8) & 0xFF, offset & 0xFF, type, ...bytes];
-                let sum = record.reduce((a, b) => a + b, 0);
-                let checksum = (0x100 - (sum & 0xFF)) & 0xFF; // محاسبه دو's complement
-                return ':' + record.map(b => b.toString(16).toUpperCase().padStart(2, '0')).join('') + checksum.toString(16).toUpperCase().padStart(2, '0');
-            }
+            // تنظیمات خروجی
+            const opt = {
+                margin:       0,
+                filename:     'Yazdian_Digital2_Complete_Bank.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
 
-            let hexLines = [];
-            // ساخت رکوردهای داده (هر رکورد 16 بایت)
-            for (let i = 0; i < data.length; i += 16) {
-                let chunk = Array.from(data.slice(i, i + 16));
-                hexLines.push(makeRecord(0x00, i, chunk));
-            }
-            // رکورد پایان فایل
-            hexLines.push(makeRecord(0x01, 0x0000, []));
-
-            const hexContent = hexLines.join('\n');
-
-            const blob = new Blob([hexContent], { type: 'application/octet-stream' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.download = 'lab.hex';
-            a.href = url;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+            // اجرای تبدیل
+            html2pdf().set(opt).from(element).save().then(() => {
+                // بازگرداندن دکمه به حالت اول
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                btn.style.backgroundColor = '#c0392b';
+            }).catch(err => {
+                console.error('خطا:', err);
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                btn.style.backgroundColor = '#c0392b';
+                alert('خطایی رخ داد. لطفا از مرورگر کروم استفاده کنید.');
+            });
         }
     </script>
 </body>
-</html>
+                                   </html>
