@@ -6,8 +6,6 @@
     <title>بانک سوالات جامع سیستم‌های دیجیتال ۲ - محمدرسول یزدیان</title>
     <!-- فونت فارسی وزیرمتن -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    <!-- کتابخانه تبدیل به PDF -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     
     <style>
         /* تنظیمات کلی بدنه */
@@ -24,7 +22,7 @@
             word-spacing: 1px;
         }
 
-        /* رفع مشکل تداخل متن‌های انگلیسی و فارسی (بسیار مهم) */
+        /* رفع مشکل تداخل متن‌های انگلیسی و فارسی */
         bdi {
             font-family: 'Courier New', Courier, monospace;
             font-weight: bold;
@@ -135,19 +133,37 @@
         }
         .download-btn:hover { background-color: #e74c3c; transform: translateX(-50%) scale(1.05); }
 
-        /* تنظیمات چاپ */
+        /* ========================================= */
+        /* تنظیمات اختصاصی برای چاپ و خروجی PDF */
+        /* ========================================= */
         @media print {
-            body { background: white; padding: 0; }
-            .page { box-shadow: none; margin: 0; border: 8px double #8b5a2b; width: 100%; padding: 15mm; }
-            .download-btn { display: none; }
+            body { 
+                background: white; 
+                padding: 0; 
+                display: block;
+            }
+            .page { 
+                box-shadow: none; 
+                margin: 0; 
+                width: 100%; 
+                min-height: auto;
+                padding: 10mm; 
+                border: 6px double #8b5a2b; /* حاشیه در چاپ حفظ می‌شود */
+            }
+            .download-btn { 
+                display: none; /* دکمه در PDF دیده نمی‌شود */
+            }
+            .question-box {
+                page-break-inside: avoid; /* جلوگیری از شکستن باکس سوال در PDF */
+            }
         }
     </style>
 </head>
 <body>
 
-    <button class="download-btn" onclick="generatePDF()">📥 دانلود فایل PDF جامع (۲۰۰+ سوال)</button>
+    <button class="download-btn" onclick="window.print()">🖨️ دریافت فایل PDF (چاپ)</button>
 
-    <div class="page" id="pdf-content">
+    <div class="page">
         
         <div class="header">
             <h1>بانک سوالات جامع و تشریحی (تسلط کامل)</h1>
@@ -233,7 +249,7 @@
         <div class="question-box"><div class="q-text">۱۹. در تصویر صفحه ۱۱، رجیستر m بیتی از چند عدد .................... تشکیل شده است.</div><div class="a-box"><strong>پاسخ:</strong> فلاپ‌فلاپ <bdi>(Flip-Flop)</bdi></div></div>
         <div class="question-box"><div class="q-text">۲۰. برای جلوگیری از تصادم داده‌ها روی گذرگاه مشترک، از .................... استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> مالتی‌پلکسر <bdi>(MUX)</bdi></div></div>
         <div class="question-box"><div class="q-text">۲۱. در بلوک <bdi>S</bdi> در FPGA، وظیفه اصلی .................... بین سیم‌ها است.</div><div class="a-box"><strong>پاسخ:</strong> سوییچینگ <bdi>(Switching)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۲۲. در بلوک <bdi>C</b> در FPGA، وظیفه اصلی اتصال .................... به مسیرهای سیم است.</div><div class="a-box"><strong>پاسخ:</strong> بلوک منطقی <bdi>(Logic Block)</bdi></div></div>
+        <div class="question-box"><div class="q-text">۲۲. در بلوک <bdi>C</bdi> در FPGA، وظیفه اصلی اتصال .................... به مسیرهای سیم است.</div><div class="a-box"><strong>پاسخ:</strong> بلوک منطقی <bdi>(Logic Block)</bdi></div></div>
         <div class="question-box"><div class="q-text">۲۳. به ارتباط بین رجیسترها در CPU، .................... می‌گویند که توسط مالتی‌پلکسرها مدیریت می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> گذرگاه مشترک <bdi>(Common Bus)</bdi></div></div>
         <div class="question-box"><div class="q-text">۲۴. در میکروعملیات <bdi>T1</bdi>، دستورالعمل از حافظه به رجیستر .................... منتقل می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>IR</bdi></div></div>
         <div class="question-box"><div class="q-text">۲۵. در چرخه فراخوانی، بعد از خواندن دستورالعمل، مقدار رجیستر .................... یک واحد افزایش می‌یابد.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>PC (Program Counter)</bdi></div></div>
@@ -623,36 +639,5 @@
 
     </div>
 
-    <script>
-        function generatePDF() {
-            const element = document.getElementById('pdf-content');
-            const btn = document.querySelector('.download-btn');
-            
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '⏳ در حال ساخت فایل PDF...';
-            btn.disabled = true;
-            btn.style.backgroundColor = '#7f8c8d';
-
-            const opt = {
-                margin:       0,
-                filename:     'Yazdian_Digital2_Full_Bank.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
-                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-
-            html2pdf().set(opt).from(element).save().then(() => {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-                btn.style.backgroundColor = '#c0392b';
-            }).catch(err => {
-                console.error('خطا:', err);
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-                btn.style.backgroundColor = '#c0392b';
-                alert('خطایی رخ داد. لطفا از مرورگر کروم استفاده کنید.');
-            });
-        }
-    </script>
 </body>
     </html>
