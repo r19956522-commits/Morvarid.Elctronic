@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>پروژه معماری کامپیوتر - محمدرسول یزدیان</title>
     
-    <!-- کتابخانه تولید PDF -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- اضافه کردن کتابخانه‌های عکس‌برداری و ساخت PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     
     <style>
-        /* تنظیمات صفحه نمایش */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #64748b; /* پس زمینه تیره برای دیدن بهتر کاغذ سفید */
+            background-color: #64748b;
             margin: 0;
             padding: 20px;
             display: flex;
@@ -20,7 +20,7 @@
             align-items: center;
         }
 
-        /* دکمه دانلود */
+        /* استایل دکمه دانلود */
         .download-btn {
             background-color: #10b981;
             color: white;
@@ -33,76 +33,85 @@
             box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
             margin-bottom: 20px;
             transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
             z-index: 100;
         }
         .download-btn:active { transform: scale(0.95); }
-        .download-btn.loading { background-color: #64748b; pointer-events: none; }
+        .download-btn:disabled { background-color: #94a3b8; cursor: not-allowed; }
 
-        /* کانتینر اصلی برای تبدیل به PDF */
+        /* استایل لودینگ */
+        #overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); display: none; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 1000; color: white;
+            text-align: center; font-family: Tahoma;
+        }
+        .spinner {
+            border: 5px solid #f3f3f3; border-top: 5px solid #10b981;
+            border-radius: 50%; width: 50px; height: 50px;
+            animation: spin 1s linear infinite; margin-bottom: 20px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* کانتینر اصلی */
         #pdf-content {
-            background-color: #ffffff;
-            width: 210mm; /* عرض دقیق A4 */
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        /* تنظیمات برگه‌های A4 */
+        /* تنظیمات ابعاد دقیق A4 */
         .a4-page {
             background-color: #ffffff;
-            width: 210mm;
-            height: 297mm; /* ارتفاع دقیق A4 */
-            padding: 15mm;
+            width: 794px; /* عرض ثابت 210mm در رزولوشن 96dpi */
+            height: 1123px; /* ارتفاع ثابت 297mm در رزولوشن 96dpi */
+            padding: 40px; /* حاشیه داخلی */
             box-sizing: border-box;
             position: relative;
             display: flex;
             flex-direction: column;
-            border-bottom: 2px dashed #cbd5e1; /* خط جداکننده فقط در صفحه نمایش */
         }
 
-        /* هدر و مشخصات */
+        /* هدر */
         .header {
             border-bottom: 3px solid #1e3a8a;
             padding-bottom: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: #1e3a8a;
         }
-        .header .title { font-size: 18px; font-weight: bold; }
-        .header .student-info { text-align: left; font-size: 15px; line-height: 1.6; }
+        .header .title { font-size: 20px; font-weight: bold; }
+        .header .student-info { text-align: left; font-size: 16px; line-height: 1.6; }
         .header .student-info span { display: block; font-weight: bold; }
 
         /* صورت سوال */
         .question-box {
             background-color: #f8fafc;
             border-right: 5px solid #3b82f6;
-            padding: 10px 15px;
+            padding: 12px 20px;
             margin-bottom: 20px;
-            font-size: 14px;
+            font-size: 15px;
             color: #1e293b;
             font-weight: 500;
             border-radius: 4px;
         }
 
-        /* کانتینر مدار */
+        /* مدار */
         .circuit-container {
             flex-grow: 1;
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            margin-top: 10px;
             width: 100%;
         }
         svg {
             display: block;
             width: 100%;
             height: auto;
-            max-height: 220mm; /* جلوگیری از سرریز شدن */
         }
 
-        /* استایل‌های جدول */
+        /* جداول */
         .table-container { margin-top: 10px; }
         .section-title { font-size: 18px; font-weight: bold; color: #1e3a8a; margin-bottom: 15px; text-align: center; }
         table {
@@ -120,19 +129,6 @@
         .overline { text-decoration: overline; }
         .eq-text { font-family: 'Courier New', Courier, monospace; direction: ltr; font-weight: bold; color: #1e3a8a; }
 
-        /* استایل بارگذاری */
-        #overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); display: none; flex-direction: column;
-            justify-content: center; align-items: center; z-index: 1000; color: white;
-            text-align: center;
-        }
-        .spinner {
-            border: 5px solid #f3f3f3; border-top: 5px solid #10b981;
-            border-radius: 50%; width: 50px; height: 50px;
-            animation: spin 1s linear infinite; margin-bottom: 20px;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -141,20 +137,19 @@
     <div id="overlay">
         <div class="spinner"></div>
         <h2>در حال ساخت فایل PDF...</h2>
-        <p>لطفاً چند لحظه صبر کنید و به اینترنت متصل بمانید.</p>
+        <p>لطفاً صبر کنید و صفحه را نبندید.</p>
     </div>
 
     <!-- دکمه دانلود -->
     <button class="download-btn" id="downloadBtn" onclick="generatePDF()">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        دانلود فایل PDF
+        دانلود فایل PDF تمیز
     </button>
 
     <!-- محتوای اصلی -->
     <div id="pdf-content">
         
         <!-- ================= صفحه اول ================= -->
-        <div class="a4-page">
+        <div class="a4-page" id="page1">
             <div class="header">
                 <div class="title">پاسخ تمرین معماری کامپیوتر</div>
                 <div class="student-info">
@@ -346,7 +341,7 @@
         </div>
 
         <!-- ================= صفحه دوم ================= -->
-        <div class="a4-page" style="border-bottom: none;">
+        <div class="a4-page" id="page2">
             <div class="header" style="margin-bottom: 40px;">
                 <div class="title">جداول و تحلیل مدار</div>
                 <div class="student-info">
@@ -460,47 +455,68 @@
 
     </div>
 
-    <!-- اسکریپت تولید PDF با تنظیمات اصلاح شده -->
+    <!-- اسکریپت اختصاصی و بدون باگ برای تولید PDF -->
     <script>
-        function generatePDF() {
+        async function generatePDF() {
             const btn = document.getElementById('downloadBtn');
             const overlay = document.getElementById('overlay');
             
-            btn.classList.add('loading');
+            // تغییر وضعیت دکمه و نمایش لودینگ
+            btn.disabled = true;
+            btn.innerText = "در حال پردازش...";
             overlay.style.display = 'flex';
 
-            const element = document.getElementById('pdf-content');
-            
-            // تنظیمات بسیار مهم برای جلوگیری از بریدگی در موبایل
-            const opt = {
-                margin:       0,
-                filename:     'MohammadRasoul_Yazdi_4032221073.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { 
-                    scale: 2, 
-                    useCORS: true,
-                    scrollY: 0,
-                    scrollX: 0,
-                    windowWidth: 800, // عرض مرورگر مجازی را ثابت می‌کند تا موبایل صفحه را کوچک نکند
-                    windowHeight: 1123
-                },
-                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                pagebreak:    { mode: ['css', 'legacy'], avoid: 'table' } 
-            };
+            try {
+                // دریافت المان‌های صفحه
+                const page1 = document.getElementById('page1');
+                const page2 = document.getElementById('page2');
 
-            // صبر کوتاه برای اطمینان از لود کامل فونت‌ها و تصاویر
-            setTimeout(() => {
-                html2pdf().set(opt).from(element).save().then(() => {
-                    btn.classList.remove('loading');
-                    overlay.style.display = 'none';
-                }).catch((error) => {
-                    console.error(error);
-                    alert("خطا در ساخت PDF! لطفاً اینترنت گوشی خود را بررسی کنید.");
-                    btn.classList.remove('loading');
-                    overlay.style.display = 'none';
-                });
-            }, 500);
+                // تنظیمات عکس‌برداری با کیفیت بالا
+                const options = {
+                    scale: 2, // کیفیت بالا
+                    useCORS: true,
+                    backgroundColor: '#ffffff'
+                };
+
+                // عکس‌برداری از صفحه 1 و 2
+                const canvas1 = await html2canvas(page1, options);
+                const canvas2 = await html2canvas(page2, options);
+
+                // تبدیل عکس‌ها به فرمت داده (Data URL)
+                const imgData1 = canvas1.toDataURL('image/jpeg', 0.95);
+                const imgData2 = canvas2.toDataURL('image/jpeg', 0.95);
+
+                // ایجاد فایل PDF در سایز A4
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                
+                // ابعاد صفحه A4 در میلی‌متر
+                const pdfWidth = 210;
+                const pdfHeight = 297;
+
+                // افزودن صفحه اول
+                pdf.addImage(imgData1, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+                
+                // افزودن صفحه دوم
+                pdf.addPage();
+                pdf.addImage(imgData2, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+
+                // ذخیره فایل
+                pdf.save('MohammadRasoul_Yazdi_4032221073.pdf');
+
+                // بازگرداندن وضعیت به حالت اولیه
+                btn.disabled = false;
+                btn.innerText = "دانلود فایل PDF تمیز";
+                overlay.style.display = 'none';
+
+            } catch (error) {
+                console.error("خطا:", error);
+                alert("خطایی رخ داد. لطفاً مطمئن شوید به اینترنت متصل هستید و صفحه را رفرش کنید.");
+                btn.disabled = false;
+                btn.innerText = "دانلود فایل PDF تمیز";
+                overlay.style.display = 'none';
+            }
         }
     </script>
 </body>
-    </html>
+                        </html>
