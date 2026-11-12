@@ -8,7 +8,7 @@
         /* تنظیمات کلی */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f1f5f9;
+            background-color: #cbd5e1;
             margin: 0;
             padding: 20px;
             display: flex;
@@ -32,34 +32,35 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            z-index: 100;
         }
         .download-btn:hover { background-color: #059669; transform: translateY(-2px); }
-        .download-btn:active { transform: translateY(0); }
 
-        /* تنظیمات برگه A4 */
+        /* تنظیمات برگه‌های A4 */
         .a4-page {
             background-color: #ffffff;
-            width: 100%;
-            max-width: 210mm;
-            min-height: 297mm;
+            width: 210mm;
+            height: 297mm; /* ارتفاع ثابت برای A4 */
             padding: 15mm;
             box-sizing: border-box;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
             position: relative;
-            overflow: hidden; /* برای جلوگیری از خروج عناصر */
+            display: flex;
+            flex-direction: column;
         }
 
         /* هدر و مشخصات */
         .header {
             border-bottom: 3px solid #1e3a8a;
             padding-bottom: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: #1e3a8a;
         }
-        .header .title { font-size: 20px; font-weight: bold; }
+        .header .title { font-size: 18px; font-weight: bold; }
         .header .student-info { text-align: left; font-size: 15px; line-height: 1.6; }
         .header .student-info span { display: block; font-weight: bold; }
 
@@ -67,53 +68,61 @@
         .question-box {
             background-color: #f8fafc;
             border-right: 5px solid #3b82f6;
-            padding: 12px 20px;
+            padding: 10px 15px;
             margin-bottom: 20px;
-            font-size: 15px;
+            font-size: 14px;
             color: #1e293b;
             font-weight: 500;
             border-radius: 4px;
         }
 
-        /* تنظیمات SVG مدار */
+        /* کانتینر مدار */
         .circuit-container {
-            width: 100%;
-            overflow-x: auto; /* اجازه اسکرول افقی در گوشی در صورت نیاز */
-            margin-bottom: 20px;
+            flex-grow: 1; /* پر کردن فضای باقی‌مانده */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
         svg {
             display: block;
-            margin: 0 auto;
-            min-width: 1000px; /* حداقل عرض برای خوانایی */
+            width: 100%;
             height: auto;
+            max-height: 100%;
         }
 
         /* استایل‌های جدول */
-        .table-container { margin-top: 20px; }
-        .section-title { font-size: 17px; font-weight: bold; color: #1e3a8a; margin-bottom: 10px; text-align: center; }
+        .table-container { margin-top: 10px; }
+        .section-title { font-size: 18px; font-weight: bold; color: #1e3a8a; margin-bottom: 15px; text-align: center; }
         table {
             width: 100%;
             border-collapse: collapse;
             font-size: 14px;
             text-align: center;
+            margin-bottom: 30px;
         }
-        th, td { border: 1px solid #94a3b8; padding: 8px; }
+        th, td { border: 1px solid #64748b; padding: 10px; }
         th { background-color: #1e3a8a; color: #ffffff; font-weight: bold; }
         tr:nth-child(even) { background-color: #f8fafc; }
-        .active { color: #dc2626; font-weight: bold; font-size: 15px; }
+        .active { color: #dc2626; font-weight: bold; font-size: 16px; }
         .inactive { color: #64748b; }
         .overline { text-decoration: overline; }
         .eq-text { font-family: 'Courier New', Courier, monospace; direction: ltr; font-weight: bold; color: #1e3a8a; }
 
-        /* تنظیمات چاپ */
+        /* تنظیمات چاپ (مهم‌ترین بخش) */
         @media print {
             body { background-color: #ffffff; margin: 0; padding: 0; display: block; }
-            .a4-page { box-shadow: none; width: 100%; max-width: 100%; min-height: auto; padding: 0; }
-            .question-box { background-color: transparent; }
-            .download-btn { display: none; } /* مخفی کردن دکمه در پرینت */
-            .circuit-container { overflow: visible; }
-            svg { min-width: 100%; } /* در پرینت کل عرض را پر کند */
-            @page { size: A4 landscape; margin: 10mm; } /* پیشنهاد حالت افقی برای جا شدن بهتر مدار */
+            .a4-page { 
+                box-shadow: none; 
+                margin: 0; 
+                width: 100%; 
+                height: 100%; 
+                page-break-after: always; /* ایجاد شکست صفحه بعد از هر A4 */
+                padding: 10mm;
+            }
+            .a4-page:last-child { page-break-after: auto; } /* برای صفحه آخر شکست ایجاد نکن */
+            .download-btn { display: none; }
+            @page { size: A4 portrait; margin: 0; }
         }
     </style>
 </head>
@@ -125,7 +134,8 @@
         دانلود فایل جهت پرینت
     </button>
 
-    <div class="a4-page" id="page-content">
+    <!-- ================= صفحه اول: مشخصات، سوال و مدار ================= -->
+    <div class="a4-page">
         <!-- هدر -->
         <div class="header">
             <div class="title">پاسخ تمرین معماری کامپیوتر</div>
@@ -135,40 +145,30 @@
             </div>
         </div>
 
-        <!-- صورت سوال -->
+        <!-- صورت سوال کوتاه شده -->
         <div class="question-box">
-            <strong>سوال:</strong> طراحی مدار ارتباط یک CPU با ۴ حافظه (دو عدد ROM و دو عدد RAM) ۱۶ کیلوبایتی. اتصالات باید ۱۰۰٪ صحیح باشد و جدول درستی (Truth Table) و معادلات منطقی برای انتخاب حافظه‌ها رسم شود.
+            <strong>سوال:</strong> طراحی مدار ارتباط یک CPU با ۴ حافظه (دو عدد ROM و دو عدد RAM) ۱۶ کیلوبایتی با استفاده از گیت‌های منطقی.
         </div>
 
-        <!-- مدار گرافیکی (بزرگتر و بازتر) -->
+        <!-- مدار گرافیکی -->
         <div class="circuit-container">
-            <svg width="1400" height="850" viewBox="0 0 1400 850" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1400 850" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <marker id="arrow-addr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" />
-                    </marker>
-                    <marker id="arrow-data" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a" />
-                    </marker>
-                    <marker id="arrow-control" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626" />
-                    </marker>
-                    <marker id="arrow-cs" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#ea580c" />
-                    </marker>
+                    <marker id="arrow-addr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" /></marker>
+                    <marker id="arrow-data" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a" /></marker>
+                    <marker id="arrow-control" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626" /></marker>
+                    <marker id="arrow-cs" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#ea580c" /></marker>
                 </defs>
 
-                <!-- ================= CPU BLOCK ================= -->
+                <!-- CPU BLOCK -->
                 <rect x="50" y="200" width="180" height="450" rx="10" fill="#dbeafe" stroke="#1e40af" stroke-width="3" filter="drop-shadow(4px 4px 6px rgba(0,0,0,0.1))" />
                 <text x="140" y="240" font-size="22" font-weight="bold" text-anchor="middle" fill="#000">CPU</text>
                 
-                <!-- CPU Pins (Left) -->
                 <line x1="20" y1="300" x2="50" y2="300" stroke="#dc2626" stroke-width="2.5" />
                 <text x="35" y="290" font-size="14" font-weight="bold" text-anchor="end">RST</text>
                 <line x1="20" y1="550" x2="50" y2="550" stroke="#dc2626" stroke-width="2.5" />
                 <text x="35" y="540" font-size="14" font-weight="bold" text-anchor="end">CP</text>
 
-                <!-- CPU Pins (Right) -->
                 <text x="250" y="260" font-size="15" font-weight="bold" text-anchor="start">A0-A13</text>
                 <line x1="230" y1="280" x2="350" y2="280" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
 
@@ -187,8 +187,7 @@
                 <text x="250" y="640" font-size="15" font-weight="bold" text-anchor="start">WR</text>
                 <line x1="230" y1="660" x2="700" y2="660" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
 
-                <!-- ================= LOGIC GATES ================= -->
-                <!-- NOT Gates -->
+                <!-- LOGIC GATES -->
                 <g transform="translate(450, 360)">
                     <path d="M 0,0 L 35,20 L 0,40 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
                     <circle cx="39" cy="20" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
@@ -200,27 +199,22 @@
                     <text x="17" y="60" font-size="12" font-weight="bold" text-anchor="middle">NOT</text>
                 </g>
 
-                <!-- Vertical Logic Rails -->
-                <!-- A15' Rail -->
+                <!-- LOGIC RAILS -->
                 <line x1="493" y1="460" x2="550" y2="460" stroke="#4b5563" stroke-width="2" />
                 <line x1="550" y1="180" x2="550" y2="750" stroke="#4b5563" stroke-width="2" />
                 
-                <!-- A15 Rail -->
                 <line x1="450" y1="460" x2="600" y2="460" stroke="#4b5563" stroke-width="2" />
                 <line x1="600" y1="400" x2="600" y2="750" stroke="#4b5563" stroke-width="2" />
                 <circle cx="600" cy="460" r="5" fill="#000" />
 
-                <!-- A14' Rail -->
                 <line x1="493" y1="380" x2="650" y2="380" stroke="#4b5563" stroke-width="2" />
                 <line x1="650" y1="180" x2="650" y2="600" stroke="#4b5563" stroke-width="2" />
 
-                <!-- A14 Rail -->
                 <line x1="450" y1="380" x2="700" y2="380" stroke="#4b5563" stroke-width="2" />
                 <line x1="700" y1="400" x2="700" y2="650" stroke="#4b5563" stroke-width="2" />
                 <circle cx="700" cy="380" r="5" fill="#000" />
 
-                <!-- NAND Gates -->
-                <!-- NAND 1 (CS0) -->
+                <!-- NAND GATES -->
                 <g transform="translate(750, 180)">
                     <path d="M 0,0 L 35,0 A 30,30 0 0,1 35,60 L 0,60 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
                     <circle cx="68" cy="30" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
@@ -228,8 +222,6 @@
                     <line x1="0" y1="20" x2="-200" y2="20" stroke="#4b5563" stroke-width="2" />
                     <line x1="0" y1="40" x2="-100" y2="40" stroke="#4b5563" stroke-width="2" />
                 </g>
-
-                <!-- NAND 2 (CS1) -->
                 <g transform="translate(750, 350)">
                     <path d="M 0,0 L 35,0 A 30,30 0 0,1 35,60 L 0,60 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
                     <circle cx="68" cy="30" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
@@ -237,8 +229,6 @@
                     <line x1="0" y1="20" x2="-200" y2="20" stroke="#4b5563" stroke-width="2" />
                     <line x1="0" y1="40" x2="-50" y2="40" stroke="#4b5563" stroke-width="2" />
                 </g>
-
-                <!-- NAND 3 (CS2) -->
                 <g transform="translate(750, 550)">
                     <path d="M 0,0 L 35,0 A 30,30 0 0,1 35,60 L 0,60 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
                     <circle cx="68" cy="30" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
@@ -246,8 +236,6 @@
                     <line x1="0" y1="20" x2="-150" y2="20" stroke="#4b5563" stroke-width="2" />
                     <line x1="0" y1="40" x2="-100" y2="40" stroke="#4b5563" stroke-width="2" />
                 </g>
-
-                <!-- NAND 4 (CS3) -->
                 <g transform="translate(750, 700)">
                     <path d="M 0,0 L 35,0 A 30,30 0 0,1 35,60 L 0,60 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
                     <circle cx="68" cy="30" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
@@ -256,8 +244,7 @@
                     <line x1="0" y1="40" x2="-50" y2="40" stroke="#4b5563" stroke-width="2" />
                 </g>
 
-                <!-- ================= MEMORY BLOCKS ================= -->
-                <!-- ROM 1 -->
+                <!-- MEMORY BLOCKS -->
                 <g transform="translate(1050, 150)">
                     <rect x="0" y="0" width="200" height="130" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" filter="drop-shadow(3px 3px 5px rgba(0,0,0,0.1))" />
                     <text x="100" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">ROM 1</text>
@@ -267,8 +254,6 @@
                     <text x="-10" y="115" font-size="14" font-weight="bold" text-anchor="end">CS</text> <line x1="-25" y1="105" x2="-10" y2="105" stroke="#000" stroke-width="1.5" />
                     <text x="-10" y="135" font-size="14" font-weight="bold" text-anchor="end">RD</text> <line x1="-25" y1="125" x2="-10" y2="125" stroke="#000" stroke-width="1.5" />
                 </g>
-
-                <!-- ROM 2 -->
                 <g transform="translate(1050, 320)">
                     <rect x="0" y="0" width="200" height="130" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" filter="drop-shadow(3px 3px 5px rgba(0,0,0,0.1))" />
                     <text x="100" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">ROM 2</text>
@@ -278,8 +263,6 @@
                     <text x="-10" y="115" font-size="14" font-weight="bold" text-anchor="end">CS</text> <line x1="-25" y1="105" x2="-10" y2="105" stroke="#000" stroke-width="1.5" />
                     <text x="-10" y="135" font-size="14" font-weight="bold" text-anchor="end">RD</text> <line x1="-25" y1="125" x2="-10" y2="125" stroke="#000" stroke-width="1.5" />
                 </g>
-
-                <!-- RAM 1 -->
                 <g transform="translate(1050, 520)">
                     <rect x="0" y="0" width="200" height="150" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" filter="drop-shadow(3px 3px 5px rgba(0,0,0,0.1))" />
                     <text x="100" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">RAM 1</text>
@@ -290,8 +273,6 @@
                     <text x="-10" y="135" font-size="14" font-weight="bold" text-anchor="end">RD</text> <line x1="-25" y1="125" x2="-10" y2="125" stroke="#000" stroke-width="1.5" />
                     <text x="-10" y="155" font-size="14" font-weight="bold" text-anchor="end">WR</text> <line x1="-25" y1="145" x2="-10" y2="145" stroke="#000" stroke-width="1.5" />
                 </g>
-
-                <!-- RAM 2 -->
                 <g transform="translate(1050, 670)">
                     <rect x="0" y="0" width="200" height="150" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" filter="drop-shadow(3px 3px 5px rgba(0,0,0,0.1))" />
                     <text x="100" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">RAM 2</text>
@@ -303,14 +284,12 @@
                     <text x="-10" y="155" font-size="14" font-weight="bold" text-anchor="end">WR</text> <line x1="-25" y1="145" x2="-10" y2="145" stroke="#000" stroke-width="1.5" />
                 </g>
 
-                <!-- ================= WIRING (ROUTING) ================= -->
-                <!-- CS Signals (NAND to Memories) -->
+                <!-- WIRING -->
                 <line x1="822" y1="210" x2="1040" y2="210" stroke="#ea580c" stroke-width="3" marker-end="url(#arrow-cs)" />
                 <line x1="822" y1="380" x2="1040" y2="380" stroke="#ea580c" stroke-width="3" marker-end="url(#arrow-cs)" />
                 <line x1="822" y1="580" x2="1040" y2="580" stroke="#ea580c" stroke-width="3" marker-end="url(#arrow-cs)" />
                 <line x1="822" y1="730" x2="1040" y2="730" stroke="#ea580c" stroke-width="3" marker-end="url(#arrow-cs)" />
 
-                <!-- Address Bus Branching -->
                 <line x1="350" y1="280" x2="350" y2="800" stroke="#2563eb" stroke-width="4" />
                 <line x1="350" y1="190" x2="1050" y2="190" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
                 <line x1="350" y1="360" x2="1050" y2="360" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
@@ -321,7 +300,6 @@
                 <circle cx="350" cy="560" r="5" fill="#000" />
                 <circle cx="350" cy="710" r="5" fill="#000" />
 
-                <!-- Data Bus Branching -->
                 <line x1="980" y1="540" x2="980" y2="820" stroke="#16a34a" stroke-width="4" />
                 <line x1="980" y1="230" x2="1050" y2="230" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow-data)" />
                 <line x1="980" y1="400" x2="1050" y2="400" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow-data)" />
@@ -332,7 +310,6 @@
                 <circle cx="980" cy="600" r="5" fill="#000" />
                 <circle cx="980" cy="750" r="5" fill="#000" />
 
-                <!-- RD Signal Branching -->
                 <line x1="650" y1="610" x2="650" y2="800" stroke="#dc2626" stroke-width="3" />
                 <line x1="650" y1="250" x2="1050" y2="250" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
                 <line x1="650" y1="420" x2="1050" y2="420" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
@@ -343,13 +320,24 @@
                 <circle cx="650" cy="620" r="5" fill="#000" />
                 <circle cx="650" cy="770" r="5" fill="#000" />
 
-                <!-- WR Signal Branching -->
                 <line x1="700" y1="660" x2="700" y2="830" stroke="#dc2626" stroke-width="3" />
                 <line x1="700" y1="640" x2="1050" y2="640" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
                 <line x1="700" y1="790" x2="1050" y2="790" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
                 <circle cx="700" cy="640" r="5" fill="#000" />
                 <circle cx="700" cy="790" r="5" fill="#000" />
             </svg>
+        </div>
+    </div>
+
+    <!-- ================= صفحه دوم: جداول ================= -->
+    <div class="a4-page">
+        <!-- هدر صفحه دوم -->
+        <div class="header" style="margin-bottom: 40px;">
+            <div class="title">جداول و تحلیل مدار</div>
+            <div class="student-info">
+                <span>محمدرسول یزدیان</span>
+                <span>کد دانشجویی: ۴۰۳۲۲۲۱۰۷۳</span>
+            </div>
         </div>
 
         <!-- جدول درستی -->
@@ -419,9 +407,9 @@
         </div>
 
         <!-- معادلات منطقی -->
-        <div class="table-container" style="margin-top: 20px;">
+        <div class="table-container" style="margin-top: 50px;">
             <div class="section-title">معادلات منطقی انتخاب حافظه (Chip Select)</div>
-            <table style="width: 90%; margin: 0 auto;">
+            <table style="width: 100%;">
                 <thead>
                     <tr>
                         <th>حافظه</th>
@@ -433,22 +421,22 @@
                     <tr>
                         <td>ROM 1</td>
                         <td class="eq-text">CS0 = NAND(A15', A14')</td>
-                        <td style="font-size: 13px;">وقتی هر دو A15 و A14 صفر باشند، خروجی صفر (فعال) می‌شود.</td>
+                        <td style="font-size: 14px;">وقتی هر دو A15 و A14 صفر باشند، خروجی صفر (فعال) می‌شود.</td>
                     </tr>
                     <tr>
                         <td>ROM 2</td>
                         <td class="eq-text">CS1 = NAND(A15', A14)</td>
-                        <td style="font-size: 13px;">وقتی A15=0 و A14=1 باشد، خروجی صفر (فعال) می‌شود.</td>
+                        <td style="font-size: 14px;">وقتی A15=0 و A14=1 باشد، خروجی صفر (فعال) می‌شود.</td>
                     </tr>
                     <tr>
                         <td>RAM 1</td>
                         <td class="eq-text">CS2 = NAND(A15, A14')</td>
-                        <td style="font-size: 13px;">وقتی A15=1 و A14=0 باشد، خروجی صفر (فعال) می‌شود.</td>
+                        <td style="font-size: 14px;">وقتی A15=1 و A14=0 باشد، خروجی صفر (فعال) می‌شود.</td>
                     </tr>
                     <tr>
                         <td>RAM 2</td>
                         <td class="eq-text">CS3 = NAND(A15, A14)</td>
-                        <td style="font-size: 13px;">وقتی هر دو A15 و A14 یک باشند، خروجی صفر (فعال) می‌شود.</td>
+                        <td style="font-size: 14px;">وقتی هر دو A15 و A14 یک باشند، خروجی صفر (فعال) می‌شود.</td>
                     </tr>
                 </tbody>
             </table>
@@ -458,28 +446,17 @@
     <!-- اسکریپت دانلود فایل -->
     <script>
         function downloadFile() {
-            // دریافت کل محتوای HTML صفحه
             const htmlContent = document.documentElement.outerHTML;
-            
-            // ساخت یک Blob از نوع text/html
             const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
             const url = URL.createObjectURL(blob);
-            
-            // ساخت تگ <a> برای دانلود
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'MohammadRasoul_Yazdian_4032221073.html'; // نام فایل دانلودی
-            
-            // اضافه کردن به DOM و کلیک روی آن
+            a.download = 'MohammadRasoul_Yazdian_4032221073.html';
             document.body.appendChild(a);
             a.click();
-            
-            // پاکسازی
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-            
-            // پیام موفقیت‌آمیز (اختیاری)
-            alert('فایل با موفقیت دانلود شد. اکنون می‌توانید آن را با مرورگر باز کرده و پرینت بگیرید.');
+            alert('فایل دانلود شد. آن را باز کرده و گزینه Print را بزنید. حتماً Background Graphics را روشن کنید.');
         }
     </script>
 </body>
