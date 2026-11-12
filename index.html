@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>پروژه معماری کامپیوتر - محمدرسول یزدیان</title>
+    
+    <!-- کتابخانه تولید PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
     <style>
-        /* تنظیمات کلی */
+        /* تنظیمات کلی صفحه نمایش (برای گوشی) */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #cbd5e1;
@@ -21,8 +25,8 @@
             background-color: #10b981;
             color: white;
             border: none;
-            padding: 12px 24px;
-            font-size: 16px;
+            padding: 15px 30px;
+            font-size: 18px;
             font-weight: bold;
             border-radius: 8px;
             cursor: pointer;
@@ -34,20 +38,26 @@
             gap: 10px;
             z-index: 100;
         }
-        .download-btn:hover { background-color: #059669; transform: translateY(-2px); }
+        .download-btn:active { transform: scale(0.95); }
+        .download-btn.loading { background-color: #64748b; pointer-events: none; }
+
+        /* کانتینر اصلی برای تبدیل به PDF */
+        #pdf-content {
+            width: 210mm;
+            background-color: #ffffff;
+        }
 
         /* تنظیمات برگه‌های A4 */
         .a4-page {
             background-color: #ffffff;
             width: 210mm;
-            height: 297mm; /* ارتفاع ثابت برای A4 */
+            height: 297mm;
             padding: 15mm;
             box-sizing: border-box;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
             position: relative;
             display: flex;
             flex-direction: column;
+            border-bottom: 2px dashed #94a3b8; /* خط جداکننده در صفحه نمایش */
         }
 
         /* هدر و مشخصات */
@@ -78,17 +88,16 @@
 
         /* کانتینر مدار */
         .circuit-container {
-            flex-grow: 1; /* پر کردن فضای باقی‌مانده */
+            flex-grow: 1;
             display: flex;
             justify-content: center;
-            align-items: center;
-            overflow: hidden;
+            align-items: flex-start;
+            margin-top: 10px;
         }
         svg {
             display: block;
             width: 100%;
             height: auto;
-            max-height: 100%;
         }
 
         /* استایل‌های جدول */
@@ -109,355 +118,384 @@
         .overline { text-decoration: overline; }
         .eq-text { font-family: 'Courier New', Courier, monospace; direction: ltr; font-weight: bold; color: #1e3a8a; }
 
-        /* تنظیمات چاپ (مهم‌ترین بخش) */
-        @media print {
-            body { background-color: #ffffff; margin: 0; padding: 0; display: block; }
-            .a4-page { 
-                box-shadow: none; 
-                margin: 0; 
-                width: 100%; 
-                height: 100%; 
-                page-break-after: always; /* ایجاد شکست صفحه بعد از هر A4 */
-                padding: 10mm;
-            }
-            .a4-page:last-child { page-break-after: auto; } /* برای صفحه آخر شکست ایجاد نکن */
-            .download-btn { display: none; }
-            @page { size: A4 portrait; margin: 0; }
+        /* استایل بارگذاری */
+        #overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); display: none; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 1000; color: white;
         }
+        .spinner {
+            border: 5px solid #f3f3f3; border-top: 5px solid #10b981;
+            border-radius: 50%; width: 50px; height: 50px;
+            animation: spin 1s linear infinite; margin-bottom: 20px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
+    <!-- لایه بارگذاری -->
+    <div id="overlay">
+        <div class="spinner"></div>
+        <h2>در حال ساخت فایل PDF...</h2>
+        <p>لطفاً چند لحظه صبر کنید و صفحه را نبندید.</p>
+    </div>
+
     <!-- دکمه دانلود -->
-    <button class="download-btn" onclick="downloadFile()">
+    <button class="download-btn" id="downloadBtn" onclick="generatePDF()">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        دانلود فایل جهت پرینت
+        دانلود فایل PDF
     </button>
 
-    <!-- ================= صفحه اول: مشخصات، سوال و مدار ================= -->
-    <div class="a4-page">
-        <!-- هدر -->
-        <div class="header">
-            <div class="title">پاسخ تمرین معماری کامپیوتر</div>
-            <div class="student-info">
-                <span>محمدرسول یزدیان</span>
-                <span>کد دانشجویی: ۴۰۳۲۲۲۱۰۷۳</span>
+    <!-- محتوای اصلی که به PDF تبدیل می‌شود -->
+    <div id="pdf-content">
+        
+        <!-- ================= صفحه اول: مشخصات، سوال و مدار ================= -->
+        <div class="a4-page">
+            <div class="header">
+                <div class="title">پاسخ تمرین معماری کامپیوتر</div>
+                <div class="student-info">
+                    <span>محمدرسول یزدیان</span>
+                    <span>کد دانشجویی: ۴۰۳۲۲۲۱۰۷۳</span>
+                </div>
+            </div>
+
+            <div class="question-box">
+                <strong>سوال:</strong> طراحی مدار ارتباط یک CPU با ۴ حافظه (دو عدد ROM و دو عدد RAM) ۱۶ کیلوبایتی با استفاده از گیت‌های منطقی.
+            </div>
+
+            <div class="circuit-container">
+                <!-- SVG بدون سایه (Drop-shadow) برای خروجی تمیزتر در PDF -->
+                <svg viewBox="0 0 1400 850" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrow-addr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" /></marker>
+                        <marker id="arrow-data" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a" /></marker>
+                        <marker id="arrow-control" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626" /></marker>
+                        <marker id="arrow-cs" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#ea580c" /></marker>
+                    </defs>
+
+                    <!-- CPU BLOCK -->
+                    <rect x="50" y="200" width="180" height="450" rx="10" fill="#dbeafe" stroke="#1e40af" stroke-width="3" />
+                    <text x="140" y="240" font-size="22" font-weight="bold" text-anchor="middle" fill="#000">CPU</text>
+                    
+                    <line x1="20" y1="300" x2="50" y2="300" stroke="#dc2626" stroke-width="2.5" />
+                    <text x="35" y="290" font-size="14" font-weight="bold" text-anchor="end">RST</text>
+                    <line x1="20" y1="550" x2="50" y2="550" stroke="#dc2626" stroke-width="2.5" />
+                    <text x="35" y="540" font-size="14" font-weight="bold" text-anchor="end">CP</text>
+
+                    <text x="250" y="260" font-size="15" font-weight="bold" text-anchor="start">A0-A13</text>
+                    <line x1="230" y1="280" x2="350" y2="280" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
+
+                    <text x="250" y="360" font-size="15" font-weight="bold" text-anchor="start">A14</text>
+                    <line x1="230" y1="380" x2="450" y2="380" stroke="#2563eb" stroke-width="3" />
+                    
+                    <text x="250" y="440" font-size="15" font-weight="bold" text-anchor="start">A15</text>
+                    <line x1="230" y1="460" x2="450" y2="460" stroke="#2563eb" stroke-width="3" />
+
+                    <text x="250" y="520" font-size="15" font-weight="bold" text-anchor="start">D0-D7</text>
+                    <line x1="230" y1="540" x2="1050" y2="540" stroke="#16a34a" stroke-width="4" marker-start="url(#arrow-data)" marker-end="url(#arrow-data)" />
+
+                    <text x="250" y="590" font-size="15" font-weight="bold" text-anchor="start">RD</text>
+                    <line x1="230" y1="610" x2="650" y2="610" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
+
+                    <text x="250" y="640" font-size="15" font-weight="bold" text-anchor="start">WR</text>
+                    <line x1="230" y1="660" x2="700" y2="660" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
+
+                    <!-- LOGIC GATES -->
+                    <g transform="translate(450, 360)">
+                        <path d="M 0,0 L 35,20 L 0,40 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                        <circle cx="39" cy="20" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                        <text x="17" y="60" font-size="12" font-weight="bold" text-anchor="middle">NOT</text>
+                    </g>
+                    <g transform="translate(450, 440)">
+                        <path d="M 0,0 L 35,20 L 0,40 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                        <circle cx="39" cy="20" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                        <text x="17" y="60" font-size="12" font-weight="bold" text-anchor="middle">NOT</text>
+                    </g>
+
+                    <!-- LOGIC RAILS -->
+                    <line x1="493" y1="460" x2="550" y2="460" stroke="#4b5563" stroke-width="2" />
+                    <line x1="550" y1="180" x2="550" y2="750" stroke="#4b5563" stroke-width="2" />
+                    
+                    <line x1="450" y1="460" x2="600" y2="460" stroke="#4b5563" stroke-width="2" />
+                    <line x1="600" y1="400" x2="600" y2="750" stroke="#4b5563" stroke-width="2" />
+                    <circle cx="600" cy="460" r="5" fill="#000" />
+
+                    <line x1="493" y1="380" x2="650" y2="380" stroke="#4b5563" stroke-width="2" />
+                    <line x1="650" y1="180" x2="650" y2="600" stroke="#4b5563" stroke-width="2" />
+
+                    <line x1="450" y1="380" x2="700" y2="380" stroke="#4b5563" stroke-width="2" />
+                    <line x1="700" y1="400" x2="700" y2="650" stroke="#4b5563" stroke-width="2" />
+                    <circle cx="700" cy="380" r="5" fill="#000" />
+
+                    <!-- NAND GATES -->
+                    <g transform="translate(750, 180)">
+                        <path d="M 0,0 L 35,0 A 30,30 0 0,1 35,60 L 0,60 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                        <circle cx="68" cy="30" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                        <text x="30" y="80" font-size="12" font-weight="bold" text-anchor="middle">NAND</text>
+                        <line x1="0" y1="20" x2="-200" y2="20" stroke="#4b5563" stroke-width="2" />
+                        <line x1="0" y1="40" x2="-100" y2="40" stroke="#4b5563" stroke-width="2" />
+                    </g>
+                    <g transform="translate(750, 350)">
+                        <path d="M 0,0 L 35,0 A 30,30 0 0,1 35,60 L 0,60 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                        <circle cx="68" cy="30" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                        <text x="30" y="80" font-size="12" font-weight="bold" text-anchor="middle">NAND</text>
+                        <line x1="0" y1="20" x2="-200" y2="20" stroke="#4b5563" stroke-width="2" />
+                        <line x1="0" y1="40" x2="-50" y2="40" stroke="#4b5563" stroke-width="2" />
+                    </g>
+                    <g transform="translate(750, 550)">
+                        <path d="M 0,0 L 35,0 A 30,30 0 0,1 35,60 L 0,60 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                        <circle cx="68" cy="30" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                        <text x="30" y="80" font-size="12" font-weight="bold" text-anchor="middle">NAND</text>
+                        <line x1="0" y1="20" x2="-150" y2="20" stroke="#4b5563" stroke-width="2" />
+                        <line x1="0" y1="40" x2="-100" y2="40" stroke="#4b5563" stroke-width="2" />
+                    </g>
+                    <g transform="translate(750, 700)">
+                        <path d="M 0,0 L 35,0 A 30,30 0 0,1 35,60 L 0,60 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                        <circle cx="68" cy="30" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                        <text x="30" y="80" font-size="12" font-weight="bold" text-anchor="middle">NAND</text>
+                        <line x1="0" y1="20" x2="-150" y2="20" stroke="#4b5563" stroke-width="2" />
+                        <line x1="0" y1="40" x2="-50" y2="40" stroke="#4b5563" stroke-width="2" />
+                    </g>
+
+                    <!-- MEMORY BLOCKS -->
+                    <g transform="translate(1050, 150)">
+                        <rect x="0" y="0" width="200" height="130" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" />
+                        <text x="100" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">ROM 1</text>
+                        <text x="100" y="60" font-size="14" text-anchor="middle" fill="#000">16K (0000H-3FFFH)</text>
+                        <text x="-10" y="45" font-size="14" font-weight="bold" text-anchor="end">A0-A13</text>
+                        <text x="-10" y="85" font-size="14" font-weight="bold" text-anchor="end">D0-D7</text>
+                        <text x="-10" y="115" font-size="14" font-weight="bold" text-anchor="end">CS</text> <line x1="-25" y1="105" x2="-10" y2="105" stroke="#000" stroke-width="1.5" />
+                        <text x="-10" y="135" font-size="14" font-weight="bold" text-anchor="end">RD</text> <line x1="-25" y1="125" x2="-10" y2="125" stroke="#000" stroke-width="1.5" />
+                    </g>
+                    <g transform="translate(1050, 320)">
+                        <rect x="0" y="0" width="200" height="130" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" />
+                        <text x="100" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">ROM 2</text>
+                        <text x="100" y="60" font-size="14" text-anchor="middle" fill="#000">16K (4000H-7FFFH)</text>
+                        <text x="-10" y="45" font-size="14" font-weight="bold" text-anchor="end">A0-A13</text>
+                        <text x="-10" y="85" font-size="14" font-weight="bold" text-anchor="end">D0-D7</text>
+                        <text x="-10" y="115" font-size="14" font-weight="bold" text-anchor="end">CS</text> <line x1="-25" y1="105" x2="-10" y2="105" stroke="#000" stroke-width="1.5" />
+                        <text x="-10" y="135" font-size="14" font-weight="bold" text-anchor="end">RD</text> <line x1="-25" y1="125" x2="-10" y2="125" stroke="#000" stroke-width="1.5" />
+                    </g>
+                    <g transform="translate(1050, 520)">
+                        <rect x="0" y="0" width="200" height="150" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" />
+                        <text x="100" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">RAM 1</text>
+                        <text x="100" y="60" font-size="14" text-anchor="middle" fill="#000">16K (8000H-BFFFH)</text>
+                        <text x="-10" y="45" font-size="14" font-weight="bold" text-anchor="end">A0-A13</text>
+                        <text x="-10" y="85" font-size="14" font-weight="bold" text-anchor="end">D0-D7</text>
+                        <text x="-10" y="115" font-size="14" font-weight="bold" text-anchor="end">CS</text> <line x1="-25" y1="105" x2="-10" y2="105" stroke="#000" stroke-width="1.5" />
+                        <text x="-10" y="135" font-size="14" font-weight="bold" text-anchor="end">RD</text> <line x1="-25" y1="125" x2="-10" y2="125" stroke="#000" stroke-width="1.5" />
+                        <text x="-10" y="155" font-size="14" font-weight="bold" text-anchor="end">WR</text> <line x1="-25" y1="145" x2="-10" y2="145" stroke="#000" stroke-width="1.5" />
+                    </g>
+                    <g transform="translate(1050, 670)">
+                        <rect x="0" y="0" width="200" height="150" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" />
+                        <text x="100" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">RAM 2</text>
+                        <text x="100" y="60" font-size="14" text-anchor="middle" fill="#000">16K (C000H-FFFFH)</text>
+                        <text x="-10" y="45" font-size="14" font-weight="bold" text-anchor="end">A0-A13</text>
+                        <text x="-10" y="85" font-size="14" font-weight="bold" text-anchor="end">D0-D7</text>
+                        <text x="-10" y="115" font-size="14" font-weight="bold" text-anchor="end">CS</text> <line x1="-25" y1="105" x2="-10" y2="105" stroke="#000" stroke-width="1.5" />
+                        <text x="-10" y="135" font-size="14" font-weight="bold" text-anchor="end">RD</text> <line x1="-25" y1="125" x2="-10" y2="125" stroke="#000" stroke-width="1.5" />
+                        <text x="-10" y="155" font-size="14" font-weight="bold" text-anchor="end">WR</text> <line x1="-25" y1="145" x2="-10" y2="145" stroke="#000" stroke-width="1.5" />
+                    </g>
+
+                    <!-- WIRING -->
+                    <line x1="822" y1="210" x2="1040" y2="210" stroke="#ea580c" stroke-width="3" marker-end="url(#arrow-cs)" />
+                    <line x1="822" y1="380" x2="1040" y2="380" stroke="#ea580c" stroke-width="3" marker-end="url(#arrow-cs)" />
+                    <line x1="822" y1="580" x2="1040" y2="580" stroke="#ea580c" stroke-width="3" marker-end="url(#arrow-cs)" />
+                    <line x1="822" y1="730" x2="1040" y2="730" stroke="#ea580c" stroke-width="3" marker-end="url(#arrow-cs)" />
+
+                    <line x1="350" y1="280" x2="350" y2="800" stroke="#2563eb" stroke-width="4" />
+                    <line x1="350" y1="190" x2="1050" y2="190" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
+                    <line x1="350" y1="360" x2="1050" y2="360" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
+                    <line x1="350" y1="560" x2="1050" y2="560" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
+                    <line x1="350" y1="710" x2="1050" y2="710" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
+                    <circle cx="350" cy="190" r="5" fill="#000" />
+                    <circle cx="350" cy="360" r="5" fill="#000" />
+                    <circle cx="350" cy="560" r="5" fill="#000" />
+                    <circle cx="350" cy="710" r="5" fill="#000" />
+
+                    <line x1="980" y1="540" x2="980" y2="820" stroke="#16a34a" stroke-width="4" />
+                    <line x1="980" y1="230" x2="1050" y2="230" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow-data)" />
+                    <line x1="980" y1="400" x2="1050" y2="400" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow-data)" />
+                    <line x1="980" y1="600" x2="1050" y2="600" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow-data)" />
+                    <line x1="980" y1="750" x2="1050" y2="750" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow-data)" />
+                    <circle cx="980" cy="230" r="5" fill="#000" />
+                    <circle cx="980" cy="400" r="5" fill="#000" />
+                    <circle cx="980" cy="600" r="5" fill="#000" />
+                    <circle cx="980" cy="750" r="5" fill="#000" />
+
+                    <line x1="650" y1="610" x2="650" y2="800" stroke="#dc2626" stroke-width="3" />
+                    <line x1="650" y1="250" x2="1050" y2="250" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
+                    <line x1="650" y1="420" x2="1050" y2="420" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
+                    <line x1="650" y1="620" x2="1050" y2="620" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
+                    <line x1="650" y1="770" x2="1050" y2="770" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
+                    <circle cx="650" cy="250" r="5" fill="#000" />
+                    <circle cx="650" cy="420" r="5" fill="#000" />
+                    <circle cx="650" cy="620" r="5" fill="#000" />
+                    <circle cx="650" cy="770" r="5" fill="#000" />
+
+                    <line x1="700" y1="660" x2="700" y2="830" stroke="#dc2626" stroke-width="3" />
+                    <line x1="700" y1="640" x2="1050" y2="640" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
+                    <line x1="700" y1="790" x2="1050" y2="790" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
+                    <circle cx="700" cy="640" r="5" fill="#000" />
+                    <circle cx="700" cy="790" r="5" fill="#000" />
+                </svg>
             </div>
         </div>
 
-        <!-- صورت سوال کوتاه شده -->
-        <div class="question-box">
-            <strong>سوال:</strong> طراحی مدار ارتباط یک CPU با ۴ حافظه (دو عدد ROM و دو عدد RAM) ۱۶ کیلوبایتی با استفاده از گیت‌های منطقی.
-        </div>
+        <!-- ================= صفحه دوم: جداول ================= -->
+        <div class="a4-page" style="border-bottom: none;">
+            <div class="header" style="margin-bottom: 40px;">
+                <div class="title">جداول و تحلیل مدار</div>
+                <div class="student-info">
+                    <span>محمدرسول یزدیان</span>
+                    <span>کد دانشجویی: ۴۰۳۲۲۲۱۰۷۳</span>
+                </div>
+            </div>
 
-        <!-- مدار گرافیکی -->
-        <div class="circuit-container">
-            <svg viewBox="0 0 1400 850" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <marker id="arrow-addr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" /></marker>
-                    <marker id="arrow-data" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a" /></marker>
-                    <marker id="arrow-control" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626" /></marker>
-                    <marker id="arrow-cs" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#ea580c" /></marker>
-                </defs>
+            <!-- جدول درستی -->
+            <div class="table-container">
+                <div class="section-title">جدول درستی (Truth Table)</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>A15</th>
+                            <th>A14</th>
+                            <th>محدوده آدرس (Hex)</th>
+                            <th>حافظه فعال</th>
+                            <th class="overline">CS0 (ROM1)</th>
+                            <th class="overline">CS1 (ROM2)</th>
+                            <th class="overline">CS2 (RAM1)</th>
+                            <th class="overline">CS3 (RAM2)</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td dir="ltr">0000H - 3FFFH</td>
+                            <td>ROM 1</td>
+                            <td class="active">0</td>
+                            <td class="inactive">1</td>
+                            <td class="inactive">1</td>
+                            <td class="inactive">1</td>
+                            <td>فقط خواندن (RD)</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>1</td>
+                            <td dir="ltr">4000H - 7FFFH</td>
+                            <td>ROM 2</td>
+                            <td class="inactive">1</td>
+                            <td class="active">0</td>
+                            <td class="inactive">1</td>
+                            <td class="inactive">1</td>
+                            <td>فقط خواندن (RD)</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>0</td>
+                            <td dir="ltr">8000H - BFFFH</td>
+                            <td>RAM 1</td>
+                            <td class="inactive">1</td>
+                            <td class="inactive">1</td>
+                            <td class="active">0</td>
+                            <td class="inactive">1</td>
+                            <td>خواندن / نوشتن</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td dir="ltr">C000H - FFFFH</td>
+                            <td>RAM 2</td>
+                            <td class="inactive">1</td>
+                            <td class="inactive">1</td>
+                            <td class="inactive">1</td>
+                            <td class="active">0</td>
+                            <td>خواندن / نوشتن</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <!-- CPU BLOCK -->
-                <rect x="50" y="200" width="180" height="450" rx="10" fill="#dbeafe" stroke="#1e40af" stroke-width="3" filter="drop-shadow(4px 4px 6px rgba(0,0,0,0.1))" />
-                <text x="140" y="240" font-size="22" font-weight="bold" text-anchor="middle" fill="#000">CPU</text>
-                
-                <line x1="20" y1="300" x2="50" y2="300" stroke="#dc2626" stroke-width="2.5" />
-                <text x="35" y="290" font-size="14" font-weight="bold" text-anchor="end">RST</text>
-                <line x1="20" y1="550" x2="50" y2="550" stroke="#dc2626" stroke-width="2.5" />
-                <text x="35" y="540" font-size="14" font-weight="bold" text-anchor="end">CP</text>
-
-                <text x="250" y="260" font-size="15" font-weight="bold" text-anchor="start">A0-A13</text>
-                <line x1="230" y1="280" x2="350" y2="280" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
-
-                <text x="250" y="360" font-size="15" font-weight="bold" text-anchor="start">A14</text>
-                <line x1="230" y1="380" x2="450" y2="380" stroke="#2563eb" stroke-width="3" />
-                
-                <text x="250" y="440" font-size="15" font-weight="bold" text-anchor="start">A15</text>
-                <line x1="230" y1="460" x2="450" y2="460" stroke="#2563eb" stroke-width="3" />
-
-                <text x="250" y="520" font-size="15" font-weight="bold" text-anchor="start">D0-D7</text>
-                <line x1="230" y1="540" x2="1050" y2="540" stroke="#16a34a" stroke-width="4" marker-start="url(#arrow-data)" marker-end="url(#arrow-data)" />
-
-                <text x="250" y="590" font-size="15" font-weight="bold" text-anchor="start">RD</text>
-                <line x1="230" y1="610" x2="650" y2="610" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
-
-                <text x="250" y="640" font-size="15" font-weight="bold" text-anchor="start">WR</text>
-                <line x1="230" y1="660" x2="700" y2="660" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
-
-                <!-- LOGIC GATES -->
-                <g transform="translate(450, 360)">
-                    <path d="M 0,0 L 35,20 L 0,40 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
-                    <circle cx="39" cy="20" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
-                    <text x="17" y="60" font-size="12" font-weight="bold" text-anchor="middle">NOT</text>
-                </g>
-                <g transform="translate(450, 440)">
-                    <path d="M 0,0 L 35,20 L 0,40 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
-                    <circle cx="39" cy="20" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
-                    <text x="17" y="60" font-size="12" font-weight="bold" text-anchor="middle">NOT</text>
-                </g>
-
-                <!-- LOGIC RAILS -->
-                <line x1="493" y1="460" x2="550" y2="460" stroke="#4b5563" stroke-width="2" />
-                <line x1="550" y1="180" x2="550" y2="750" stroke="#4b5563" stroke-width="2" />
-                
-                <line x1="450" y1="460" x2="600" y2="460" stroke="#4b5563" stroke-width="2" />
-                <line x1="600" y1="400" x2="600" y2="750" stroke="#4b5563" stroke-width="2" />
-                <circle cx="600" cy="460" r="5" fill="#000" />
-
-                <line x1="493" y1="380" x2="650" y2="380" stroke="#4b5563" stroke-width="2" />
-                <line x1="650" y1="180" x2="650" y2="600" stroke="#4b5563" stroke-width="2" />
-
-                <line x1="450" y1="380" x2="700" y2="380" stroke="#4b5563" stroke-width="2" />
-                <line x1="700" y1="400" x2="700" y2="650" stroke="#4b5563" stroke-width="2" />
-                <circle cx="700" cy="380" r="5" fill="#000" />
-
-                <!-- NAND GATES -->
-                <g transform="translate(750, 180)">
-                    <path d="M 0,0 L 35,0 A 30,30 0 0,1 35,60 L 0,60 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
-                    <circle cx="68" cy="30" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
-                    <text x="30" y="80" font-size="12" font-weight="bold" text-anchor="middle">NAND</text>
-                    <line x1="0" y1="20" x2="-200" y2="20" stroke="#4b5563" stroke-width="2" />
-                    <line x1="0" y1="40" x2="-100" y2="40" stroke="#4b5563" stroke-width="2" />
-                </g>
-                <g transform="translate(750, 350)">
-                    <path d="M 0,0 L 35,0 A 30,30 0 0,1 35,60 L 0,60 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
-                    <circle cx="68" cy="30" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
-                    <text x="30" y="80" font-size="12" font-weight="bold" text-anchor="middle">NAND</text>
-                    <line x1="0" y1="20" x2="-200" y2="20" stroke="#4b5563" stroke-width="2" />
-                    <line x1="0" y1="40" x2="-50" y2="40" stroke="#4b5563" stroke-width="2" />
-                </g>
-                <g transform="translate(750, 550)">
-                    <path d="M 0,0 L 35,0 A 30,30 0 0,1 35,60 L 0,60 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
-                    <circle cx="68" cy="30" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
-                    <text x="30" y="80" font-size="12" font-weight="bold" text-anchor="middle">NAND</text>
-                    <line x1="0" y1="20" x2="-150" y2="20" stroke="#4b5563" stroke-width="2" />
-                    <line x1="0" y1="40" x2="-100" y2="40" stroke="#4b5563" stroke-width="2" />
-                </g>
-                <g transform="translate(750, 700)">
-                    <path d="M 0,0 L 35,0 A 30,30 0 0,1 35,60 L 0,60 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
-                    <circle cx="68" cy="30" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
-                    <text x="30" y="80" font-size="12" font-weight="bold" text-anchor="middle">NAND</text>
-                    <line x1="0" y1="20" x2="-150" y2="20" stroke="#4b5563" stroke-width="2" />
-                    <line x1="0" y1="40" x2="-50" y2="40" stroke="#4b5563" stroke-width="2" />
-                </g>
-
-                <!-- MEMORY BLOCKS -->
-                <g transform="translate(1050, 150)">
-                    <rect x="0" y="0" width="200" height="130" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" filter="drop-shadow(3px 3px 5px rgba(0,0,0,0.1))" />
-                    <text x="100" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">ROM 1</text>
-                    <text x="100" y="60" font-size="14" text-anchor="middle" fill="#000">16K (0000H-3FFFH)</text>
-                    <text x="-10" y="45" font-size="14" font-weight="bold" text-anchor="end">A0-A13</text>
-                    <text x="-10" y="85" font-size="14" font-weight="bold" text-anchor="end">D0-D7</text>
-                    <text x="-10" y="115" font-size="14" font-weight="bold" text-anchor="end">CS</text> <line x1="-25" y1="105" x2="-10" y2="105" stroke="#000" stroke-width="1.5" />
-                    <text x="-10" y="135" font-size="14" font-weight="bold" text-anchor="end">RD</text> <line x1="-25" y1="125" x2="-10" y2="125" stroke="#000" stroke-width="1.5" />
-                </g>
-                <g transform="translate(1050, 320)">
-                    <rect x="0" y="0" width="200" height="130" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" filter="drop-shadow(3px 3px 5px rgba(0,0,0,0.1))" />
-                    <text x="100" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">ROM 2</text>
-                    <text x="100" y="60" font-size="14" text-anchor="middle" fill="#000">16K (4000H-7FFFH)</text>
-                    <text x="-10" y="45" font-size="14" font-weight="bold" text-anchor="end">A0-A13</text>
-                    <text x="-10" y="85" font-size="14" font-weight="bold" text-anchor="end">D0-D7</text>
-                    <text x="-10" y="115" font-size="14" font-weight="bold" text-anchor="end">CS</text> <line x1="-25" y1="105" x2="-10" y2="105" stroke="#000" stroke-width="1.5" />
-                    <text x="-10" y="135" font-size="14" font-weight="bold" text-anchor="end">RD</text> <line x1="-25" y1="125" x2="-10" y2="125" stroke="#000" stroke-width="1.5" />
-                </g>
-                <g transform="translate(1050, 520)">
-                    <rect x="0" y="0" width="200" height="150" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" filter="drop-shadow(3px 3px 5px rgba(0,0,0,0.1))" />
-                    <text x="100" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">RAM 1</text>
-                    <text x="100" y="60" font-size="14" text-anchor="middle" fill="#000">16K (8000H-BFFFH)</text>
-                    <text x="-10" y="45" font-size="14" font-weight="bold" text-anchor="end">A0-A13</text>
-                    <text x="-10" y="85" font-size="14" font-weight="bold" text-anchor="end">D0-D7</text>
-                    <text x="-10" y="115" font-size="14" font-weight="bold" text-anchor="end">CS</text> <line x1="-25" y1="105" x2="-10" y2="105" stroke="#000" stroke-width="1.5" />
-                    <text x="-10" y="135" font-size="14" font-weight="bold" text-anchor="end">RD</text> <line x1="-25" y1="125" x2="-10" y2="125" stroke="#000" stroke-width="1.5" />
-                    <text x="-10" y="155" font-size="14" font-weight="bold" text-anchor="end">WR</text> <line x1="-25" y1="145" x2="-10" y2="145" stroke="#000" stroke-width="1.5" />
-                </g>
-                <g transform="translate(1050, 670)">
-                    <rect x="0" y="0" width="200" height="150" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" filter="drop-shadow(3px 3px 5px rgba(0,0,0,0.1))" />
-                    <text x="100" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">RAM 2</text>
-                    <text x="100" y="60" font-size="14" text-anchor="middle" fill="#000">16K (C000H-FFFFH)</text>
-                    <text x="-10" y="45" font-size="14" font-weight="bold" text-anchor="end">A0-A13</text>
-                    <text x="-10" y="85" font-size="14" font-weight="bold" text-anchor="end">D0-D7</text>
-                    <text x="-10" y="115" font-size="14" font-weight="bold" text-anchor="end">CS</text> <line x1="-25" y1="105" x2="-10" y2="105" stroke="#000" stroke-width="1.5" />
-                    <text x="-10" y="135" font-size="14" font-weight="bold" text-anchor="end">RD</text> <line x1="-25" y1="125" x2="-10" y2="125" stroke="#000" stroke-width="1.5" />
-                    <text x="-10" y="155" font-size="14" font-weight="bold" text-anchor="end">WR</text> <line x1="-25" y1="145" x2="-10" y2="145" stroke="#000" stroke-width="1.5" />
-                </g>
-
-                <!-- WIRING -->
-                <line x1="822" y1="210" x2="1040" y2="210" stroke="#ea580c" stroke-width="3" marker-end="url(#arrow-cs)" />
-                <line x1="822" y1="380" x2="1040" y2="380" stroke="#ea580c" stroke-width="3" marker-end="url(#arrow-cs)" />
-                <line x1="822" y1="580" x2="1040" y2="580" stroke="#ea580c" stroke-width="3" marker-end="url(#arrow-cs)" />
-                <line x1="822" y1="730" x2="1040" y2="730" stroke="#ea580c" stroke-width="3" marker-end="url(#arrow-cs)" />
-
-                <line x1="350" y1="280" x2="350" y2="800" stroke="#2563eb" stroke-width="4" />
-                <line x1="350" y1="190" x2="1050" y2="190" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
-                <line x1="350" y1="360" x2="1050" y2="360" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
-                <line x1="350" y1="560" x2="1050" y2="560" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
-                <line x1="350" y1="710" x2="1050" y2="710" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
-                <circle cx="350" cy="190" r="5" fill="#000" />
-                <circle cx="350" cy="360" r="5" fill="#000" />
-                <circle cx="350" cy="560" r="5" fill="#000" />
-                <circle cx="350" cy="710" r="5" fill="#000" />
-
-                <line x1="980" y1="540" x2="980" y2="820" stroke="#16a34a" stroke-width="4" />
-                <line x1="980" y1="230" x2="1050" y2="230" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow-data)" />
-                <line x1="980" y1="400" x2="1050" y2="400" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow-data)" />
-                <line x1="980" y1="600" x2="1050" y2="600" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow-data)" />
-                <line x1="980" y1="750" x2="1050" y2="750" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow-data)" />
-                <circle cx="980" cy="230" r="5" fill="#000" />
-                <circle cx="980" cy="400" r="5" fill="#000" />
-                <circle cx="980" cy="600" r="5" fill="#000" />
-                <circle cx="980" cy="750" r="5" fill="#000" />
-
-                <line x1="650" y1="610" x2="650" y2="800" stroke="#dc2626" stroke-width="3" />
-                <line x1="650" y1="250" x2="1050" y2="250" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
-                <line x1="650" y1="420" x2="1050" y2="420" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
-                <line x1="650" y1="620" x2="1050" y2="620" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
-                <line x1="650" y1="770" x2="1050" y2="770" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
-                <circle cx="650" cy="250" r="5" fill="#000" />
-                <circle cx="650" cy="420" r="5" fill="#000" />
-                <circle cx="650" cy="620" r="5" fill="#000" />
-                <circle cx="650" cy="770" r="5" fill="#000" />
-
-                <line x1="700" y1="660" x2="700" y2="830" stroke="#dc2626" stroke-width="3" />
-                <line x1="700" y1="640" x2="1050" y2="640" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
-                <line x1="700" y1="790" x2="1050" y2="790" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
-                <circle cx="700" cy="640" r="5" fill="#000" />
-                <circle cx="700" cy="790" r="5" fill="#000" />
-            </svg>
-        </div>
-    </div>
-
-    <!-- ================= صفحه دوم: جداول ================= -->
-    <div class="a4-page">
-        <!-- هدر صفحه دوم -->
-        <div class="header" style="margin-bottom: 40px;">
-            <div class="title">جداول و تحلیل مدار</div>
-            <div class="student-info">
-                <span>محمدرسول یزدیان</span>
-                <span>کد دانشجویی: ۴۰۳۲۲۲۱۰۷۳</span>
+            <!-- معادلات منطقی -->
+            <div class="table-container" style="margin-top: 50px;">
+                <div class="section-title">معادلات منطقی انتخاب حافظه (Chip Select)</div>
+                <table style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>حافظه</th>
+                            <th>معادله منطقی</th>
+                            <th>توضیح</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ROM 1</td>
+                            <td class="eq-text">CS0 = NAND(A15', A14')</td>
+                            <td style="font-size: 14px;">وقتی هر دو A15 و A14 صفر باشند، خروجی صفر (فعال) می‌شود.</td>
+                        </tr>
+                        <tr>
+                            <td>ROM 2</td>
+                            <td class="eq-text">CS1 = NAND(A15', A14)</td>
+                            <td style="font-size: 14px;">وقتی A15=0 و A14=1 باشد، خروجی صفر (فعال) می‌شود.</td>
+                        </tr>
+                        <tr>
+                            <td>RAM 1</td>
+                            <td class="eq-text">CS2 = NAND(A15, A14')</td>
+                            <td style="font-size: 14px;">وقتی A15=1 و A14=0 باشد، خروجی صفر (فعال) می‌شود.</td>
+                        </tr>
+                        <tr>
+                            <td>RAM 2</td>
+                            <td class="eq-text">CS3 = NAND(A15, A14)</td>
+                            <td style="font-size: 14px;">وقتی هر دو A15 و A14 یک باشند، خروجی صفر (فعال) می‌شود.</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <!-- جدول درستی -->
-        <div class="table-container">
-            <div class="section-title">جدول درستی (Truth Table)</div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>A15</th>
-                        <th>A14</th>
-                        <th>محدوده آدرس (Hex)</th>
-                        <th>حافظه فعال</th>
-                        <th class="overline">CS0 (ROM1)</th>
-                        <th class="overline">CS1 (ROM2)</th>
-                        <th class="overline">CS2 (RAM1)</th>
-                        <th class="overline">CS3 (RAM2)</th>
-                        <th>عملیات</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>0</td>
-                        <td>0</td>
-                        <td dir="ltr">0000H - 3FFFH</td>
-                        <td>ROM 1</td>
-                        <td class="active">0</td>
-                        <td class="inactive">1</td>
-                        <td class="inactive">1</td>
-                        <td class="inactive">1</td>
-                        <td>فقط خواندن (RD)</td>
-                    </tr>
-                    <tr>
-                        <td>0</td>
-                        <td>1</td>
-                        <td dir="ltr">4000H - 7FFFH</td>
-                        <td>ROM 2</td>
-                        <td class="inactive">1</td>
-                        <td class="active">0</td>
-                        <td class="inactive">1</td>
-                        <td class="inactive">1</td>
-                        <td>فقط خواندن (RD)</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>0</td>
-                        <td dir="ltr">8000H - BFFFH</td>
-                        <td>RAM 1</td>
-                        <td class="inactive">1</td>
-                        <td class="inactive">1</td>
-                        <td class="active">0</td>
-                        <td class="inactive">1</td>
-                        <td>خواندن / نوشتن</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td dir="ltr">C000H - FFFFH</td>
-                        <td>RAM 2</td>
-                        <td class="inactive">1</td>
-                        <td class="inactive">1</td>
-                        <td class="inactive">1</td>
-                        <td class="active">0</td>
-                        <td>خواندن / نوشتن</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- معادلات منطقی -->
-        <div class="table-container" style="margin-top: 50px;">
-            <div class="section-title">معادلات منطقی انتخاب حافظه (Chip Select)</div>
-            <table style="width: 100%;">
-                <thead>
-                    <tr>
-                        <th>حافظه</th>
-                        <th>معادله منطقی</th>
-                        <th>توضیح</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>ROM 1</td>
-                        <td class="eq-text">CS0 = NAND(A15', A14')</td>
-                        <td style="font-size: 14px;">وقتی هر دو A15 و A14 صفر باشند، خروجی صفر (فعال) می‌شود.</td>
-                    </tr>
-                    <tr>
-                        <td>ROM 2</td>
-                        <td class="eq-text">CS1 = NAND(A15', A14)</td>
-                        <td style="font-size: 14px;">وقتی A15=0 و A14=1 باشد، خروجی صفر (فعال) می‌شود.</td>
-                    </tr>
-                    <tr>
-                        <td>RAM 1</td>
-                        <td class="eq-text">CS2 = NAND(A15, A14')</td>
-                        <td style="font-size: 14px;">وقتی A15=1 و A14=0 باشد، خروجی صفر (فعال) می‌شود.</td>
-                    </tr>
-                    <tr>
-                        <td>RAM 2</td>
-                        <td class="eq-text">CS3 = NAND(A15, A14)</td>
-                        <td style="font-size: 14px;">وقتی هر دو A15 و A14 یک باشند، خروجی صفر (فعال) می‌شود.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
     </div>
 
-    <!-- اسکریپت دانلود فایل -->
+    <!-- اسکریپت تولید PDF -->
     <script>
-        function downloadFile() {
-            const htmlContent = document.documentElement.outerHTML;
-            const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'MohammadRasoul_Yazdian_4032221073.html';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            alert('فایل دانلود شد. آن را باز کرده و گزینه Print را بزنید. حتماً Background Graphics را روشن کنید.');
+        function generatePDF() {
+            const btn = document.getElementById('downloadBtn');
+            const overlay = document.getElementById('overlay');
+            
+            // تغییر ظاهر دکمه و نمایش لودینگ
+            btn.classList.add('loading');
+            overlay.style.display = 'flex';
+
+            // تنظیمات خروجی PDF
+            const element = document.getElementById('pdf-content');
+            const opt = {
+                margin:       0,
+                filename:     'MohammadRasoul_Yazdian_4032221073.pdf',
+                image:        { type: 'jpeg', quality: 1 },
+                html2canvas:  { 
+                    scale: 2, // افزایش کیفیت
+                    useCORS: true,
+                    scrollY: 0,
+                    scrollX: 0
+                },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak:    { mode: ['css', 'legacy'], avoid: 'table' } // جلوگیری از بریده شدن جداول
+            };
+
+            // تولید و ذخیره فایل
+            html2pdf().set(opt).from(element).save().then(() => {
+                // بازگرداندن دکمه به حالت اولیه بعد از اتمام
+                btn.classList.remove('loading');
+                overlay.style.display = 'none';
+            }).catch((error) => {
+                console.error("خطا در ساخت PDF: ", error);
+                alert("مشکلی در ساخت PDF پیش آمد. لطفاً مطمئن شوید به اینترنت متصل هستید (برای بارگذاری کتابخانه).");
+                btn.classList.remove('loading');
+                overlay.style.display = 'none';
+            });
         }
     </script>
 </body>
-                    </html>
+                                                                                                                                                          </html>
