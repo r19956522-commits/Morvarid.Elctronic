@@ -9,10 +9,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     
     <style>
-        /* تنظیمات کلی صفحه نمایش (برای گوشی) */
+        /* تنظیمات صفحه نمایش */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #cbd5e1;
+            background-color: #64748b; /* پس زمینه تیره برای دیدن بهتر کاغذ سفید */
             margin: 0;
             padding: 20px;
             display: flex;
@@ -25,12 +25,12 @@
             background-color: #10b981;
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 15px 40px;
             font-size: 18px;
             font-weight: bold;
-            border-radius: 8px;
+            border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
             margin-bottom: 20px;
             transition: all 0.3s;
             display: flex;
@@ -43,21 +43,21 @@
 
         /* کانتینر اصلی برای تبدیل به PDF */
         #pdf-content {
-            width: 210mm;
             background-color: #ffffff;
+            width: 210mm; /* عرض دقیق A4 */
         }
 
         /* تنظیمات برگه‌های A4 */
         .a4-page {
             background-color: #ffffff;
             width: 210mm;
-            height: 297mm;
+            height: 297mm; /* ارتفاع دقیق A4 */
             padding: 15mm;
             box-sizing: border-box;
             position: relative;
             display: flex;
             flex-direction: column;
-            border-bottom: 2px dashed #94a3b8; /* خط جداکننده در صفحه نمایش */
+            border-bottom: 2px dashed #cbd5e1; /* خط جداکننده فقط در صفحه نمایش */
         }
 
         /* هدر و مشخصات */
@@ -93,11 +93,13 @@
             justify-content: center;
             align-items: flex-start;
             margin-top: 10px;
+            width: 100%;
         }
         svg {
             display: block;
             width: 100%;
             height: auto;
+            max-height: 220mm; /* جلوگیری از سرریز شدن */
         }
 
         /* استایل‌های جدول */
@@ -121,8 +123,9 @@
         /* استایل بارگذاری */
         #overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7); display: none; flex-direction: column;
+            background: rgba(0,0,0,0.8); display: none; flex-direction: column;
             justify-content: center; align-items: center; z-index: 1000; color: white;
+            text-align: center;
         }
         .spinner {
             border: 5px solid #f3f3f3; border-top: 5px solid #10b981;
@@ -138,7 +141,7 @@
     <div id="overlay">
         <div class="spinner"></div>
         <h2>در حال ساخت فایل PDF...</h2>
-        <p>لطفاً چند لحظه صبر کنید و صفحه را نبندید.</p>
+        <p>لطفاً چند لحظه صبر کنید و به اینترنت متصل بمانید.</p>
     </div>
 
     <!-- دکمه دانلود -->
@@ -147,10 +150,10 @@
         دانلود فایل PDF
     </button>
 
-    <!-- محتوای اصلی که به PDF تبدیل می‌شود -->
+    <!-- محتوای اصلی -->
     <div id="pdf-content">
         
-        <!-- ================= صفحه اول: مشخصات، سوال و مدار ================= -->
+        <!-- ================= صفحه اول ================= -->
         <div class="a4-page">
             <div class="header">
                 <div class="title">پاسخ تمرین معماری کامپیوتر</div>
@@ -165,7 +168,6 @@
             </div>
 
             <div class="circuit-container">
-                <!-- SVG بدون سایه (Drop-shadow) برای خروجی تمیزتر در PDF -->
                 <svg viewBox="0 0 1400 850" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <marker id="arrow-addr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" /></marker>
@@ -343,7 +345,7 @@
             </div>
         </div>
 
-        <!-- ================= صفحه دوم: جداول ================= -->
+        <!-- ================= صفحه دوم ================= -->
         <div class="a4-page" style="border-bottom: none;">
             <div class="header" style="margin-bottom: 40px;">
                 <div class="title">جداول و تحلیل مدار</div>
@@ -458,44 +460,47 @@
 
     </div>
 
-    <!-- اسکریپت تولید PDF -->
+    <!-- اسکریپت تولید PDF با تنظیمات اصلاح شده -->
     <script>
         function generatePDF() {
             const btn = document.getElementById('downloadBtn');
             const overlay = document.getElementById('overlay');
             
-            // تغییر ظاهر دکمه و نمایش لودینگ
             btn.classList.add('loading');
             overlay.style.display = 'flex';
 
-            // تنظیمات خروجی PDF
             const element = document.getElementById('pdf-content');
+            
+            // تنظیمات بسیار مهم برای جلوگیری از بریدگی در موبایل
             const opt = {
                 margin:       0,
-                filename:     'MohammadRasoul_Yazdian_4032221073.pdf',
-                image:        { type: 'jpeg', quality: 1 },
+                filename:     'MohammadRasoul_Yazdi_4032221073.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
                 html2canvas:  { 
-                    scale: 2, // افزایش کیفیت
+                    scale: 2, 
                     useCORS: true,
                     scrollY: 0,
-                    scrollX: 0
+                    scrollX: 0,
+                    windowWidth: 800, // عرض مرورگر مجازی را ثابت می‌کند تا موبایل صفحه را کوچک نکند
+                    windowHeight: 1123
                 },
                 jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                pagebreak:    { mode: ['css', 'legacy'], avoid: 'table' } // جلوگیری از بریده شدن جداول
+                pagebreak:    { mode: ['css', 'legacy'], avoid: 'table' } 
             };
 
-            // تولید و ذخیره فایل
-            html2pdf().set(opt).from(element).save().then(() => {
-                // بازگرداندن دکمه به حالت اولیه بعد از اتمام
-                btn.classList.remove('loading');
-                overlay.style.display = 'none';
-            }).catch((error) => {
-                console.error("خطا در ساخت PDF: ", error);
-                alert("مشکلی در ساخت PDF پیش آمد. لطفاً مطمئن شوید به اینترنت متصل هستید (برای بارگذاری کتابخانه).");
-                btn.classList.remove('loading');
-                overlay.style.display = 'none';
-            });
+            // صبر کوتاه برای اطمینان از لود کامل فونت‌ها و تصاویر
+            setTimeout(() => {
+                html2pdf().set(opt).from(element).save().then(() => {
+                    btn.classList.remove('loading');
+                    overlay.style.display = 'none';
+                }).catch((error) => {
+                    console.error(error);
+                    alert("خطا در ساخت PDF! لطفاً اینترنت گوشی خود را بررسی کنید.");
+                    btn.classList.remove('loading');
+                    overlay.style.display = 'none';
+                });
+            }, 500);
         }
     </script>
 </body>
-                                                                                                                                                          </html>
+    </html>
