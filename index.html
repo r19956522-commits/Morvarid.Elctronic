@@ -3,641 +3,484 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بانک سوالات جامع سیستم‌های دیجیتال ۲ - محمدرسول یزدیان</title>
-    <!-- فونت فارسی وزیرمتن -->
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    
+    <title>پروژه معماری کامپیوتر - محمدرسول یزدیان</title>
     <style>
-        /* تنظیمات کلی بدنه */
+        /* تنظیمات کلی */
         body {
-            font-family: 'Vazirmatn', sans-serif;
-            background-color: #2c3e50;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f5f9;
             margin: 0;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            direction: rtl;
-            text-align: justify;
-            word-spacing: 1px;
-        }
-
-        /* رفع مشکل تداخل متن‌های انگلیسی و فارسی */
-        bdi {
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-            direction: ltr;
-            unicode-bidi: isolate;
-            display: inline-block;
-            padding: 0 4px;
-            color: #c0392b;
-            white-space: nowrap;
-        }
-
-        /* طراحی صفحه A4 با حاشیه نوستالژی */
-        .page {
-            background-color: #fcfaf5;
-            width: 210mm;
-            min-height: 297mm;
-            padding: 20mm 15mm;
-            box-sizing: border-box;
-            position: relative;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-            margin-bottom: 30px;
-            border: 10px double #8b5a2b; /* حاشیه دو خطه کلاسیک */
-            border-radius: 8px;
-            color: #2c3e50;
-            line-height: 1.9;
-            font-size: 14px;
-        }
-
-        /* هدر جزوه */
-        .header {
-            text-align: center;
-            border-bottom: 3px dashed #c0392b;
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-        }
-        .header h1 { color: #8b5a2b; margin: 0 0 10px 0; font-size: 26px; }
-        .header h2 { color: #7f8c8d; margin: 0; font-size: 16px; font-weight: normal; }
-        .header .author {
-            color: #e74c3c; font-weight: bold; font-size: 18px;
-            margin-top: 10px; background: #fadbd8;
-            display: inline-block; padding: 5px 20px; border-radius: 20px;
-        }
-
-        /* عناوین بخش‌ها */
-        .section-title {
-            background-color: #e8e1d5;
-            color: #6d4c41;
-            padding: 8px 15px;
-            border-right: 6px solid #8b5a2b;
-            border-radius: 4px;
-            font-size: 18px;
-            margin-top: 35px;
-            margin-bottom: 20px;
-            page-break-after: avoid;
-        }
-
-        /* استایل باکس سوالات */
-        .question-box {
-            margin-bottom: 15px;
-            padding: 12px 15px;
-            background: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-right: 4px solid #2980b9;
-            border-radius: 5px;
-            page-break-inside: avoid; /* جلوگیری از شکستن سوال */
-        }
-        
-        .q-text { color: #1a5276; font-weight: bold; margin-bottom: 8px; font-size: 14.5px; }
-        
-        .a-box {
-            background-color: #e8f8f5;
-            border: 1px dashed #27ae60;
-            padding: 10px;
-            border-radius: 6px;
-            color: #145a32;
-            font-size: 13.5px;
-            margin-top: 8px;
-        }
-
-        /* استایل گزینه‌های تستی */
-        .options { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; color: #34495e; font-size: 13.5px; }
-        .options span { background: #f4f6f7; padding: 3px 10px; border-radius: 4px; border: 1px solid #d5dbdb; }
-
-        /* باکس فرمول‌ها */
-        .formula {
-            background-color: #fef9e7;
-            border-left: 4px solid #f1c40f;
-            padding: 10px;
-            margin: 10px 0;
-            font-family: 'Courier New', Courier, monospace;
-            direction: ltr; text-align: left; color: #b7950b;
-            font-weight: bold; border-radius: 4px; font-size: 15px;
-        }
-
-        /* استایل اشکال گرافیکی */
-        .diagram {
-            text-align: center; margin: 15px 0; padding: 10px;
-            background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px;
         }
 
         /* دکمه دانلود */
         .download-btn {
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-            background-color: #c0392b; color: white; border: none;
-            padding: 15px 50px; font-size: 18px; font-family: 'Vazirmatn', sans-serif; font-weight: bold;
-            border-radius: 50px; cursor: pointer; box-shadow: 0 6px 20px rgba(192, 57, 43, 0.5);
-            transition: all 0.3s ease; z-index: 1000;
+            background-color: #10b981;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .download-btn:hover { background-color: #e74c3c; transform: translateX(-50%) scale(1.05); }
+        .download-btn:hover { background-color: #059669; transform: translateY(-2px); }
+        .download-btn:active { transform: translateY(0); }
 
-        /* ========================================= */
-        /* تنظیمات اختصاصی برای چاپ و خروجی PDF */
-        /* ========================================= */
+        /* تنظیمات برگه A4 */
+        .a4-page {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 210mm;
+            min-height: 297mm;
+            padding: 15mm;
+            box-sizing: border-box;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden; /* برای جلوگیری از خروج عناصر */
+        }
+
+        /* هدر و مشخصات */
+        .header {
+            border-bottom: 3px solid #1e3a8a;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #1e3a8a;
+        }
+        .header .title { font-size: 20px; font-weight: bold; }
+        .header .student-info { text-align: left; font-size: 15px; line-height: 1.6; }
+        .header .student-info span { display: block; font-weight: bold; }
+
+        /* صورت سوال */
+        .question-box {
+            background-color: #f8fafc;
+            border-right: 5px solid #3b82f6;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            font-size: 15px;
+            color: #1e293b;
+            font-weight: 500;
+            border-radius: 4px;
+        }
+
+        /* تنظیمات SVG مدار */
+        .circuit-container {
+            width: 100%;
+            overflow-x: auto; /* اجازه اسکرول افقی در گوشی در صورت نیاز */
+            margin-bottom: 20px;
+        }
+        svg {
+            display: block;
+            margin: 0 auto;
+            min-width: 1000px; /* حداقل عرض برای خوانایی */
+            height: auto;
+        }
+
+        /* استایل‌های جدول */
+        .table-container { margin-top: 20px; }
+        .section-title { font-size: 17px; font-weight: bold; color: #1e3a8a; margin-bottom: 10px; text-align: center; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            text-align: center;
+        }
+        th, td { border: 1px solid #94a3b8; padding: 8px; }
+        th { background-color: #1e3a8a; color: #ffffff; font-weight: bold; }
+        tr:nth-child(even) { background-color: #f8fafc; }
+        .active { color: #dc2626; font-weight: bold; font-size: 15px; }
+        .inactive { color: #64748b; }
+        .overline { text-decoration: overline; }
+        .eq-text { font-family: 'Courier New', Courier, monospace; direction: ltr; font-weight: bold; color: #1e3a8a; }
+
+        /* تنظیمات چاپ */
         @media print {
-            body { 
-                background: white; 
-                padding: 0; 
-                display: block;
-            }
-            .page { 
-                box-shadow: none; 
-                margin: 0; 
-                width: 100%; 
-                min-height: auto;
-                padding: 10mm; 
-                border: 6px double #8b5a2b; /* حاشیه در چاپ حفظ می‌شود */
-            }
-            .download-btn { 
-                display: none; /* دکمه در PDF دیده نمی‌شود */
-            }
-            .question-box {
-                page-break-inside: avoid; /* جلوگیری از شکستن باکس سوال در PDF */
-            }
+            body { background-color: #ffffff; margin: 0; padding: 0; display: block; }
+            .a4-page { box-shadow: none; width: 100%; max-width: 100%; min-height: auto; padding: 0; }
+            .question-box { background-color: transparent; }
+            .download-btn { display: none; } /* مخفی کردن دکمه در پرینت */
+            .circuit-container { overflow: visible; }
+            svg { min-width: 100%; } /* در پرینت کل عرض را پر کند */
+            @page { size: A4 landscape; margin: 10mm; } /* پیشنهاد حالت افقی برای جا شدن بهتر مدار */
         }
     </style>
 </head>
 <body>
 
-    <button class="download-btn" onclick="window.print()">🖨️ دریافت فایل PDF (چاپ)</button>
+    <!-- دکمه دانلود -->
+    <button class="download-btn" onclick="downloadFile()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        دانلود فایل جهت پرینت
+    </button>
 
-    <div class="page">
-        
+    <div class="a4-page" id="page-content">
+        <!-- هدر -->
         <div class="header">
-            <h1>بانک سوالات جامع و تشریحی (تسلط کامل)</h1>
-            <h2>درس: سیستم‌های دیجیتال ۲ | دانشگاه تفرش</h2>
-            <div class="author">تهیه‌کننده: محمدرسول یزدیان</div>
+            <div class="title">پاسخ تمرین معماری کامپیوتر</div>
+            <div class="student-info">
+                <span>محمدرسول یزدیان</span>
+                <span>کد دانشجویی: ۴۰۳۲۲۲۱۰۷۳</span>
+            </div>
         </div>
 
-        <!-- ================= بخش اول: چهارگزینه‌ای (۵۰ سوال) ================= -->
-        <div class="section-title">بخش اول: سوالات چهارگزینه‌ای (۵۰ سوال)</div>
-        
-        <div class="question-box"><div class="q-text">۱. در ساختار FPGA، وظیفه اتصال سیم‌های افقی و عمودی در تقاطع‌ها بر عهده کدام بلوک است؟</div><div class="options"><span>الف) <bdi>Logic Block</bdi></span><span>ب) <bdi>C-Block</bdi></span><span>ج) <bdi>S-Block</bdi></span><span>د) <bdi>I/O Cell</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ج (<bdi>S-Block</bdi> وظیفه سوییچینگ بین مسیرها را دارد).</div></div>
-        <div class="question-box"><div class="q-text">۲. کدام یک از انواع حافظه‌ها، ماهیت غیرفرار (<bdi>Non-volatile</bdi>) دارد و اطلاعات آن با قطع برق از بین نمی‌رود؟</div><div class="options"><span>الف) <bdi>RAM</bdi></span><span>ب) <bdi>ROM</bdi></span><span>ج) <bdi>Register</bdi></span><span>د) <bdi>Cache</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ب (<bdi>Read-Only Memory</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۳. در چرخه فراخوانی دستورالعمل، در مرحله <bdi>T0</bdi> کدام میکروعملیات انجام می‌شود؟</div><div class="options"><span>الف) <bdi>IR ← M[AR]</bdi></span><span>ب) <bdi>PC ← PC + 1</bdi></span><span>ج) <bdi>AR ← PC</bdi></span><span>د) <bdi>AR ← IR</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ج (انتقال آدرس دستورالعمل به رجیستر آدرس).</div></div>
-        <div class="question-box"><div class="q-text">۴. اگر در یک پردازنده، خطوط انتخاب مالتی‌پلکسر <bdi>S3 S2 S1 S0 = 0110</bdi> باشد، کدام رجیستر به گذرگاه متصل می‌شود؟</div><div class="options"><span>الف) <bdi>R3</bdi></span><span>ب) <bdi>R6</bdi></span><span>ج) <bdi>R12</bdi></span><span>د) <bdi>R9</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ب (مقدار باینری 0110 معادل عدد ۶ است).</div></div>
-        <div class="question-box"><div class="q-text">۵. برای سنجش توان پردازشی ابررایانه‌ها در انجام محاسبات اعشاری، از کدام شاخص استفاده می‌شود؟</div><div class="options"><span>الف) <bdi>MIPS</bdi></span><span>ب) <bdi>CPI</bdi></span><span>ج) <bdi>FLOPS</bdi></span><span>د) <bdi>GHz</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ج (<bdi>Floating-point Operations Per Second</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۶. کدام معماری به معنای اجرای چندین دستورالعمل به طور هم‌زمان در یک سیکل کلاک است؟</div><div class="options"><span>الف) <bdi>Superpipelining</bdi></span><span>ب) <bdi>Superscalar</bdi></span><span>ج) <bdi>RISC</bdi></span><span>د) <bdi>CISC</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ب (<bdi>Superscalar</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۷. در حالت آدرس‌دهی حافظه‌ای غیرمستقیم (<bdi>Indirect</bdi>)، عملوند در کجا قرار دارد؟</div><div class="options"><span>الف) در خود دستورالعمل</span><span>ب) در یک رجیستر</span><span>ج) در حافظه‌ای که آدرس آن در حافظه است</span><span>د) در پشته (<bdi>Stack</bdi>)</span></div><div class="a-box"><strong>پاسخ:</strong> ج.</div></div>
-        <div class="question-box"><div class="q-text">۸. کدام سیگنال کنترلی برای افزایش یک واحدی مقدار یک رجیستر استفاده می‌شود؟</div><div class="options"><span>الف) <bdi>Shl</bdi></span><span>ب) <bdi>Clr</bdi></span><span>ج) <bdi>LD</bdi></span><span>د) <bdi>Inc</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> د (<bdi>Increment</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۹. یک حافظه <bdi>ROM</bdi> با ظرفیت ۱ مگابایت (<bdi>1MB</bdi>) و گذرگاه داده ۸ بیتی، چند خط آدرس نیاز دارد؟</div><div class="options"><span>الف) ۱۸</span><span>ب) ۲۰</span><span>ج) ۲۴</span><span>د) ۳۲</span></div><div class="a-box"><strong>پاسخ:</strong> ب (چون <bdi>2^20 = 1,048,576</bdi> آدرس داریم).</div></div>
-        <div class="question-box"><div class="q-text">۱۰. در جدول کنترل، برای اجرای عملیات خواندن از حافظه، کدام سیگنال فعال می‌شود؟</div><div class="options"><span>الف) <bdi>WR</bdi></span><span>ب) <bdi>RD</bdi></span><span>ج) <bdi>LD</bdi></span><span>د) <bdi>CLR</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ب (<bdi>Read</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۱۱. حداکثر مقداری که با ۶ بیت می‌توان نشان داد چقدر است؟</div><div class="options"><span>الف) ۳۲</span><span>ب) ۶۳</span><span>ج) ۶۴</span><span>د) ۱۲۸</span></div><div class="a-box"><strong>پاسخ:</strong> ب (<bdi>2^6 - 1 = 63</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۱۲. کدام رجیستر آدرس دستورالعمل بعدی را نگه می‌دارد؟</div><div class="options"><span>الف) <bdi>IR</bdi></span><span>ب) <bdi>PC</bdi></span><span>ج) <bdi>AR</bdi></span><span>د) <bdi>AC</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ب (<bdi>Program Counter</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۱۳. در یک مالتی‌پلکسر ۸ به ۱، چند خط انتخاب نیاز است؟</div><div class="options"><span>الف) ۲</span><span>ب) ۳</span><span>ج) ۴</span><span>د) ۸</span></div><div class="a-box"><strong>پاسخ:</strong> ب (<bdi>Log2(8) = 3</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۱۴. کدام بخش از CPU وظیفه رمزگشایی دستورالعمل و صدور فرمان را بر عهده دارد؟</div><div class="options"><span>الف) <bdi>ALU</bdi></span><span>ب) <bdi>Registers</bdi></span><span>ج) <bdi>Control Unit</bdi></span><span>د) <bdi>Bus</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ج.</div></div>
-        <div class="question-box"><div class="q-text">۱۵. در معماری خط لوله (<bdi>Pipeline</bdi>)، اگر تعداد مراحل ۴ و تعداد دستورات ۱۰۰ باشد، چند سیکل طول می‌کشد؟</div><div class="options"><span>الف) ۱۰۰</span><span>ب) ۱۰۳</span><span>ج) ۴۰۰</span><span>د) ۴</span></div><div class="a-box"><strong>پاسخ:</strong> ب (<bdi>k + (n-1) = 4 + 99 = 103</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۱۶. در ساختار <bdi>FPGA</bdi>، بلوک‌های منطقی توسط چه چیزی به هم متصل می‌شوند؟</div><div class="options"><span>الف) <bdi>Wire Segments</bdi></span><span>ب) <bdi>ALU</bdi></span><span>ج) <bdi>Control Unit</bdi></span><span>د) <bdi>Cache</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> الف.</div></div>
-        <div class="question-box"><div class="q-text">۱۷. کدام حالت آدرس‌دهی نیازی به مراجعه به حافظه ندارد؟</div><div class="options"><span>الف) <bdi>Direct Memory</bdi></span><span>ب) <bdi>Indirect Memory</bdi></span><span>ج) <bdi>Immediate</bdi></span><span>د) <bdi>Register Indirect</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ج.</div></div>
-        <div class="question-box"><div class="q-text">۱۸. سیگنال <bdi>Clr</bdi> در یک رجیستر چه عملی انجام می‌دهد؟</div><div class="options"><span>الف) مقدار را یک واحد افزایش می‌دهد</span><span>ب) مقدار را صفر می‌کند</span><span>ج) مقدار را شیفت می‌دهد</span><span>د) داده را بارگذاری می‌کند</span></div><div class="a-box"><strong>پاسخ:</strong> ب.</div></div>
-        <div class="question-box"><div class="q-text">۱۹. کدام یک از مزایای استفاده از حافظه <bdi>Cache</bdi> است؟</div><div class="options"><span>الف) کاهش هزینه</span><span>ب) کاهش سرعت</span><span>ج) افزایش سرعت دسترسی به داده‌ها</span><span>د) افزایش حجم حافظه اصلی</span></div><div class="a-box"><strong>پاسخ:</strong> ج.</div></div>
-        <div class="question-box"><div class="q-text">۲۰. در جدول کنترل صفحه ۲۳ جزوه، برای اجرای دستورالعمل با کد صفر (در <bdi>T2</bdi>)، کدام سیگنال فعال می‌شود؟</div><div class="options"><span>الف) <bdi>RD(Mem)</bdi></span><span>ب) <bdi>LD(IR)</bdi></span><span>ج) <bdi>INC(PC)</bdi></span><span>د) <bdi>CLR(SC)</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> الف (خواندن از حافظه).</div></div>
-        <div class="question-box"><div class="q-text">۲۱. اگر یک حافظه ۶۴ کیلوبایتی داشته باشیم، آخرین آدرس آن در مبنای هگز کدام است؟</div><div class="options"><span>الف) <bdi>FFFF</bdi></span><span>ب) <bdi>FFFFF</bdi></span><span>ج) <bdi>7FFF</bdi></span><span>د) <bdi>3FFF</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> الف (آدرس‌ها از ۰۰۰۰ تا <bdi>FFFF</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۲۲. واحد <bdi>FLOPS</bdi> مخفف چیست؟</div><div class="options"><span>الف) <bdi>Fast Logic Operations Per Second</bdi></span><span>ب) <bdi>Floating-point Operations Per Second</bdi></span><span>ج) <bdi>File Load Operations Per Second</bdi></span><span>د) <bdi>Fixed Logic Operations Per Second</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ب.</div></div>
-        <div class="question-box"><div class="q-text">۲۳. در معماری <bdi>Superscalar</bdi>، چه اتفاقی می‌افتد؟</div><div class="options"><span>الف) عمق خط لوله زیاد می‌شود</span><span>ب) چند دستور در یک کلاک صادر می‌شود</span><span>ج) فقط یک دستور در هر کلاک اجرا می‌شود</span><span>د) فرکانس کلاک کاهش می‌یابد</span></div><div class="a-box"><strong>پاسخ:</strong> ب.</div></div>
-        <div class="question-box"><div class="q-text">۲۴. کدام بخش از CPU عملوندها را دریافت کرده و عملیات ریاضی/منطقی را انجام می‌دهد؟</div><div class="options"><span>الف) <bdi>PC</bdi></span><span>ب) <bdi>IR</bdi></span><span>ج) <bdi>ALU</bdi></span><span>د) <bdi>SC</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ج (<bdi>Arithmetic Logic Unit</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۲۵. اگر در یک گذرگاه مشترک، همزمان دو <bdi>MUX</bdi> مقادیر متفاوتی را روی خط قرار دهند، چه رخ می‌دهد؟</div><div class="options"><span>الف) داده‌ها با هم جمع می‌شوند</span><span>ب) تصادم گذرگاه (<bdi>Bus Contention</bdi>) رخ می‌دهد</span><span>ج) داده اولویت پیدا می‌کند</span><span>د) مشکلی پیش نمی‌آید</span></div><div class="a-box"><strong>پاسخ:</strong> ب.</div></div>
-        <div class="question-box"><div class="q-text">۲۶. کدام حافظه برای ذخیره دائمی برنامه‌های اولیه (مانند <bdi>BIOS</bdi>) استفاده می‌شود؟</div><div class="options"><span>الف) <bdi>RAM</bdi></span><span>ب) <bdi>ROM</bdi></span><span>ج) <bdi>Cache</bdi></span><span>د) <bdi>Register</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ب.</div></div>
-        <div class="question-box"><div class="q-text">۲۷. سیگنال <bdi>Shr</bdi> در یک رجیستر چه عملی انجام می‌دهد؟</div><div class="options"><span>الف) شیفت به چپ</span><span>ب) شیفت به راست</span><span>ج) افزایش مقدار</span><span>د) پاک کردن</span></div><div class="a-box"><strong>پاسخ:</strong> ب.</div></div>
-        <div class="question-box"><div class="q-text">۲۸. کدام یک از اجزای زیر در صفحه ۸ جزوه، جزء واحد کنترل است؟</div><div class="options"><span>الف) <bdi>ALU</bdi></span><span>ب) <bdi>SC</bdi></span><span>ج) <bdi>Register File</bdi></span><span>د) <bdi>Data Cache</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ب (<bdi>Sequence Counter</bdi> بخشی از واحد کنترل است).</div></div>
-        <div class="question-box"><div class="q-text">۲۹. یک پردازنده با کلاک ۲ گیگاهرتز، در هر سیکل یک دستور را اجرا می‌کند. توان پردازشی آن چند <bdi>MIPS</bdi> است؟</div><div class="options"><span>الف) ۵۰۰</span><span>ب) ۱۰۰۰</span><span>ج) ۲۰۰۰</span><span>د) ۴۰۰۰</span></div><div class="a-box"><strong>پاسخ:</strong> ج (<bdi>2 GHz = 2000 MHz = 2000 MIPS</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۳۰. در دستور <bdi>R7 = Mem(R22)</bdi>، نوع آدرس‌دهی چیست؟</div><div class="options"><span>الف) <bdi>Immediate</bdi></span><span>ب) <bdi>Direct</bdi></span><span>ج) <bdi>Register Indirect</bdi></span><span>د) <bdi>Indirect</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ج.</div></div>
-        <div class="question-box"><div class="q-text">۳۱. یک <bdi>ROM</bdi> با ۱۵ خط آدرس، چه ظرفیتی دارد (به بایت)؟</div><div class="options"><span>الف) ۱۵ کیلوبایت</span><span>ب) ۳۲ کیلوبایت</span><span>ج) ۶۴ کیلوبایت</span><span>د) ۱۲۸ کیلوبایت</span></div><div class="a-box"><strong>پاسخ:</strong> ب (<bdi>2^15 = 32768 = 32KB</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۳۲. کدامیک از گزینه‌های زیر از ویژگی‌های سیستم‌های مبتنی بر پردازنده در صفحه ۵ است؟</div><div class="options"><span>الف) پیشرفت سریع</span><span>ب) کاربرد فراگیر</span><span>ج) هر دو مورد</span><span>د) هیچکدام</span></div><div class="a-box"><strong>پاسخ:</strong> ج.</div></div>
-        <div class="question-box"><div class="q-text">۳۳. برای اینکه بتوانیم یک مالتی‌پلکسر ۱۶ به ۱ بسازیم، به چند خط انتخاب نیاز داریم؟</div><div class="options"><span>الف) ۲</span><span>ب) ۴</span><span>ج) ۸</span><span>د) ۱۶</span></div><div class="a-box"><strong>پاسخ:</strong> ب (<bdi>Log2(16) = 4</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۳۴. کدام رجیستر در CPU خروجی حافظه را به طور موقت نگه می‌دارد تا رمزگشایی شود؟</div><div class="options"><span>الف) <bdi>AR</bdi></span><span>ب) <bdi>PC</bdi></span><span>ج) <bdi>IR</bdi></span><span>د) <bdi>DR</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ج (<bdi>Instruction Register</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۳۵. در چرخه اجرا، اگر <bdi>Opcode</bdi> دستور ۰۰۰۱ باشد، این دستور معمولاً چه عملیاتی است؟</div><div class="options"><span>الف) جمع</span><span>ب) تفریق</span><span>ج) شیفت</span><span>د) خواندن از حافظه</span></div><div class="a-box"><strong>پاسخ:</strong> الف (در مثال‌های معمول معماری کامپیوتر).</div></div>
-        <div class="question-box"><div class="q-text">۳۶. تفاوت اصلی <bdi>RAM</bdi> و <bdi>ROM</bdi> در چیست؟</div><div class="options"><span>الف) سرعت</span><span>ب) قابلیت خواندن/نوشتن</span><span>ج) حجم</span><span>د) قیمت</span></div><div class="a-box"><strong>پاسخ:</strong> ب.</div></div>
-        <div class="question-box"><div class="q-text">۳۷. کدام یک از روش‌های افزایش سرعت پردازنده نیست؟</div><div class="options"><span>الف) استفاده از حافظه کش</span><span>ب) افزایش تعداد ترانزیستورها</span><span>ج) استفاده از خط لوله</span><span>د) افزایش طول دستورالعمل‌ها</span></div><div class="a-box"><strong>پاسخ:</strong> د.</div></div>
-        <div class="question-box"><div class="q-text">۳۸. در بخش بندی گذرگاه داده در معماری ۸ بیتی، تعداد مالتی‌پلکسرهای مورد نیاز برای ۸ رجیستر چقدر است؟</div><div class="options"><span>الف) ۱</span><span>ب) ۴</span><span>ج) ۸</span><span>د) ۱۶</span></div><div class="a-box"><strong>پاسخ:</strong> ج (برای هر بیت یک مالتی‌پلکسر).</div></div>
-        <div class="question-box"><div class="q-text">۳۹. از کدام سیگنال برای ذخیره داده در رجیستر استفاده می‌شود؟</div><div class="options"><span>الف) <bdi>Clr</bdi></span><span>ب) <bdi>Inc</bdi></span><span>ج) <bdi>LD</bdi></span><span>د) <bdi>Shl</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ج (<bdi>Load</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۴۰. در آدرس‌دهی <bdi>Immediate</bdi>، داده کجا قرار دارد؟</div><div class="options"><span>الف) حافظه</span><span>ب) رجیستر</span><span>ج) خود دستورالعمل</span><span>د) کش</span></div><div class="a-box"><strong>پاسخ:</strong> ج.</div></div>
-        <div class="question-box"><div class="q-text">۴۱. کدام بخش وظیفه هماهنگی کل پردازنده را دارد؟</div><div class="options"><span>الف) <bdi>ALU</bdi></span><span>ب) <bdi>Control Unit</bdi></span><span>ج) <bdi>Cache</bdi></span><span>د) <bdi>Bus</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ب.</div></div>
-        <div class="question-box"><div class="q-text">۴۲. کدام گزینه در مورد <bdi>Superpipelining</bdi> صحیح است؟</div><div class="options"><span>الف) کاهش عمق خط لوله</span><span>ب) افزایش عمق خط لوله</span><span>ج) چند خط لوله موازی</span><span>د) هیچکدام</span></div><div class="a-box"><strong>پاسخ:</strong> ب.</div></div>
-        <div class="question-box"><div class="q-text">۴۳. در نمایش <bdi>R7 = 22</bdi>، نوع آدرس‌دهی چیست؟</div><div class="options"><span>الف) <bdi>Immediate</bdi></span><span>ب) <bdi>Direct</bdi></span><span>ج) <bdi>Register</bdi></span><span>د) <bdi>Indirect</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> الف.</div></div>
-        <div class="question-box"><div class="q-text">۴۴. اگر یک پردازنده در هر ثانیه ۱۰۰ میلیون دستور را اجرا کند، توان آن چند <bdi>MIPS</bdi> است؟</div><div class="options"><span>الف) ۱۰</span><span>ب) ۱۰۰</span><span>ج) ۱۰۰۰</span><span>د) ۱۰۰۰۰</span></div><div class="a-box"><strong>پاسخ:</strong> ب.</div></div>
-        <div class="question-box"><div class="q-text">۴۵. کدام حالت آدرس‌دهی به حافظه دسترسی ندارد؟</div><div class="options"><span>الف) <bdi>Direct</bdi></span><span>ب) <bdi>Immediate</bdi></span><span>ج) <bdi>Indirect</bdi></span><span>د) <bdi>Register Indirect</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ب.</div></div>
-        <div class="question-box"><div class="q-text">۴۶. حافظه کش معمولاً کجاست؟</div><div class="options"><span>الف) روی هارد</span><span>ب) بین CPU و RAM</span><span>ج) در RAM</span><span>د) در کارت گرافیک</span></div><div class="a-box"><strong>پاسخ:</strong> ب.</div></div>
-        <div class="question-box"><div class="q-text">۴۷. برای شیفت به چپ از کدام سیگنال استفاده می‌شود؟</div><div class="options"><span>الف) <bdi>Shr</bdi></span><span>ب) <bdi>Shl</bdi></span><span>ج) <bdi>Inc</bdi></span><span>د) <bdi>Clr</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ب.</div></div>
-        <div class="question-box"><div class="q-text">۴۸. در یک حافظه، گذرگاه داده چه چیزی را منتقل می‌کند؟</div><div class="options"><span>الف) آدرس‌ها</span><span>ب) داده‌ها</span><span>ج) فرمان‌ها</span><span>د) ساعت</span></div><div class="a-box"><strong>پاسخ:</strong> ب.</div></div>
-        <div class="question-box"><div class="q-text">۴۹. در یک مالتی‌پلکسر ۳۲ به ۱، چند خط انتخاب وجود دارد؟</div><div class="options"><span>الف) ۳۲</span><span>ب) ۵</span><span>ج) ۴</span><span>د) ۶</span></div><div class="a-box"><strong>پاسخ:</strong> ب (<bdi>Log2(32) = 5</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۵۰. در دستور <bdi>R7 = Mem(22)</bdi>، نوع آدرس‌دهی چیست؟</div><div class="options"><span>الف) <bdi>Immediate</bdi></span><span>ب) <bdi>Direct</bdi></span><span>ج) <bdi>Register Indirect</bdi></span><span>د) <bdi>Indirect</bdi></span></div><div class="a-box"><strong>پاسخ:</strong> ب.</div></div>
-
-        <!-- ================= بخش دوم: جای خالی (۵۰ سوال) ================= -->
-        <div class="section-title">بخش دوم: سوالات جای خالی (۵۰ سوال)</div>
-        
-        <div class="question-box"><div class="q-text">۱. در ساختار FPGA، بلوک‌های منطقی توسط مسیرهایی به نام .................... به یکدیگر متصل می‌شوند.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Wire Segments</bdi></div></div>
-        <div class="question-box"><div class="q-text">۲. برای شیفت دادن محتویات یک رجیستر به سمت راست، از سیگنال کنترلی .................... استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Shr (Shift Right)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۳. جهت انتخاب یکی از رجیسترها و اتصال آن به گذرگاه مشترک، از قطعه سخت‌افزاری .................... استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> مالتی‌پلکسر <bdi>(MUX)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۴. در یک حافظه، گذرگاه .................... تعیین‌کننده آدرس خانه‌های حافظه است.</div><div class="a-box"><strong>پاسخ:</strong> آدرس <bdi>(Address Bus)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۵. رجیستری که کد دستورالعمل در حال اجرا را نگهداری می‌کند، .................... نام دارد.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Instruction Register (IR)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۶. در واحد کنترل، شمارنده‌ای که مراحل زمانی <bdi>T0, T1...</bdi> را تولید می‌کند .................... نام دارد.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Sequence Counter (SC)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۷. در آدرس‌دهی ....................، خودِ عملوند در داخل دستورالعمل قرار دارد.</div><div class="a-box"><strong>پاسخ:</strong> بالفصل <bdi>(Immediate)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۸. برای پاک کردن محتوای یک رجیستر، سیگنال کنترلی .................... فعال می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Clr (Clear)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۹. در فرمت دستورالعمل، بخشی که نوع عمل (جمع، تفریق و...) را مشخص می‌کند .................... نام دارد.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Op-code</bdi></div></div>
-        <div class="question-box"><div class="q-text">۱۰. در معماری ....................، عمق مراحل خط لوله افزایش می‌یابد تا فرکانس کلاک بالاتر برود.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Superpipelining</bdi></div></div>
-        <div class="question-box"><div class="q-text">۱۱. برای افزایش یک واحدی مقدار یک رجیستر از سیگنال .................... استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Inc (Increment)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۱۲. به مجموع عملیات ساده‌ای که در یک پالس کلاک در سطح رجیسترها انجام می‌شود .................... می‌گویند.</div><div class="a-box"><strong>پاسخ:</strong> میکروعملیات <bdi>(Microoperation)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۱۳. یک حافظه .................... ماهیت غیرفرار دارد و اطلاعات آن با قطع برق از بین نمی‌رود.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>ROM</bdi></div></div>
-        <div class="question-box"><div class="q-text">۱۴. در پردازنده، واحد .................... وظیفه انجام عملیات ریاضی و منطقی را بر عهده دارد.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>ALU (Arithmetic Logic Unit)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۱۵. در معماری ....................، در هر سیکل کلاک چندین دستورالعمل به طور هم‌زمان صادر و اجرا می‌شوند.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Superscalar</bdi></div></div>
-        <div class="question-box"><div class="q-text">۱۶. واحد اندازه‌گیری سرعت پردازنده‌ها در انجام عملیات اعشاری .................... است.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>FLOPS</bdi></div></div>
-        <div class="question-box"><div class="q-text">۱۷. در دستور <bdi>R7 = Mem(22)</bdi>، نوع آدرس‌دهی .................... است.</div><div class="a-box"><strong>پاسخ:</strong> حافظه‌ای مستقیم <bdi>(Direct Memory)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۱۸. در دستور <bdi>R7 = Mem(R22)</bdi>، نوع آدرس‌دهی .................... است.</div><div class="a-box"><strong>پاسخ:</strong> حافظه‌ای غیرمستقیم با اشاره‌گر رجیستری <bdi>(Register Indirect)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۱۹. در تصویر صفحه ۱۱، رجیستر m بیتی از چند عدد .................... تشکیل شده است.</div><div class="a-box"><strong>پاسخ:</strong> فلاپ‌فلاپ <bdi>(Flip-Flop)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۲۰. برای جلوگیری از تصادم داده‌ها روی گذرگاه مشترک، از .................... استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> مالتی‌پلکسر <bdi>(MUX)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۲۱. در بلوک <bdi>S</bdi> در FPGA، وظیفه اصلی .................... بین سیم‌ها است.</div><div class="a-box"><strong>پاسخ:</strong> سوییچینگ <bdi>(Switching)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۲۲. در بلوک <bdi>C</bdi> در FPGA، وظیفه اصلی اتصال .................... به مسیرهای سیم است.</div><div class="a-box"><strong>پاسخ:</strong> بلوک منطقی <bdi>(Logic Block)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۲۳. به ارتباط بین رجیسترها در CPU، .................... می‌گویند که توسط مالتی‌پلکسرها مدیریت می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> گذرگاه مشترک <bdi>(Common Bus)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۲۴. در میکروعملیات <bdi>T1</bdi>، دستورالعمل از حافظه به رجیستر .................... منتقل می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>IR</bdi></div></div>
-        <div class="question-box"><div class="q-text">۲۵. در چرخه فراخوانی، بعد از خواندن دستورالعمل، مقدار رجیستر .................... یک واحد افزایش می‌یابد.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>PC (Program Counter)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۲۶. به دستوراتی که به آدرس حافظه نیاز ندارند و داده در خودشان است، .................... می‌گویند.</div><div class="a-box"><strong>پاسخ:</strong> بالفصل <bdi>(Immediate)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۲۷. برای نوشتن داده در حافظه، سیگنال .................... باید فعال شود.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>WR (Write)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۲۸. رجیستری که آدرس خانه حافظه را نگه می‌دارد .................... نام دارد.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>AR (Address Register)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۲۹. در جدول کنترل، برای پاک کردن شمارنده <bdi>SC</bdi> از سیگنال .................... استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>CLR(SC)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۳۰. به افزایش عمق مراحل خط لوله برای افزایش فرکانس، .................... می‌گویند.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Superpipelining</bdi></div></div>
-        <div class="question-box"><div class="q-text">۳۱. در یک مالتی‌پلکسر ۸ به ۱، تعداد خطوط انتخاب برابر با .................... است.</div><div class="a-box"><strong>پاسخ:</strong> ۳ <bdi>(Log2(8))</bdi></div></div>
-        <div class="question-box"><div class="q-text">۳۲. برای اینکه داده در یک رجیستر ذخیره شود، سیگنال .................... باید فعال شود.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>LD (Load)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۳۳. حافظه .................... برای نگهداری موقت داده‌های پرکاربرد بین CPU و RAM استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> کش <bdi>(Cache)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۳۴. در دستور <bdi>R7 = 22</bdi>، مقدار ۲۲ یک عملوند .................... است.</div><div class="a-box"><strong>پاسخ:</strong> بالفصل <bdi>(Immediate)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۳۵. برای شیفت به چپ در یک رجیستر از سیگنال .................... استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Shl</bdi></div></div>
-        <div class="question-box"><div class="q-text">۳۶. در صفحه ۲۷، پردازنده <bdi>Core i7</bdi> دارای حداکثر کلاک .................... گیگاهرتز است.</div><div class="a-box"><strong>پاسخ:</strong> ۴.۵</div></div>
-        <div class="question-box"><div class="q-text">۳۷. برای سنجش سرعت پردازش دستورات از واحد .................... استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>MIPS</bdi></div></div>
-        <div class="question-box"><div class="q-text">۳۸. در تصویر صفحه ۱۴، خروجی مالتی‌پلکسرها روی یک .................... مشترک قرار می‌گیرد.</div><div class="a-box"><strong>پاسخ:</strong> گذرگاه <bdi>(Bus)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۳۹. اگر در گذرگاه مشترک دو خروجی به هم وصل شوند، .................... رخ می‌دهد.</div><div class="a-box"><strong>پاسخ:</strong> تصادم <bdi>(Bus Contention)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۴۰. در آدرس‌دهی ....................، عملوند در داخل یک رجیستر قرار دارد.</div><div class="a-box"><strong>پاسخ:</strong> رجیستری <bdi>(Register)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۴۱. در صفحه ۲۲، خروجی شمارنده <bdi>SC</bdi> به یک .................... ۴ به ۱۶ وارد می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> دیکودر <bdi>(Decoder)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۴۲. هر چه تعداد مراحل خط لوله بیشتر شود، فرکانس کلاک .................... می‌یابد.</div><div class="a-box"><strong>پاسخ:</strong> افزایش</div></div>
-        <div class="question-box"><div class="q-text">۴۳. پردازنده‌هایی که در هر کلاک چند دستور را اجرا می‌کنند .................... نام دارند.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Superscalar</bdi></div></div>
-        <div class="question-box"><div class="q-text">۴۴. برای ذخیره‌سازی دائمی برنامه‌های اولیه (مانند <bdi>BIOS</bdi>) از حافظه .................... استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>ROM</bdi></div></div>
-        <div class="question-box"><div class="q-text">۴۵. به بخشی از دستورالعمل که نوع عملیات را مشخص می‌کند .................... می‌گویند.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Op-code</bdi></div></div>
-        <div class="question-box"><div class="q-text">۴۶. در چرخه فراخوانی، ابتدا باید آدرس دستورالعمل بعدی در رجیستر .................... قرار گیرد.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>AR</bdi></div></div>
-        <div class="question-box"><div class="q-text">۴۷. طول دستورالعمل در صفحه ۲۵ می‌تواند .................... (مثل ۳۲ بیتی) یا متغیر باشد.</div><div class="a-box"><strong>پاسخ:</strong> ثابت <bdi>(Fixed)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۴۸. برای پاک کردن محتویات یک رجیستر، از سیگنال .................... استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Clr</bdi></div></div>
-        <div class="question-box"><div class="q-text">۴۹. در آدرس‌دهی ....................، آدرس عملوند در یک خانه حافظه قرار دارد که خودِ آن آدرس در دستورالعمل است.</div><div class="a-box"><strong>پاسخ:</strong> حافظه‌ای غیرمستقیم <bdi>(Indirect)</bdi></div></div>
-        <div class="question-box"><div class="q-text">۵۰. افزایش تعداد ترانزیستورها باعث تولید .................... بیشتر و مصرف انرژی بالاتر می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> گرما</div></div>
-
-        <!-- ================= بخش سوم: درست / غلط (۵۰ سوال) ================= -->
-        <div class="section-title">بخش سوم: سوالات درست / غلط (۵۰ سوال)</div>
-        
-        <div class="question-box"><div class="q-text">۱. بلوک <bdi>C</bdi> در FPGA وظیفه اتصال سیم‌های افقی و عمودی به یکدیگر را دارد.</div><div class="a-box"><strong>پاسخ:</strong> غلط (وظیفه <bdi>S-Block</bdi> است. <bdi>C-Block</bdi> منطق را به سیم متصل می‌کند).</div></div>
-        <div class="question-box"><div class="q-text">۲. حافظه <bdi>RAM</bdi> یک حافظه غیرفرار است و با قطع برق اطلاعات آن حفظ می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> غلط (فرار است).</div></div>
-        <div class="question-box"><div class="q-text">۳. رجیستر <bdi>PC</bdi> همواره آدرس دستورالعملی که در حال اجرا است را نگه می‌دارد.</div><div class="a-box"><strong>پاسخ:</strong> غلط (آدرس دستورالعمل بعدی را نگه می‌دارد).</div></div>
-        <div class="question-box"><div class="q-text">۴. در آدرس‌دهی بالفصل، برای یافتن عملوند باید حتماً به حافظه مراجعه کرد.</div><div class="a-box"><strong>پاسخ:</strong> غلط (داده در خود دستورالعمل است).</div></div>
-        <div class="question-box"><div class="q-text">۵. در یک حافظه با <bdi>n</bdi> خط آدرس، حداکثر ظرفیت آدرس‌دهی برابر با <bdi>2^n</bdi> است.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۶. معماری <bdi>Superscalar</bdi> باعث می‌شود چند دستورالعمل به طور هم‌زمان صادر شوند.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۷. در یک مالتی‌پلکسر ۱۶ به ۱، تعداد خطوط انتخاب برابر با ۸ است.</div><div class="a-box"><strong>پاسخ:</strong> غلط (برابر با ۴ است).</div></div>
-        <div class="question-box"><div class="q-text">۸. واحد <bdi>ALU</bdi> در پردازنده وظیفه انجام عملیات منطقی و محاسباتی را بر عهده دارد.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۹. در مرحله <bdi>T1</bdi> از چرخه فراخوانی، سیگنال <bdi>RD</bdi> فعال است.</div><div class="a-box"><strong>پاسخ:</strong> درست (چون باید دستورالعمل را از حافظه بخوانیم).</div></div>
-        <div class="question-box"><div class="q-text">۱۰. استفاده از حافظه <bdi>Cache</bdi> سرعت دسترسی پردازنده به داده‌ها را کاهش می‌دهد.</div><div class="a-box"><strong>پاسخ:</strong> غلط (افزایش می‌دهد).</div></div>
-        <div class="question-box"><div class="q-text">۱۱. سیگنال <bdi>Clr</bdi> برای پاک کردن و صفر کردن رجیستر استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۱۲. حافظه <bdi>ROM</bdi> قابلیت خواندن و نوشتن دارد.</div><div class="a-box"><strong>پاسخ:</strong> غلط (فقط خواندنی است).</div></div>
-        <div class="question-box"><div class="q-text">۱۳. در معماری خط لوله، دستورات به صورت موازی و همپوشانی زمانی اجرا می‌شوند.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۱۴. در دستور <bdi>R7 = Mem(22)</bdi>، عدد ۲۲ نشان‌دهنده مقدار داده است.</div><div class="a-box"><strong>پاسخ:</strong> غلط (نشان‌دهنده آدرس حافظه است).</div></div>
-        <div class="question-box"><div class="q-text">۱۵. در دستور <bdi>R7 = Mem(R22)</bdi>، مقدار رجیستر <bdi>R22</bdi> به عنوان آدرس حافظه استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۱۶. گذرگاه داده (<bdi>Data Bus</bdi>) برای انتقال آدرس خانه‌های حافظه استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> غلط (گذرگاه آدرس برای این کار است).</div></div>
-        <div class="question-box"><div class="q-text">۱۷. در چرخه فراخوانی، در مرحله <bdi>T0</bdi> مقدار <bdi>PC</bdi> در <bdi>AR</bdi> کپی می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۱۸. در دستور <bdi>R7 = 22</bdi>، نوع آدرس‌دهی حافظه‌ای مستقیم است.</div><div class="a-box"><strong>پاسخ:</strong> غلط (بالفصل است).</div></div>
-        <div class="question-box"><div class="q-text">۱۹. تصادم گذرگاه (<bdi>Bus Contention</bdi>) زمانی رخ می‌دهد که دو منبع همزمان سعی کنند روی یک خط داده قرار دهند.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۲۰. افزایش عمق مراحل خط لوله برای افزایش فرکانس کلاک، <bdi>Superscalar</bdi> نام دارد.</div><div class="a-box"><strong>پاسخ:</strong> غلط (<bdi>Superpipelining</bdi> نام دارد).</div></div>
-        <div class="question-box"><div class="q-text">۲۱. واحد <bdi>FLOPS</bdi> برای سنجش سرعت پردازنده‌ها در انجام عملیات اعشاری استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۲۲. در یک پردازنده، رجیستر <bdi>IR</bdi> آدرس خانه حافظه را نگهداری می‌کند.</div><div class="a-box"><strong>پاسخ:</strong> غلط (<bdi>IR</bdi> کد دستورالعمل را نگه می‌دارد، <bdi>AR</bdi> آدرس را نگه می‌دارد).</div></div>
-        <div class="question-box"><div class="q-text">۲۳. یک مالتی‌پلکسر ۳۲ به ۱ به ۵ خط انتخاب نیاز دارد.</div><div class="a-box"><strong>پاسخ:</strong> درست (<bdi>Log2(32) = 5</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۲۴. در ساختار <bdi>FPGA</bdi>، بلوک <bdi>I/O Cell</bdi> وظیفه ارتباط با دنیای خارج را بر عهده دارد.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۲۵. طول دستورالعمل‌ها در همه معماری‌ها حتماً باید متغیر باشد.</div><div class="a-box"><strong>پاسخ:</strong> غلط (می‌تواند ثابت مثل ۳۲ بیتی باشد).</div></div>
-        <div class="question-box"><div class="q-text">۲۶. سیگنال <bdi>Inc</bdi> مقدار رجیستر را یک واحد افزایش می‌دهد.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۲۷. در مرحله <bdi>T0</bdi>، سیگنال <bdi>RD</bdi> حتماً فعال است.</div><div class="a-box"><strong>پاسخ:</strong> غلط (در <bdi>T0</bdi> فقط انتقال آدرس انجام می‌شود، در <bdi>T1</bdi> خواندن از حافظه داریم).</div></div>
-        <div class="question-box"><div class="q-text">۲۸. پردازنده‌های <bdi>Superscalar</bdi> در هر کلاک بیش از یک دستور را صادر می‌کنند.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۲۹. در آدرس‌دهی غیرمستقیم، عملوند مستقیماً در دستورالعمل قرار دارد.</div><div class="a-box"><strong>پاسخ:</strong> غلط (در آدرس‌دهی بالفصل اینطور است).</div></div>
-        <div class="question-box"><div class="q-text">۳۰. حافظه <bdi>Cache</bdi> بین <bdi>CPU</bdi> و <bdi>RAM</bdi> قرار می‌گیرد.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۳۱. یک حافظه با ۱۶ خط آدرس، ظرفیتی معادل ۶۴ کیلوبایت دارد.</div><div class="a-box"><strong>پاسخ:</strong> درست (<bdi>2^16 = 65536 = 64KB</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۳۲. برای انتقال داده روی گذرگاه مشترک، از سیگنال‌های انتخاب مالتی‌پلکسر استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۳۳. در رجیستر <bdi>PC</bdi>، آدرس دستورالعملی که هم‌اکنون در حال اجرا است قرار دارد.</div><div class="a-box"><strong>پاسخ:</strong> غلط (آدرس دستور بعدی).</div></div>
-        <div class="question-box"><div class="q-text">۳۴. معماری <bdi>Superpipelining</bdi> باعث کاهش فرکانس کلاک می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> غلط (باعث افزایش فرکانس می‌شود).</div></div>
-        <div class="question-box"><div class="q-text">۳۵. داده‌ها در حافظه <bdi>ROM</bdi> با قطع برق از بین می‌روند.</div><div class="a-box"><strong>پاسخ:</strong> غلط (غیرفرار است).</div></div>
-        <div class="question-box"><div class="q-text">۳۶. در چرخه فراخوانی، در <bdi>T1</bdi> سیگنال <bdi>LD(IR)</bdi> فعال است.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۳۷. در دستور <bdi>R7 = Mem(22)</bdi>، عدد ۲۲ نشان‌دهنده یک آدرس حافظه است.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۳۸. اگر دو مالتی‌پلکسر همزمان به یک خط گذرگاه وصل شوند، داده‌ها به درستی منتقل می‌شوند.</div><div class="a-box"><strong>پاسخ:</strong> غلط (باعث تصادم گذرگاه می‌شود).</div></div>
-        <div class="question-box"><div class="q-text">۳۹. شمارنده <bdi>SC</bdi> در واحد کنترل، مراحل زمانی <bdi>T0, T1, ...</bdi> را تولید می‌کند.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۴۰. دستور <bdi>R7 = R22</bdi> بیانگر آدرس‌دهی رجیستری است.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۴۱. واحد <bdi>ALU</bdi> دستورالعمل‌ها را رمزگشایی می‌کند.</div><div class="a-box"><strong>پاسخ:</strong> غلط (واحد کنترل رمزگشایی می‌کند).</div></div>
-        <div class="question-box"><div class="q-text">۴۲. با افزایش تعداد ترانزیستورها به تنهایی می‌توان سرعت را بی‌نهایت افزایش داد.</div><div class="a-box"><strong>پاسخ:</strong> غلط (محدودیت گرما و نشتی جریان وجود دارد).</div></div>
-        <div class="question-box"><div class="q-text">۴۳. در آدرس‌دهی حافظه‌ای غیرمستقیم، دو بار به حافظه مراجعه می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> درست (یکبار برای خواندن آدرس، یکبار برای خواندن داده).</div></div>
-        <div class="question-box"><div class="q-text">۴۴. سیگنال <bdi>Shl</bdi> برای شیفت به چپ استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۴۵. گذرگاه آدرس (<bdi>Address Bus</bdi>) یک گذرگاه یک‌طرفه است.</div><div class="a-box"><strong>پاسخ:</strong> درست (معمولاً از CPU به سمت حافظه).</div></div>
-        <div class="question-box"><div class="q-text">۴۶. در ساختار <bdi>FPGA</bdi>، مسیرهای سیم به صورت ثابت در کارخانه تعیین می‌شوند.</div><div class="a-box"><strong>پاسخ:</strong> غلط (قابل برنامه‌ریزی هستند).</div></div>
-        <div class="question-box"><div class="q-text">۴۷. در جدول کنترل، برای پاک کردن <bdi>SC</bdi> از سیگنال <bdi>CLR(SC)</bdi> استفاده می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۴۸. افزایش تعداد مراحل در خط لوله همیشه باعث بهبود سرعت می‌شود و محدودیتی ندارد.</div><div class="a-box"><strong>پاسخ:</strong> غلط (تا یک حدی، بعد از آن تأخیر و هزینه‌های سرباره‌ای غلبه می‌کند).</div></div>
-        <div class="question-box"><div class="q-text">۴۹. مالتی‌پلکسرها در گذرگاه مشترک، از تداخل داده‌ها جلوگیری می‌کنند.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-        <div class="question-box"><div class="q-text">۵۰. در رجیستر <bdi>IR</bdi>، خروجی حافظه به طور موقت برای رمزگشایی ذخیره می‌شود.</div><div class="a-box"><strong>پاسخ:</strong> درست.</div></div>
-
-        <!-- ================= بخش چهارم: کوتاه پاسخ (۴۰ سوال) ================= -->
-        <div class="section-title">بخش چهارم: سوالات کوتاه‌پاسخ (۴۰ سوال)</div>
-        
-        <div class="question-box"><div class="q-text">۱. وظیفه رجیستر <bdi>AR</bdi> در CPU چیست؟</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Address Register</bdi>؛ آدرس خانه حافظه‌ای که قرار است خوانده یا در آن نوشته شود را نگهداری می‌کند.</div></div>
-        <div class="question-box"><div class="q-text">۲. تفاوت حافظه <bdi>ROM</bdi> و <bdi>RAM</bdi> در چیست؟</div><div class="a-box"><strong>پاسخ:</strong> <bdi>ROM</bdi> فقط خواندنی و غیرفرار است، اما <bdi>RAM</bdi> خواندنی/نوشتنی و فرار است.</div></div>
-        <div class="question-box"><div class="q-text">۳. منظور از میکروعملیات (Microoperation) چیست؟</div><div class="a-box"><strong>پاسخ:</strong> عملیات‌های ساده و ابتدایی که در سطح رجیسترها و در یک پالس کلاک انجام می‌شوند (مثل انتقال داده بین رجیسترها).</div></div>
-        <div class="question-box"><div class="q-text">۴. وظیفه بلوک <bdi>I/O Cell</bdi> در FPGA چیست؟</div><div class="a-box"><strong>پاسخ:</strong> ایجاد ارتباط بین بلوک‌های منطقی داخلی <bdi>FPGA</bdi> با دنیای خارج (پین‌های ورودی/خروجی).</div></div>
-        <div class="question-box"><div class="q-text">۵. سیگنال <bdi>LD</bdi> در رجیسترها چه کاری انجام می‌دهد؟</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Load</bdi>؛ اجازه می‌دهد داده موجود روی گذرگاه در لبه کلاک بعدی وارد رجیستر شود.</div></div>
-        <div class="question-box"><div class="q-text">۶. تفاوت معماری <bdi>RISC</bdi> و <bdi>CISC</bdi> به طور خلاصه چیست؟</div><div class="a-box"><strong>پاسخ:</strong> <bdi>RISC</bdi> دستورات ساده و کم‌تعداد دارد، <bdi>CISC</bdi> دستورات پیچیده و زیاد دارد.</div></div>
-        <div class="question-box"><div class="q-text">۷. منظور از <bdi>CPI</bdi> چیست؟</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Clock Per Instruction</bdi>؛ میانگین تعداد سیکل‌های کلاک لازم برای اجرای یک دستورالعمل.</div></div>
-        <div class="question-box"><div class="q-text">۸. چرا در ساختار گذرگاه مشترک از مالتی‌پلکسر استفاده می‌کنیم؟</div><div class="a-box"><strong>پاسخ:</strong> برای جلوگیری از تصادم داده‌ها، زیرا در هر لحظه فقط یک رجیستر باید داده خود را روی گذرگاه قرار دهد.</div></div>
-        <div class="question-box"><div class="q-text">۹. تفاوت <bdi>Superpipelining</bdi> و <bdi>Superscalar</bdi> چیست؟</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Superpipelining</bdi> عمق خط لوله را زیاد می‌کند (فرکانس بالاتر)، اما <bdi>Superscalar</bdi> چندین خط لوله موازی دارد (چند دستور در یک کلاک).</div></div>
-        <div class="question-box"><div class="q-text">۱۰. در آدرس‌دهی ثبت‌مبنا (Register Indirect)، آدرس عملوند از کجا خوانده می‌شود؟</div><div class="a-box"><strong>پاسخ:</strong> از داخل یک رجیستر که شماره آن در دستورالعمل مشخص شده است.</div></div>
-        <div class="question-box"><div class="q-text">۱۱. وظیفه شمارنده <bdi>SC</bdi> در واحد کنترل چیست؟</div><div class="a-box"><strong>پاسخ:</strong> تولید مراحل زمانی <bdi>T0, T1, T2...</bdi> برای هماهنگی میکروعملیات.</div></div>
-        <div class="question-box"><div class="q-text">۱۲. تفاوت دستور <bdi>R7 = 22</bdi> و <bdi>R7 = Mem(22)</bdi> چیست؟</div><div class="a-box"><strong>پاسخ:</strong> اولی آدرس‌دهی بالفصل (عدد ۲۲ مستقیماً در R7 قرار می‌گیرد) و دومی حافظه‌ای مستقیم (محتوای خانه ۲۲ در R7 قرار می‌گیرد).</div></div>
-        <div class="question-box"><div class="q-text">۱۳. یک مالتی‌پلکسر ۶۴ به ۱ به چند خط انتخاب نیاز دارد؟</div><div class="a-box"><strong>پاسخ:</strong> ۶ خط انتخاب (<bdi>Log2(64) = 6</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۱۴. چه زمانی تصادم گذرگاه (Bus Contention) رخ می‌دهد؟</div><div class="a-box"><strong>پاسخ:</strong> زمانی که دو یا چند خروجی (مثل دو مالتی‌پلکسر) همزمان سعی کنند مقادیر متفاوتی را روی یک خط مشترک قرار دهند.</div></div>
-        <div class="question-box"><div class="q-text">۱۵. منظور از عملیات Fetch در CPU چیست؟</div><div class="a-box"><strong>پاسخ:</strong> مرحله فراخوانی و آوردن دستورالعمل از حافظه به داخل رجیستر <bdi>IR</bdi>.</div></div>
-        <div class="question-box"><div class="q-text">۱۶. تفاوت <bdi>S-Block</bdi> و <bdi>C-Block</bdi> در FPGA چیست؟</div><div class="a-box"><strong>پاسخ:</strong> <bdi>S-Block</bdi> سیم‌های افقی و عمودی را قطع و وصل می‌کند، <bdi>C-Block</bdi> بلوک منطقی را به سیم‌ها متصل می‌کند.</div></div>
-        <div class="question-box"><div class="q-text">۱۷. سیگنال <bdi>RD</bdi> چه زمانی فعال می‌شود؟</div><div class="a-box"><strong>پاسخ:</strong> زمانی که بخواهیم داده یا دستورالعمل را از حافظه بخوانیم.</div></div>
-        <div class="question-box"><div class="q-text">۱۸. یک حافظه با ۲۰ خط آدرس چه ظرفیتی دارد؟</div><div class="a-box"><strong>پاسخ:</strong> <bdi>2^20 = 1MB</bdi> (یک مگابایت).</div></div>
-        <div class="question-box"><div class="q-text">۱۹. هدف از استفاده از حافظه Cache چیست؟</div><div class="a-box"><strong>پاسخ:</strong> کاهش زمان دسترسی پردازنده به داده‌های پرکاربرد و افزایش سرعت کلی سیستم.</div></div>
-        <div class="question-box"><div class="q-text">۲۰. در آدرس‌دهی غیرمستقیم (Indirect)، چند بار به حافظه مراجعه می‌شود؟</div><div class="a-box"><strong>پاسخ:</strong> دو بار؛ بار اول برای خواندن آدرس عملوند، بار دوم برای خواندن خود عملوند.</div></div>
-        <div class="question-box"><div class="q-text">۲۱. رجیستر <bdi>IR</bdi> مخفف چیست و چه می‌کند؟</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Instruction Register</bdi>؛ کد دستورالعمل در حال اجرا را نگه می‌دارد تا رمزگشایی شود.</div></div>
-        <div class="question-box"><div class="q-text">۲۲. تفاوت بین گذرگاه آدرس و گذرگاه داده چیست؟</div><div class="a-box"><strong>پاسخ:</strong> گذرگاه آدرس مکان خانه حافظه را مشخص می‌کند (یک‌طرفه)، اما گذرگاه داده محتوای آن خانه (داده یا دستور) را جابجا می‌کند (دوطرفه).</div></div>
-        <div class="question-box"><div class="q-text">۲۳. سیگنال <bdi>WR</bdi> در حافظه چه کاری انجام می‌دهد؟</div><div class="a-box"><strong>پاسخ:</strong> باعث نوشتن داده موجود روی گذرگاه داده، در آدرس مشخص شده می‌شود.</div></div>
-        <div class="question-box"><div class="q-text">۲۴. چرا در رجیسترها از فلاپ‌فلاپ استفاده می‌شود؟</div><div class="a-box"><strong>پاسخ:</strong> برای نگهداری و ذخیره‌سازی پایدار یک بیت داده تا زمان پالس کلاک بعدی.</div></div>
-        <div class="question-box"><div class="q-text">۲۵. یک پردازنده ۴ گیگاهرتزی در هر ثانیه چند میلیون سیکل کلاک دارد؟</div><div class="a-box"><strong>پاسخ:</strong> ۴۰۰۰ میلیون سیکل (یا ۴ میلیارد سیکل).</div></div>
-        <div class="question-box"><div class="q-text">۲۶. در جدول کنترل صفحه ۲۳، برای اجرای دستور با کد صفر، کدام سیگنال‌ها فعال هستند؟</div><div class="a-box"><strong>پاسخ:</strong> <bdi>RD(Mem)</bdi> (خواندن از حافظه).</div></div>
-        <div class="question-box"><div class="q-text">۲۷. طول دستورالعمل در معماری‌های مختلف چگونه است؟</div><div class="a-box"><strong>پاسخ:</strong> می‌تواند ثابت (مانند ۳۲ بیتی در RISC) یا متغیر (مانند x86 در CISC) باشد.</div></div>
-        <div class="question-box"><div class="q-text">۲۸. کدامیک از حالت‌های آدرس‌دهی به حافظه دسترسی ندارند؟</div><div class="a-box"><strong>پاسخ:</strong> آدرس‌دهی بالفصل (Immediate) و رجیستری (Register).</div></div>
-        <div class="question-box"><div class="q-text">۲۹. مالتی‌پلکسرهای گذرگاه مشترک در صفحه ۱۴، خروجی‌هایشان را کجا می‌فرستند؟</div><div class="a-box"><strong>پاسخ:</strong> به خطوط گذرگاه مشترک (<bdi>CB</bdi>) که هر خط آن یک بیت از کلمه داده را منتقل می‌کند.</div></div>
-        <div class="question-box"><div class="q-text">۳۰. در معماری Superscalar، تعداد واحدهای اجرایی چگونه است؟</div><div class="a-box"><strong>پاسخ:</strong> بیش از یک واحد اجرایی وجود دارد تا چند دستور به طور همزمان اجرا شوند.</div></div>
-        <div class="question-box"><div class="q-text">۳۱. سیگنال <bdi>Clr(PC)</bdi> در جدول کنترل چه کاربردی دارد؟</div><div class="a-box"><strong>پاسخ:</strong> برای صفر کردن شمارنده برنامه (مثلاً در هنگام ریست سیستم یا شروع مجدد برنامه).</div></div>
-        <div class="question-box"><div class="q-text">۳۲. نام دیگر حالت آدرس‌دهی "بالفصل" چیست؟</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Immediate</bdi>.</div></div>
-        <div class="question-box"><div class="q-text">۳۳. در چرخه فراخوانی، در <bdi>T1</bdi> چه اتفاقی می‌افتد؟</div><div class="a-box"><strong>پاسخ:</strong> دستورالعمل از حافظه خوانده شده و در <bdi>IR</bdi> ذخیره می‌شود و همزمان <bdi>PC</bdi> یک واحد افزایش می‌یابد.</div></div>
-        <div class="question-box"><div class="q-text">۳۴. برای پیاده‌سازی یک گذرگاه ۸ بیتی با ۱۶ رجیستر، به چند مالتی‌پلکسر نیاز است؟</div><div class="a-box"><strong>پاسخ:</strong> به ۸ عدد مالتی‌پلکسر ۱۶ به ۱ (یکی برای هر بیت).</div></div>
-        <div class="question-box"><div class="q-text">۳۵. یک حافظه ۶۴ کیلوبایتی چند خط آدرس می‌خواهد؟</div><div class="a-box"><strong>پاسخ:</strong> ۱۶ خط (<bdi>2^16 = 65536 = 64KB</bdi>).</div></div>
-        <div class="question-box"><div class="q-text">۳۶. در آدرس‌دهی حافظه‌ای مستقیم (Direct)، عملوند کجا قرار دارد؟</div><div class="a-box"><strong>پاسخ:</strong> در خانه حافظه‌ای که آدرس آن در دستورالعمل ذکر شده است.</div></div>
-        <div class="question-box"><div class="q-text">۳۷. واحد <bdi>ALU</bdi> مخفف چیست؟</div><div class="a-box"><strong>پاسخ:</strong> <bdi>Arithmetic Logic Unit</bdi> (واحد محاسبات و منطق).</div></div>
-        <div class="question-box"><div class="q-text">۳۸. در پردازنده‌های دارای خط لوله، چرا از حافظه کش جداگانه برای داده و دستورالعمل استفاده می‌شود؟</div><div class="a-box"><strong>پاسخ:</strong> برای جلوگیری از تداخل و گلوگاه در مرحله فراخوانی (Fetch) و اجرا (Execute) که همزمان نیاز به دسترسی به حافظه دارند.</div></div>
-        <div class="question-box"><div class="q-text">۳۹. تفاوت دستور <bdi>R7 = R22</bdi> و <bdi>R7 = Mem(R22)</bdi> چیست؟</div><div class="a-box"><strong>پاسخ:</strong> اولی آدرس‌دهی رجیستری است (محتوای R22 در R7 قرار می‌گیرد)، دومی حافظه‌ای غیرمستقیم است (محتوای خانه‌ای که آدرسش در R22 است در R7 قرار می‌گیرد).</div></div>
-        <div class="question-box"><div class="q-text">۴۰. سیگنال <bdi>Shr</bdi> چه عملی انجام می‌دهد؟</div><div class="a-box"><strong>پاسخ:</strong> شیفت دادن بیت‌های رجیستر به سمت راست.</div></div>
-
-        <!-- ================= بخش پنجم: تشریحی و محاسباتی (۲۰+ سوال) ================= -->
-        <div class="section-title">بخش پنجم: سوالات تشریحی، تحلیلی و محاسباتی (همراه با رسم شکل)</div>
-
+        <!-- صورت سوال -->
         <div class="question-box">
-            <div class="q-text">۱. (محاسبه مالتی‌پلکسر): در یک پردازنده ۱۶ رجیستر ۳۲ بیتی داریم. برای طراحی گذرگاه مشترک، به چند عدد مالتی‌پلکسر و هر کدام با چند خط انتخاب نیاز داریم؟ با رسم شکل توضیح دهید.</div>
-            <div class="diagram">
-                <svg width="400" height="120" viewBox="0 0 400 120">
-                    <rect x="20" y="10" width="60" height="80" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
-                    <text x="25" y="55" font-size="12" fill="#1565c0" font-weight="bold">MUX(0)</text>
-                    <text x="5" y="20" font-size="10" fill="#333">R0(0)...R15(0)</text>
-                    <line x1="80" y1="50" x2="300" y2="50" stroke="#1565c0" stroke-width="2"/>
-                    <text x="310" y="55" font-size="12" fill="#333">CB(0)</text>
-                    <line x1="50" y1="90" x2="50" y2="110" stroke="#c62828" stroke-width="2"/>
-                    <text x="35" y="120" font-size="10" fill="#c62828">S0..S3</text>
-                    <text x="150" y="55" font-size="20" fill="#777">...</text>
-                    <rect x="20" y="140" width="60" height="80" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
-                    <text x="25" y="185" font-size="12" fill="#1565c0" font-weight="bold">MUX(31)</text>
-                    <text x="0" y="150" font-size="10" fill="#333">R0(31)...R15(31)</text>
-                    <line x1="80" y1="180" x2="300" y2="180" stroke="#1565c0" stroke-width="2"/>
-                    <text x="310" y="185" font-size="12" fill="#333">CB(31)</text>
-                    <line x1="50" y1="220" x2="50" y2="240" stroke="#c62828" stroke-width="2"/>
-                    <text x="35" y="250" font-size="10" fill="#c62828">S0..S3</text>
-                </svg>
-            </div>
-            <div class="a-box">
-                <strong>پاسخ تشریحی و محاسباتی:</strong><br>
-                چون داده‌ها ۳۲ بیتی هستند، برای هر بیت به یک مالتی‌پلکسر نیاز داریم: <strong>۳۲ عدد مالتی‌پلکسر</strong>.<br>
-                چون ۱۶ رجیستر داریم، هر مالتی‌پلکسر باید ۱۶ به ۱ باشد.<br>
-                <div class="formula">
-                    Number of Select Lines = log2(16) = 4
-                </div>
-                بنابراین هر مالتی‌پلکسر دارای ۴ خط انتخاب <bdi>(S0 تا S3)</bdi> است. در شکل بالا، <bdi>MUX(0)</bdi> بیت صفرم تمام رجیسترها را دریافت کرده و به خط <bdi>CB(0)</bdi> متصل می‌کند.
-            </div>
+            <strong>سوال:</strong> طراحی مدار ارتباط یک CPU با ۴ حافظه (دو عدد ROM و دو عدد RAM) ۱۶ کیلوبایتی. اتصالات باید ۱۰۰٪ صحیح باشد و جدول درستی (Truth Table) و معادلات منطقی برای انتخاب حافظه‌ها رسم شود.
         </div>
 
-        <div class="question-box">
-            <div class="q-text">۲. (محاسبه خط لوله): یک پردازنده غیر خط لوله هر دستور را در ۶ سیکل کلاک اجرا می‌کند. اگر این پردازنده به یک خط لوله ۶ مرحله‌ای تبدیل شود، برای اجرای ۲۰۰۰ دستورالعمل چه میزان Speedup به دست می‌آید؟</div>
-            <div class="a-box">
-                <strong>پاسخ محاسباتی:</strong><br>
-                <div class="formula">
-                    Speedup = (n × k) / (k + (n - 1))
-                </div>
-                زمان غیر خط لوله: \(2000 \times 6 = 12000\) سیکل.<br>
-                زمان خط لوله: \(6 + (2000 - 1) = 2005\) سیکل.<br>
-                <div class="formula">
-                    Speedup = 12000 / 2005 ≈ 5.98
-                </div>
-                یعنی سرعت تقریباً <strong>۶ برابر</strong> (نزدیک به تعداد مراحل) افزایش می‌یابد.
-            </div>
+        <!-- مدار گرافیکی (بزرگتر و بازتر) -->
+        <div class="circuit-container">
+            <svg width="1400" height="850" viewBox="0 0 1400 850" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arrow-addr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" />
+                    </marker>
+                    <marker id="arrow-data" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a" />
+                    </marker>
+                    <marker id="arrow-control" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626" />
+                    </marker>
+                    <marker id="arrow-cs" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#ea580c" />
+                    </marker>
+                </defs>
+
+                <!-- ================= CPU BLOCK ================= -->
+                <rect x="50" y="200" width="180" height="450" rx="10" fill="#dbeafe" stroke="#1e40af" stroke-width="3" filter="drop-shadow(4px 4px 6px rgba(0,0,0,0.1))" />
+                <text x="140" y="240" font-size="22" font-weight="bold" text-anchor="middle" fill="#000">CPU</text>
+                
+                <!-- CPU Pins (Left) -->
+                <line x1="20" y1="300" x2="50" y2="300" stroke="#dc2626" stroke-width="2.5" />
+                <text x="35" y="290" font-size="14" font-weight="bold" text-anchor="end">RST</text>
+                <line x1="20" y1="550" x2="50" y2="550" stroke="#dc2626" stroke-width="2.5" />
+                <text x="35" y="540" font-size="14" font-weight="bold" text-anchor="end">CP</text>
+
+                <!-- CPU Pins (Right) -->
+                <text x="250" y="260" font-size="15" font-weight="bold" text-anchor="start">A0-A13</text>
+                <line x1="230" y1="280" x2="350" y2="280" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
+
+                <text x="250" y="360" font-size="15" font-weight="bold" text-anchor="start">A14</text>
+                <line x1="230" y1="380" x2="450" y2="380" stroke="#2563eb" stroke-width="3" />
+                
+                <text x="250" y="440" font-size="15" font-weight="bold" text-anchor="start">A15</text>
+                <line x1="230" y1="460" x2="450" y2="460" stroke="#2563eb" stroke-width="3" />
+
+                <text x="250" y="520" font-size="15" font-weight="bold" text-anchor="start">D0-D7</text>
+                <line x1="230" y1="540" x2="1050" y2="540" stroke="#16a34a" stroke-width="4" marker-start="url(#arrow-data)" marker-end="url(#arrow-data)" />
+
+                <text x="250" y="590" font-size="15" font-weight="bold" text-anchor="start">RD</text>
+                <line x1="230" y1="610" x2="650" y2="610" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
+
+                <text x="250" y="640" font-size="15" font-weight="bold" text-anchor="start">WR</text>
+                <line x1="230" y1="660" x2="700" y2="660" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
+
+                <!-- ================= LOGIC GATES ================= -->
+                <!-- NOT Gates -->
+                <g transform="translate(450, 360)">
+                    <path d="M 0,0 L 35,20 L 0,40 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                    <circle cx="39" cy="20" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                    <text x="17" y="60" font-size="12" font-weight="bold" text-anchor="middle">NOT</text>
+                </g>
+                <g transform="translate(450, 440)">
+                    <path d="M 0,0 L 35,20 L 0,40 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                    <circle cx="39" cy="20" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                    <text x="17" y="60" font-size="12" font-weight="bold" text-anchor="middle">NOT</text>
+                </g>
+
+                <!-- Vertical Logic Rails -->
+                <!-- A15' Rail -->
+                <line x1="493" y1="460" x2="550" y2="460" stroke="#4b5563" stroke-width="2" />
+                <line x1="550" y1="180" x2="550" y2="750" stroke="#4b5563" stroke-width="2" />
+                
+                <!-- A15 Rail -->
+                <line x1="450" y1="460" x2="600" y2="460" stroke="#4b5563" stroke-width="2" />
+                <line x1="600" y1="400" x2="600" y2="750" stroke="#4b5563" stroke-width="2" />
+                <circle cx="600" cy="460" r="5" fill="#000" />
+
+                <!-- A14' Rail -->
+                <line x1="493" y1="380" x2="650" y2="380" stroke="#4b5563" stroke-width="2" />
+                <line x1="650" y1="180" x2="650" y2="600" stroke="#4b5563" stroke-width="2" />
+
+                <!-- A14 Rail -->
+                <line x1="450" y1="380" x2="700" y2="380" stroke="#4b5563" stroke-width="2" />
+                <line x1="700" y1="400" x2="700" y2="650" stroke="#4b5563" stroke-width="2" />
+                <circle cx="700" cy="380" r="5" fill="#000" />
+
+                <!-- NAND Gates -->
+                <!-- NAND 1 (CS0) -->
+                <g transform="translate(750, 180)">
+                    <path d="M 0,0 L 35,0 A 30,30 0 0,1 35,60 L 0,60 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                    <circle cx="68" cy="30" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                    <text x="30" y="80" font-size="12" font-weight="bold" text-anchor="middle">NAND</text>
+                    <line x1="0" y1="20" x2="-200" y2="20" stroke="#4b5563" stroke-width="2" />
+                    <line x1="0" y1="40" x2="-100" y2="40" stroke="#4b5563" stroke-width="2" />
+                </g>
+
+                <!-- NAND 2 (CS1) -->
+                <g transform="translate(750, 350)">
+                    <path d="M 0,0 L 35,0 A 30,30 0 0,1 35,60 L 0,60 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                    <circle cx="68" cy="30" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                    <text x="30" y="80" font-size="12" font-weight="bold" text-anchor="middle">NAND</text>
+                    <line x1="0" y1="20" x2="-200" y2="20" stroke="#4b5563" stroke-width="2" />
+                    <line x1="0" y1="40" x2="-50" y2="40" stroke="#4b5563" stroke-width="2" />
+                </g>
+
+                <!-- NAND 3 (CS2) -->
+                <g transform="translate(750, 550)">
+                    <path d="M 0,0 L 35,0 A 30,30 0 0,1 35,60 L 0,60 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                    <circle cx="68" cy="30" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                    <text x="30" y="80" font-size="12" font-weight="bold" text-anchor="middle">NAND</text>
+                    <line x1="0" y1="20" x2="-150" y2="20" stroke="#4b5563" stroke-width="2" />
+                    <line x1="0" y1="40" x2="-100" y2="40" stroke="#4b5563" stroke-width="2" />
+                </g>
+
+                <!-- NAND 4 (CS3) -->
+                <g transform="translate(750, 700)">
+                    <path d="M 0,0 L 35,0 A 30,30 0 0,1 35,60 L 0,60 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                    <circle cx="68" cy="30" r="4" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5" />
+                    <text x="30" y="80" font-size="12" font-weight="bold" text-anchor="middle">NAND</text>
+                    <line x1="0" y1="20" x2="-150" y2="20" stroke="#4b5563" stroke-width="2" />
+                    <line x1="0" y1="40" x2="-50" y2="40" stroke="#4b5563" stroke-width="2" />
+                </g>
+
+                <!-- ================= MEMORY BLOCKS ================= -->
+                <!-- ROM 1 -->
+                <g transform="translate(1050, 150)">
+                    <rect x="0" y="0" width="200" height="130" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" filter="drop-shadow(3px 3px 5px rgba(0,0,0,0.1))" />
+                    <text x="100" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">ROM 1</text>
+                    <text x="100" y="60" font-size="14" text-anchor="middle" fill="#000">16K (0000H-3FFFH)</text>
+                    <text x="-10" y="45" font-size="14" font-weight="bold" text-anchor="end">A0-A13</text>
+                    <text x="-10" y="85" font-size="14" font-weight="bold" text-anchor="end">D0-D7</text>
+                    <text x="-10" y="115" font-size="14" font-weight="bold" text-anchor="end">CS</text> <line x1="-25" y1="105" x2="-10" y2="105" stroke="#000" stroke-width="1.5" />
+                    <text x="-10" y="135" font-size="14" font-weight="bold" text-anchor="end">RD</text> <line x1="-25" y1="125" x2="-10" y2="125" stroke="#000" stroke-width="1.5" />
+                </g>
+
+                <!-- ROM 2 -->
+                <g transform="translate(1050, 320)">
+                    <rect x="0" y="0" width="200" height="130" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" filter="drop-shadow(3px 3px 5px rgba(0,0,0,0.1))" />
+                    <text x="100" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">ROM 2</text>
+                    <text x="100" y="60" font-size="14" text-anchor="middle" fill="#000">16K (4000H-7FFFH)</text>
+                    <text x="-10" y="45" font-size="14" font-weight="bold" text-anchor="end">A0-A13</text>
+                    <text x="-10" y="85" font-size="14" font-weight="bold" text-anchor="end">D0-D7</text>
+                    <text x="-10" y="115" font-size="14" font-weight="bold" text-anchor="end">CS</text> <line x1="-25" y1="105" x2="-10" y2="105" stroke="#000" stroke-width="1.5" />
+                    <text x="-10" y="135" font-size="14" font-weight="bold" text-anchor="end">RD</text> <line x1="-25" y1="125" x2="-10" y2="125" stroke="#000" stroke-width="1.5" />
+                </g>
+
+                <!-- RAM 1 -->
+                <g transform="translate(1050, 520)">
+                    <rect x="0" y="0" width="200" height="150" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" filter="drop-shadow(3px 3px 5px rgba(0,0,0,0.1))" />
+                    <text x="100" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">RAM 1</text>
+                    <text x="100" y="60" font-size="14" text-anchor="middle" fill="#000">16K (8000H-BFFFH)</text>
+                    <text x="-10" y="45" font-size="14" font-weight="bold" text-anchor="end">A0-A13</text>
+                    <text x="-10" y="85" font-size="14" font-weight="bold" text-anchor="end">D0-D7</text>
+                    <text x="-10" y="115" font-size="14" font-weight="bold" text-anchor="end">CS</text> <line x1="-25" y1="105" x2="-10" y2="105" stroke="#000" stroke-width="1.5" />
+                    <text x="-10" y="135" font-size="14" font-weight="bold" text-anchor="end">RD</text> <line x1="-25" y1="125" x2="-10" y2="125" stroke="#000" stroke-width="1.5" />
+                    <text x="-10" y="155" font-size="14" font-weight="bold" text-anchor="end">WR</text> <line x1="-25" y1="145" x2="-10" y2="145" stroke="#000" stroke-width="1.5" />
+                </g>
+
+                <!-- RAM 2 -->
+                <g transform="translate(1050, 670)">
+                    <rect x="0" y="0" width="200" height="150" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" filter="drop-shadow(3px 3px 5px rgba(0,0,0,0.1))" />
+                    <text x="100" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">RAM 2</text>
+                    <text x="100" y="60" font-size="14" text-anchor="middle" fill="#000">16K (C000H-FFFFH)</text>
+                    <text x="-10" y="45" font-size="14" font-weight="bold" text-anchor="end">A0-A13</text>
+                    <text x="-10" y="85" font-size="14" font-weight="bold" text-anchor="end">D0-D7</text>
+                    <text x="-10" y="115" font-size="14" font-weight="bold" text-anchor="end">CS</text> <line x1="-25" y1="105" x2="-10" y2="105" stroke="#000" stroke-width="1.5" />
+                    <text x="-10" y="135" font-size="14" font-weight="bold" text-anchor="end">RD</text> <line x1="-25" y1="125" x2="-10" y2="125" stroke="#000" stroke-width="1.5" />
+                    <text x="-10" y="155" font-size="14" font-weight="bold" text-anchor="end">WR</text> <line x1="-25" y1="145" x2="-10" y2="145" stroke="#000" stroke-width="1.5" />
+                </g>
+
+                <!-- ================= WIRING (ROUTING) ================= -->
+                <!-- CS Signals (NAND to Memories) -->
+                <line x1="822" y1="210" x2="1040" y2="210" stroke="#ea580c" stroke-width="3" marker-end="url(#arrow-cs)" />
+                <line x1="822" y1="380" x2="1040" y2="380" stroke="#ea580c" stroke-width="3" marker-end="url(#arrow-cs)" />
+                <line x1="822" y1="580" x2="1040" y2="580" stroke="#ea580c" stroke-width="3" marker-end="url(#arrow-cs)" />
+                <line x1="822" y1="730" x2="1040" y2="730" stroke="#ea580c" stroke-width="3" marker-end="url(#arrow-cs)" />
+
+                <!-- Address Bus Branching -->
+                <line x1="350" y1="280" x2="350" y2="800" stroke="#2563eb" stroke-width="4" />
+                <line x1="350" y1="190" x2="1050" y2="190" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
+                <line x1="350" y1="360" x2="1050" y2="360" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
+                <line x1="350" y1="560" x2="1050" y2="560" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
+                <line x1="350" y1="710" x2="1050" y2="710" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-addr)" />
+                <circle cx="350" cy="190" r="5" fill="#000" />
+                <circle cx="350" cy="360" r="5" fill="#000" />
+                <circle cx="350" cy="560" r="5" fill="#000" />
+                <circle cx="350" cy="710" r="5" fill="#000" />
+
+                <!-- Data Bus Branching -->
+                <line x1="980" y1="540" x2="980" y2="820" stroke="#16a34a" stroke-width="4" />
+                <line x1="980" y1="230" x2="1050" y2="230" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow-data)" />
+                <line x1="980" y1="400" x2="1050" y2="400" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow-data)" />
+                <line x1="980" y1="600" x2="1050" y2="600" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow-data)" />
+                <line x1="980" y1="750" x2="1050" y2="750" stroke="#16a34a" stroke-width="4" marker-end="url(#arrow-data)" />
+                <circle cx="980" cy="230" r="5" fill="#000" />
+                <circle cx="980" cy="400" r="5" fill="#000" />
+                <circle cx="980" cy="600" r="5" fill="#000" />
+                <circle cx="980" cy="750" r="5" fill="#000" />
+
+                <!-- RD Signal Branching -->
+                <line x1="650" y1="610" x2="650" y2="800" stroke="#dc2626" stroke-width="3" />
+                <line x1="650" y1="250" x2="1050" y2="250" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
+                <line x1="650" y1="420" x2="1050" y2="420" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
+                <line x1="650" y1="620" x2="1050" y2="620" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
+                <line x1="650" y1="770" x2="1050" y2="770" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
+                <circle cx="650" cy="250" r="5" fill="#000" />
+                <circle cx="650" cy="420" r="5" fill="#000" />
+                <circle cx="650" cy="620" r="5" fill="#000" />
+                <circle cx="650" cy="770" r="5" fill="#000" />
+
+                <!-- WR Signal Branching -->
+                <line x1="700" y1="660" x2="700" y2="830" stroke="#dc2626" stroke-width="3" />
+                <line x1="700" y1="640" x2="1050" y2="640" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
+                <line x1="700" y1="790" x2="1050" y2="790" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-control)" />
+                <circle cx="700" cy="640" r="5" fill="#000" />
+                <circle cx="700" cy="790" r="5" fill="#000" />
+            </svg>
         </div>
 
-        <div class="question-box">
-            <div class="q-text">۳. (تحلیل میکروعملیات): چرخه فراخوانی دستورالعمل (Fetch Cycle) را برای مراحل <bdi>T0</bdi> و <bdi>T1</bdi> به طور کامل با میکروعملیات و کدهای کنترلی (<bdi>S3 S2 S1 S0</bdi>) بنویسید.</div>
-            <div class="a-box">
-                <strong>پاسخ تحلیلی:</strong><br>
-                <strong>مرحله T0:</strong> انتقال آدرس دستورالعمل بعدی از PC به AR.<br>
-                میکروعملیات: <bdi>AR ← PC</bdi> | کدهای کنترلی: <bdi>S3 S2 S1 S0 = 0000</bdi> و <bdi>LD(AR)</bdi>.<br>
-                <strong>مرحله T1:</strong> خواندن دستورالعمل از حافظه به IR و افزایش PC.<br>
-                میکروعملیات: <bdi>IR ← M[AR], PC ← PC + 1</bdi> | کدهای کنترلی: <bdi>RD</bdi>، <bdi>S3 S2 S1 S0 = 0011</bdi>، <bdi>LD(IR)</bdi>، <bdi>INC(PC)</bdi>.
-            </div>
+        <!-- جدول درستی -->
+        <div class="table-container">
+            <div class="section-title">جدول درستی (Truth Table)</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>A15</th>
+                        <th>A14</th>
+                        <th>محدوده آدرس (Hex)</th>
+                        <th>حافظه فعال</th>
+                        <th class="overline">CS0 (ROM1)</th>
+                        <th class="overline">CS1 (ROM2)</th>
+                        <th class="overline">CS2 (RAM1)</th>
+                        <th class="overline">CS3 (RAM2)</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td dir="ltr">0000H - 3FFFH</td>
+                        <td>ROM 1</td>
+                        <td class="active">0</td>
+                        <td class="inactive">1</td>
+                        <td class="inactive">1</td>
+                        <td class="inactive">1</td>
+                        <td>فقط خواندن (RD)</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td dir="ltr">4000H - 7FFFH</td>
+                        <td>ROM 2</td>
+                        <td class="inactive">1</td>
+                        <td class="active">0</td>
+                        <td class="inactive">1</td>
+                        <td class="inactive">1</td>
+                        <td>فقط خواندن (RD)</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td dir="ltr">8000H - BFFFH</td>
+                        <td>RAM 1</td>
+                        <td class="inactive">1</td>
+                        <td class="inactive">1</td>
+                        <td class="active">0</td>
+                        <td class="inactive">1</td>
+                        <td>خواندن / نوشتن</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td dir="ltr">C000H - FFFFH</td>
+                        <td>RAM 2</td>
+                        <td class="inactive">1</td>
+                        <td class="inactive">1</td>
+                        <td class="inactive">1</td>
+                        <td class="active">0</td>
+                        <td>خواندن / نوشتن</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <div class="question-box">
-            <div class="q-text">۴. (تحلیل حافظه): یک حافظه <bdi>ROM</bdi> با ظرفیت ۱۲۸ کیلوبایت داریم. اگر گذرگاه داده ۱۶ بیتی باشد: الف) چند خط آدرس نیاز است؟ ب) آخرین آدرس حافظه در مبنای هگزادسیمال چیست؟</div>
-            <div class="a-box">
-                <strong>پاسخ محاسباتی:</strong><br>
-                الف) ۱۲۸ کیلوبایت = \(128 \times 1024 = 131072\) آدرس.
-                <div class="formula">
-                    2^n = 131072  =>  n = 17
-                </div>
-                بنابراین به <strong>۱۷ خط آدرس</strong> <bdi>(A0 تا A16)</bdi> نیاز دارد.<br>
-                ب) آخرین آدرس برابر است با \(2^{17} - 1 = 131071\).<br>
-                عدد ۱۳۱۰۷۱ در مبنای هگزادسیمال برابر است با <strong><bdi>1FFFF</bdi></strong>.
-            </div>
+        <!-- معادلات منطقی -->
+        <div class="table-container" style="margin-top: 20px;">
+            <div class="section-title">معادلات منطقی انتخاب حافظه (Chip Select)</div>
+            <table style="width: 90%; margin: 0 auto;">
+                <thead>
+                    <tr>
+                        <th>حافظه</th>
+                        <th>معادله منطقی</th>
+                        <th>توضیح</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ROM 1</td>
+                        <td class="eq-text">CS0 = NAND(A15', A14')</td>
+                        <td style="font-size: 13px;">وقتی هر دو A15 و A14 صفر باشند، خروجی صفر (فعال) می‌شود.</td>
+                    </tr>
+                    <tr>
+                        <td>ROM 2</td>
+                        <td class="eq-text">CS1 = NAND(A15', A14)</td>
+                        <td style="font-size: 13px;">وقتی A15=0 و A14=1 باشد، خروجی صفر (فعال) می‌شود.</td>
+                    </tr>
+                    <tr>
+                        <td>RAM 1</td>
+                        <td class="eq-text">CS2 = NAND(A15, A14')</td>
+                        <td style="font-size: 13px;">وقتی A15=1 و A14=0 باشد، خروجی صفر (فعال) می‌شود.</td>
+                    </tr>
+                    <tr>
+                        <td>RAM 2</td>
+                        <td class="eq-text">CS3 = NAND(A15, A14)</td>
+                        <td style="font-size: 13px;">وقتی هر دو A15 و A14 یک باشند، خروجی صفر (فعال) می‌شود.</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
-        <div class="question-box">
-            <div class="q-text">۵. (تحلیل آدرس‌دهی): با توجه به تصویر صفحه ۳۲ جزوه، تفاوت دستورات <bdi>R7 = Mem(22)</bdi> و <bdi>R7 = Mem(R22)</bdi> را از نظر نوع آدرس‌دهی و نحوه اجرا توضیح دهید.</div>
-            <div class="a-box">
-                <strong>پاسخ استدلالی:</strong><br>
-                - دستور <bdi>R7 = Mem(22)</bdi>: در اینجا آدرس‌دهی از نوع <strong>حافظه‌ای مستقیم (Direct)</strong> است. یعنی مستقیماً به خانه حافظه شماره ۲۲ مراجعه شده و محتوای آن در R7 قرار می‌گیرد.<br>
-                - دستور <bdi>R7 = Mem(R22)</bdi>: در اینجا آدرس‌دهی از نوع <strong>حافظه‌ای غیرمستقیم با اشاره‌گر رجیستری (Register Indirect)</strong> است. یعنی ابتدا محتوای رجیستر R22 خوانده می‌شود (مثلاً عدد ۱۰۰). سپس به آدرس ۱۰۰ در حافظه مراجعه شده و محتوای آن در R7 قرار می‌گیرد.
-            </div>
-        </div>
-
-        <div class="question-box">
-            <div class="q-text">۶. (تحلیل FPGA): با توجه به تصویر صفحه ۲، اگر بلوک‌های <bdi>S</bdi> در یک FPGA آسیب ببینند، چه اختلالی در سیستم رخ می‌دهد؟</div>
-            <div class="a-box">
-                <strong>پاسخ تشریحی:</strong> بلوک‌های <bdi>S</bdi> وظیفه سوییچینگ و اتصال سیم‌های افقی و عمودی در تقاطع‌ها را بر عهده دارند. اگر این بلوک‌ها خراب شوند، سیگنال‌ها نمی‌توانند مسیر خود را تغییر دهند و از یک بلوک منطقی به بلوک دیگر یا به <bdi>I/O Cell</bdi> برسند. در نتیجه مسیریابی (Routing) مختل شده و مدار پیاده‌سازی‌شده در FPGA از کار می‌افتد.
-            </div>
-        </div>
-
-        <div class="question-box">
-            <div class="q-text">۷. (تحلیل عملکرد): پردازنده <bdi>Core i7</bdi> با کلاک ۴.۵ گیگاهرتز و <bdi>CPI=2</bdi>. زمان اجرای ۱۰ میلیون دستور چقدر است؟</div>
-            <div class="a-box">
-                <strong>پاسخ محاسباتی:</strong><br>
-                <div class="formula">
-                    Time = (Instructions × CPI) / Clock Rate
-                </div>
-                <div class="formula">
-                    Time = (10,000,000 × 2) / 4,500,000,000 ≈ 0.00444 s
-                </div>
-                یعنی حدود <strong>۴.۴۴ میلی‌ثانیه</strong>.
-            </div>
-        </div>
-
-        <div class="question-box">
-            <div class="q-text">۸. (تحلیل رجیستر): مقدار فعلی رجیستر <bdi>1100</bdi> است. اگر به ترتیب <bdi>Clr</bdi>، سپس <bdi>Inc</bdi> و سپس <bdi>Shl</bdi> اعمال شود، مقدار نهایی چیست؟</div>
-            <div class="a-box">
-                <strong>پاسخ تحلیلی:</strong><br>
-                1. <bdi>Clr</bdi>: صفر می‌شود (<bdi>0000</bdi>).<br>
-                2. <bdi>Inc</bdi>: یک واحد افزایش (<bdi>0001</bdi>).<br>
-                3. <bdi>Shl</bdi>: شیفت به چپ (<bdi>0010</bdi>).<br>
-                مقدار نهایی: <strong><bdi>0010</bdi></strong> (عدد ۲).
-            </div>
-        </div>
-
-        <div class="question-box">
-            <div class="q-text">۹. (تحلیل فرمت دستورالعمل): یک معماری ۱۶ بیتی است: ۴ بیت <bdi>Op-code</bdi>، ۴ بیت رجیستر مقصد، ۲ بیت حالت آدرس‌دهی، ۶ بیت آدرس. الف) حداکثر چند دستورالعمل؟ ب) چند رجیستر؟</div>
-            <div class="a-box">
-                <strong>پاسخ محاسباتی:</strong><br>
-                الف) ۴ بیت <bdi>Op-code</bdi>: \(2^4 = 16\) نوع دستورالعمل.<br>
-                ب) ۴ بیت رجیستر: \(2^4 = 16\) رجیستر.
-            </div>
-        </div>
-
-        <div class="question-box">
-            <div class="q-text">۱۰. (دیکودر جدول کنترل): اگر شمارنده <bdi>SC</bdi> مقدار <bdi>0011</bdi> را نشان دهد، کدام <bdi>T</bdi> فعال می‌شود؟ برای <bdi>T8</bdi> چه مقداری لازم است؟</div>
-            <div class="a-box">
-                <strong>پاسخ محاسباتی:</strong><br>
-                <bdi>0011</bdi> در مبنای دو برابر ۳ است، پس خروجی <strong><bdi>T3</bdi></strong> فعال می‌شود.<br>
-                برای <bdi>T8</bdi>، شمارنده باید <strong><bdi>1000</bdi></strong> باشد.
-            </div>
-        </div>
-
-        <div class="question-box">
-            <div class="q-text">۱۱. (تحلیل تصادم گذرگاه): اگر در گذرگاه مشترک صفحه ۱۴، همزمان دو <bdi>MUX</bdi> مقادیر متفاوتی را روی خط قرار دهند چه اتفاقی می‌افتد؟</div>
-            <div class="a-box">
-                <strong>پاسخ استدلالی:</strong><br>
-                این حالت <strong>تصادم گذرگاه (Bus Contention)</strong> نام دارد. جریان الکتریکی زیادی از یک خروجی به خروجی دیگر جاری شده، ممکن است به مدار آسیب بزند یا مقدار روی گذرگاه نامشخص (<bdi>X</bdi>) شود.
-            </div>
-        </div>
-
-        <div class="question-box">
-            <div class="q-text">۱۲. (استدلال سرعت): چرا افزایش ترانزیستورها به تنهایی نمی‌تواند سرعت را بی‌نهایت افزایش دهد؟</div>
-            <div class="a-box">
-                <strong>پاسخ تحلیلی:</strong><br>
-                افزایش ترانزیستور یعنی گرمای بیشتر و مصرف انرژی بالاتر. کوچک‌سازی بیش از حد باعث نشتی جریان و پدیده‌های کوانتومی می‌شود. همچنین افزایش فرکانس با محدودیت تأخیر سیم‌ها مواجه است. به همین دلیل به جای ترانزیستور بیشتر، از <strong>موازی‌سازی (Pipeline و Superscalar)</strong> استفاده می‌کنند.
-            </div>
-        </div>
-
-        <div class="question-box">
-            <div class="q-text">۱۳. (محاسبه خط لوله با رسم شکل): خط لوله ۴ مرحله‌ای (Fetch, Decode, Execute, Write) را برای ۳ دستورالعمل رسم کنید و مشخص کنید در سیکل ۵ چند دستور در حال اجرا هستند؟</div>
-            <div class="diagram">
-                <svg width="400" height="150" viewBox="0 0 400 150">
-                    <!-- Inst 1 -->
-                    <text x="10" y="25" font-size="12">Inst 1:</text>
-                    <rect x="60" y="10" width="40" height="20" fill="#ef5350" rx="3"/><text x="65" y="24" fill="white" font-size="10">F</text>
-                    <rect x="100" y="10" width="40" height="20" fill="#ffca28" rx="3"/><text x="105" y="24" fill="white" font-size="10">D</text>
-                    <rect x="140" y="10" width="40" height="20" fill="#42a5f5" rx="3"/><text x="145" y="24" fill="white" font-size="10">E</text>
-                    <rect x="180" y="10" width="40" height="20" fill="#66bb6a" rx="3"/><text x="185" y="24" fill="white" font-size="10">W</text>
-                    
-                    <!-- Inst 2 -->
-                    <text x="10" y="55" font-size="12">Inst 2:</text>
-                    <rect x="100" y="40" width="40" height="20" fill="#ef5350" rx="3"/><text x="105" y="54" fill="white" font-size="10">F</text>
-                    <rect x="140" y="40" width="40" height="20" fill="#ffca28" rx="3"/><text x="145" y="54" fill="white" font-size="10">D</text>
-                    <rect x="180" y="40" width="40" height="20" fill="#42a5f5" rx="3"/><text x="185" y="54" fill="white" font-size="10">E</text>
-                    <rect x="220" y="40" width="40" height="20" fill="#66bb6a" rx="3"/><text x="225" y="54" fill="white" font-size="10">W</text>
-
-                    <!-- Inst 3 -->
-                    <text x="10" y="85" font-size="12">Inst 3:</text>
-                    <rect x="140" y="70" width="40" height="20" fill="#ef5350" rx="3"/><text x="145" y="84" fill="white" font-size="10">F</text>
-                    <rect x="180" y="70" width="40" height="20" fill="#ffca28" rx="3"/><text x="185" y="84" fill="white" font-size="10">D</text>
-                    <rect x="220" y="70" width="40" height="20" fill="#42a5f5" rx="3"/><text x="225" y="84" fill="white" font-size="10">E</text>
-                    <rect x="260" y="70" width="40" height="20" fill="#66bb6a" rx="3"/><text x="265" y="84" fill="white" font-size="10">W</text>
-
-                    <!-- Cycle Axis -->
-                    <line x1="60" y1="110" x2="320" y2="110" stroke="#333" stroke-width="2"/>
-                    <text x="70" y="125" font-size="10">1</text>
-                    <text x="110" y="125" font-size="10">2</text>
-                    <text x="150" y="125" font-size="10">3</text>
-                    <text x="190" y="125" font-size="10">4</text>
-                    <text x="230" y="125" font-size="10">5</text>
-                    <text x="270" y="125" font-size="10">6</text>
-                    <text x="300" y="125" font-size="10">...</text>
-                </svg>
-            </div>
-            <div class="a-box">
-                <strong>پاسخ تحلیلی:</strong><br>
-                همانطور که در شکل مشخص است، در سیکل ۵، دستور اول در مرحله <bdi>W</bdi>، دستور دوم در مرحله <bdi>E</bdi>، دستور سوم در مرحله <bdi>D</bdi> و اگر دستور چهارمی وجود داشته باشد در مرحله <bdi>F</bdi> خواهد بود. یعنی **۴ دستور به صورت هم‌زمان** در ۴ مرحله مختلف در حال انجام کارهای متفاوت هستند.
-            </div>
-        </div>
-
-        <div class="question-box">
-            <div class="q-text">۱۴. (تحلیل حافظه ROM): با توجه به صفحه ۱۸ جزوه، چرا آخرین آدرس در یک حافظه ۶۴ کیلوبایتی برابر با <bdi>FFFFH</bdi> است؟</div>
-            <div class="a-box">
-                <strong>پاسخ محاسباتی:</strong><br>
-                ظرفیت ۶۴ کیلوبایت یعنی \(64 \times 1024 = 65536\) آدرس. شماره‌گذاری آدرس‌ها از صفر شروع می‌شود، بنابراین آخرین آدرس برابر با \(65535\) است.
-                <div class="formula">
-                    65535_{10} = 1111\_1111\_1111\_1111_2 = FFFF_{16}
-                </div>
-                به همین دلیل آخرین آدرس در مبنای هگز <bdi>FFFF</bdi> است.
-            </div>
-        </div>
-
-        <div class="question-box">
-            <div class="q-text">۱۵. (تحلیل گذرگاه مشترک): در تصویر صفحه ۱۴، اگر بخواهیم محتویات رجیستر <bdi>R15</bdi> را روی گذرگاه قرار دهیم، کدهای <bdi>S3 S2 S1 S0</bdi> چه عددی می‌شوند؟</div>
-            <div class="a-box">
-                <strong>پاسخ محاسباتی:</strong><br>
-                شماره رجیستر <bdi>R15</bdi> است. عدد ۱۵ در مبنای دو برابر است با <bdi>1111</bdi>. پس کدهای <bdi>S3 S2 S1 S0 = 1111</bdi> خواهند بود.
-            </div>
-        </div>
-
-        <div class="question-box">
-            <div class="q-text">۱۶. (تحلیل FPGA): با توجه به صفحه ۲، تفاوت <bdi>S-Block</bdi> و <bdi>C-Block</bdi> در چیست؟</div>
-            <div class="a-box">
-                <strong>پاسخ تشریحی:</strong><br>
-                <bdi>S-Block</bdi> (Switch Block) در تقاطع مسیرهای افقی و عمودی قرار دارد و وظیفه آن تغییر مسیر سیگنال (سوییچینگ) است. <bdi>C-Block</bdi> (Connection Block) در اطراف بلوک‌های منطقی قرار دارد و وظیفه اتصال پایه‌های ورودی/خروجی <bdi>Logic Block</bdi> به مسیرهای سیم را بر عهده دارد.
-            </div>
-        </div>
-
-        <div class="question-box">
-            <div class="q-text">۱۷. (تحلیل میکروعملیات): در جدول کنترل صفحه ۲۳، برای اجرای دستور با کد ۱۵ (که در سیکل <bdi>T2</bdi> انجام می‌شود)، چه کدهایی فعال هستند؟</div>
-            <div class="a-box">
-                <strong>پاسخ تحلیلی:</strong><br>
-                با مراجعه به جدول صفحه ۲۳، برای کد ۱۵ (باینری <bdi>1111</bdi>) در زمان <bdi>T2</bdi>، فیلد <bdi>Ym-1 ... Y0</bdi> برابر با <bdi>110100</bdi> است. این کدها به واحد کنترل می‌گویند که چه سیگنال‌های کنترلی برای اجرای این دستور خاص باید فعال شوند.
-            </div>
-        </div>
-
-        <div class="question-box">
-            <div class="q-text">۱۸. (تحلیل معماری Superscalar): یک پردازنده <bdi>Superscalar</bdi> با ۴ واحد اجرایی داریم. حداکثر چند دستور می‌تواند در هر سیکل کلاک اجرا کند؟</div>
-            <div class="a-box">
-                <strong>پاسخ محاسباتی:</strong><br>
-                حداکثر ۴ دستور. زیرا هر واحد اجرایی می‌تواند یک دستور مستقل را در همان سیکل دریافت و پردازش کند.
-            </div>
-        </div>
-        
-        <div class="question-box">
-            <div class="q-text">۱۹. (تحلیل عمق حافظه): یک حافظه با ظرفیت ۲۵۶ کیلوبایت و گذرگاه داده ۳۲ بیتی داریم. چند خط آدرس نیاز دارد؟</div>
-            <div class="a-box">
-                <strong>پاسخ محاسباتی:</strong><br>
-                ظرفیت ۲۵۶ کیلوبایت = \(256 \times 1024 = 262144\) آدرس.
-                <div class="formula">
-                    2^n = 262144  =>  n = 18
-                </div>
-                بنابراین به **۱۸ خط آدرس** نیاز دارد.
-            </div>
-        </div>
-
-        <div class="question-box">
-            <div class="q-text">۲۰. (تحلیل FLOPS): پردازنده <bdi>Core i7</bdi> در جزوه دارای توان ۱۷۷ گیگافلاپس است. اگر هر عملیات اعشاری ۲ فلاپ نیاز داشته باشد، چند عملیات اعشاری در ثانیه انجام می‌دهد؟</div>
-            <div class="a-box">
-                <strong>پاسخ محاسباتی:</strong><br>
-                <div class="formula">
-                    Operations = 177,000,000,000 / 2 = 88,500,000,000
-                </div>
-                یعنی ۸۸.۵ میلیارد عملیات اعشاری در ثانیه.
-            </div>
-        </div>
-
     </div>
 
+    <!-- اسکریپت دانلود فایل -->
+    <script>
+        function downloadFile() {
+            // دریافت کل محتوای HTML صفحه
+            const htmlContent = document.documentElement.outerHTML;
+            
+            // ساخت یک Blob از نوع text/html
+            const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            
+            // ساخت تگ <a> برای دانلود
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'MohammadRasoul_Yazdian_4032221073.html'; // نام فایل دانلودی
+            
+            // اضافه کردن به DOM و کلیک روی آن
+            document.body.appendChild(a);
+            a.click();
+            
+            // پاکسازی
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            // پیام موفقیت‌آمیز (اختیاری)
+            alert('فایل با موفقیت دانلود شد. اکنون می‌توانید آن را با مرورگر باز کرده و پرینت بگیرید.');
+        }
+    </script>
 </body>
-    </html>
+                    </html>
